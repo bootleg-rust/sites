@@ -1,0 +1,49 @@
+{
+  "name": "@bootleg-rust/lib-ssr-toolbox",
+  "version": "0.0.1",
+  "private": true,
+  "description": "SSR toolbox",
+  "author": "pseudo-su",
+  "main": "src/universal.ts",
+  "scripts": {
+    "lint": "eslint --max-warnings=0 .",
+    "lint:fix": "eslint --max-warnings=0 --fix .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/combined-stream": "^1.0.2",
+    "combined-stream": "^1.0.8",
+    "koa": "^2.11.0",
+    "koa-compress": "^4.0.1",
+    "koa-helmet": "^5.1.0",
+    "koa-logger": "3.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet-async": "^1.0.6",
+    "react-lightyear": "^16.10.0",
+    "react-query": "^2.5.6",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-ssr-prepass": "^1.2.1",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@bootleg-rust/build-tooling": "*",
+    "@types/koa": "^2.11.3",
+    "@types/koa-compress": "^4.0.0",
+    "@types/koa-helmet": "^5.2.0",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.4.0",
+    "@types/koa-static": "^4.0.1",
+    "@types/react-router": "^5.1.5",
+    "@types/react-router-dom": "^5.1.4",
+    "@types/styled-components": "^5.1.1",
+    "razzle": "^3.1.5",
+    "typescript": "~3.8.3"
+  },
+  "engines": {
+    "node": "12.16.3"
+  }
+}

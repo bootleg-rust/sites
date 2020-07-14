@@ -1,0 +1,20 @@
+{
+  "short_name": "Bootleg crates.io",
+  "name": "Bootleg crates.io: Rust Package Registry",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/logo227.png",
+      "sizes": "227x227",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}

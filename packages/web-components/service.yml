@@ -1,0 +1,19 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: web-components
+spec:
+  template:
+    spec:
+      containers:
+        - image: ${env:CONTAINER_IMAGE_URL}
+          env:
+            # Basic
+            - name: ENV
+              value: ${env:ENV}
+
+            # Reference other sites
+            - name: CRATES_IO_URL_HOST
+              value: ${env:ENV}.bootleg-crates.io
+            - name: API_URL_HOST
+              value: api.${env:ENV}.bootleg-crates.io

@@ -1,0 +1,53 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
+async function loadDependenciesAsync() {
+  const loadReact = import(/* webpackPreload: true */ "react").then((m) => ({
+    React: m.default,
+  }));
+  const loadApp = import(/* webpackPreload: true */ "./app");
+  const loadLibComponents = import(
+    /* webpackPreload: true */ "@bootleg-rust/lib-design-system"
+  );
+  const loadSSRRuntime = import(
+    /* webpackPreload: true */ "@bootleg-rust/lib-ssr-runtime/client"
+  );
+
+  // Not used directly but still critical-path can good to preload.
+  // When making changes to this check the build/webpack.report.html to
+  // see how it affects the resulting bundle.
+  // prettier-ignore
+  {
+    void import(/* webpackPreload: true */ "react-dom");
+    void import(/* webpackPreload: true */ "react-router");
+    void import(/* webpackPreload: true */ "react-router-dom");
+    void import(/* webpackPreload: true */ "react-helmet-async");
+    void import(/* webpackPreload: true */ "@bootleg-rust/lib-ssr-toolbox");
+    void import(/* webpackPreload: true */ "@bootleg-rust/lib-design-system");
+    void import(/* webpackPreload: true */ "@bootleg-rust/lib-features");
+  }
+
+  const allLoaded = await Promise.all([
+    loadReact,
+    loadApp,
+    loadLibComponents,
+    loadSSRRuntime,
+  ]);
+
+  const combined = Object.assign(...allLoaded);
+
+  return combined;
+}
+
+void loadDependenciesAsync().then((asyncDeps) => {
+  const { React, hydrate, ThemeProvider, App, DefaultTheme } = asyncDeps;
+  hydrate({
+    render() {
+      return (
+        <ThemeProvider theme={DefaultTheme}>
+          <App />
+        </ThemeProvider>
+      );
+    },
+  });
+});

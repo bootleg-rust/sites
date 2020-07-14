@@ -1,0 +1,34 @@
+{
+  "name": "@bootleg-rust/web-api-proxy",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "yarn clean && razzle build && rsync -a ./public/ ./build/public",
+    "clean": "rm -rf build",
+    "deploy": "build-tooling-cli service deploy --service-name web-api-proxy",
+    "dev": "razzle start",
+    "lint": "eslint --max-warnings=0 .",
+    "lint:fix": "eslint --max-warnings=0 --fix .",
+    "package": "build-tooling-cli service package --service-name web-api-proxy",
+    "publish": "build-tooling-cli service publish --service-name web-api-proxy",
+    "serve": "node build/server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@bootleg-rust/lib-config": "*",
+    "@bootleg-rust/lib-ssr-runtime": "*",
+    "core-js": "^3.6.4",
+    "koa": "^2.11.0",
+    "koa-proxies": "^0.11.0",
+    "koa-router": "^7.4.0",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@bootleg-rust/build-tooling": "*",
+    "razzle": "^3.1.5",
+    "typescript": "~3.8.3"
+  },
+  "engines": {
+    "node": "12.16.3"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "hosting": [
+    {
+      "target": "web-crates-io",
+      "public": "no-files",
+      "rewrites": [
+        {
+          "source": "**",
+          "run": {
+            "serviceId": "web-crates-io",
+            "region": "asia-northeast1"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@bootleg-rust/lib-features",
+  "version": "0.0.1",
+  "private": true,
+  "description": "bootleg-crates.io features",
+  "author": "pseudo-su",
+  "main": "src",
+  "scripts": {
+    "lint": "eslint --max-warnings=0 .",
+    "lint:fix": "eslint --max-warnings=0 --fix .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@bootleg-rust/build-tooling": "*",
+    "eslint": "^7.5.0",
+    "typescript": "~3.8.3"
+  },
+  "engines": {
+    "node": "12.16.3"
+  }
+}

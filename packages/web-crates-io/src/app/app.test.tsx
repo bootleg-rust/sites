@@ -1,0 +1,32 @@
+// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// allows you to do things like:
+// expect(element).toHaveTextContent(/react/i)
+// learn more: https://github.com/testing-library/jest-dom
+import { DefaultTheme, ThemeProvider } from "@bootleg-rust/lib-design-system";
+import { StaticConfigProvider } from "@bootleg-rust/lib-ssr-toolbox";
+import { HelmetProvider } from "react-helmet-async";
+// TODO: move a "test-harness" into "@bootleg-rust/lib-ssr-runtime"
+// import { } from "@bootleg-rust/lib-ssr-runtime/client/test-harness";
+import "@testing-library/jest-dom/extend-expect";
+import { render } from "@testing-library/react";
+import React from "react";
+import { MemoryRouter as Router } from "react-router";
+import { App } from "./index";
+
+test("renders an App", () => {
+  const { getByTestId } = render(
+    <Router>
+      <StaticConfigProvider config={{ SITE: "web-crates-io", ENV: "dev" }}>
+        <ThemeProvider theme={DefaultTheme}>
+          <HelmetProvider>
+            <App />
+          </HelmetProvider>
+        </ThemeProvider>
+      </StaticConfigProvider>
+    </Router>,
+  );
+  const siteElement = getByTestId("env:SITE");
+  const envElement = getByTestId("env:ENV");
+  expect(siteElement).toContainHTML("web-crates-io");
+  expect(envElement).toContainHTML("dev");
+});

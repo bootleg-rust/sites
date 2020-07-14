@@ -1,0 +1,13 @@
+spec:
+  template:
+    spec:
+      containers:
+        - env:
+            - name: ENV
+              value: ${env:ENV}
+            - name: FIRST
+              value: 1st
+            - name: SECOND
+              value: 2nd
+            - name: THIRD
+              value: 3rd

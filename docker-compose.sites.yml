@@ -1,0 +1,50 @@
+version: "3.3"
+services:
+  web-components:
+    image: web-components
+    ports:
+      - "4040:4040"
+    environment:
+      PORT: "4040"
+    env_file:
+      - .env
+      - .env.local
+    build:
+      context: "."
+      dockerfile: packages/web-components/Dockerfile
+  web-crates-io:
+    image: web-crates-io
+    ports:
+      - "4001:4001"
+    environment:
+      PORT: "4001"
+    env_file:
+      - .env
+      - .env.local
+    build:
+      context: "."
+      dockerfile: packages/web-crates-io/Dockerfile
+  web-rust-lang:
+    image: web-rust-lang
+    ports:
+      - "4005:4005"
+    environment:
+      PORT: "4005"
+    env_file:
+      - .env
+      - .env.local
+    build:
+      context: "."
+      dockerfile: packages/web-rust-lang/Dockerfile
+  web-api-proxy:
+    image: web-api-proxy
+    ports:
+      - "4003:4003"
+    environment:
+      PORT: "4003"
+    env_file:
+      - .env
+      - .env.local
+    build:
+      context: "."
+      dockerfile: packages/web-api-proxy/Dockerfile

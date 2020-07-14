@@ -1,0 +1,7 @@
+[core]
+account = <your email>
+project = bootleg-crates-dev
+
+[compute]
+zone = australia-southeast1-a
+region = australia-southeast1
