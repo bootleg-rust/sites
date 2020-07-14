@@ -1,0 +1,6 @@
+**/__snapshots__
+**/build/**
+**/dist/**
+!.eslintrc.js
+**/node_modules/**
+**/public/**

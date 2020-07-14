@@ -1,0 +1,14 @@
+spec:
+  template:
+    spec:
+      containers:
+        - env:
+            # Basic
+            - name: ENV
+              value: ${env:ENV}
+
+            # Reference other sites
+            - name: CRATES_IO_URL_HOST
+              value: bootleg-crates.io
+            - name: API_URL_HOST
+              value: api.bootleg-crates.io

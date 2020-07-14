@@ -1,0 +1,17 @@
+{
+  "hosting": [
+    {
+      "target": "web-components",
+      "public": "no-files",
+      "rewrites": [
+        {
+          "source": "**",
+          "run": {
+            "serviceId": "web-components",
+            "region": "asia-northeast1"
+          }
+        }
+      ]
+    }
+  ]
+}

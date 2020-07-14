@@ -1,0 +1,66 @@
+{
+  "name": "@bootleg-rust/web-components",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "npm-run-all build:clean build:storybook build:razzle",
+    "build:clean": "rm -rf dist && rm -rf public && rm -rf build",
+    "build:razzle": "razzle build && rsync -a ./public/ ./build/public && mv ./build/public/index.html ./build/index-template.html",
+    "build:storybook": "build-storybook -s .storybook/public -o public --quiet --loglevel warn",
+    "clean": "rm -rf build",
+    "deploy": "build-tooling-cli service deploy --service-name web-components",
+    "dev": "start-storybook --quiet --ci -p 4040 -s .storybook/public",
+    "lint": "eslint --max-warnings=0 .",
+    "lint:fix": "eslint --max-warnings=0 --fix .",
+    "package": "build-tooling-cli service package --service-name web-components",
+    "publish": "build-tooling-cli service publish --service-name web-components",
+    "serve": "node build/server.js",
+    "test": "jest"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@bootleg-rust/lib-config": "*",
+    "@bootleg-rust/lib-design-system": "*",
+    "@bootleg-rust/lib-features": "*",
+    "@bootleg-rust/lib-ssr-runtime": "*",
+    "@bootleg-rust/lib-ssr-toolbox": "*",
+    "core-js": "^3.6.4",
+    "koa-router": "^7.4.0",
+    "react": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@bootleg-rust/build-tooling": "*",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addon-viewport": "^5.3.18",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/preset-create-react-app": "^3.0.0",
+    "@storybook/react": "^5.3.19",
+    "@testing-library/dom": "^7.2.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-router-dom": "^5.1.4",
+    "babel-loader": "^8.1.0",
+    "npm-run-all": "^4.1.5",
+    "react-scripts": "3.4.0",
+    "typescript": "~3.8.3"
+  }
+}

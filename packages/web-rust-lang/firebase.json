@@ -1,0 +1,17 @@
+{
+  "hosting": [
+    {
+      "target": "web-rust-lang",
+      "public": "no-files",
+      "rewrites": [
+        {
+          "source": "**",
+          "run": {
+            "serviceId": "web-rust-lang",
+            "region": "asia-northeast1"
+          }
+        }
+      ]
+    }
+  ]
+}

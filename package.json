@@ -1,0 +1,64 @@
+{
+  "name": "@bootleg-rust/sites",
+  "version": "0.0.1",
+  "private": true,
+  "description": "monorepo containing `bootleg` versions of rust-lang websites",
+  "author": "pseudo-su",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "bootstrap-dev": "./bootstrap-dev.sh",
+    "deploy": "lerna run --stream deploy --",
+    "dev": "lerna run dev --stream --scope '@bootleg-rust/lib-*' --scope '@bootleg-rust/web-*' --",
+    "generate:workflows": "./scripts/generate-workflows.sh",
+    "lerna-bootstrap": "lerna bootstrap",
+    "lint": "eslint --max-warnings=0 .",
+    "lint:ci": "eslint --max-warnings=0 --quiet .",
+    "lint:fix": "eslint --max-warnings=0 --fix .",
+    "package": "lerna run --stream package --",
+    "publish": "lerna run --stream publish --",
+    "test": "lerna run test --stream --",
+    "test:ci": "jest",
+    "tsc": "tsc --pretty"
+  },
+  "lint-staged": {
+    "*.yml": [
+      "yarn prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "yarn prettier --write",
+      "yarn lint:fix"
+    ],
+    "*.{ts,tsx}": [
+      "yarn prettier --write",
+      "yarn lint:fix"
+    ],
+    "package.json": [
+      "yarn sort-package-json"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@bootleg-rust/build-tooling": "*",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "concurrently": "^5.0.0",
+    "eslint": "^7.5.0",
+    "firebase-tools": "^8.6.0",
+    "husky": "^4.2.1",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.0.3",
+    "prettier": "^2.0.5",
+    "sort-package-json": "1.22.1",
+    "typescript": "~3.8.3"
+  },
+  "peerDependencies": {
+    "lodash": "4.x"
+  },
+  "engines": {
+    "node": "12.16.3"
+  }
+}

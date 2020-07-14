@@ -1,0 +1,17 @@
+{
+  "hosting": [
+    {
+      "target": "web-api-proxy",
+      "public": "no-files",
+      "rewrites": [
+        {
+          "source": "**",
+          "run": {
+            "serviceId": "web-api-proxy",
+            "region": "asia-northeast1"
+          }
+        }
+      ]
+    }
+  ]
+}
