@@ -20,7 +20,9 @@ function babelTypescript(baseConfig, env, webpack, userOptions = {}) {
   webpackConfig.plugins.push(new ForkTSCheckerWebpackPlugin());
 
   // Safely locate Babel loader in Razzle's webpack internals
-  const babelLoader = webpackConfig.module.rules.find(babelLoaderFinder);
+  const babelLoader = webpackConfig.module.rules.find((rule) =>
+    babelLoaderFinder(rule),
+  );
   if (!babelLoader) {
     throw new Error(
       `'babel-loader' was erased from config, we need it to define typescript options`,

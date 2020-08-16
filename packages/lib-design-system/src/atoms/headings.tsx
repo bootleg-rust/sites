@@ -1,4 +1,4 @@
-import { styled } from "../theming/styled";
+import { styled } from "../theming";
 
 // TODO: default styles for headings
 export const H1 = styled.h1``;

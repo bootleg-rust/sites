@@ -2,21 +2,27 @@ import { CacheFor } from "@bootleg-rust/lib-ssr-toolbox";
 
 export type CacheControlSettings = {
   maxAge: number;
-  sMaxAge: number;
+  sharedMaxAge: number;
+};
+
+export const defaultSsrCacheControlMaximums: CacheControlSettings = {
+  maxAge: CacheFor.OneWeek,
+  sharedMaxAge: CacheFor.OneCalendarYear,
 };
 
 export type AssetCacheControlConfig = {
   hashed: CacheControlSettings;
   notHashed: CacheControlSettings;
 };
+export type SSRCacheControlMaximums = CacheControlSettings;
 
 export const defaultAssetCacheControl: AssetCacheControlConfig = {
   hashed: {
     maxAge: CacheFor.OneDay,
-    sMaxAge: CacheFor.OneWeek,
+    sharedMaxAge: CacheFor.OneWeek,
   },
   notHashed: {
     maxAge: CacheFor.FiveMinutes,
-    sMaxAge: CacheFor.ThirtyMinutes,
+    sharedMaxAge: CacheFor.ThirtyMinutes,
   },
 };

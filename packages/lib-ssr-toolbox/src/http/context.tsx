@@ -1,11 +1,11 @@
 import React, { createContext } from "react";
-import { CacheControlOptions, HttpContextData } from "./types";
+import { HttpContextData } from "./types";
 
 export const HttpContext = createContext<HttpContextData | null>(null);
 
 type ProviderProps = {
   children?: React.ReactChild;
-  context: { cacheControl: CacheControlOptions[] };
+  context: HttpContextData;
 };
 
 export function HttpProvider({ children, context }: ProviderProps) {

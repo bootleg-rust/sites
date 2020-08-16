@@ -1,9 +1,10 @@
-import { HttpStatus, useConfig } from "@bootleg-rust/lib-ssr-toolbox";
 import React from "react";
+import { HttpStatus, CacheControl } from "@bootleg-rust/lib-ssr-toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Switch } from "react-router";
 import { createGlobalStyle } from "styled-components";
 import { ThemeDefaultStyle } from "@bootleg-rust/lib-design-system";
+import { useConfig } from "./config";
 import { PageLayout } from "./layout";
 import { Homepage, FerrisErrorPage } from "./pages";
 
@@ -20,10 +21,16 @@ export function App() {
   return (
     <ApplicationProviders>
       {/* Default page config */}
+      <CacheControl
+        maxAge={config.SSR_CACHING_DEFAULT_MAX_AGE}
+        sharedMaxAge={config.SSR_CACHING_DEFAULT_SHARED_MAX_AGE}
+        public
+      />
       <Helmet
         defaultTitle="Bootleg rust-lang.org"
         titleTemplate="%s - Bootleg rust-lang.org"
       >
+        <html lang="en" />
         <base href="/" />
         <meta
           name="description"
@@ -48,26 +55,24 @@ export function App() {
       <ThemeDefaultStyle />
       <AppGlobalStyles />
       <PageLayout>
-        <div style={{ margin: "0 auto" }}>
-          {/* Routing */}
-          <Switch>
-            <Route exact path="/" component={Homepage} />
+        {/* Routing */}
+        <Switch>
+          <Route exact path="/" component={Homepage} />
 
-            {/* Page not found 404 */}
-            <Route
-              render={() => (
-                <>
-                  <HttpStatus code={404} />
-                  <FerrisErrorPage code={404} />
-                </>
-              )}
-            />
-          </Switch>
-        </div>
+          {/* Page not found 404 */}
+          <Route
+            render={() => (
+              <>
+                <HttpStatus code={404} />
+                <FerrisErrorPage code={404} />
+              </>
+            )}
+          />
+        </Switch>
       </PageLayout>
       {/* Test data */}
-      <div data-testid="env:SITE" style={{ display: "none" }}>
-        {config.SITE}
+      <div data-testid="env:SERVICE_NAME" style={{ display: "none" }}>
+        {config.SERVICE_NAME}
       </div>
       <div data-testid="env:ENV" style={{ display: "none" }}>
         {config.ENV}

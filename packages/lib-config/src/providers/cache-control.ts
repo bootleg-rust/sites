@@ -4,7 +4,7 @@ import { ConfigProvider } from "../config";
 
 export const AssetCachingConfigProvider = new ConfigProvider({
   schema: {
-    ASSET_CACHING_HASHED_DEFAULT_MAX_AGE: num({ default: CacheFor.OneWeek }),
+    ASSET_CACHING_HASHED_DEFAULT_MAX_AGE: num({ default: CacheFor.FourWeeks }),
     ASSET_CACHING_HASHED_DEFAULT_SHARED_MAX_AGE: num({
       default: CacheFor.OneCalendarYear,
     }),
@@ -19,4 +19,28 @@ export const AssetCachingConfigProvider = new ConfigProvider({
     return {};
   },
   universalWhitelist: [] as const,
+});
+
+export const SSRCachingConfigProvider = new ConfigProvider({
+  schema: {
+    SSR_CACHING_DEFAULT_MAX_AGE: num({
+      default: CacheFor.FiveMinutes,
+    }),
+    SSR_CACHING_DEFAULT_SHARED_MAX_AGE: num({
+      default: CacheFor.ThirtyMinutes,
+    }),
+    SSR_CACHING_MAXIMUM_MAX_AGE: num({
+      default: CacheFor.OneWeek,
+    }),
+    SSR_CACHING_MAXIMUM_SHARED_MAX_AGE: num({
+      default: CacheFor.OneCalendarYear,
+    }),
+  },
+  derivedValues: () => {
+    return {};
+  },
+  universalWhitelist: [
+    "SSR_CACHING_DEFAULT_MAX_AGE",
+    "SSR_CACHING_DEFAULT_SHARED_MAX_AGE",
+  ] as const,
 });

@@ -1,4 +1,4 @@
-export {};
+import { styled } from "../theming";
 
 // .button,
 // button {
@@ -25,3 +25,8 @@ export {};
 // .button.button-secondary {
 //   font-size: 0.8em;
 // }
+
+// TODO: make this not use the <button /> element by default to avoid
+// situations where browsers don't apply flexbox rules correctly to `<button />` elements
+// But that means we need to re-create all accesibility concerns https://www.youtube.com/watch?v=CZGqnp06DnI
+export const Button = styled.button``;

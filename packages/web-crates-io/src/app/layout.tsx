@@ -50,7 +50,16 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <Header />
-      {children}
+      <div style={{ margin: "0 auto" }}>
+        <div>
+          <Link to="/">dashboard</Link> |<Link to="/crates">query</Link> |
+          <Link to="/crates/explore">explore</Link> |
+          <Link to="/crates/user/123">user 123</Link> |
+          <Link to="/crates/team/123">team 123</Link> |
+          <Link to="/crates/123">crate 123</Link>
+        </div>
+        {children}
+      </div>
     </div>
   );
 }

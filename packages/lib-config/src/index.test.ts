@@ -1,6 +1,6 @@
 import { str } from "envalid";
 import { ConfigProvider } from "./config";
-import { Config } from "./index";
+import { Config } from ".";
 
 const fixtures = {
   packageJSON: { name: "some-name", version: "0.1.0" },

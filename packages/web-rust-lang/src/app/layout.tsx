@@ -224,7 +224,7 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      {children}
+      <div style={{ margin: "0 auto" }}>{children}</div>
       <Footer />
     </>
   );

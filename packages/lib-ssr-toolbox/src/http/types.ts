@@ -1,5 +1,7 @@
 export type HttpContextData = {
   cacheControl: CacheControlOptions[];
+  statusCode: number;
+  redirectLocation?: string;
 };
 
 export type CacheControlOptions = {

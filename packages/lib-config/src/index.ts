@@ -9,7 +9,7 @@ export function Config({
   providers: Array<ConfigProvider<unknown, unknown, unknown>>;
   packageJSON: PackageJSON;
 }) {
-  if (providers.length < 1) {
+  if (providers.length <= 0) {
     throw new Error("Config: at least one provider required");
   }
   let provider = providers[0];

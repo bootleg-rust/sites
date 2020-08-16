@@ -4,6 +4,7 @@ This project primarily exists as a tool for experimentation with React, Server r
 
 Some rough goals of this project are:
 
+* SSR React that emphasises running **UNIVERSAL** `<App />`s on different "runtimes" (aka. same `<App />` rendering on client and server) instead of using a metaframework (eg Next.js) that wraps React. [read more](./docs/react-runtime-vs-metaframework.md).
 * Mutliple website packages (`web-crates-io`, `web-rust-lang` etc).
 * Externalise as much build config/tooling as possible instead of duplicating across packages (`build-tooling`).
 * Shared Design system library used across the different website packages (`lib-design-system`).
@@ -36,16 +37,17 @@ Some rough goals of this project are:
 Some things I'm considering (or intending) to implement are:
 
 * Switch from using `lerna + yarn` to `rush + bazel` to support other languages in the monorepo and possibly speed up docker builds.
-* Get rid of the need for firebase hosting now that connecting [Cloud Run services as backends to a Cloud HTTP(S) Load Balancer is supported](https://github.com/ahmetb/cloud-run-faq/commit/ceb7418b5cad8d5e1782b89c11b86578be5f9ba6)
-* After getting rid of firebase (doesn't have terraform support), use terraform to manage all/most infra/deployments.
+* Use terraform to manage all/most infra & deployments.
   * Should there be a seperate repo to track deployments that uses branches to track changes between environments?
   * Think about where should the following live:
     * terraform to manage GCP projects (infra independent of `@bootleg-rust/sites`).
     * terraform to manage DNS for `bootleg-crates.io` and `bootleg-rust-lang.org`.
     * terraform to manage infra shared across all `packages/` in `@bootleg-rust/sites`.
     * terraform to manage infra specific to a single `@bootleg-rust/sites` package.
+    * terraform to manage stateful infra that is either shared across multiple `packages/` or specific to a single `package/` (EG: instead of `web-api-proxy` have a `web-api-crates-io` package that requires a database to store package info).
 * Automate CI/CD by setting up GCP Cloud build (maybe after switching to `rush + bazel`).
 * [Canary deployments](https://github.com/ahmetb/cloud-run-faq#how-to-do-canary-or-bluegreen-deployments-on-cloud-run) (maybe after switching to using terraform for everything).
+* Investigate deploying on top of a managed k8s (possibly with knative) in order to support deploying long-lived compute containers (EG: kafka streams applications) from this monorepo.
 * Make it easier to set immutable cache-control headers for all razzle assets [#1371 (issue)](https://github.com/jaredpalmer/razzle/issues/1371).
-* Razzle 3 should reduce the need for manual typescript config in `build-tooling`.
+* Razzle 3 should reduce the need for manual typescript config in `build-tooling` as it will support typescript natively.
 * Implement `<Redirect />` in `lib-ssr-toolkit` and stop using `staticContext` in `react-router` v6 as it will be removed [#7267 (issue)](https://github.com/ReactTraining/react-router/issues/7267)

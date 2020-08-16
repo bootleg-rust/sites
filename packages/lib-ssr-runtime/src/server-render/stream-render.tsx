@@ -18,12 +18,17 @@ import {
   LoggerProvider,
   Logger,
   reconcileCacheControlOptions,
-  CacheControlOptions,
   HttpProvider,
+  HttpContextData,
 } from "@bootleg-rust/lib-ssr-toolbox";
+import {
+  SSRCacheControlMaximums,
+  defaultSsrCacheControlMaximums,
+} from "../cache-control";
 import { streamCloseHTML, streamOpenHTML } from "./template";
 
 export type StreamSsrPageConfig = {
+  ssrCacheControlMaximums?: SSRCacheControlMaximums;
   logger?: Logger;
   errorReporter?: ErrorReporter;
   universalConfig: any;
@@ -35,17 +40,18 @@ export function streamSsrPage({
   universalConfig = {},
   logger = defaultLogger,
   errorReporter = defaultErrorReporter,
+  ssrCacheControlMaximums = defaultSsrCacheControlMaximums,
 }: StreamSsrPageConfig) {
   // We cant use env-var here as this is defined by razzle on build-time
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const assets = require(process.env.RAZZLE_ASSETS_MANIFEST!);
 
   return async (ctx: Koa.Context) => {
-    const routerContext = { status: 200 } as { status: number; url?: string };
     const queryCache = makeQueryCache();
     const helmetContext: { helmet?: HelmetData } = {};
-    const httpContext: { cacheControl: CacheControlOptions[] } = {
+    const httpContext: HttpContextData = {
       cacheControl: [],
+      statusCode: 200,
     };
 
     const sheet = new ServerStyleSheet();
@@ -58,11 +64,7 @@ export function streamSsrPage({
                 <HttpProvider context={httpContext}>
                   <ErrorReporterProvider reporter={errorReporter}>
                     <LoggerProvider logger={logger}>
-                      <StaticRouter
-                        location={ctx.request.url}
-                        // don't rely on react-router staticContext
-                        context={routerContext as any}
-                      >
+                      <StaticRouter location={ctx.request.url}>
                         {render(ctx)}
                       </StaticRouter>
                     </LoggerProvider>
@@ -108,19 +110,35 @@ export function streamSsrPage({
 
     renderStream.on("end", () => {
       // Redirect when <Redirect /> is rendered
-      if (routerContext.url) {
+      if (httpContext.redirectLocation) {
         // Somewhere a `<Redirect>` was rendered
-        ctx.redirect(routerContext.url);
+        if ([301, 302].includes(httpContext.statusCode)) {
+          ctx.status = httpContext.statusCode;
+        }
+        ctx.redirect(httpContext.redirectLocation);
         return;
       }
 
       // Handle status codes
       ctx.status = 200;
-      if ([400, 401, 402, 403, 404].includes(routerContext.status)) {
-        ctx.status = routerContext.status;
+      if ([400, 401, 402, 403, 404].includes(httpContext.statusCode)) {
+        ctx.status = httpContext.statusCode;
       }
 
+      // Set cache-control based on rendered content
       const cacheControl = reconcileCacheControlOptions(httpContext);
+      if (
+        cacheControl.maxAge &&
+        cacheControl.maxAge > ssrCacheControlMaximums.maxAge
+      ) {
+        cacheControl.maxAge = ssrCacheControlMaximums.maxAge;
+      }
+      if (
+        cacheControl.sharedMaxAge &&
+        cacheControl.sharedMaxAge > ssrCacheControlMaximums.sharedMaxAge
+      ) {
+        cacheControl.sharedMaxAge = ssrCacheControlMaximums.sharedMaxAge;
+      }
       const cacheValue = format(cacheControl);
       if (cacheValue) {
         ctx.set("Cache-Control", cacheValue);

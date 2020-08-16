@@ -5,7 +5,7 @@ set -euo pipefail
 # web-crates-io
 open http://localhost:4001/
 # web-api-proxy
-open http://localhost:4003/
+open http://localhost:4003/api/v1/summary
 # web-rust-lang
 open http://localhost:4005/
 # web-components

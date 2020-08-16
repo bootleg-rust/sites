@@ -2,9 +2,11 @@ import {
   Config,
   ConfigProvider,
   ServiceDefaults,
+  SSRCachingConfigProvider,
   AssetCachingConfigProvider,
 } from "@bootleg-rust/lib-config";
 import packageJSON from "../package.json";
+import { UniversalConfig } from "./app/config";
 
 export const Service = new ConfigProvider({
   schema: {},
@@ -14,24 +16,23 @@ export const Service = new ConfigProvider({
   universalWhitelist: [],
 });
 
-export type UniversalConfig = {
-  NODE_ENV: string;
-  ENV: string;
-  SERVICE_NAME: string;
-  PACKAGE_VERSION: string;
-  SERVICE_INSTANCE_NAME: string;
-};
-
 export type ServerConfig = UniversalConfig & {
   ASSET_CACHING_HASHED_DEFAULT_MAX_AGE: number;
   ASSET_CACHING_HASHED_DEFAULT_SHARED_MAX_AGE: number;
   ASSET_CACHING_UNHASHED_DEFAULT_MAX_AGE: number;
   ASSET_CACHING_UNHASHED_DEFAULT_SHARED_MAX_AGE: number;
+  SSR_CACHING_MAXIMUM_MAX_AGE: number;
+  SSR_CACHING_MAXIMUM_SHARED_MAX_AGE: number;
   PORT: number;
 };
 
 const { config, universalConfig } = Config({
-  providers: [ServiceDefaults, Service, AssetCachingConfigProvider],
+  providers: [
+    ServiceDefaults,
+    Service,
+    SSRCachingConfigProvider,
+    AssetCachingConfigProvider,
+  ],
   packageJSON,
 }) as {
   config: ServerConfig;

@@ -7,6 +7,7 @@ const {
   packageDockerService,
   publishDockerService,
   deployDockerService,
+  runInvalidation,
 } = require("./service");
 const { triggerCICD } = require("./trigger");
 const fs = require("./fs");
@@ -120,6 +121,26 @@ function makeServiceCmd() {
       await deployDockerService(options);
     });
 
+  cmd
+    .command("run-invalidation")
+    .requiredOption("-s, --service-name <service-name>", "service name")
+    .requiredOption(
+      "-e, --env <env>",
+      "deploy (dev|uat|staging|prod)",
+      process.env.ENV,
+    )
+    .option(
+      "-map, --url-map-name <url-map-name>",
+      "GCP url-map name",
+      "bootleg-rust-sites-url-map",
+    )
+    .option("-p, --path <path>", "path to invalidate", "/*")
+    .option("--wait", "wait for invalidation to finish before continuing")
+    .option("-r, --gcp-region <gcp-region>", "GCP Region", "asia-northeast1")
+    .action(async (options) => {
+      await runInvalidation(options);
+    });
+
   return cmd;
 }
 
@@ -127,7 +148,7 @@ program.addCommand(makeTriggerCmd());
 program.addCommand(makeNotifyCmd());
 program.addCommand(makeServiceCmd());
 
-program.parseAsync(process.argv).catch((err) => {
-  console.error(err);
+program.parseAsync(process.argv).catch((anyError) => {
+  console.error(anyError);
   process.exit(1);
 });

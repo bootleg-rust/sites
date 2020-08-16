@@ -4,8 +4,6 @@ module.exports = {
   publishDockerService,
 };
 
-/* eslint-disable */
-
 async function tagAndPush({ name, registryUrl, tag }) {
   const containerRegistryUrl = `${registryUrl}/${name}`;
   await exec(`docker tag "${name}:latest" "${containerRegistryUrl}:${tag}"`);
@@ -17,8 +15,6 @@ async function publishDockerService({
   gitRef,
   registryUrl,
 }) {
-  await exec("cp ../../.firebaserc ./.firebaserc");
-
   const gitRefSha = await exec(`git rev-parse --short ${gitRef}`);
   // const currentRef = await exec("git rev-parse --abbrev-ref HEAD");
   const gitRefSlug = gitRef.replace(/\//g, "-");

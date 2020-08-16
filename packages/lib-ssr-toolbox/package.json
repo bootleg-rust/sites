@@ -13,6 +13,7 @@
   "dependencies": {
     "@types/combined-stream": "^1.0.2",
     "combined-stream": "^1.0.8",
+    "history": "^4.10.0",
     "koa": "^2.11.0",
     "koa-compress": "^4.0.1",
     "koa-helmet": "^5.1.0",
