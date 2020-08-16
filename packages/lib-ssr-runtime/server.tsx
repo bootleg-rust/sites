@@ -1,4 +1,6 @@
 import Koa from "koa";
+import conditional from "koa-conditional-get";
+import etag from "koa-etag";
 import compress from "koa-compress";
 import helmet from "koa-helmet";
 import koaLogger from "koa-logger";
@@ -30,8 +32,8 @@ export function createKoaApp({
   app.use(async (ctx, next) => {
     try {
       await next();
-    } catch (err) {
-      ctx.app.emit("error", err, ctx);
+    } catch (error) {
+      ctx.app.emit("error", error, ctx);
     }
   });
 
@@ -45,11 +47,16 @@ export function createKoaApp({
     }
   });
 
+  app.use(koaLogger());
+
   // `koa-helmet` provides security headers to help prevent common, well known attacks
   // @see https://helmetjs.github.io/
-  app.use(koaLogger());
   app.use(helmet());
-  app.use(compress());
+
+  // etag works together with conditional-get
+  app.use(conditional());
+  app.use(etag());
+  app.use(compress({ threshold: 2048 }));
 
   const cacheableFiles = razzleCacheableFiles();
 
@@ -66,20 +73,21 @@ export function createKoaApp({
           const c = assetCaching.hashed;
           res.setHeader(
             "Cache-Control",
-            `max-age=${c.maxAge},s-maxage=${c.sMaxAge},immutable`,
+            `max-age=${c.maxAge},s-maxage=${c.sharedMaxAge},public,immutable`,
           );
           return;
         }
         const c = assetCaching.notHashed;
         res.setHeader(
           "Cache-Control",
-          `max-age=${c.maxAge},s-maxage=${c.sMaxAge}`,
+          `max-age=${c.maxAge},s-maxage=${c.sharedMaxAge},public`,
         );
       },
     }),
   );
 
   app.use(async (ctx: Koa.Context, next: Koa.Next) => {
+    // Default Cache-Control settings if none are specified
     ctx.set("Cache-Control", "no-cache,max-age=0");
     await next();
   });
@@ -92,6 +100,7 @@ export function createKoaApp({
 }
 
 function razzleCacheableFiles() {
+  /* eslint-disable unicorn/no-reduce */
   // TODO: this doesn't work for all assets (png/txt etc)
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const chunks = require(process.env.RAZZLE_CHUNKS_MANIFEST!);
@@ -116,6 +125,7 @@ function razzleCacheableFiles() {
     [],
   );
   return files;
+  /* eslint-enable unicorn/no-reduce */
 }
 
 export function createStaticIndexRouter(cfg: ServeIndexTemplateConfig) {

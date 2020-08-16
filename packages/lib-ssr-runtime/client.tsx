@@ -52,7 +52,7 @@ export function hydrate({
           </ClientConfigProvider>
         </HelmetProvider>
       </React.StrictMode>,
-      document.getElementById("root"),
+      document.querySelector("#root"),
     );
   })();
 }

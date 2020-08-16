@@ -1,6 +1,8 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
+import "@bootleg-rust/lib-design-system/src/theming/fonts/index.scss";
+
 async function loadDependenciesAsync() {
   const loadReact = import(/* webpackPreload: true */ "react").then((m) => ({
     React: m.default,

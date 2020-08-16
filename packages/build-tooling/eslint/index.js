@@ -5,6 +5,7 @@ module.exports = {
     node: true,
   },
   extends: [
+    // "stylelint",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
@@ -14,6 +15,7 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:import/react",
     "plugin:import/typescript",
+    "plugin:unicorn/recommended",
   ],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
@@ -50,6 +52,10 @@ module.exports = {
     //   { "newlines-between": "always-and-inside-groups" },
     // ],
     "import/order": "error",
+    // Unicorn
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/no-null": "off",
+    "unicorn/explicit-length-check": "off",
   },
   // TODO: this was causing NodeJS out of memory --  https://github.com/typescript-eslint/typescript-eslint/issues/1192
   // overrides: [

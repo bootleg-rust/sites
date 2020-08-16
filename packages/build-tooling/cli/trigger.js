@@ -4,8 +4,6 @@ module.exports = {
   triggerCICD,
 };
 
-/* eslint-disable */
-
 async function triggerCICD({
   eventType,
   skip,
@@ -49,6 +47,7 @@ async function triggerCICD({
   };
 
   // Send a repository dispatch event
+  // eslint-disable-next-line no-console
   console.log("sending dispatch", githubRequest);
   const { status } = await octokit.request(githubRequest);
 

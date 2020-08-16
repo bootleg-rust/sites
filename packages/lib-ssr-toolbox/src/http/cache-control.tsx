@@ -13,12 +13,13 @@ function lowestInteger(...numbers: Array<number | undefined>) {
   const integers = numbers.filter((num) =>
     Number.isInteger(num as number),
   ) as number[];
-  if (integers.length < 1) return undefined;
+  if (integers.length < 1) return;
   return Math.min(...integers);
 }
 
 // prettier-ignore
 export function reconcileCacheControlOptions(ctx: HttpContextData): CacheControlOptions {
+  // eslint-disable-next-line unicorn/no-reduce
   return ctx.cacheControl.reduce((acc, current) => {
     // Flags
     if (anyPresent(acc.private, current.private)) acc.private = true;
@@ -44,7 +45,7 @@ export function CacheControl({
   ...cacheControlOptions
 }: { children?: React.ReactNode } & CacheControlOptions) {
   const ctx = useContext(HttpContext);
-  // TODO: This won't be "safe" with suspense, figure out how to prevent adding
+  // TODO: This might not work properly with suspense, figure out how to prevent adding
   // a new item for renders that aren't "committed"
   ctx?.cacheControl.push(cacheControlOptions);
   return <>{children}</>;
@@ -58,6 +59,8 @@ const OneWeek = OneDay * 7;
 const FiveMinutes = OneMinute * 5;
 const ThirtyMinutes = OneMinute * 30;
 
+const FourWeeks = OneWeek * 4;
+
 const OneCalendarYear = OneDay * 365;
 
 export const CacheFor = {
@@ -65,7 +68,8 @@ export const CacheFor = {
   OneHour,
   OneDay,
   OneWeek,
-  OneCalendarYear,
   FiveMinutes,
   ThirtyMinutes,
+  FourWeeks,
+  OneCalendarYear,
 };

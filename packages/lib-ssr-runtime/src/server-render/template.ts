@@ -15,25 +15,19 @@ type PostRenderArgs = {
   configData: any;
 };
 
-const defaultLang = "en";
-
-export function streamOpenHTML({
-  assets,
-  helmet,
-  lang = defaultLang,
-}: PreRenderArgs) {
+export function streamOpenHTML({ assets, helmet }: PreRenderArgs) {
   // prettier-ignore
   const tags = {
     razzleJsPreload: `<link rel="preload" as="script" href="${String(assets.client.js)}">`,
     razzleCss: assets.client.css ? `<link rel="stylesheet"  href="${String(assets.client.css)}">` : "",
-    helmetHtmlAttributes: helmet ? helmet.htmlAttributes.toString() : `lang="${lang}"`,
+    helmetHtmlAttributes: helmet ? helmet.htmlAttributes.toString() : ``,
     helmetBodyAttributes: helmet ? helmet.bodyAttributes.toString() : ``,
     helmetBase: helmet ? helmet.base.toString() : "",
     helmetTitle: helmet ? helmet.title.toString() : "",
     helmetMetas: helmet ? helmet.meta.toString() : "",
     helmetLinks: helmet ? helmet.link.toString() : "",
   };
-  return `
+  const responseString = `
     <!doctype html>
     <html ${tags.helmetHtmlAttributes}>
       <head>
@@ -50,6 +44,7 @@ export function streamOpenHTML({
       <body ${tags.helmetBodyAttributes}>
           <div id="root">
   `.trim();
+  return responseString;
 }
 
 export function streamCloseHTML({
@@ -67,11 +62,13 @@ export function streamCloseHTML({
     </script>
     `.replace(/\s{2,}/g,' ').trim(),
   };
-  return `
+
+  const responseString = `
           </div>
           <div id="modal-root"></div>
-          ${tags.razzleJS}
           ${tags.inlinedConfig}
+          ${tags.razzleJS}
       </body>
     </html>`.trim();
+  return responseString;
 }

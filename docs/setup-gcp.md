@@ -1,4 +1,4 @@
-# Process for setting up GCP/firebase projects
+# Process for setting up GCP projects
 
 ## Projects setup
 

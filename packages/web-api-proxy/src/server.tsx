@@ -2,7 +2,7 @@ import { createKoaApp } from "@bootleg-rust/lib-ssr-runtime/server";
 import Koa from "koa";
 import proxy from "koa-proxies";
 import Router from "koa-router";
-import { config } from "./config";
+import { config } from "./server-config";
 
 function ApiProxyRouter() {
   const router = new Router();
@@ -53,11 +53,11 @@ const routers: Router[] = [
 const assetCacheControl = {
   hashed: {
     maxAge: config.ASSET_CACHING_HASHED_DEFAULT_MAX_AGE,
-    sMaxAge: config.ASSET_CACHING_HASHED_DEFAULT_SHARED_MAX_AGE,
+    sharedMaxAge: config.ASSET_CACHING_HASHED_DEFAULT_SHARED_MAX_AGE,
   },
   notHashed: {
     maxAge: config.ASSET_CACHING_UNHASHED_DEFAULT_MAX_AGE,
-    sMaxAge: config.ASSET_CACHING_UNHASHED_DEFAULT_SHARED_MAX_AGE,
+    sharedMaxAge: config.ASSET_CACHING_UNHASHED_DEFAULT_SHARED_MAX_AGE,
   },
 };
 

@@ -5,8 +5,9 @@ module.exports = {
   exec,
 };
 
-/* eslint-disable */
+/* eslint-disable no-console */
 
+// TODO: this should really stream to stdout and stderr
 async function exec(str) {
   console.log(`> ${str}`);
   const { stdout, stderr } = await _exec(str);

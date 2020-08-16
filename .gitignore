@@ -7,16 +7,9 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-firebase-debug.log*
 
-# Firebase cache
-.firebase/
-firepit-log.txt
 
 .terraform/
-
-# Firebase config
-/packages/**/.firebaserc
 
 # Runtime data
 pids

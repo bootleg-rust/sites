@@ -49,6 +49,7 @@ module.exports = {
         "@babel/plugin-proposal-export-namespace-from",
         "@babel/plugin-proposal-async-generator-functions",
         "@babel/plugin-proposal-optional-chaining",
+        // "babel-plugin-styled-components",
       ],
     },
   },

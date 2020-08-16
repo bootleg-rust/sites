@@ -1,7 +1,7 @@
 import "core-js/stable";
 import http from "http";
 import "source-map-support/register";
-import { config } from "./config";
+import { config } from "./server-config";
 
 import { app } from "./server";
 

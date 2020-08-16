@@ -1,7 +1,8 @@
 [core]
 account = <your email>
 project = bootleg-crates-dev
+disable_usage_reporting: True
 
 [compute]
-zone = australia-southeast1-a
-region = australia-southeast1
+zone = asia-northeast1-a
+region = asia-northeast1

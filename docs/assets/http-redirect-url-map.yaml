@@ -1,0 +1,5 @@
+kind: compute#urlMap
+name: bootleg-rust-sites-http-url-map
+defaultUrlRedirect:
+   redirectResponseCode: MOVED_PERMANENTLY_DEFAULT
+   httpsRedirect: True

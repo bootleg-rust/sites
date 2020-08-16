@@ -1,77 +1,12 @@
-import React from "react";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "../typed-styled-components";
 
-// TODO: move these to the theme
-const bodyFont = `"Fira Sans", Helvetica, Arial, sans-serif`;
-const headerFont = `"Alfa Slab One", serif`;
-
-const white = `#ffffff`;
+// TODO: don't use these here
 const gray = `#2a3439`;
 const lightGray = `#e1e1e1`;
 const red = `#a72145`;
 const green = `#0b7261`;
 const purple = `#2e2459`;
 const yellow = `#ffc832`;
-const lightBlue = `#4299bf`;
-
-// const borderRadius = `4px`;
-
-const semanticColors = {
-  bodyBackground: white,
-  linkColor: lightBlue,
-  footerGray: gray,
-};
-
-export const ThemeDefaultPageStyle = createGlobalStyle`
-  html,
-  html > body,
-  html > body > #root {
-    display: flex;
-    flex: 1;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-
-    font-family: ${bodyFont};
-    background-color: ${semanticColors.bodyBackground};
-    font-size: 1.5rem;
-    line-height: 1.6;
-
-    display: flex;
-    flex-direction: column;
-  }
-
-  html > body > #root {
-    overflow: auto;
-  }
-
-  /* change font size depending on width */
-  html {
-    font-size: 62.5%;
-  }
-
-  @media screen and (min-width: 30em) {
-    html {
-      font-size: 75%;
-    }
-  }
-
-  p {
-    margin-top: 0;
-    margin-bottom: 2.5rem;
-  }
-
-  /* TODO: maybe move into <Ul /> and <Ol /> components? */
-  ul {
-    list-style: circle;
-    padding-left: 1.5em;
-  }
-
-  ol {
-    list-style: decimal;
-    padding-left: 1.5em;
-  }
-`;
 
 export const TempPortedStyle = createGlobalStyle`
   /* --- CODE */
@@ -142,7 +77,7 @@ export const TempPortedStyle = createGlobalStyle`
     }
 
     h2 {
-      font-family: ${bodyFont};
+      font-family: ${({ theme }) => theme.fontFamily.heading.join(", ")};
       font-weight: 800;
     }
 
@@ -252,7 +187,7 @@ export const TempPortedStyle = createGlobalStyle`
   /* --- HEADERS & SMALLER ON SMALLER SCREENS */
 
   header h1 {
-    font-family: ${headerFont};
+    font-family: ${({ theme }) => theme.fontFamily.hero.join(", ")};
     font-size: 8rem;
     margin-bottom: 0;
     margin-top: 0;
@@ -312,7 +247,7 @@ export const TempPortedStyle = createGlobalStyle`
   /* --- FOOTER */
   footer {
     padding: 30px 0;
-    background-color: ${semanticColors.footerGray};
+    background-color: ${({ theme }) => theme.colors.footerGray};
     color: white;
 
     p {
@@ -380,12 +315,3 @@ export const TempPortedStyle = createGlobalStyle`
     top: 20px;
   }
 `;
-
-export function ThemeDefaultStyle() {
-  return (
-    <>
-      <ThemeDefaultPageStyle />
-      <TempPortedStyle />
-    </>
-  );
-}

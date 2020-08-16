@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import React from "react";
 import atomicDesignProcess from "./atomic-design-process.png";
 

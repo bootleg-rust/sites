@@ -57,11 +57,11 @@ const { config, universalConfig } = Config({
 const assetCacheControl = {
   hashed: {
     maxAge: config.ASSET_CACHING_HASHED_DEFAULT_MAX_AGE,
-    sMaxAge: config.ASSET_CACHING_HASHED_DEFAULT_SHARED_MAX_AGE,
+    sharedMaxAge: config.ASSET_CACHING_HASHED_DEFAULT_SHARED_MAX_AGE,
   },
   notHashed: {
     maxAge: config.ASSET_CACHING_UNHASHED_DEFAULT_MAX_AGE,
-    sMaxAge: config.ASSET_CACHING_UNHASHED_DEFAULT_SHARED_MAX_AGE,
+    sharedMaxAge: config.ASSET_CACHING_UNHASHED_DEFAULT_SHARED_MAX_AGE,
   },
 };
 

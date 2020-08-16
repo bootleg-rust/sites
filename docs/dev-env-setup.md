@@ -11,10 +11,6 @@ $ gcloud auth application-default login
 $ gcloud auth configure-docker
 $ gcloud beta auth configure-docker asia-docker.pkg.dev
 $ gcloud --version
-# firebase-tools CLI (https://firebase.google.com/docs/cli/?authuser=0#install-cli-mac-linux)
-$ curl -sL https://firebase.tools | bash
-$ firebase --version
-$ yarn firebase login
 ```
 
 ## Install node dependencies

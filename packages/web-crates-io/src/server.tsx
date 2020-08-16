@@ -6,22 +6,28 @@ import {
 import Router from "koa-router";
 import React from "react";
 import { App } from "./app";
-import { config, universalConfig } from "./config";
+import { config, universalConfig } from "./server-config";
 
 const assetCacheControl = {
   hashed: {
     maxAge: config.ASSET_CACHING_HASHED_DEFAULT_MAX_AGE,
-    sMaxAge: config.ASSET_CACHING_HASHED_DEFAULT_SHARED_MAX_AGE,
+    sharedMaxAge: config.ASSET_CACHING_HASHED_DEFAULT_SHARED_MAX_AGE,
   },
   notHashed: {
     maxAge: config.ASSET_CACHING_UNHASHED_DEFAULT_MAX_AGE,
-    sMaxAge: config.ASSET_CACHING_UNHASHED_DEFAULT_SHARED_MAX_AGE,
+    sharedMaxAge: config.ASSET_CACHING_UNHASHED_DEFAULT_SHARED_MAX_AGE,
   },
+};
+
+const ssrCacheControlMaximums = {
+  maxAge: config.SSR_CACHING_MAXIMUM_MAX_AGE,
+  sharedMaxAge: config.SSR_CACHING_MAXIMUM_SHARED_MAX_AGE,
 };
 
 const routers: Router[] = [
   // SSR Application
   createKoaSsrRouter({
+    ssrCacheControlMaximums,
     universalConfig,
     render: function Render() {
       return (

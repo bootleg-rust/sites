@@ -134,7 +134,8 @@ $format-names: (
   $weights,
   $styles,
   $ranges,
-  $formats
+  $formats,
+  $font-display,
 ) {
   @each $weight in $weights {
     @each $style in $styles {
@@ -144,12 +145,12 @@ $format-names: (
 
         /* #{$font} - #{$range} */
         @font-face {
+          font-display: $font-display;
           font-family: $family;
           font-weight: $weight;
           font-style: $style;
           unicode-range: map-get($unicode-ranges, $range);
           src: local($font), local($filename), urls($filename, $range, $formats);
-          font-display: swap;
         }
       }
     }
@@ -162,7 +163,8 @@ $format-names: (
   $weights: 400,
   $styles: normal,
   $ranges: latin latin-ext vietnamese,
-  $formats: woff2 woff
+  $formats: woff2 woff,
+  $font-display: "block",
 );
 
 @include declare-font-faces(
@@ -171,5 +173,6 @@ $format-names: (
   $weights: 400 600 800,
   $styles: normal italic,
   $ranges: map-keys($unicode-ranges),
-  $formats: woff2 woff
+  $formats: woff2 woff,
+  $font-display: "swap",
 );

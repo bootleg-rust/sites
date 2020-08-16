@@ -10,14 +10,14 @@ module.exports = {
 };
 
 const variableSyntax = "\\${([^{}]+?)}";
-const variableRegExp = RegExp(variableSyntax, "g");
+const variableRegExp = new RegExp(variableSyntax, "g");
 
 // NOTE: templating `${env:SOME_VARIABLE}` is inspired by the serverless framework
 // EG:  https://github.com/serverless/serverless/blob/73107822945a878abbdebe2309e8e9d87cc2858a/lib/classes/Variables.js
 // it would be really nice to also have some of the other resolvers EG `${file(some-file.js):field}`
 
 // Resolvers
-const envRefRegExp = RegExp(/^env:/g);
+const envRefRegExp = new RegExp(/^env:/g);
 
 const resolvers = [
   {

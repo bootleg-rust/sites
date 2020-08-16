@@ -1,10 +1,14 @@
-import { HttpStatus, useConfig } from "@bootleg-rust/lib-ssr-toolbox";
 import React from "react";
+import {
+  HttpStatus,
+  CacheControl,
+  Redirect,
+} from "@bootleg-rust/lib-ssr-toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Switch } from "react-router";
-import { Link, Redirect } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import { ThemeDefaultStyle } from "@bootleg-rust/lib-design-system";
+import { useConfig } from "./config";
 import { CrateDetails } from "./features/crate-details";
 import { CrateSearchResults } from "./features/crate-search";
 import { Dashboard } from "./features/dashboard";
@@ -60,10 +64,16 @@ export function App() {
   return (
     <ApplicationProviders>
       {/* Default page config */}
+      <CacheControl
+        maxAge={config.SSR_CACHING_DEFAULT_MAX_AGE}
+        sharedMaxAge={config.SSR_CACHING_DEFAULT_SHARED_MAX_AGE}
+        public
+      />
       <Helmet
         defaultTitle="Bootleg crates.io"
         titleTemplate="%s - Bootleg crates.io"
       >
+        <html lang="en" />
         <base href="/" />
         <meta
           name="description"
@@ -87,58 +97,48 @@ export function App() {
       <ThemeDefaultStyle />
       <AppGlobalStyles />
       <PageLayout>
-        <div style={{ margin: "0 auto" }}>
-          <div>
-            <Link to="/">dashboard</Link> |<Link to="/crates">query</Link> |
-            <Link to="/crates/explore">explore</Link> |
-            <Link to="/crates/user/123">user 123</Link> |
-            <Link to="/crates/team/123">team 123</Link> |
-            <Link to="/crates/123">crate 123</Link>
-          </div>
+        {/* Routing */}
+        <Switch>
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/redirect" render={() => <Redirect to="/" />} />
+          <Route
+            exact
+            path="/redirect-permanently"
+            render={() => <Redirect to="/" movedPermanently />}
+          />
 
-          {/* Routing */}
+          {/* Search crates */}
+          <Route exact path="/crates" component={QueryCrateSearch} />
+          <Route exact path="/crates/explore" component={ExploreCrateSearch} />
+          <Route
+            exact
+            path="/crates/user/:userId"
+            component={UserCrateSearch}
+          />
+          <Route
+            exact
+            path="/crates/team/:teamId"
+            component={TeamCrateSearch}
+          />
 
-          <Switch>
-            <Route exact path="/" component={Dashboard} />
-            <Route exact path="/redirect" render={() => <Redirect to="/" />} />
+          {/* View individual crate */}
+          <Route exact path="/crates/:crateId" component={CrateDetails} />
 
-            {/* Search crates */}
-            <Route exact path="/crates" component={QueryCrateSearch} />
-            <Route
-              exact
-              path="/crates/explore"
-              component={ExploreCrateSearch}
-            />
-            <Route
-              exact
-              path="/crates/user/:userId"
-              component={UserCrateSearch}
-            />
-            <Route
-              exact
-              path="/crates/team/:teamId"
-              component={TeamCrateSearch}
-            />
-
-            {/* View individual crate */}
-            <Route exact path="/crates/:crateId" component={CrateDetails} />
-
-            {/* Page not found 404 */}
-            <Route
-              render={() => (
-                <>
-                  <HttpStatus code={404} />
-                  ERROR 404!
-                  <img src={ferrisErrorImg} />
-                </>
-              )}
-            />
-          </Switch>
-        </div>
+          {/* Page not found 404 */}
+          <Route
+            render={() => (
+              <>
+                <HttpStatus code={404} />
+                ERROR 404!
+                <img src={ferrisErrorImg} />
+              </>
+            )}
+          />
+        </Switch>
       </PageLayout>
       {/* Test data */}
-      <div data-testid="env:SITE" style={{ display: "none" }}>
-        {config.SITE}
+      <div data-testid="env:SERVICE_NAME" style={{ display: "none" }}>
+        {config.SERVICE_NAME}
       </div>
       <div data-testid="env:ENV" style={{ display: "none" }}>
         {config.ENV}

@@ -12,7 +12,7 @@ export function StaticConfigProvider({
   );
 }
 
-export function useConfig() {
+export function useConfig<T = ConfigState>() {
   const context = useContext(ConfigContext);
 
   if (process.env.NODE_ENV !== "production") {
@@ -23,5 +23,11 @@ export function useConfig() {
     }
   }
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  return context!;
+  return context! as T;
+}
+
+export function createUseConfig<T>() {
+  return (): T => {
+    return useConfig<T>();
+  };
 }

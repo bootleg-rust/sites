@@ -1,13 +1,13 @@
 # Deploy instructions
 
-All the sites deploy as a "Cloud Run" service with firebase hosting on top because cloud run can't be connected to a Load Balancer (GCLB). Using firebase allows us to have a basic CDN that supports `Cache-Control` and domain mapping.
+All the sites deploy as a "Cloud Run" service with GCP networking (HTTPS Load balancer + CDN) on top. This is particularly important in order to support `Cache-Control` response headers from the cloud run services.
 
-Because we use both cloud run and firebase the process for deploying is as follows
+The process for deploying is as follows
 
-* Package the docker image for a service
-* Publish the docker iamge for a service to the container registry in the `bootleg-crates-shared` account
-* Deploy the Cloud run service by using the tagged version of the container in the registry
-* Deploy the firebase hosting for the site.
+* Package the docker image for a service.
+* Publish the docker iamge for a service to the container registry in the `bootleg-crates-shared` account.
+* Deploy the Cloud run service by using the tagged version of the container in the registry.
+* Optional: run a cache-invalidation in the GCP console if required.
 
 NOTE: There is a script to open all sites at once for a specific environment [../scripts/open.sh](../scripts/open.sh)
 
@@ -59,4 +59,12 @@ env GIT_REF="<current-branch-name>" yarn run publish
 ```sh
 # use ENV: dev|uat|staging|prod
 env ENV="dev" GIT_REF="<current-branch-name>" yarn run deploy
+```
+
+## Running CDN invalidations
+
+You can run CDN invalidations in any of the "web-" packages by running:
+
+```sh
+env ENV="dev" yarn build-tooling-cli service run-invalidation --service-name <name-of-service>
 ```

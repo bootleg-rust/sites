@@ -11,12 +11,14 @@ import "@testing-library/jest-dom/extend-expect";
 import { render } from "@testing-library/react";
 import React from "react";
 import { MemoryRouter as Router } from "react-router";
-import { App } from "./index";
+import { App } from ".";
 
 test("renders an App", () => {
   const { getByTestId } = render(
     <Router>
-      <StaticConfigProvider config={{ SITE: "web-crates-io", ENV: "dev" }}>
+      <StaticConfigProvider
+        config={{ SERVICE_NAME: "web-crates-io", ENV: "dev" }}
+      >
         <ThemeProvider theme={DefaultTheme}>
           <HelmetProvider>
             <App />
@@ -25,8 +27,8 @@ test("renders an App", () => {
       </StaticConfigProvider>
     </Router>,
   );
-  const siteElement = getByTestId("env:SITE");
+  const nameElement = getByTestId("env:SERVICE_NAME");
   const envElement = getByTestId("env:ENV");
-  expect(siteElement).toContainHTML("web-crates-io");
+  expect(nameElement).toContainHTML("web-crates-io");
   expect(envElement).toContainHTML("dev");
 });

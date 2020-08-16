@@ -17,16 +17,6 @@ function standard(baseConfig, env, webpack, userOptions = {}) {
     webpackConfig.externals = [];
   }
 
-  if (target === "node") {
-    // https://github.com/firebase/firebase-js-sdk/issues/2222
-    // As far as I can tell, firebase/analytics has no version that supports running
-    // on the server so excluding it from the build seems to resolve issues.
-    webpackConfig.resolve.alias = {
-      ...webpackConfig.resolve.alias,
-      ["firebase/analytics"]: require.resolve("null-loader"),
-    };
-  }
-
   // Client: tree shaking on production
   if (target === "web" && !dev) {
     webpackConfig.plugins = [

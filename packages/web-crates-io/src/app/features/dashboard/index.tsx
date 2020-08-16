@@ -1,5 +1,6 @@
 // import { Cube, Download, Launch } from "grommet-icons";
 import React from "react";
+import { Link } from "react-router-dom";
 import { styled, H1 } from "@bootleg-rust/lib-design-system";
 // import { LoadCratesStats, LoadCratesSummary } from "./dashboard.resource";
 
@@ -25,7 +26,7 @@ function StatNumber({ number = 0 }) {
   for (let i = 0; i < numberStr.length / 3; i++) {
     const start = numberStr.length - (i + 1) * 3;
     const end = start + 3;
-    strGroups.unshift(numberStr.substring(start, end));
+    strGroups.unshift(numberStr.slice(start, end));
   }
   return <>{strGroups.join(",")}</>;
 }
@@ -33,6 +34,7 @@ function StatNumber({ number = 0 }) {
 export function Dashboard() {
   return (
     <>
+      <Link to="/redirect">Redirect</Link>
       <H1>The Rust community’s crate registry (but not)</H1>
       <Box>
         <Button>

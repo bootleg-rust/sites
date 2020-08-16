@@ -6,8 +6,6 @@ module.exports = {
   deployDockerService,
 };
 
-/* eslint-disable */
-
 async function deployDockerService({
   env,
   serviceName: name,
@@ -15,8 +13,6 @@ async function deployDockerService({
   registryUrl,
   gcpRegion,
 }) {
-  await exec("cp ../../.firebaserc ./.firebaserc");
-
   const gitRefSha = await exec(`git rev-parse --short ${gitRef}`);
   // const currentRef = await exec("git rev-parse --abbrev-ref HEAD");
   // const gitRefSlug = gitRef.replace(/\//g, "-");
@@ -44,16 +40,15 @@ async function deployDockerService({
   const outputData = await fs.readFile(output);
 
   // Deploy cloud run
+
+  /* eslint-disable no-console */
   console.log("/--- DEPLOYING SERVICE YAML");
   console.log(outputData.toString());
   console.log("---/");
+  /* eslint-enable no-console */
 
   await exec(`gcloud config configurations activate $ENV`);
   await exec(
     `gcloud beta run services replace ${output} --region ${gcpRegion} --platform managed -q`,
   );
-
-  // Deploy firebase hosting
-  await exec(`mkdir -p no-files`);
-  await exec(`firebase deploy --project=${env}`);
 }
