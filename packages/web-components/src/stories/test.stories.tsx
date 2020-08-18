@@ -1,6 +1,7 @@
 import React from "react";
 import { StorybookWrapper } from "./shared";
 
+// eslint-disable-next-line import/no-default-export
 export default {
   title: "Test",
 };

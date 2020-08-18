@@ -12,12 +12,14 @@ const {
   standard,
   babelTypescript,
   bundleAnalysis,
+  reactSvg,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
 module.exports = {
   plugins: [
     "scss",
     { func: standard },
+    { func: reactSvg },
     {
       func: babelTypescript,
       options: {

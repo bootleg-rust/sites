@@ -6,8 +6,11 @@
   "author": "pseudo-su",
   "main": "src",
   "scripts": {
-    "lint": "eslint --max-warnings=0 .",
-    "lint:fix": "eslint --max-warnings=0 --fix .",
+    "lint": "npm-run-all lint:eslint lint:stylelint",
+    "lint:eslint": "eslint --max-warnings=0 .",
+    "lint:eslint:fix": "eslint --max-warnings=0 --fix .",
+    "lint:fix": "npm-run-all lint:eslint:fix",
+    "lint:stylelint": "stylelint './src/**/*.{ts,tsx,js,jsx}' ",
     "test": "jest"
   },
   "dependencies": {

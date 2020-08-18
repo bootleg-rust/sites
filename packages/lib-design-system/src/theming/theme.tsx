@@ -1,24 +1,35 @@
-const white = `#ffffff`;
-const gray = `#2a3439`;
-const lightGray = `#e1e1e1`;
-// const red = `#a72145`;
-// const green = `#0b7261`;
-// const purple = `#2e2459`;
-// const yellow = `#ffc832`;
-const lightBlue = `#4299bf`;
+// const color = (name: string, code) => `var(--${name}, ${code})`;
+// const alias = () =>
+import { Color, SemanticColor } from "./color";
 
-const semanticColors = {
-  bodyBackground: white,
-  borderColor: lightGray,
-  linkColor: lightBlue,
-  footerGray: gray,
+const pallete = {
+  white: new Color("white", `#ffffff`),
+  darkGray: new Color("dark-gray", `#2a3439`),
+  gray: new Color("gray", `#676e71`),
+  lightGray: new Color("light-gray", `#e1e1e1`),
+  red: new Color("red", `#a72145`),
+  green: new Color("green", `#0b7261`),
+  purple: new Color("purple", `#2e2459`),
+  yellow: new Color("yellow", `#ffc832`),
+  lightBlue: new Color("light-blue", `#4299bf`),
 };
 
-const screenBreakPoints = {
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
+const semanticColors = {
+  bodyBackground: new SemanticColor("body-background", pallete.white),
+  borderColor: new SemanticColor("border-color", pallete.lightGray),
+  linkColor: new SemanticColor("link-color", pallete.lightBlue),
+  footerGray: new SemanticColor("footer-gray", pallete.darkGray),
+};
+
+const breakpoints = {
+  medium: "30em",
+  large: "60em",
+};
+
+const media = {
+  notSmall: `screen and (min-width: ${breakpoints.medium})`,
+  medium: `screen and (min-width: ${breakpoints.medium}) and (max-width: ${breakpoints.large})`,
+  large: `screen and (min-width: ${breakpoints.large})`,
 };
 
 const spacings = {
@@ -167,8 +178,10 @@ const lineHeights = {
 };
 
 export const DefaultTheme = {
+  colorPallete: pallete,
   colors: semanticColors,
-  screens: screenBreakPoints,
+  breakpoint: breakpoints,
+  media: media,
   spacing: spacings,
   borderRadius: borderRadiuses,
   borderWidth: borderWidths,

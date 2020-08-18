@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "../typed-styled-components";
+import { css } from "../typed-styled-components";
 
 // TODO: don't use these here
 const gray = `#2a3439`;
@@ -8,7 +8,9 @@ const green = `#0b7261`;
 const purple = `#2e2459`;
 const yellow = `#ffc832`;
 
-export const TempPortedStyle = createGlobalStyle`
+/* stylelint-disable */
+
+export const TempPortedStyle = css`
   /* --- CODE */
   code {
     line-height: 1.6;
@@ -247,7 +249,7 @@ export const TempPortedStyle = createGlobalStyle`
   /* --- FOOTER */
   footer {
     padding: 30px 0;
-    background-color: ${({ theme }) => theme.colors.footerGray};
+    background-color: ${({ theme }) => theme.colors.footerGray.var};
     color: white;
 
     p {
@@ -255,8 +257,6 @@ export const TempPortedStyle = createGlobalStyle`
     }
 
     ul {
-      list-style-type: none;
-      padding-left: 0;
       margin-top: 0;
     }
 

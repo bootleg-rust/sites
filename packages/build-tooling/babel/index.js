@@ -15,17 +15,6 @@ module.exports = {
     "razzle/babel",
   ],
   plugins: [
-    [
-      "babel-plugin-inline-react-svg",
-      {
-        svgo: {
-          plugins: [
-            { removeAttrs: { attrs: "(data-name)|(width)|(height)" } },
-            { cleanupIDs: true },
-          ],
-        },
-      },
-    ],
     "@babel/plugin-proposal-object-rest-spread",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-numeric-separator",
