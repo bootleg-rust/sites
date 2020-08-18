@@ -6,8 +6,14 @@ import {
 } from "@bootleg-rust/lib-ssr-toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Switch } from "react-router";
-import { createGlobalStyle } from "styled-components";
-import { ThemeDefaultStyle } from "@bootleg-rust/lib-design-system";
+import {
+  createGlobalStyle,
+  GlobalCssResetStyle,
+  GlobalCssThemeColors,
+  GlobalDefaultPageStyle,
+  H1,
+  Div,
+} from "@bootleg-rust/lib-design-system";
 import { useConfig } from "./config";
 import { CrateDetails } from "./features/crate-details";
 import { CrateSearchResults } from "./features/crate-search";
@@ -17,12 +23,12 @@ import ferrisErrorImg from "./ferris-error.png";
 
 import "@bootleg-rust/lib-design-system/src/theming/fonts/index.scss";
 
-const AppGlobalStyles = createGlobalStyle``;
+const GlobalAppStyles = createGlobalStyle``;
 
 function QueryCrateSearch() {
   return (
     <>
-      <div>Search by query string</div>
+      <H1>Search by query string</H1>
       <CrateSearchResults />
     </>
   );
@@ -31,7 +37,7 @@ function QueryCrateSearch() {
 function ExploreCrateSearch() {
   return (
     <>
-      <div>Explore all crates</div>
+      <H1>Explore all crates</H1>
       <CrateSearchResults />
     </>
   );
@@ -40,7 +46,7 @@ function ExploreCrateSearch() {
 function UserCrateSearch({ userId }: { userId: string }) {
   return (
     <>
-      <div>Search crates for user {userId}</div>
+      <H1>Search crates for user {userId}</H1>
       <CrateSearchResults />
     </>
   );
@@ -49,7 +55,7 @@ function UserCrateSearch({ userId }: { userId: string }) {
 function TeamCrateSearch({ teamId }: { teamId: string }) {
   return (
     <>
-      <div>Search crates for team {teamId}</div>
+      <H1>Search crates for team {teamId}</H1>
       <CrateSearchResults />
     </>
   );
@@ -94,8 +100,14 @@ export function App() {
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/logo227.png" />
       </Helmet>
-      <ThemeDefaultStyle />
-      <AppGlobalStyles />
+
+      {/* Global design-system styles */}
+      <GlobalCssResetStyle />
+      <GlobalCssThemeColors />
+      <GlobalDefaultPageStyle />
+      {/* Global app styles */}
+      <GlobalAppStyles />
+
       <PageLayout>
         {/* Routing */}
         <Switch>
@@ -137,12 +149,12 @@ export function App() {
         </Switch>
       </PageLayout>
       {/* Test data */}
-      <div data-testid="env:SERVICE_NAME" style={{ display: "none" }}>
+      <Div data-testid="env:SERVICE_NAME" style={{ display: "none" }}>
         {config.SERVICE_NAME}
-      </div>
-      <div data-testid="env:ENV" style={{ display: "none" }}>
+      </Div>
+      <Div data-testid="env:ENV" style={{ display: "none" }}>
         {config.ENV}
-      </div>
+      </Div>
     </ApplicationProviders>
   );
 }

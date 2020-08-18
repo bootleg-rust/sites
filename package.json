@@ -15,9 +15,11 @@
     "dev": "lerna run dev --stream --scope '@bootleg-rust/lib-*' --scope '@bootleg-rust/web-*' --",
     "generate:workflows": "./scripts/generate-workflows.sh",
     "lerna-bootstrap": "lerna bootstrap",
-    "lint": "eslint --max-warnings=0 .",
-    "lint:ci": "eslint --max-warnings=0 --quiet .",
-    "lint:fix": "eslint --max-warnings=0 --fix .",
+    "lint": "npm-run-all -p lint:eslint lint:stylelint",
+    "lint:eslint": "eslint --max-warnings=0 .",
+    "lint:eslint:fix": "eslint --max-warnings=0 --fix .",
+    "lint:fix": "npm-run-all -p lint:eslint:fix lint:stylelint",
+    "lint:stylelint": "stylelint './packages/*/src/**/*.{ts,tsx,js,jsx}' ",
     "package": "lerna run --stream package --",
     "publish": "lerna run --stream publish --",
     "test": "lerna run test --stream --",
@@ -30,11 +32,13 @@
     ],
     "*.{js,jsx}": [
       "yarn prettier --write",
-      "yarn lint:fix"
+      "yarn lint:eslint:fix",
+      "yarn lint:stylelint"
     ],
     "*.{ts,tsx}": [
       "yarn prettier --write",
-      "yarn lint:fix"
+      "yarn lint:eslint:fix",
+      "yarn lint:stylelint"
     ],
     "package.json": [
       "yarn sort-package-json"

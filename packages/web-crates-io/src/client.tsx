@@ -15,9 +15,9 @@ async function loadDependenciesAsync() {
     /* webpackPreload: true */ "@bootleg-rust/lib-ssr-runtime/client"
   );
 
-  // Not used directly but still critical-path can good to preload.
+  // Not used directly but still critical-path can be good to preload.
   // When making changes to this check the build/webpack.report.html to
-  // see how it affects the resulting bundle.
+  // see how it affects the resulting bundles.
   // prettier-ignore
   {
     void import(/* webpackPreload: true */ "react-dom");

@@ -11,6 +11,7 @@ import {
   StaticConfigProvider,
   ConfigProviderProps,
 } from "@bootleg-rust/lib-ssr-toolbox";
+import { StyleSheetManager } from "styled-components";
 
 type HydrateConfig = {
   logger?: Logger;
@@ -43,13 +44,17 @@ export function hydrate({
     ReactDOM.hydrate(
       <React.StrictMode>
         <HelmetProvider>
-          <ClientConfigProvider>
-            <ErrorReporterProvider reporter={defaultErrorReporter}>
-              <LoggerProvider logger={logger}>
-                <BrowserRouter>{render()}</BrowserRouter>
-              </LoggerProvider>
-            </ErrorReporterProvider>
-          </ClientConfigProvider>
+          <StyleSheetManager
+            disableVendorPrefixes={process.env.NODE_ENV === "development"}
+          >
+            <ClientConfigProvider>
+              <ErrorReporterProvider reporter={defaultErrorReporter}>
+                <LoggerProvider logger={logger}>
+                  <BrowserRouter>{render()}</BrowserRouter>
+                </LoggerProvider>
+              </ErrorReporterProvider>
+            </ClientConfigProvider>
+          </StyleSheetManager>
         </HelmetProvider>
       </React.StrictMode>,
       document.querySelector("#root"),

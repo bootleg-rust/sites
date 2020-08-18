@@ -48,7 +48,10 @@ export function streamSsrPageLightyear({
     const element = (
       <React.StrictMode>
         <ReactQueryCacheProvider queryCache={queryCache}>
-          <StyleSheetManager sheet={sheet.instance}>
+          <StyleSheetManager
+            sheet={sheet.instance}
+            disableVendorPrefixes={process.env.NODE_ENV === "development"}
+          >
             <HelmetProvider context={helmetContext}>
               <StaticConfigProvider config={universalConfig}>
                 <HttpProvider context={httpContext}>

@@ -1,48 +1,24 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
-function Card({
-  content,
-}: {
-  content: "summary" | "summary_large_image" | "app" | "player";
-}) {
-  return <meta name="twitter:card" content={content} />;
-}
+const isDef = (a: any): boolean => typeof a !== "undefined";
 
-function Site({ content }: { content: string }) {
-  return <meta name="twitter:site" content={content} />;
-}
-function SiteId({ content }: { content: number }) {
-  return <meta name="twitter:site:id" content={String(content)} />;
-}
-
-function Creator({ content }: { content: string }) {
-  return <meta name="twitter:creator" content={content} />;
-}
-function CreatorId({ content }: { content: number }) {
-  return <meta name="twitter:creator" content={String(content)} />;
-}
-
-function Title({ content }: { content: string }) {
-  return <meta name="twitter:title" content={content} />;
-}
-function Description({ content }: { content: string }) {
-  return <meta name="twitter:description" content={content} />;
-}
-function Image({ content, alt }: { content: string; alt: string }) {
+function Image({ url, alt }: { url: string; alt: string }) {
   return (
-    <>
-      <meta name="twitter:image" content={content} />
-      <meta name="twitter:image:alt" content={alt} />
-    </>
+    <Helmet>
+      {isDef(url) && <meta name="twitter:image" content={url} />}
+      {isDef(alt) && <meta name="twitter:image:alt" content={alt} />}
+    </Helmet>
   );
 }
+
 function Player({
-  content,
+  url,
   stream,
   width,
   height,
 }: {
-  content: string;
+  url: string;
   stream?: string;
   width: number;
   height: number;
@@ -50,13 +26,13 @@ function Player({
   // TODO: twitter docs are unclear about `twitter:player:stream`.
   // Does it optionally replace `twitter:player`? if so it would mean that `twitter:player` should be optional
   return (
-    <>
-      <meta name="twitter:card" content="app" />
-      <meta name="twitter:player" content={content} />
-      {stream && <meta name="twitter:player:stream" content={stream} />}
-      <meta name="twitter:player:width" content={String(width)} />
-      <meta name="twitter:player:height" content={String(height)} />
-    </>
+    // prettier-ignore
+    <Helmet>
+      {isDef(url) && <meta name="twitter:player" content={url} />}
+      {isDef(stream) && <meta name="twitter:player:stream" content={stream} />}
+      {isDef(width) && <meta name="twitter:player:width" content={String(width)} />}
+      {isDef(height) && <meta name="twitter:player:height" content={String(height)} />}
+    </Helmet>
   );
 }
 
@@ -87,45 +63,66 @@ function App({
   googlePlayName?: string;
   googlePlayUrl?: string;
 }) {
+  // prettier-ignore
   return (
-    <>
-      <meta name="twitter:card" content="app" />
+    <Helmet>
       {/* Apple */}
-      {appStoreCountry && (
-        <meta name="twitter:app:country" content={appStoreCountry} />
-      )}
+      {isDef(appStoreCountry) && <meta name="twitter:app:country" content={appStoreCountry} />}
 
-      <meta name="twitter:app:id:iphone" content={iphoneId} />
-      {iphoneName && (
-        <meta name="twitter:app:name:iphone" content={iphoneName} />
-      )}
-      {iphoneUrl && <meta name="twitter:app:url:iphone" content={iphoneUrl} />}
+      {isDef(iphoneId) && <meta name="twitter:app:id:iphone" content={iphoneId} />}
+      {isDef(iphoneName) && <meta name="twitter:app:name:iphone" content={iphoneName} />}
+      {isDef(iphoneUrl) && <meta name="twitter:app:url:iphone" content={iphoneUrl} />}
 
-      <meta name="twitter:app:id:ipad" content={ipadId} />
-      {ipadName && <meta name="twitter:app:name:ipad" content={ipadName} />}
-      {ipadUrl && <meta name="twitter:app:url:ipad" content={ipadUrl} />}
+      {isDef(ipadId) && <meta name="twitter:app:id:ipad" content={ipadId} />}
+      {isDef(ipadName) && <meta name="twitter:app:name:ipad" content={ipadName} />}
+      {isDef(ipadUrl) && <meta name="twitter:app:url:ipad" content={ipadUrl} />}
 
       {/* Google */}
-      <meta name="twitter:app:id:googleplay" content={googlePlayId} />
-      {googlePlayName && (
-        <meta name="twitter:app:name:googleplay" content={googlePlayName} />
-      )}
-      {googlePlayName && (
-        <meta name="twitter:app:url:googleplay" content={googlePlayUrl} />
-      )}
-    </>
+      {isDef(googlePlayId) && <meta name="twitter:app:id:googleplay" content={googlePlayId} />}
+      {isDef(googlePlayName) && <meta name="twitter:app:name:googleplay" content={googlePlayName} />}
+      {isDef(googlePlayName) && <meta name="twitter:app:url:googleplay" content={googlePlayUrl} />}
+    </Helmet>
   );
 }
 
-export const Twitter = {
-  Card,
-  Site,
-  SiteId,
-  Creator,
-  CreatorId,
-  Title,
-  Description,
-  Image,
-  Player,
-  App,
+type TwitterCardProps = {
+  card?: "summary" | "summary_large_image" | "app" | "player";
+  site?: string;
+  siteId?: string;
+  creator?: string;
+  creatorId?: string;
+  title?: string;
+  description?: string;
 };
+
+function _TwitterCard({
+  card,
+  site,
+  siteId,
+  creator,
+  creatorId,
+  title,
+  description,
+}: TwitterCardProps) {
+  // prettier-ignore
+  return (
+    <Helmet>
+      {isDef(card) && <meta name="twitter:card" content={card} />}
+      {isDef(site) && <meta name="twitter:site" content={site} />}
+      {isDef(siteId) && <meta name="twitter:site:id" content={siteId} />}
+      {isDef(creator) && <meta name="twitter:creator" content={creator} />}
+      {isDef(creatorId) && <meta name="twitter:creator:id" content={creatorId} />}
+      {isDef(title) && <meta name="twitter:title" content={title} />}
+      {isDef(description) && <meta name="twitter:description" content={description} />}
+    </Helmet>
+  );
+}
+export const TwitterCard = _TwitterCard as typeof _TwitterCard & {
+  App: typeof App;
+  Player: typeof Player;
+  Image: typeof Image;
+};
+
+TwitterCard.App = App;
+TwitterCard.Player = Player;
+TwitterCard.Image = Image;

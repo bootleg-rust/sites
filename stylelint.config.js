@@ -1,1 +1,1 @@
-module.exports = require("@bootleg-rust/build-tooling/stylelint");
+module.exports = require("./packages/build-tooling/stylelint");

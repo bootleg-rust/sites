@@ -1,26 +1,57 @@
 import React from "react";
+import { styled, Header, Div, H1, H2 } from "@bootleg-rust/lib-design-system";
+import { CenteredContent } from "../layout/_shared";
 import ferrisErrorImg from "./ferris-img.png";
 
-export function FerrisErrorPage({ code }: { code: number }) {
+const Content = styled(CenteredContent)`
+  gap: 2.5em;
+  text-align: center;
+
+  ${H2} {
+    font-size: 2.5rem;
+    color: #2a3439;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  ._ferris {
+    img {
+      width: 80%;
+      max-width: 100%;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.notSmall} {
+    ${H2} {
+      font-size: 3rem;
+    }
+  }
+
+  @media ${({ theme }) => theme.media.large} {
+    flex-direction: row;
+    text-align: left;
+    justify-items: flex-start;
+
+    ._error-message {
+      align-items: flex-start;
+    }
+    ._ferris img {
+      width: 305px;
+    }
+  }
+`;
+
+export function FerrisErrorSection({ code }: { code: number }) {
   return (
-    <main>
-      <header>
-        <div className="w-100 mw-none ph3 mw8-m mw9-l center f3">
-          <div className="flex-none flex-l mt5 mb5 tc tl-l">
-            <div className="w-70-l w-100">
-              <h1>{code}</h1>
-              <h2 className="subtitle">Whoops, this page doesn’t exist :-(</h2>
-            </div>
-            <div className="w-30-l w-100 mt5 mt0-l">
-              <img
-                id="ferris-error"
-                src={ferrisErrorImg}
-                alt="404 not found image"
-              />
-            </div>
-          </div>
-        </div>
-      </header>
-    </main>
+    <Header grow justify="center">
+      <Content alignItems="center">
+        <Div alignItems="center" justify="center" className="_error-message">
+          <H1>{code}</H1>
+          <H2>Whoops, this page doesn’t exist :-(</H2>
+        </Div>
+        <Div justify="center" alignItems="center" grow className="_ferris">
+          <img src={ferrisErrorImg} alt="404 not found image" />
+        </Div>
+      </Content>
+    </Header>
   );
 }

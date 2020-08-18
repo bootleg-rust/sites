@@ -1,14 +1,8 @@
 // import { Cube, Download, Launch } from "grommet-icons";
 import React from "react";
 import { Link } from "react-router-dom";
-import { styled, H1 } from "@bootleg-rust/lib-design-system";
+import { Preformatted, Div, Button, H1 } from "@bootleg-rust/lib-design-system";
 // import { LoadCratesStats, LoadCratesSummary } from "./dashboard.resource";
-
-const Button = styled.button``;
-const Box = styled.div`
-  display: flex;
-  flex: 1;
-`;
 
 const stats = { num_downloads: 20000000, num_crates: 1000000000 };
 const summary = {
@@ -36,7 +30,7 @@ export function Dashboard() {
     <>
       <Link to="/redirect">Redirect</Link>
       <H1>The Rust community’s crate registry (but not)</H1>
-      <Box>
+      <Div>
         <Button>
           {/* <Download color="white" /> */}
           Install Cargo
@@ -45,15 +39,15 @@ export function Dashboard() {
           {/* <Launch color="white" /> */}
           Getting Started
         </Button>
-      </Box>
+      </Div>
 
-      <Box>
-        <Box>
+      <Div>
+        <Div>
           Instantly publish your crates and install them. Use the API to
           interact and find out more information about available crates. Become
           a contributor and enhance the site with your work.{" "}
-        </Box>
-        <Box>
+        </Div>
+        <Div>
           {/* <LoadCratesStats>
             {({ stats }) => ( */}
           <>
@@ -64,14 +58,14 @@ export function Dashboard() {
           </>
           {/* )}
           </LoadCratesStats> */}
-        </Box>
-      </Box>
+        </Div>
+      </Div>
       {/* <LoadCratesSummary>
         {({ summary }) => ( */}
-      <pre>
+      <Preformatted>
         {JSON.stringify(Object.keys(summary), null, 2)}
         {JSON.stringify(summary, null, 2)}
-      </pre>
+      </Preformatted>
       {/* )}
       </LoadCratesSummary> */}
     </>

@@ -164,7 +164,7 @@ $format-names: (
   $styles: normal,
   $ranges: latin latin-ext vietnamese,
   $formats: woff2 woff,
-  $font-display: "block",
+  $font-display: "swap",
 );
 
 @include declare-font-faces(

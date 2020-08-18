@@ -1,9 +1,14 @@
+type SvgrComponent = React.StatelessComponent<React.SVGAttributes>;
+
 declare module "*.svg" {
-  export const ReactComponent: React.ComponentType<React.DetailedHTMLProps<
-    JSX.IntrinsicElements["svg"],
-    SVGElement
-  >>;
+  const ReactComponent: SvgrComponent;
+  const url: string;
+
+  // eslint-disable-next-line import/no-default-export
+  export default url;
+  export { ReactComponent };
 }
+
 declare module "*.png";
 
 // TODO: write better types
