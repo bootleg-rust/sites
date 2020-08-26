@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import {
   HttpStatus,
   CacheControl,
@@ -66,27 +67,37 @@ function PageContent() {
     });
   };
   return (
-    <Main grow>
-      <TopNav
-        title={!isIndex(location.pathname) ? "Rust" : null}
-        onSelectLanguage={navigateToLanguage}
-      />
-      {/* Routing */}
-      <Switch>
-        <Route exact path={match.path + "/"} component={Homepage} />
-
-        {/* Page not found 404 */}
-        <Route
-          render={() => (
-            <>
-              <HttpStatus code={404} />
-              <FerrisErrorSection code={404} />
-            </>
-          )}
+    <>
+      <AnimateSharedLayout type="crossfade">
+        <TopNav
+          title={
+            <AnimatePresence>
+              {!isIndex(location.pathname) ? (
+                <motion.span layoutId="main-heading">Rust</motion.span>
+              ) : null}
+            </AnimatePresence>
+          }
+          onSelectLanguage={navigateToLanguage}
         />
-      </Switch>
-      <SiteFooter onSelectLanguage={navigateToLanguage} />
-    </Main>
+        <Main grow>
+          {/* Routing */}
+          <Switch>
+            <Route exact path={match.path + "/"} component={Homepage} />
+
+            {/* Page not found 404 */}
+            <Route
+              render={() => (
+                <>
+                  <HttpStatus code={404} />
+                  <FerrisErrorSection code={404} />
+                </>
+              )}
+            />
+          </Switch>
+          <SiteFooter onSelectLanguage={navigateToLanguage} />
+        </Main>
+      </AnimateSharedLayout>
+    </>
   );
 }
 

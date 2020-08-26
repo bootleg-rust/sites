@@ -4,18 +4,96 @@ import {
   css,
   Div,
   Anchor,
-  List,
+  UnorderedList,
+  ListItem,
   Footer,
   H4,
-  Paragraph,
+  Span,
 } from "@bootleg-rust/lib-design-system";
-import { CenteredContent } from "./_shared";
+import { SiteLink } from "@bootleg-rust/lib-features";
+import { CenteredSection } from "./_shared";
 import { LanguageSelect } from "./_language-select";
 
 import discordLogo from "./discord.svg";
 import githubLogo from "./github.svg";
 import twitterLogo from "./twitter.svg";
 import youtubeLogo from "./youtube.svg";
+
+const footerCss = css`
+  padding-bottom: ${({ theme }) => theme.spacing[16]};
+  color: ${({ theme }) => theme.colors.footerFg.var};
+  background-color: ${({ theme }) => theme.colors.footerBg.var};
+
+  ._bottom-text {
+    text-align: center;
+  }
+
+  ${Anchor} {
+    color: ${({ theme }) => theme.colors.footerLink.var};
+  }
+`;
+
+const FooterContent = styled(CenteredSection)`
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: ${({ theme }) => theme.spacing[8]};
+
+  & > *:not(:last-child) {
+    min-width: 260px;
+    flex-basis: 20%;
+    flex-grow: 1;
+  }
+  & > *:last-child {
+    flex-basis: 100px;
+  }
+`;
+export function SiteFooter({
+  onSelectLanguage,
+}: {
+  onSelectLanguage(locale: string): void;
+}) {
+  return (
+    <Footer css={footerCss}>
+      <FooterContent>
+        <GetHelp onSelectLanguage={onSelectLanguage} />
+        <TermsAndPolicies />
+        <SocialIcons />
+      </FooterContent>
+      <Div className="_bottom-text" alignItems="center" justify="center">
+        <Div block>
+          <Span>Maintained by the Rust Team. See a bug? </Span>
+          <Anchor
+            css={`
+              white-space: nowrap;
+            `}
+            href="https://github.com/rust-lang/www.rust-lang.org/issues/new/choose"
+          >
+            File an issue!
+          </Anchor>
+        </Div>
+        <Div block>
+          Looking for the{" "}
+          <Anchor href="https://prev.rust-lang.org">previous website</Anchor>?
+        </Div>
+      </Div>
+    </Footer>
+  );
+}
+
+const FooterColumn = styled(Div)`
+  ${H4} {
+    font-size: ${({ theme }) => theme.fontSize["3xl"]};
+    font-weight: ${({ theme }) => theme.fontWeight.semibold};
+    margin-bottom: ${({ theme }) => theme.spacing["8"]};
+  }
+
+  ${ListItem} {
+    font-size: ${({ theme }) => theme.fontSize["2xl"]};
+    line-height: ${({ theme }) => theme.lineHeight.loose};
+  }
+`;
 
 type SocialIconProps = {
   imageUrl: string;
@@ -24,7 +102,7 @@ type SocialIconProps = {
   title: string;
 };
 
-const SocialIconStyle = styled(Anchor)`
+const SocialIconAnchor = styled(Anchor)`
   img {
     width: 40px;
   }
@@ -32,9 +110,9 @@ const SocialIconStyle = styled(Anchor)`
 
 function SocialIcon({ socialUrl, imageUrl, alt, title }: SocialIconProps) {
   return (
-    <SocialIconStyle href={socialUrl}>
+    <SocialIconAnchor href={socialUrl}>
       <img src={imageUrl} alt={alt} title={title} />
-    </SocialIconStyle>
+    </SocialIconAnchor>
   );
 }
 
@@ -44,66 +122,66 @@ function GetHelp({
   onSelectLanguage(locale: string): void;
 }) {
   return (
-    <Div grow>
+    <FooterColumn grow>
       <H4>Get help!</H4>
-      <List unordered>
-        <List.Item>
-          <Anchor href="/learn">Documentation</Anchor>
-        </List.Item>
-        <List.Item>
+      <UnorderedList>
+        <ListItem>
+          <SiteLink to="/learn">Documentation</SiteLink>
+        </ListItem>
+        <ListItem>
           <Anchor href="http://forge.rust-lang.org">
             Rust Forge (Contributor Documentation)
           </Anchor>
-        </List.Item>
-        <List.Item>
+        </ListItem>
+        <ListItem>
           <Anchor href="https://users.rust-lang.org">
             Ask a Question on the Users Forum
           </Anchor>
-        </List.Item>
-        <List.Item>
+        </ListItem>
+        <ListItem>
           <Anchor href="http://ping.rust-lang.org">Check Website Status</Anchor>
-        </List.Item>
-      </List>
+        </ListItem>
+      </UnorderedList>
       <LanguageSelect onChange={(e) => onSelectLanguage(e.target.value)} />
-    </Div>
+    </FooterColumn>
   );
 }
 
 function TermsAndPolicies() {
   return (
-    <Div grow>
+    <FooterColumn grow>
       <H4>Terms and policies</H4>
-      <List unordered>
-        <List.Item>
-          <Anchor href="/policies/code-of-conduct">Code of Conduct</Anchor>
-        </List.Item>
-        <List.Item>
-          <Anchor href="/policies/licenses">Licenses</Anchor>
-        </List.Item>
-        <List.Item>
-          <Anchor href="/policies/media-guide">
+      <UnorderedList>
+        <ListItem>
+          <SiteLink to="/policies/code-of-conduct">Code of Conduct</SiteLink>
+        </ListItem>
+        <ListItem>
+          <SiteLink to="/policies/licenses">Licenses</SiteLink>
+        </ListItem>
+        <ListItem>
+          <SiteLink to="/policies/media-guide">
             Logo Policy and Media Guide
-          </Anchor>
-        </List.Item>
-        <List.Item>
-          <Anchor href="/policies/security">Security Disclosures</Anchor>
-        </List.Item>
-        <List.Item>
-          <Anchor href="/policies/privacy">Privacy Notice</Anchor>
-        </List.Item>
-        <List.Item>
-          <Anchor href="/policies">All Policies</Anchor>
-        </List.Item>
-      </List>
-    </Div>
+          </SiteLink>
+        </ListItem>
+        <ListItem>
+          <SiteLink to="/policies/security">Security Disclosures</SiteLink>
+        </ListItem>
+        <ListItem>
+          <SiteLink to="/policies/privacy">Privacy Notice</SiteLink>
+        </ListItem>
+        <ListItem>
+          <SiteLink to="/policies">All Policies</SiteLink>
+        </ListItem>
+      </UnorderedList>
+    </FooterColumn>
   );
 }
 
 function SocialIcons() {
   return (
-    <Div grow>
+    <FooterColumn grow>
       <H4>Social</H4>
-      <Div direction="row" wrap gap="20px">
+      <Div direction="row" wrap gap="1.6rem">
         <SocialIcon
           socialUrl="https://twitter.com/rustlang"
           imageUrl={twitterLogo}
@@ -129,49 +207,6 @@ function SocialIcons() {
           title="GitHub"
         />
       </Div>
-    </Div>
-  );
-}
-
-const footerCss = css`
-  padding-top: 30px;
-  padding-bottom: 30px;
-  color: white;
-  background-color: #2a3439;
-`;
-
-const Content = styled(CenteredContent)`
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 2em;
-`;
-
-export function SiteFooter({
-  onSelectLanguage,
-}: {
-  onSelectLanguage(locale: string): void;
-}) {
-  return (
-    <Footer css={footerCss}>
-      <Content>
-        <GetHelp onSelectLanguage={onSelectLanguage} />
-        <TermsAndPolicies />
-        <SocialIcons />
-      </Content>
-      <Div alignItems="center" justify="center">
-        <Paragraph>
-          Maintained by the Rust Team. See a bug?{" "}
-          <Anchor href="https://github.com/rust-lang/www.rust-lang.org/issues/new/choose">
-            File an issue!
-          </Anchor>
-        </Paragraph>
-        <Paragraph>
-          Looking for the{" "}
-          <Anchor href="https://prev.rust-lang.org">previous website</Anchor>?
-        </Paragraph>
-      </Div>
-    </Footer>
+    </FooterColumn>
   );
 }

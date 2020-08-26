@@ -24,6 +24,7 @@
     "@bootleg-rust/lib-ssr-runtime": "*",
     "@bootleg-rust/lib-ssr-toolbox": "*",
     "core-js": "^3.6.4",
+    "framer-motion": "^2.6.1",
     "isomorphic-fetch": "^2.2.1",
     "koa-router": "^7.4.0",
     "md5": "^2.2.1",

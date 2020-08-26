@@ -1,17 +1,17 @@
 import React from "react";
 import { styled, Header, Div, H1, H2 } from "@bootleg-rust/lib-design-system";
-import { CenteredContent } from "../layout/_shared";
+import { CenteredSection } from "../layout/_shared";
 import ferrisErrorImg from "./ferris-img.png";
 
-const Content = styled(CenteredContent)`
-  gap: 2.5em;
+const Content = styled(CenteredSection)`
   text-align: center;
+  gap: ${({ theme }) => theme.spacing[10]};
 
   ${H2} {
-    font-size: 2.5rem;
-    color: #2a3439;
-    font-weight: 600;
-    line-height: 1.25;
+    font-size: ${({ theme }) => theme.fontSize["3xl"]};
+    color: ${({ theme }) => theme.colors.textMuted.var};
+    font-weight: ${({ theme }) => theme.fontWeight.semibold};
+    line-height: ${({ theme }) => theme.lineHeight.tight};
   }
   ._ferris {
     img {
@@ -22,7 +22,7 @@ const Content = styled(CenteredContent)`
 
   @media ${({ theme }) => theme.media.notSmall} {
     ${H2} {
-      font-size: 3rem;
+      font-size: ${({ theme }) => theme.fontSize["5xl"]};
     }
   }
 

@@ -1,5 +1,4 @@
 /* eslint-disable react/forbid-elements */
-import React from "react";
 import { styled } from "../theming/typed-styled-components";
 import { DefaultFlex, DefaultBlock } from "./_shared";
 
@@ -14,34 +13,17 @@ import { DefaultFlex, DefaultBlock } from "./_shared";
 //   padding-left: 1.5em;
 // }
 
-const List_ = DefaultFlex("div");
-const Item = DefaultFlex("li");
-
-type ListOrderRequired =
-  | {
-      ordered: true;
-      unordered?: boolean;
-    }
-  | {
-      ordered?: boolean;
-      unordered: true;
-    };
-
-function List({
-  ordered,
-  unordered,
-  ...props
-}: React.ComponentProps<typeof List_> & ListOrderRequired) {
-  if (!(ordered || unordered) && process.env.NODE_ENV === "development") {
-    throw new Error(
-      "<List> component required `ordered` or `unordered` flag. ",
-    );
-  }
-  const as = ordered ? "ol" : "ul";
-  return <List_ as={as} {...props} />;
-}
-
-List.Item = Item;
+const ListItem = DefaultFlex("li");
+const _OrderedList = DefaultFlex("ol");
+const OrderedList = _OrderedList as typeof _OrderedList & {
+  Item: typeof ListItem;
+};
+OrderedList.Item = ListItem;
+const _UnorderedList = DefaultFlex("ul");
+const UnorderedList = _UnorderedList as typeof _OrderedList & {
+  Item: typeof ListItem;
+};
+UnorderedList.Item = ListItem;
 
 const _DefinitionList = DefaultFlex("dl");
 const _Term = DefaultFlex("li");
@@ -64,12 +46,10 @@ Figure.Caption = _FigureCaption;
 
 export const Blockquote = DefaultBlock("blockquote");
 export { DefinitionList };
-// TODO: need to do something like this for all elements if they have args
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Div = DefaultFlex("div");
 export { Figure };
 export const HorizontalRule = styled.hr``;
-export { List };
+export { OrderedList, UnorderedList, ListItem };
 export const Paragraph = styled(DefaultBlock("p"))`
   margin-top: 0;
   margin-bottom: 2.5rem;

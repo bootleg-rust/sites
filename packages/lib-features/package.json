@@ -11,11 +11,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "@bootleg-rust/lib-design-system": "*",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
+    "@types/react-router-dom": "^5.1.4",
     "eslint": "^7.5.0",
     "typescript": "~3.8.3"
   },
