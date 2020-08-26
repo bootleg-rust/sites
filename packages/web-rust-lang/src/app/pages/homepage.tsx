@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Header,
   Div,
@@ -19,7 +20,13 @@ export function Homepage() {
       <Header>
         <Div>
           <Div>
-            <H1>Rust</H1>
+            <H1 block>
+              <AnimatePresence>
+                <motion.span layoutId="main-heading" animate={{ opacity: 1 }}>
+                  Rust
+                </motion.span>
+              </AnimatePresence>
+            </H1>
             <H2>
               A language empowering everyone <br /> to build reliable and
               efficient software.

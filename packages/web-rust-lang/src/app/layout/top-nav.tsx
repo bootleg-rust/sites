@@ -6,14 +6,17 @@ import {
   Div,
   Anchor,
   Span,
-  List,
+  UnorderedList,
+  ListItem,
 } from "@bootleg-rust/lib-design-system";
+import { SiteLink } from "@bootleg-rust/lib-features";
 import { LanguageSelect } from "./_language-select";
 import rustLogoSvg from "./rust-logo-blk.svg";
 
 const navLogoCss = css`
   img {
     width: 80px;
+    max-width: 80px;
   }
   ${Span} {
     font-family: ${({ theme }) => theme.fontFamily.hero.join(", ")};
@@ -32,12 +35,12 @@ function NavLogo({ children }: { children?: React.ReactNode }) {
   }`;
   return (
     <Div grow={1} css={navLogoCss} direction="row" justify="center">
-      <Anchor href={href} flex direction="row" alignItems="center">
+      <SiteLink to={href} flex direction="row" alignItems="center">
         <img alt="Rust Logo" src={rustLogoSvg} />
         <Span flex direction="column" justify="center">
           {children}
         </Span>
-      </Anchor>
+      </SiteLink>
     </Div>
   );
 }
@@ -54,11 +57,11 @@ const linksCss = css`
   padding-top: ${({ theme }) => theme.spacing[2]};
   padding-bottom: ${({ theme }) => theme.spacing[2]};
 
-  ${List.Item} {
-    flex-basis: 20%;
+  ${ListItem} {
     justify-content: center;
-    color: #2a3439;
     text-decoration: underline;
+    flex-basis: 20%;
+    color: ${({ theme }) => theme.colors.textMuted.var};
 
     padding: ${({ theme }) => theme.spacing[2]};
     ${Anchor} {
@@ -70,7 +73,7 @@ const linksCss = css`
     padding-left: ${({ theme }) => theme.spacing[8]};
     padding-right: ${({ theme }) => theme.spacing[8]};
 
-    ${List.Item} {
+    ${ListItem} {
       flex-basis: 0;
       padding-left: ${({ theme }) => theme.spacing[8]};
       padding-right: ${({ theme }) => theme.spacing[8]};
@@ -84,43 +87,43 @@ const linksCss = css`
 
 function NavLinks() {
   return (
-    <List ordered css={linksCss}>
-      <List.Item>
-        <Anchor href="/tools/install" flex>
+    <UnorderedList css={linksCss}>
+      <ListItem>
+        <SiteLink to="/tools/install" flex>
           Install
-        </Anchor>
-      </List.Item>
-      <List.Item>
-        <Anchor href="/learn" flex>
+        </SiteLink>
+      </ListItem>
+      <ListItem>
+        <SiteLink to="/learn" flex>
           Learn
-        </Anchor>
-      </List.Item>
-      <List.Item>
+        </SiteLink>
+      </ListItem>
+      <ListItem>
         <Anchor href="https://play.rust-lang.org/" flex>
           Playground
         </Anchor>
-      </List.Item>
-      <List.Item>
-        <Anchor href="/tools" flex>
+      </ListItem>
+      <ListItem>
+        <SiteLink to="/tools" flex>
           Tools
-        </Anchor>
-      </List.Item>
-      <List.Item>
-        <Anchor href="/governance" flex>
+        </SiteLink>
+      </ListItem>
+      <ListItem>
+        <SiteLink to="/governance" flex>
           Governance
-        </Anchor>
-      </List.Item>
-      <List.Item>
-        <Anchor href="/community" flex>
+        </SiteLink>
+      </ListItem>
+      <ListItem>
+        <SiteLink to="/community" flex>
           Community
-        </Anchor>
-      </List.Item>
-      <List.Item>
+        </SiteLink>
+      </ListItem>
+      <ListItem>
         <Anchor href="https://blog.rust-lang.org/" flex>
           Blog
         </Anchor>
-      </List.Item>
-    </List>
+      </ListItem>
+    </UnorderedList>
   );
 }
 

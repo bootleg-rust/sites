@@ -8,7 +8,7 @@ import { css } from "../typed-styled-components";
 /* stylelint-disable */
 
 export const cssResetStyle = css`
-  /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+  /* normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
   /* Document
    ========================================================================== */

@@ -4,6 +4,7 @@ import { Color, SemanticColor } from "./color";
 
 const pallete = {
   white: new Color("white", `#ffffff`),
+  black: new Color("black", `#000000`),
   darkGray: new Color("dark-gray", `#2a3439`),
   gray: new Color("gray", `#676e71`),
   lightGray: new Color("light-gray", `#e1e1e1`),
@@ -18,12 +19,16 @@ const semanticColors = {
   bodyBackground: new SemanticColor("body-background", pallete.white),
   borderColor: new SemanticColor("border-color", pallete.lightGray),
   linkColor: new SemanticColor("link-color", pallete.lightBlue),
-  footerGray: new SemanticColor("footer-gray", pallete.darkGray),
+  footerBg: new SemanticColor("footer-bg", pallete.darkGray),
+  footerFg: new SemanticColor("footer-fg", pallete.white),
+  footerLink: new SemanticColor("footer-link", pallete.yellow),
+  text: new SemanticColor("text", pallete.black),
+  textMuted: new SemanticColor("text-muted", pallete.darkGray),
 };
 
 const breakpoints = {
-  medium: "30em",
-  large: "60em",
+  medium: "30rem",
+  large: "60rem",
 };
 
 const media = {
@@ -137,6 +142,9 @@ const fontSizes = {
   "4xl": "2.25rem",
   "5xl": "3rem",
   "6xl": "4rem",
+  "7xl": "5rem",
+  "8xl": "6rem",
+  "9xl": "8rem",
 };
 
 const fontWeights = {

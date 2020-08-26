@@ -1,27 +1,28 @@
 import React from "react";
 import { styled, Div } from "@bootleg-rust/lib-design-system";
 
-const CenteredContentStyle = styled(Div)`
+const CenteredSectionStyle = styled(Div)`
   justify-content: center;
   align-items: center;
 
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-top: ${({ theme }) => theme.spacing[16]};
+  padding-bottom: ${({ theme }) => theme.spacing[16]};
+  padding-left: ${({ theme }) => theme.spacing[5]};
+  padding-right: ${({ theme }) => theme.spacing[5]};
 
   & > ${Div} {
+    /* max content width */
     width: 1128px;
     max-width: 100%;
   }
 `;
 
-export function CenteredContent({
+export function CenteredSection({
   ...props
 }: React.ComponentProps<typeof Div>) {
   return (
-    <CenteredContentStyle>
+    <CenteredSectionStyle>
       <Div {...props} />
-    </CenteredContentStyle>
+    </CenteredSectionStyle>
   );
 }
