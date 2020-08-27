@@ -11,7 +11,7 @@ import {
   Span,
 } from "@bootleg-rust/lib-design-system";
 import { SiteLink } from "@bootleg-rust/lib-features";
-import { CenteredSection } from "./_shared";
+import { PageCentered } from "../sections";
 import { LanguageSelect } from "./_language-select";
 
 import discordLogo from "./discord.svg";
@@ -21,19 +21,19 @@ import youtubeLogo from "./youtube.svg";
 
 const footerCss = css`
   padding-bottom: ${({ theme }) => theme.spacing[16]};
-  color: ${({ theme }) => theme.colors.footerFg.var};
-  background-color: ${({ theme }) => theme.colors.footerBg.var};
+  color: ${({ theme }) => theme.colors.invertedColor.var};
+  background-color: ${({ theme }) => theme.colors.invertedBackground.var};
 
   ._bottom-text {
     text-align: center;
   }
 
   ${Anchor} {
-    color: ${({ theme }) => theme.colors.footerLink.var};
+    color: ${({ theme }) => theme.colors.invertedAccent.var};
   }
 `;
 
-const FooterContent = styled(CenteredSection)`
+const FooterContent = styled(PageCentered)`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;

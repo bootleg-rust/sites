@@ -1,15 +1,15 @@
 import React from "react";
-import { styled, Header, Div, H1, H2 } from "@bootleg-rust/lib-design-system";
-import { CenteredSection } from "../layout/_shared";
+import { styled, Div, HeroHeading, H2 } from "@bootleg-rust/lib-design-system";
+import { PageHeaderCentered } from "../sections";
 import ferrisErrorImg from "./ferris-img.png";
 
-const Content = styled(CenteredSection)`
+const PageHeader = styled(PageHeaderCentered)`
   text-align: center;
   gap: ${({ theme }) => theme.spacing[10]};
 
   ${H2} {
     font-size: ${({ theme }) => theme.fontSize["3xl"]};
-    color: ${({ theme }) => theme.colors.textMuted.var};
+    color: ${({ theme }) => theme.colors.colorMuted.var};
     font-weight: ${({ theme }) => theme.fontWeight.semibold};
     line-height: ${({ theme }) => theme.lineHeight.tight};
   }
@@ -42,16 +42,14 @@ const Content = styled(CenteredSection)`
 
 export function FerrisErrorSection({ code }: { code: number }) {
   return (
-    <Header grow justify="center">
-      <Content alignItems="center">
-        <Div alignItems="center" justify="center" className="_error-message">
-          <H1>{code}</H1>
-          <H2>Whoops, this page doesn’t exist :-(</H2>
-        </Div>
-        <Div justify="center" alignItems="center" grow className="_ferris">
-          <img src={ferrisErrorImg} alt="404 not found image" />
-        </Div>
-      </Content>
-    </Header>
+    <PageHeader alignItems="center">
+      <Div alignItems="center" justify="center" className="_error-message">
+        <HeroHeading>{code}</HeroHeading>
+        <H2>Whoops, this page doesn’t exist :-(</H2>
+      </Div>
+      <Div justify="center" alignItems="center" grow className="_ferris">
+        <img src={ferrisErrorImg} alt="404 not found image" />
+      </Div>
+    </PageHeader>
   );
 }

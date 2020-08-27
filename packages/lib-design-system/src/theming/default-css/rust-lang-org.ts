@@ -249,7 +249,7 @@ export const TempPortedStyle = css`
   /* --- FOOTER */
   footer {
     padding: 30px 0;
-    background-color: ${({ theme }) => theme.colors.footerGray.var};
+    background-color: ${({ theme }) => theme.colors.invertedBackground.var};
     color: white;
 
     p {

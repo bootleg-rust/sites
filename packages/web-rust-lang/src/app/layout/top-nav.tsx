@@ -61,7 +61,7 @@ const linksCss = css`
     justify-content: center;
     text-decoration: underline;
     flex-basis: 20%;
-    color: ${({ theme }) => theme.colors.textMuted.var};
+    color: ${({ theme }) => theme.colors.colorMuted.var};
 
     padding: ${({ theme }) => theme.spacing[2]};
     ${Anchor} {
@@ -141,15 +141,13 @@ export function TopNav({
           justify-content: center;
         }
         @media ${({ theme }) => theme.media.notSmall} {
-          padding: ${({ theme }) => theme.spacing[4]};
-          padding-top: 0;
+          padding: 0 ${({ theme }) => theme.spacing[4]};
         }
         @media ${({ theme }) => theme.media.large} {
           flex-direction: row;
           flex-wrap: wrap;
           justify-content: flex-end;
-          padding: ${({ theme }) => theme.spacing[4]};
-          padding-top: 0;
+          padding: 0 ${({ theme }) => theme.spacing[4]};
 
           ._lang-select {
             justify-content: flex-end;

@@ -16,14 +16,17 @@ const pallete = {
 };
 
 const semanticColors = {
-  bodyBackground: new SemanticColor("body-background", pallete.white),
-  borderColor: new SemanticColor("border-color", pallete.lightGray),
-  linkColor: new SemanticColor("link-color", pallete.lightBlue),
-  footerBg: new SemanticColor("footer-bg", pallete.darkGray),
-  footerFg: new SemanticColor("footer-fg", pallete.white),
-  footerLink: new SemanticColor("footer-link", pallete.yellow),
-  text: new SemanticColor("text", pallete.black),
-  textMuted: new SemanticColor("text-muted", pallete.darkGray),
+  background: new SemanticColor("default-bg", pallete.white),
+  color: new SemanticColor("default-fg", pallete.black),
+  colorMuted: new SemanticColor("default-fg-muted", pallete.darkGray),
+  accent: new SemanticColor("default-accent", pallete.yellow),
+  borderColor: new SemanticColor("default-border-color", pallete.darkGray),
+
+  invertedBackground: new SemanticColor("inv-bg", pallete.darkGray),
+  invertedColor: new SemanticColor("inv-fg", pallete.white),
+  invertedColorMuted: new SemanticColor("inv-fg-muted", pallete.gray),
+  invertedAccent: new SemanticColor("inv-accent", pallete.yellow),
+  invertedBorderColor: new SemanticColor("inv-border-color", pallete.white),
 };
 
 const breakpoints = {
