@@ -4,7 +4,8 @@ import {
   H1,
   Anchor,
   Paragraph,
-  List,
+  UnorderedList,
+  ListItem,
 } from "@bootleg-rust/lib-design-system";
 import atomicDesignProcess from "./atomic-design-process.png";
 
@@ -35,13 +36,13 @@ export function AtomicDesign() {
       <br />
       <Paragraph>The five stages of atomic design are:</Paragraph>
       <br />
-      <List unordered>
-        <List.Item>Atoms</List.Item>
-        <List.Item>Molecules</List.Item>
-        <List.Item>Organisms</List.Item>
-        <List.Item>Templates</List.Item>
-        <List.Item>Pages</List.Item>
-      </List>
+      <UnorderedList>
+        <ListItem>Atoms</ListItem>
+        <ListItem>Molecules</ListItem>
+        <ListItem>Organisms</ListItem>
+        <ListItem>Templates</ListItem>
+        <ListItem>Pages</ListItem>
+      </UnorderedList>
       <br />
 
       <img

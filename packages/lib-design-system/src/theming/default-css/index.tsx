@@ -13,7 +13,7 @@ export const defaultPageStyle = css`
     overflow: hidden;
 
     font-family: ${({ theme }) => theme.fontFamily.content.join(", ")};
-    background-color: ${({ theme }) => theme.colors.bodyBackground.var};
+    background-color: ${({ theme }) => theme.colors.background.var};
     font-size: 1.5rem;
     line-height: 1.6;
 

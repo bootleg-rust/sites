@@ -79,7 +79,7 @@ function PageContent() {
           }
           onSelectLanguage={navigateToLanguage}
         />
-        <Main grow>
+        <Main grow justify="center">
           {/* Routing */}
           <Switch>
             <Route exact path={match.path + "/"} component={Homepage} />
@@ -94,8 +94,8 @@ function PageContent() {
               )}
             />
           </Switch>
-          <SiteFooter onSelectLanguage={navigateToLanguage} />
         </Main>
+        <SiteFooter onSelectLanguage={navigateToLanguage} />
       </AnimateSharedLayout>
     </>
   );
