@@ -1,4 +1,4 @@
-import { port, str } from "envalid";
+import { port, str, bool } from "envalid";
 import { ConfigProvider } from "../config";
 
 export const ServiceDefaults = new ConfigProvider({
@@ -9,6 +9,7 @@ export const ServiceDefaults = new ConfigProvider({
     }),
     PORT: port({ default: 8080 }),
     NODE_ENV: str({ devDefault: "development", default: "production" }),
+    USE_HTTP2: bool({ devDefault: false, default: false }),
   },
   derivedValues: ({ env, packageJSON }) => {
     const name = packageJSON.name.replace("@bootleg-rust/", "");

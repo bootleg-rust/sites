@@ -25,6 +25,7 @@ export type ServerConfig = UniversalConfig & {
   SSR_CACHING_MAXIMUM_MAX_AGE: number;
   SSR_CACHING_MAXIMUM_SHARED_MAX_AGE: number;
   PORT: number;
+  USE_HTTP2: boolean;
 };
 
 const { config, universalConfig } = Config({

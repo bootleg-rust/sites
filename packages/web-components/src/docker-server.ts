@@ -1,4 +1,5 @@
 import http from "http";
+import http2 from "http2";
 import "core-js/stable";
 import {
   Config,
@@ -39,6 +40,7 @@ export type ServerConfig = UniversalConfig & {
   ASSET_CACHING_UNHASHED_DEFAULT_MAX_AGE: number;
   ASSET_CACHING_UNHASHED_DEFAULT_SHARED_MAX_AGE: number;
   PORT: number;
+  USE_HTTP2: boolean;
 };
 
 const { config, universalConfig } = Config({
@@ -75,7 +77,11 @@ const app = createKoaApp({
 });
 
 const currentHandler = app.callback();
-const server = http.createServer((...args) => void currentHandler(...args));
+// Cloud run supports http2 (unauthenticated) but browsers require
+// SSL when talking http2 so only when running behind/inside cloud run
+const server = config.USE_HTTP2
+  ? http2.createServer(currentHandler)
+  : http.createServer(currentHandler);
 
 const port = config.PORT;
 

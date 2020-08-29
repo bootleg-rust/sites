@@ -1,5 +1,6 @@
 import "core-js/stable";
 import http from "http";
+import http2 from "http2";
 import "source-map-support/register";
 import { config } from "./server-config";
 import { app } from "./server";
@@ -15,7 +16,11 @@ function createHandler(_app: typeof app) {
 }
 
 let currentHandler = createHandler(app);
-const server = http.createServer(currentHandler);
+// Cloud run supports http2 (unauthenticated) but browsers require
+// SSL when talking http2 so only when running behind/inside cloud run
+const server = config.USE_HTTP2
+  ? http2.createServer(currentHandler)
+  : http.createServer(currentHandler);
 
 const port = config.PORT;
 
