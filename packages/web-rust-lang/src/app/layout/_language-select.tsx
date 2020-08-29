@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouteMatch } from "react-router";
-import { css, Div, Select, Label } from "@bootleg-rust/lib-design-system";
+import { css, Div, Select } from "@bootleg-rust/lib-design-system";
 
 const selectCss = css`
   flex-direction: row;
@@ -26,10 +26,13 @@ export function LanguageSelect({
   const lang = match.params.lang || "en-US";
   return (
     <Div css={selectCss} {...props}>
-      <Label htmlFor="language-nav" hidden>
-        Language
-      </Label>
-      <Select value={lang} data-current-lang={lang} onChange={onChange}>
+      <Select
+        value={lang}
+        data-current-lang={lang}
+        onChange={onChange}
+        aria-label="Language"
+        title="Language"
+      >
         <Select.Option title="English (en-US)" value="en-US">
           {/* English 🇺🇸 (en-US) */}
           English (en-US)

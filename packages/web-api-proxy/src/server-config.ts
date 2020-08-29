@@ -31,6 +31,7 @@ export type ServerConfig = UniversalConfig & {
   ASSET_CACHING_UNHASHED_DEFAULT_MAX_AGE: number;
   ASSET_CACHING_UNHASHED_DEFAULT_SHARED_MAX_AGE: number;
   PORT: number;
+  USE_HTTP2: boolean;
 };
 
 const { config, universalConfig } = Config({

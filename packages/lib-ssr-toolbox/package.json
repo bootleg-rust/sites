@@ -11,15 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@types/combined-stream": "^1.0.2",
-    "combined-stream": "^1.0.8",
     "history": "^4.10.0",
-    "koa": "^2.11.0",
-    "koa-compress": "^4.0.1",
-    "koa-helmet": "^5.1.0",
-    "koa-logger": "3.2.1",
-    "koa-router": "^7.4.0",
-    "koa-static": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet-async": "^1.0.6",
@@ -32,12 +24,6 @@
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
-    "@types/koa": "^2.11.3",
-    "@types/koa-compress": "^4.0.0",
-    "@types/koa-helmet": "^5.2.0",
-    "@types/koa-logger": "^3.1.1",
-    "@types/koa-router": "^7.4.0",
-    "@types/koa-static": "^4.0.1",
     "@types/react-router": "^5.1.5",
     "@types/react-router-dom": "^5.1.4",
     "@types/styled-components": "^5.1.1",

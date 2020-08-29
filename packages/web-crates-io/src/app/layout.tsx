@@ -1,14 +1,8 @@
 // import { Cubes, FormSearch, Github } from "grommet-icons";
 import React from "react";
-import { Link } from "react-router-dom";
-import { styled, Div, H4, Span, Anchor } from "@bootleg-rust/lib-design-system";
+import { styled, Div, H4, Span } from "@bootleg-rust/lib-design-system";
+import { SiteLink } from "@bootleg-rust/lib-features";
 // import { ReactComponent as RustLogo } from './rust-logo-blk.svg';
-
-function SiteLink(
-  props: React.ComponentProps<Link> & React.ComponentProps<typeof Anchor>,
-) {
-  return <Link component={Anchor} {...props} />;
-}
 
 const ProfileImage = styled.img`
   width: 36px;
@@ -47,11 +41,12 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
       <Header />
       <Div style={{ margin: "0 auto" }}>
         <Div direction="row">
-          <Link to="/">dashboard</Link> |<Link to="/crates">query</Link> |
-          <Link to="/crates/explore">explore</Link> |
-          <Link to="/crates/user/123">user 123</Link> |
-          <Link to="/crates/team/123">team 123</Link> |
-          <Link to="/crates/123">crate 123</Link>
+          <SiteLink to="/">dashboard</SiteLink> |
+          <SiteLink to="/crates">query</SiteLink> |
+          <SiteLink to="/crates/explore">explore</SiteLink> |
+          <SiteLink to="/crates/user/123">user 123</SiteLink> |
+          <SiteLink to="/crates/team/123">team 123</SiteLink> |
+          <SiteLink to="/crates/123">crate 123</SiteLink>
         </Div>
         {children}
       </Div>
