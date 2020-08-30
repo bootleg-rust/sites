@@ -53,8 +53,8 @@ function GlobalPageMetadata() {
   return (
     <>
       <Helmet
-        defaultTitle="(Bootleg) Rust Programming Language"
-        titleTemplate="%s - (Bootleg) Rust Programming Language"
+        defaultTitle="(Unofficial) Rust Programming Language"
+        titleTemplate="%s - (Unofficial) Rust Programming Language"
       >
         <html lang={match.params.lang || defaultLanguage} />
         <base href="/" />
@@ -112,7 +112,7 @@ function PageContent() {
   const match = useRouteMatch<{ lang?: string }>();
   const location = useLocation();
   const history = useHistory();
-  const isIndex = (str: string) => str === match.url;
+  const isIndex = (pathname: string) => pathname === match.url;
   const navigateToLanguage = (lang: string) => {
     const newUrlLang = lang === defaultLanguage ? "" : "/" + lang;
     const regexMatch = matchLangs.exec(location.pathname);
