@@ -81,7 +81,9 @@ function setFlexOptions({
     const _direction = css`flex-direction: ${direction || "column"};`;
     // Number values
     const _grow = (grow === true) ? css`flex-grow: 1;` : css`flex-grow: ${grow || 0};`
-    const _shrink = (shrink === true) ? css`flex-shrink: 1;` : css`flex-shrink: ${shrink || 0};`;
+    // HACK: technically the default for flex-shrink should be "1" but this causes widespread issues in safari
+    // Adding "max-width: 100%" alongside "flex-shrink: 0" seems to roughly make things behave as you might expect 😅.
+    const _shrink = (shrink === true) ? css`flex-shrink: 1;` : css`flex-shrink: ${shrink || 0}; max-width: 100%;`;
 
     const _justify = (justify) ? css`justify-content: ${justify};` : "";
     const _alignContent = (alignContent) ? css`align-content: ${alignContent};` : "";

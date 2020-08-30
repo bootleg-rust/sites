@@ -1,7 +1,9 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Header,
+  css,
+  styled,
+  useTheme,
   Div,
   HeroHeading,
   H2,
@@ -13,7 +15,11 @@ import {
   Strong,
   HorizontalRule,
 } from "@bootleg-rust/lib-design-system";
-import { PageSectionCentered, PageHeaderCentered } from "../sections";
+import {
+  PageSectionCentered,
+  PageHeaderCentered,
+  SectionHeader,
+} from "../sections";
 
 export function Homepage() {
   return (
@@ -28,41 +34,117 @@ export function Homepage() {
   );
 }
 
+const AnchorButton = styled(Anchor)`
+  width: 100%;
+
+  text-align: center;
+  text-transform: uppercase;
+  background-color: var(--default-accent);
+  text-decoration: none;
+  border-width: 1px;
+  border-color: transparent;
+  color: black;
+  font-size: 2.25rem;
+  padding: 20px;
+  font-weight: 600;
+  border-radius: 4px;
+
+  &:active,
+  &:hover {
+    border-color: black;
+  }
+`;
+
 export function HomepageHeader() {
   return (
-    <PageHeaderCentered>
-      <Div>
-        <HeroHeading block>
+    <PageHeaderCentered
+      direction="row"
+      gap="1rem"
+      css={css`
+        flex-grow: 1;
+        flex-flow: wrap;
+      `}
+    >
+      <Div grow>
+        <HeroHeading
+          block
+          css={css`
+            line-height: 1.4;
+          `}
+        >
           <AnimatePresence>
             <motion.span layoutId="main-heading" animate={{ opacity: 1 }}>
               Rust
             </motion.span>
           </AnimatePresence>
         </HeroHeading>
-        <H2>
+        <H2
+          css={css`
+            line-height: 1.2;
+            font-size: 2.25rem;
+
+            @media ${({ theme }) => theme.media.notSmall} {
+              font-size: 3rem;
+            }
+          `}
+        >
           A language empowering everyone <br /> to build reliable and efficient
           software.
         </H2>
       </Div>
-      <Div>
-        <Anchor href="/learn/get-started">Get Started</Anchor>
-        <Paragraph>
-          <Anchor href="https://blog.rust-lang.org/2020/08/03/Rust-1.45.2.html">
+      <Div
+        css={css`
+          justify-content: center;
+          align-items: center;
+          flex-basis: 33%;
+          padding: 1rem;
+          flex-grow: 1;
+        `}
+      >
+        <AnchorButton
+          css={css`
+            @media ${({ theme }) => theme.media.large} {
+              max-width: 340px;
+            }
+          `}
+          href="/learn/get-started"
+        >
+          Get Started
+        </AnchorButton>
+        <Div>
+          <Anchor
+            css={css`
+              text-align: center;
+              line-height: 2;
+              @media ${({ theme }) => theme.media.notSmall} {
+                font-size: 2.25rem;
+              }
+            `}
+            href="https://blog.rust-lang.org/2020/08/03/Rust-1.45.2.html"
+          >
             Version 1.45.2
           </Anchor>
-        </Paragraph>
+        </Div>
       </Div>
     </PageHeaderCentered>
   );
 }
 
 function SectionWhyRust() {
+  const theme = useTheme();
   return (
-    <PageSectionCentered id="language-values">
-      <Header>
+    <PageSectionCentered
+      id="language-values"
+      brand={{
+        background: theme.colors.brandGreen,
+        foreground: theme.colors.brandText,
+        accent: theme.colors.brandPurple,
+        link: theme.colors.invertedText,
+      }}
+    >
+      <SectionHeader>
         <H2>Why Rust?</H2>
-        <Div />
-      </Header>
+      </SectionHeader>
       <Div>
         <Section>
           <H3>Performance</H3>
@@ -94,12 +176,19 @@ function SectionWhyRust() {
   );
 }
 function SectionBuildInRust() {
+  const theme = useTheme();
   return (
-    <PageSectionCentered>
-      <Header>
+    <PageSectionCentered
+      brand={{
+        background: theme.colors.brandPurple,
+        foreground: theme.colors.brandText,
+        accent: theme.colors.brandRed,
+        link: theme.colors.invertedText,
+      }}
+    >
+      <SectionHeader>
         <H2>Build it in Rust</H2>
-        <Div />
-      </Header>
+      </SectionHeader>
 
       <Div>
         <Paragraph>
@@ -184,10 +273,9 @@ function SectionBuildInRust() {
 function SectionInProduction() {
   return (
     <PageSectionCentered>
-      <Header>
+      <SectionHeader>
         <H2>Rust in production</H2>
-        <Div />
-      </Header>
+      </SectionHeader>
       <Div>
         <Paragraph>
           Hundreds of companies around the world are using Rust in production
@@ -248,12 +336,19 @@ function SectionInProduction() {
 }
 
 function SectionGetInvolved() {
+  const theme = useTheme();
   return (
-    <PageSectionCentered>
-      <Header>
+    <PageSectionCentered
+      brand={{
+        background: theme.colors.brandRed,
+        foreground: theme.colors.brandText,
+        accent: theme.colors.brandPurple,
+        link: theme.colors.invertedText,
+      }}
+    >
+      <SectionHeader>
         <H2>Get involved</H2>
-        <Div />
-      </Header>
+      </SectionHeader>
       <Div>
         <Div id="read-rust">
           <H3>Read Rust</H3>
@@ -292,10 +387,9 @@ function SectionGetInvolved() {
 function SectionThanks() {
   return (
     <PageSectionCentered>
-      <Header>
+      <SectionHeader>
         <H2>Thanks</H2>
-        <Div />
-      </Header>
+      </SectionHeader>
       <Div>
         <Paragraph>
           Rust would not exist without the generous contributions of time, work,

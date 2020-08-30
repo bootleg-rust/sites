@@ -21,7 +21,7 @@ import youtubeLogo from "./youtube.svg";
 
 const footerCss = css`
   padding-bottom: ${({ theme }) => theme.spacing[16]};
-  color: ${({ theme }) => theme.colors.invertedColor.var};
+  color: ${({ theme }) => theme.colors.invertedText.var};
   background-color: ${({ theme }) => theme.colors.invertedBackground.var};
 
   ._bottom-text {
@@ -49,6 +49,7 @@ const FooterContent = styled(PageCentered)`
     flex-basis: 100px;
   }
 `;
+
 export function SiteFooter({
   onSelectLanguage,
 }: {

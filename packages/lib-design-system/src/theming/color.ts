@@ -67,4 +67,8 @@ export class SemanticColor {
       theme === "dark" ? this.darkColor?.code || "" : this.lightColor.code;
     return `--${this.name}: ${code};`;
   }
+
+  redefine(semanticColor: SemanticColor) {
+    return `--${this.name}: ${semanticColor.var};`;
+  }
 }

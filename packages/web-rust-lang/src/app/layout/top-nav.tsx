@@ -23,6 +23,11 @@ const navLogoCss = css`
     font-size: ${({ theme }) => theme.fontSize["5xl"]};
   }
 
+  ${Anchor} {
+    color: ${({ theme }) => theme.colors.text.var};
+    text-decoration: none;
+  }
+
   @media ${({ theme }) => theme.media.large} {
     justify-content: flex-start;
   }
@@ -61,10 +66,10 @@ const linksCss = css`
     justify-content: center;
     text-decoration: underline;
     flex-basis: 20%;
-    color: ${({ theme }) => theme.colors.colorMuted.var};
 
     padding: ${({ theme }) => theme.spacing[2]};
     ${Anchor} {
+      color: ${({ theme }) => theme.colors.textMuted.var};
       padding-bottom: 0;
     }
   }
@@ -86,15 +91,18 @@ const linksCss = css`
 `;
 
 function NavLinks() {
+  const match = useRouteMatch<{ lang?: string }>();
+  const lang = !match.params.lang ? "" : match.params.lang + "/";
+  const base = `/${lang || ""}`;
   return (
     <UnorderedList css={linksCss}>
       <ListItem>
-        <SiteLink to="/tools/install" flex>
+        <SiteLink to={`${base}tools/install`} flex>
           Install
         </SiteLink>
       </ListItem>
       <ListItem>
-        <SiteLink to="/learn" flex>
+        <SiteLink to={`${base}learn`} flex>
           Learn
         </SiteLink>
       </ListItem>
@@ -104,17 +112,17 @@ function NavLinks() {
         </Anchor>
       </ListItem>
       <ListItem>
-        <SiteLink to="/tools" flex>
+        <SiteLink to={`${base}tools`} flex>
           Tools
         </SiteLink>
       </ListItem>
       <ListItem>
-        <SiteLink to="/governance" flex>
+        <SiteLink to={`${base}governance`} flex>
           Governance
         </SiteLink>
       </ListItem>
       <ListItem>
-        <SiteLink to="/community" flex>
+        <SiteLink to={`${base}community`} flex>
           Community
         </SiteLink>
       </ListItem>

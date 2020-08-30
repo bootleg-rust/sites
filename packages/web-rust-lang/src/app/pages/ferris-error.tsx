@@ -9,7 +9,7 @@ const PageHeader = styled(PageHeaderCentered)`
 
   ${H2} {
     font-size: ${({ theme }) => theme.fontSize["3xl"]};
-    color: ${({ theme }) => theme.colors.colorMuted.var};
+    color: ${({ theme }) => theme.colors.textMuted.var};
     font-weight: ${({ theme }) => theme.fontWeight.semibold};
     line-height: ${({ theme }) => theme.lineHeight.tight};
   }

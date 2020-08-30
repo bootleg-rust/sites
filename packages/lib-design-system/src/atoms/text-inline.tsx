@@ -1,7 +1,11 @@
+import { styled } from "../theming/typed-styled-components";
 import { DefaultInline } from "./_shared";
 // MDN inline text elements https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Inline_text_semantics
 
-export const Anchor = DefaultInline("a");
+export const Anchor = styled(DefaultInline("a"))`
+  color: ${({ theme }) => theme.colors.link.var};
+  text-decoration: underline;
+`;
 export const Abbreviation = DefaultInline("abbr");
 export const BringAttentionTo = DefaultInline("b");
 export const Citation = DefaultInline("cite");
