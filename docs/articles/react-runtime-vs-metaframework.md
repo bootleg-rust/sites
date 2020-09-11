@@ -2,7 +2,7 @@
 
 The goal of this document is to elaborate on how (and why) the React SSR in this project functions. It is partially based on [this](https://twitter.com/pseudo_su/status/1294609747438497792?s=20) twitter thread.
 
-![../assets/runtime-vs-framework.jpg](./assets/runtime-vs-framework.jpg)
+![./assets/runtime-vs-framework.jpg](../assets/runtime-vs-framework.jpg)
 
 ## Having a universal `<App />`
 
