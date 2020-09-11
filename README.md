@@ -4,7 +4,7 @@ This project primarily exists as a tool for experimentation with React, Server r
 
 Some rough goals of this project are:
 
-* SSR React that emphasises running **UNIVERSAL** `<App />`s on different "runtimes" (aka. same `<App />` rendering on client and server) instead of using a metaframework (eg Next.js) that wraps React. [read more](./docs/react-runtime-vs-metaframework.md).
+* SSR React that emphasises running **UNIVERSAL** `<App />`s on different "runtimes" (aka. same `<App />` rendering on client and server) instead of using a metaframework (eg Next.js) that wraps React. [read more](./docs/articles/react-runtime-vs-metaframework.md).
 * Mutliple website packages (`web-crates-io`, `web-rust-lang` etc).
 * Externalise as much build config/tooling as possible instead of duplicating across packages (`build-tooling`).
 * Shared Design system library used across the different website packages (`lib-design-system`).
