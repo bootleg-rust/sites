@@ -19,6 +19,7 @@ async function triggerCICD({
     throw new Error(`invalid ci trigger "${eventType}"`);
   }
   const apiUrl = `https://api.github.com/repos/${repositoryIdentifier}/dispatches`;
+  /* eslint-disable @typescript-eslint/camelcase */
   const clientPayload = {
     env,
     ref: gitRef,
@@ -34,6 +35,7 @@ async function triggerCICD({
     event_type: eventType,
     client_payload: clientPayload,
   };
+  /* eslint-enable @typescript-eslint/camelcase */
 
   const octokit = new Octokit({ auth: githubToken });
 

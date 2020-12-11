@@ -15,16 +15,16 @@
     "dev": "lerna run dev --stream --scope '@bootleg-rust/lib-*' --scope '@bootleg-rust/web-*' --",
     "generate:workflows": "./scripts/generate-workflows.sh",
     "lerna-bootstrap": "lerna bootstrap",
-    "lint": "npm-run-all -p lint:eslint lint:stylelint",
-    "lint:eslint": "eslint --max-warnings=0 .",
-    "lint:eslint:fix": "eslint --max-warnings=0 --fix .",
-    "lint:fix": "npm-run-all -p lint:eslint:fix lint:stylelint",
-    "lint:stylelint": "stylelint './packages/*/src/**/*.{ts,tsx,js,jsx}' ",
     "package": "lerna run --stream package --",
     "publish": "lerna run --stream publish --",
     "test": "lerna run test --stream --",
     "test:ci": "jest",
-    "tsc": "tsc --pretty"
+    "tsc": "tsc --pretty",
+    "verify": "npm-run-all -p verify:eslint verify:stylelint",
+    "verify:eslint": "eslint --max-warnings=0 .",
+    "verify:eslint:fix": "eslint --max-warnings=0 --fix .",
+    "verify:fix": "npm-run-all -p verify:eslint:fix verify:stylelint",
+    "verify:stylelint": "stylelint './packages/*/src/**/*.{ts,tsx,js,jsx}' "
   },
   "lint-staged": {
     "*.yml": [
@@ -32,13 +32,13 @@
     ],
     "*.{js,jsx}": [
       "yarn prettier --write",
-      "yarn lint:eslint:fix",
-      "yarn lint:stylelint"
+      "yarn verify:eslint:fix",
+      "yarn verify:stylelint"
     ],
     "*.{ts,tsx}": [
       "yarn prettier --write",
-      "yarn lint:eslint:fix",
-      "yarn lint:stylelint"
+      "yarn verify:eslint:fix",
+      "yarn verify:stylelint"
     ],
     "package.json": [
       "yarn sort-package-json"
@@ -49,6 +49,7 @@
     "@bootleg-rust/build-tooling": "*",
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
+    "@jest/globals": "^26.6.2",
     "concurrently": "^5.0.0",
     "eslint": "^7.5.0",
     "husky": "^4.2.1",

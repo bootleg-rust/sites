@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
+    "@jest/globals": "^26.6.2",
     "@types/combined-stream": "^1.0.2",
     "@types/koa": "^2.11.3",
     "@types/koa-compress": "^4.0.0",

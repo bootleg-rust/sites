@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
+    "@jest/globals": "^26.6.2",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-links": "^5.3.19",

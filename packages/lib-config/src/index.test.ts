@@ -1,4 +1,5 @@
 import { str } from "envalid";
+import { describe, test, expect } from "@jest/globals";
 import { ConfigProvider } from "./config";
 import { Config } from ".";
 
@@ -60,7 +61,7 @@ describe("Config", () => {
 });
 
 describe("ConfigProvider", () => {
-  it("join", () => {
+  test("join", () => {
     const result1 = fixtures.provider1.buildConfig({
       packageJSON: fixtures.packageJSON,
     });

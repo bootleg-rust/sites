@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
+    "@jest/globals": "^26.6.2",
     "@types/react-router": "^5.1.5",
     "@types/react-router-dom": "^5.1.4",
     "@types/styled-components": "^5.1.1",
