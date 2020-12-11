@@ -12,6 +12,7 @@ const {
   standard,
   babelTypescript,
   bundleAnalysis,
+  staticAssetsJsonPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
 module.exports = {
@@ -20,11 +21,12 @@ module.exports = {
     {
       func: babelTypescript,
       options: {
-        include: siblingPackages.map((package) =>
-          path.join(__dirname, "..", package),
+        include: siblingPackages.map((packageName) =>
+          path.join(__dirname, "..", packageName),
         ),
       },
     },
+    { object: staticAssetsJsonPlugin },
     { func: bundleAnalysis },
   ],
 };

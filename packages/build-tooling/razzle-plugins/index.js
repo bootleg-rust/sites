@@ -3,6 +3,7 @@ const { babelTypescript } = require("./typescript");
 const { modifyEntryPoints } = require("./modify-entry");
 const { bundleAnalysis } = require("./bundle-analysis");
 const { reactSvg } = require("./react-svg");
+const { staticAssetsJsonPlugin } = require("./static-assets-json");
 
 module.exports = {
   standard,
@@ -10,4 +11,5 @@ module.exports = {
   babelTypescript,
   bundleAnalysis,
   reactSvg,
+  staticAssetsJsonPlugin,
 };

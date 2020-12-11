@@ -12,20 +12,24 @@ const {
   standard,
   babelTypescript,
   bundleAnalysis,
+  reactSvg,
+  staticAssetsJsonPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
 module.exports = {
   plugins: [
     "scss",
     { func: standard },
+    { func: reactSvg },
     {
       func: babelTypescript,
       options: {
-        include: siblingPackages.map((package) =>
-          path.join(__dirname, "..", package),
+        include: siblingPackages.map((packageName) =>
+          path.join(__dirname, "..", packageName),
         ),
       },
     },
+    { object: staticAssetsJsonPlugin },
     { func: bundleAnalysis },
   ],
 };
