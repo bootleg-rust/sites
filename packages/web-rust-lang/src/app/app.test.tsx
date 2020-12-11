@@ -7,7 +7,9 @@ import { StaticConfigProvider } from "@bootleg-rust/lib-ssr-toolbox";
 import { HelmetProvider } from "react-helmet-async";
 // TODO: move a "test-harness" into "@bootleg-rust/lib-ssr-runtime"
 // import { } from "@bootleg-rust/lib-ssr-runtime/client/test-harness";
+import { test, expect } from "@jest/globals";
 import "@testing-library/jest-dom/extend-expect";
+
 import { render } from "@testing-library/react";
 import React from "react";
 import { MemoryRouter as Router } from "react-router";

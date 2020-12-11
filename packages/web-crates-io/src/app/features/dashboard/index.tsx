@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Preformatted, Div, Button, H1 } from "@bootleg-rust/lib-design-system";
 // import { LoadCratesStats, LoadCratesSummary } from "./dashboard.resource";
 
+/* eslint-disable @typescript-eslint/camelcase */
 const stats = { num_downloads: 20000000, num_crates: 1000000000 };
 const summary = {
   new_crates: [],
@@ -13,6 +14,7 @@ const summary = {
   popular_keywords: [],
   popular_categories: [],
 };
+/* eslint-enable @typescript-eslint/camelcase */
 
 function StatNumber({ number = 0 }) {
   const numberStr = String(number);

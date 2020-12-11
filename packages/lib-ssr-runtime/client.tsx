@@ -1,3 +1,4 @@
+/* global window, document */
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";

@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
+    "@jest/globals": "^26.6.2",
     "@types/styled-components": "^5.1.1",
     "eslint": "^7.5.0",
     "typescript": "~3.8.3"

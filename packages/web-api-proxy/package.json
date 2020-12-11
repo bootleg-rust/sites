@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
+    "@jest/globals": "^26.6.2",
     "razzle": "^3.1.5",
     "typescript": "~3.8.3"
   },
