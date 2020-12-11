@@ -1,9 +1,15 @@
-"use strict";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 const loaderFinder = require("razzle-dev-utils/makeLoaderFinder");
 
-function reactSvg(baseConfig) {
-  const config = Object.assign({}, baseConfig);
+function modifyWebpackConfig({
+  env: { target, dev },
+  webpackConfig,
+  webpackObject,
+  options: { pluginOptions },
+  paths,
+}) {
+  const config = webpackConfig;
 
   const babelLoaderConfig = loaderFinder("babel-loader");
   const javascriptRule = config.module.rules
@@ -29,4 +35,8 @@ function reactSvg(baseConfig) {
   return config;
 }
 
-module.exports = { reactSvg };
+const reactSvgPlugin = {
+  modifyWebpackConfig,
+};
+
+module.exports = { reactSvgPlugin };
