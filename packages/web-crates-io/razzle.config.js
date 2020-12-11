@@ -9,23 +9,27 @@ const siblingPackages = [
 ];
 
 const {
-  standard,
-  babelTypescript,
-  bundleAnalysis,
+  standardPlugin,
+  babelTypescriptPlugin,
+  bundleAnalysisPlugin,
+  reactSvgPlugin,
+  staticAssetsJsonPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
 module.exports = {
   plugins: [
     "scss",
-    { func: standard },
+    { object: standardPlugin },
+    { object: reactSvgPlugin },
     {
-      func: babelTypescript,
+      object: babelTypescriptPlugin,
       options: {
-        include: siblingPackages.map((package) =>
-          path.join(__dirname, "..", package),
+        include: siblingPackages.map((packageName) =>
+          path.join(__dirname, "..", packageName),
         ),
       },
     },
-    { func: bundleAnalysis },
+    { object: staticAssetsJsonPlugin },
+    { object: bundleAnalysisPlugin },
   ],
 };

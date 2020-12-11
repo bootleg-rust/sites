@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const defaultOptions = {
   analyzerMode: "static",
   openAnalyzer: false,
@@ -6,10 +7,14 @@ const defaultOptions = {
   reportFilename: "../webpack.report.html",
 };
 
-function bundleAnalysis(baseConfig, env, webpack, userOptions = {}) {
-  const { target, dev } = env;
-  const options = { ...defaultOptions, ...userOptions };
-  const webpackConfig = { ...baseConfig };
+function modifyWebpackConfig({
+  env: { target, dev },
+  webpackConfig,
+  webpackObject,
+  options: { pluginOptions },
+  paths,
+}) {
+  const options = { ...defaultOptions, ...pluginOptions };
 
   // Client: perform bundle analysis when building the client
   if (target === "web" && !dev) {
@@ -26,6 +31,10 @@ function bundleAnalysis(baseConfig, env, webpack, userOptions = {}) {
   return webpackConfig;
 }
 
+const bundleAnalysisPlugin = {
+  modifyWebpackConfig,
+};
+
 module.exports = {
-  bundleAnalysis,
+  bundleAnalysisPlugin,
 };

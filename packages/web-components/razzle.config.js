@@ -9,30 +9,30 @@ const siblingPackages = [
 ];
 
 const {
-  standard,
-  babelTypescript,
-  modifyEntryPoints,
-  bundleAnalysis,
+  standardPlugin,
+  babelTypescriptPlugin,
+  modifyEntryPointsPlugin,
+  bundleAnalysisPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
 module.exports = {
   plugins: [
     {
-      func: modifyEntryPoints,
+      object: modifyEntryPointsPlugin,
       options: {
         server: path.join(__dirname, "./src/docker-server"),
         client: path.join(__dirname, "./src/docker-client"),
       },
     },
-    { func: standard },
+    { object: standardPlugin },
     {
-      func: babelTypescript,
+      object: babelTypescriptPlugin,
       options: {
-        include: siblingPackages.map((package) =>
-          path.join(__dirname, "..", package),
+        include: siblingPackages.map((packageName) =>
+          path.join(__dirname, "..", packageName),
         ),
       },
     },
-    { func: bundleAnalysis },
+    { object: bundleAnalysisPlugin },
   ],
 };

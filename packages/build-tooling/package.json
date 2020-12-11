@@ -44,13 +44,14 @@
     "js-yaml": "^3.14.0",
     "lodash.merge": "^4.6.2",
     "null-loader": "^4.0.0",
-    "razzle": "^3.1.5",
-    "razzle-dev-utils": "^3.0.0",
+    "razzle": "^3.3.8",
+    "razzle-dev-utils": "^3.3.8",
     "stylelint": "^13.6.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
-    "webpack-bundle-analyzer": "^3.8.0"
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-manifest-plugin": "^3.0.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.7"

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const makeLoaderFinder = require("razzle-dev-utils/makeLoaderFinder");
 const babelLoaderFinder = makeLoaderFinder("babel-loader");
 const ForkTSCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
@@ -6,10 +7,14 @@ const defaultOptions = {
   include: [],
 };
 
-function babelTypescript(baseConfig, env, webpack, userOptions = {}) {
-  const { target, dev } = env;
-  const options = { ...defaultOptions, ...userOptions };
-  const webpackConfig = { ...baseConfig };
+function modifyWebpackConfig({
+  env: { target, dev },
+  webpackConfig,
+  webpackObject,
+  options: { pluginOptions },
+  paths,
+}) {
+  const options = { ...defaultOptions, ...pluginOptions };
 
   webpackConfig.resolve.extensions = [
     ...webpackConfig.resolve.extensions,
@@ -51,4 +56,8 @@ function babelTypescript(baseConfig, env, webpack, userOptions = {}) {
   return webpackConfig;
 }
 
-module.exports = { babelTypescript };
+const babelTypescriptPlugin = {
+  modifyWebpackConfig,
+};
+
+module.exports = { babelTypescriptPlugin };
