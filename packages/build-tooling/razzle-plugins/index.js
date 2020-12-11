@@ -1,15 +1,15 @@
-const { standard } = require("./standard");
-const { babelTypescript } = require("./typescript");
-const { modifyEntryPoints } = require("./modify-entry");
-const { bundleAnalysis } = require("./bundle-analysis");
-const { reactSvg } = require("./react-svg");
+const { standardPlugin } = require("./standard");
+const { babelTypescriptPlugin } = require("./typescript");
+const { modifyEntryPointsPlugin } = require("./modify-entry");
+const { bundleAnalysisPlugin } = require("./bundle-analysis");
+const { reactSvgPlugin } = require("./react-svg");
 const { staticAssetsJsonPlugin } = require("./static-assets-json");
 
 module.exports = {
-  standard,
-  modifyEntryPoints,
-  babelTypescript,
-  bundleAnalysis,
-  reactSvg,
+  standardPlugin,
+  modifyEntryPointsPlugin,
+  babelTypescriptPlugin,
+  bundleAnalysisPlugin,
+  reactSvgPlugin,
   staticAssetsJsonPlugin,
 };

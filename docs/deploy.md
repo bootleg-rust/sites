@@ -18,7 +18,7 @@ The following steps are if you want to build, publish and/or deploy all sites at
 ### Package
 
 ```sh
-docker-compose -f docker-compose.builder.yml build builder
+docker-compose -f docker-compose.builder.yml build builder-base
 docker-compose -f docker-compose.sites.yml build
 ```
 
