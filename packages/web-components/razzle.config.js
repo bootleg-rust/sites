@@ -28,8 +28,8 @@ module.exports = {
     {
       func: babelTypescript,
       options: {
-        include: siblingPackages.map((package) =>
-          path.join(__dirname, "..", package),
+        include: siblingPackages.map((packageName) =>
+          path.join(__dirname, "..", packageName),
         ),
       },
     },
