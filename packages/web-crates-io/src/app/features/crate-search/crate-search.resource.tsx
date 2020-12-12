@@ -6,7 +6,7 @@ export {};
 // function teamResource(
 //   { team_identifier }: { team_identifier: string } = { team_identifier: "" },
 // ) {
-//   const url = `http://localhost:4003/api/v1/teams/${team_identifier}`;
+//   const url = `http://localhost:8000/api/v1/teams/${team_identifier}`;
 //   const headers = {};
 
 //   const filterBookmakers = ({ json }) => ({
@@ -52,7 +52,7 @@ export {};
 //   };
 //   const paramStr = String(queryString.stringify(params));
 //   const urlParams = paramStr ? "?" + paramStr : "";
-//   const url = `http://localhost:4003/api/v1/crates${urlParams}`;
+//   const url = `http://localhost:8000/api/v1/crates${urlParams}`;
 //   const headers = {};
 
 //   const filterBookmakers = ({ json }) => ({

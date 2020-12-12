@@ -10,7 +10,7 @@
     "build:storybook": "build-storybook -s .storybook/public -o public --quiet --loglevel warn",
     "clean": "rm -rf build",
     "deploy": "build-tooling-cli service deploy --service-name web-components",
-    "dev": "start-storybook --quiet --ci -p 4040 -s .storybook/public",
+    "dev": "start-storybook --quiet --ci -p 4050 -s .storybook/public",
     "lint": "npm-run-all lint:eslint lint:stylelint",
     "lint:eslint": "eslint --max-warnings=0 .",
     "lint:eslint:fix": "eslint --max-warnings=0 --fix .",
