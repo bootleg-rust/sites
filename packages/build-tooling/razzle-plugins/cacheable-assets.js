@@ -36,7 +36,7 @@ function modifyWebpackConfig({
   options: { pluginOptions, razzleOptions, webpackOptions },
   paths,
 }) {
-  // TODO: allow passing in extra file categorizers as `pluginOptions`
+  // TODO: allow passing in extra file categorizers with `pluginOptions`
   const fileCategorizers = [
     {
       test: webpackOptions.urlLoaderTest,
@@ -127,7 +127,7 @@ function modifyWebpackConfig({
 
   if (target === "node") {
     // NOTE: adding multiple DefinePlugin's causes issues
-    // so we have find and edit the existing one.
+    // so we have to find and edit the existing one.
     const definePlugin = webpackConfig.plugins.find(
       (p) => p.constructor.name === "DefinePlugin",
     );

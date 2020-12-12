@@ -10,7 +10,7 @@ const siblingPackages = [
 
 const {
   standardPlugin,
-  babelTypescriptPlugin,
+  siblingPackagesPlugin,
   modifyEntryPointsPlugin,
   bundleAnalysisPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
@@ -26,7 +26,7 @@ module.exports = {
     },
     { object: standardPlugin },
     {
-      object: babelTypescriptPlugin,
+      object: siblingPackagesPlugin,
       options: {
         include: siblingPackages.map((packageName) =>
           path.join(__dirname, "..", packageName),
