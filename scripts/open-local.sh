@@ -2,11 +2,14 @@
 
 set -euo pipefail
 
+# web-rust-lang
+open http://localhost:4000/
+
 # web-crates-io
 open http://localhost:4001/
-# web-api-proxy
-open http://localhost:4003/api/v1/summary
-# web-rust-lang
-open http://localhost:4005/
+
 # web-components
-open http://localhost:4040
+open http://localhost:4050
+
+# web-api-proxy
+open http://localhost:8000/api/v1/summary

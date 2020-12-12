@@ -27,7 +27,7 @@ export const SiteReferences = new ConfigProvider({
       devDefault: "localhost",
       default: "api.dev.bootleg-crates.io",
     }),
-    API_URL_PORT: str({ devDefault: "4003", default: "" }),
+    API_URL_PORT: str({ devDefault: "8000", default: "" }),
     API_URL_BASEPATH: str({ devDefault: "", default: "" }),
   },
   derivedValues: ({ env }) => {
