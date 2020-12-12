@@ -29,6 +29,26 @@ function webpackLoaderOutputContainsHash(webpackOutputFilename, file) {
   return containsHash;
 }
 
+function modifyWebpackOptions({
+  env: { target, dev },
+  webpackObject,
+  options: { pluginOptions, razzleOptions, webpackOptions },
+  paths,
+}) {
+  const fileName = path.join(paths.appBuild, "cacheable-assets.json");
+
+  // webpackOptions.babelRule = {};
+
+  if (target === "node") {
+    // prettier-ignore
+    const key = "process.env.RAZZLE_PLUGIN_CACHEABLE_ASSETS";
+    const val = JSON.stringify(fileName);
+
+    webpackOptions.definePluginOptions[key] = val;
+  }
+  return webpackOptions;
+}
+
 function modifyWebpackConfig({
   env: { target, dev },
   webpackConfig,
@@ -125,21 +145,11 @@ function modifyWebpackConfig({
     webpackConfig.plugins.push(assetPlugin);
   }
 
-  if (target === "node") {
-    // NOTE: adding multiple DefinePlugin's causes issues
-    // so we have to find and edit the existing one.
-    const definePlugin = webpackConfig.plugins.find(
-      (p) => p.constructor.name === "DefinePlugin",
-    );
-    definePlugin.definitions[
-      "process.env.RAZZLE_PLUGIN_CACHEABLE_ASSETS"
-    ] = JSON.stringify(fileName);
-  }
-
   return webpackConfig;
 }
 
 const cacheableAssetsPlugin = {
+  modifyWebpackOptions,
   modifyWebpackConfig,
 };
 
