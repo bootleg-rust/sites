@@ -10,6 +10,23 @@ const defaultOptions = {
   include: [],
 };
 
+function modifyPaths({
+  webpackObject,
+  options: { pluginOptions, razzleOptions },
+  paths,
+}) {
+  const options = { ...defaultOptions, ...pluginOptions };
+
+  // const appendNodePathStr = options.include.join(path.delimiter);
+  // console.log(paths.nodePaths);
+  // paths.nodePaths = [paths.nodePaths, appendNodePathStr]
+  //   .filter(Boolean)
+  //   .join(path.delimiter);
+  // console.log(paths.nodePaths);
+
+  return paths;
+}
+
 function modifyWebpackConfig({
   env: { target, dev },
   webpackConfig,
@@ -29,13 +46,6 @@ function modifyWebpackConfig({
   //   razzleOptions,
   //   paths,
   // });
-
-  // const appendNodePathStr = options.include.join(path.delimiter);
-  // console.log(paths.nodePaths);
-  // paths.nodePaths = [paths.nodePaths, appendNodePathStr]
-  //   .filter(Boolean)
-  //   .join(path.delimiter);
-  // console.log(paths.nodePaths);
 
   // console.log(webpackConfig.module.rules[3]);
   // console.log(webpackConfig.module.rules[4]);
@@ -68,6 +78,7 @@ function modifyWebpackConfig({
 }
 
 const siblingPackagesPlugin = {
+  modifyPaths,
   modifyWebpackConfig,
 };
 
