@@ -9,15 +9,18 @@ const siblingPackages = [
 ];
 
 const {
-  standardPlugin,
+  externalsPlugin,
   siblingPackagesPlugin,
   bundleAnalysisPlugin,
   cacheableAssetsPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
 module.exports = {
+  options: {
+    useReactRefresh: true,
+  },
   plugins: [
-    { object: standardPlugin },
+    { object: externalsPlugin },
     {
       object: siblingPackagesPlugin,
       options: {
