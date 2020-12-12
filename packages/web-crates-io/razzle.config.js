@@ -10,7 +10,7 @@ const siblingPackages = [
 
 const {
   standardPlugin,
-  babelTypescriptPlugin,
+  siblingPackagesPlugin,
   bundleAnalysisPlugin,
   reactSvgPlugin,
   cacheableAssetsPlugin,
@@ -22,7 +22,7 @@ module.exports = {
     { object: standardPlugin },
     { object: reactSvgPlugin },
     {
-      object: babelTypescriptPlugin,
+      object: siblingPackagesPlugin,
       options: {
         include: siblingPackages.map((packageName) =>
           path.join(__dirname, "..", packageName),
