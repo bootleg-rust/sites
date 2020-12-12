@@ -3,7 +3,7 @@ const { babelTypescriptPlugin } = require("./typescript");
 const { modifyEntryPointsPlugin } = require("./modify-entry");
 const { bundleAnalysisPlugin } = require("./bundle-analysis");
 const { reactSvgPlugin } = require("./react-svg");
-const { staticAssetsJsonPlugin } = require("./static-assets-json");
+const { cacheableAssetsPlugin } = require("./cacheable-assets");
 
 module.exports = {
   standardPlugin,
@@ -11,5 +11,5 @@ module.exports = {
   babelTypescriptPlugin,
   bundleAnalysisPlugin,
   reactSvgPlugin,
-  staticAssetsJsonPlugin,
+  cacheableAssetsPlugin,
 };

@@ -1,3 +1,4 @@
+import fs from "fs";
 import Koa from "koa";
 import conditional from "koa-conditional-get";
 import etag from "koa-etag";
@@ -17,6 +18,13 @@ import {
 } from "./src/server";
 
 export * from "./src/server";
+
+function requireJson(path: string) {
+  if (!path) throw new Error(`Unable to load file ${path}`);
+  const fileBuffer = fs.readFileSync(path);
+  const jsonData = JSON.parse(fileBuffer.toString()) as any;
+  return jsonData;
+}
 
 export function createKoaApp({
   routers,
@@ -58,18 +66,36 @@ export function createKoaApp({
   app.use(etag());
   app.use(compress({ threshold: 2048 }));
 
-  const cacheableFiles = razzleCacheableFiles();
+  const razzlePublicDir = process.env.RAZZLE_PUBLIC_DIR;
+  // prettier-ignore
+  const razzlePluginCacheableAssets = process.env.RAZZLE_PLUGIN_CACHEABLE_ASSETS;
+
+  if (!razzlePublicDir) {
+    throw new Error(
+      "process.env.RAZZLE_PUBLIC_DIR not valid: " + razzlePublicDir,
+    );
+  }
+
+  if (!razzlePluginCacheableAssets) {
+    throw new Error(
+      "process.env.RAZZLE_PLUGIN_CACHEABLE_ASSETS not valid: " +
+        razzlePluginCacheableAssets,
+    );
+  }
+
+  const cacheableAssets = requireJson(razzlePluginCacheableAssets);
 
   // Serve static files located under `process.env.RAZZLE_PUBLIC_DIR`
   const assetCaching = assetCacheControl || defaultAssetCacheControl;
   app.use(
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    serve(process.env.RAZZLE_PUBLIC_DIR!, {
+    serve(razzlePublicDir, {
       setHeaders(res, path) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        const filename = path.replace(process.env.RAZZLE_PUBLIC_DIR!, "");
-        const hasHashInFilename = cacheableFiles.includes(filename);
-        if (hasHashInFilename) {
+        const filename = path
+          .slice(path.indexOf(razzlePublicDir))
+          .replace(razzlePublicDir, "");
+
+        if (cacheableAssets.immutable.includes(filename)) {
+          // console.log("CACHE immutable", filename);
           const c = assetCaching.hashed;
           res.setHeader(
             "Cache-Control",
@@ -77,6 +103,21 @@ export function createKoaApp({
           );
           return;
         }
+
+        if (cacheableAssets.mutable.includes(filename)) {
+          // console.log("CACHE mutable", filename);
+          const c = assetCaching.notHashed;
+          res.setHeader(
+            "Cache-Control",
+            `max-age=${c.maxAge},s-maxage=${c.sharedMaxAge},public`,
+          );
+          return;
+        }
+        // console.log("CACHE defaults", filename);
+        // TODO: add more options to assetCaching'
+        // - assetCaching.immutableAssets
+        // - assetCaching.mutableAssets
+        // - assetCaching.fallback
         const c = assetCaching.notHashed;
         res.setHeader(
           "Cache-Control",
@@ -97,35 +138,6 @@ export function createKoaApp({
   }
 
   return app;
-}
-
-function razzleCacheableFiles() {
-  /* eslint-disable unicorn/no-reduce */
-  // TODO: this doesn't work for all assets (png/txt etc)
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const chunks = require(process.env.RAZZLE_CHUNKS_MANIFEST!);
-  const filesByType = Object.entries(chunks).reduce(
-    (chunkAcc: any, [, chunk]) => {
-      const types = Object.entries(chunk as any).reduce(
-        (typeAcc, [fileType, files]) => {
-          return {
-            [fileType]: chunkAcc[fileType]
-              ? [...chunkAcc[fileType], ...(files as string[])]
-              : files,
-          };
-        },
-        {},
-      );
-      return types;
-    },
-    {},
-  );
-  const files = Object.entries(filesByType).reduce(
-    (acc: any[], [, files]) => [...acc, ...(files as string[])],
-    [],
-  );
-  return files;
-  /* eslint-enable unicorn/no-reduce */
 }
 
 export function createStaticIndexRouter(cfg: ServeIndexTemplateConfig) {

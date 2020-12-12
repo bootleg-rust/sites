@@ -12,7 +12,7 @@ const {
   standardPlugin,
   babelTypescriptPlugin,
   bundleAnalysisPlugin,
-  staticAssetsJsonPlugin,
+  cacheableAssetsPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
         ),
       },
     },
-    { object: staticAssetsJsonPlugin },
+    { object: cacheableAssetsPlugin },
     { object: bundleAnalysisPlugin },
   ],
 };
