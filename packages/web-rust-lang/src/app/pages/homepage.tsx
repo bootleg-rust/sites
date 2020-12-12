@@ -21,6 +21,13 @@ import {
   SectionHeader,
 } from "../sections";
 
+import cliSvg from "./cli.svg";
+import webassemblySvg from "./webassembly.svg";
+import networkingSvg from "./networking.svg";
+import embeddedSvg from "./embedded.svg";
+import npmLogoSvg from "./npm-logo.svg";
+import yelpLogoPng from "./yelp-logo.png";
+
 export function Homepage() {
   return (
     <>
@@ -205,7 +212,7 @@ function SectionBuildInRust() {
       <Div>
         <Div>
           <Div>
-            <img src="/static/images/cli.svg" alt="terminal" />
+            <img src={cliSvg} alt="terminal" />
           </Div>
           <Div>
             <H3>Command Line</H3>
@@ -220,10 +227,7 @@ function SectionBuildInRust() {
 
         <Div>
           <Div>
-            <img
-              src="/static/images/webassembly.svg"
-              alt="gear with puzzle piece elements"
-            />
+            <img src={webassemblySvg} alt="gear with puzzle piece elements" />
           </Div>
           <Div>
             <H3>WebAssembly</H3>
@@ -237,7 +241,7 @@ function SectionBuildInRust() {
 
         <Div>
           <Div>
-            <img src="/static/images/networking.svg" alt="a cloud with nodes" />
+            <img src={networkingSvg} alt="a cloud with nodes" />
           </Div>
           <Div>
             <H3>Networking</H3>
@@ -251,10 +255,7 @@ function SectionBuildInRust() {
 
         <Div>
           <Div>
-            <img
-              src="/static/images/embedded.svg"
-              alt="an embedded device chip"
-            />
+            <img src={embeddedSvg} alt="an embedded device chip" />
           </Div>
           <Div>
             <H3>Embedded</H3>
@@ -310,7 +311,7 @@ function SectionInProduction() {
           </Div>
           <Div>
             <Anchor href="https://www.npmjs.com/">
-              <img src="/static/images/user-logos/npm.svg" alt="npm Logo" />
+              <img src={npmLogoSvg} alt="npm Logo" />
             </Anchor>
           </Div>
         </Div>
@@ -318,7 +319,7 @@ function SectionInProduction() {
         <Div>
           <Div>
             <Anchor href="https://www.youtube.com/watch?v=u6ZbF4apABk">
-              <img src="/static/images/user-logos/yelp.png" alt="Yelp Logo" />
+              <img src={yelpLogoPng} alt="Yelp Logo" />
             </Anchor>
           </Div>
           <Div>
