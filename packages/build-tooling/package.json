@@ -4,6 +4,9 @@
   "bin": {
     "build-tooling-cli": "./cli/cli.js"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
@@ -55,6 +58,7 @@
     "webpack-manifest-plugin": "^3.0.0"
   },
   "devDependencies": {
+    "@jest/globals": "^26.6.2",
     "@types/jest": "^26.0.7"
   }
 }
