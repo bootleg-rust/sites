@@ -11,8 +11,8 @@ const siblingPackages = [
 const {
   externalsPlugin,
   siblingPackagesPlugin,
-  bundleAnalysisPlugin,
   cacheableAssetsPlugin,
+  bundleAnalysisPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
 module.exports = {

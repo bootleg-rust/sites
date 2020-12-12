@@ -12,6 +12,7 @@ const {
   externalsPlugin,
   siblingPackagesPlugin,
   modifyEntryPointsPlugin,
+  cacheableAssetsPlugin,
   bundleAnalysisPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
@@ -36,6 +37,7 @@ module.exports = {
         ),
       },
     },
+    { object: cacheableAssetsPlugin },
     { object: bundleAnalysisPlugin },
   ],
 };
