@@ -29,7 +29,7 @@ function Header() {
         <Span block>🔍</Span>
       </HeaderSearch>
       <Div justify="center" alignItems="center">
-        <ProfileImage src={"http://github.com/pseudo-su.png"} alt="gravatar" />
+        <ProfileImage src={"https://github.com/pseudo-su.png"} alt="gravatar" />
       </Div>
     </Div>
   );
