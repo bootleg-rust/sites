@@ -1,3 +1,3 @@
 const JestConfig = require("@bootleg-rust/build-tooling/jest");
 
-module.exports = JestConfig({ rootDir: "../.." });
+module.exports = JestConfig({});

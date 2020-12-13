@@ -5,8 +5,10 @@
   "pnpmVersion": "4.14.4",
 
   "pnpmOptions": {
-    // "pnpmStore": "local",
-    "strictPeerDependencies": true,
+    "pnpmStore": "local",
+
+    // TODO: enable strict peer deps
+    "strictPeerDependencies": false,
 
     /**
      * Configures the strategy used to select versions during installation.
@@ -93,6 +95,12 @@
 
   "projects": [
     {
+      "packageName": "@bootleg-rust/sites",
+      "projectFolder": ".",
+      "reviewCategory": "tools",
+      "cyclicDependencyProjects": []
+    },
+    {
       "packageName": "@bootleg-rust/build-tooling",
       "projectFolder": "packages/build-tooling",
       "reviewCategory": "tools",
@@ -151,6 +159,6 @@
       "projectFolder": "packages/web-rust-lang",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
-    },
+    }
   ]
 }
