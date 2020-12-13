@@ -9,3 +9,4 @@ Dockerfile
 .git
 .cache
 *.md
+/common/temp

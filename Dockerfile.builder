@@ -7,7 +7,7 @@ WORKDIR /app
 
 RUN apk add rsync
 
-COPY package.json lerna.json yarn.lock /app/
+COPY package.json rush.json /app/
 
 # shared tooling libraries
 COPY tsconfig.json /app/
@@ -26,10 +26,11 @@ COPY packages/web-crates-io/package.json /app/packages/web-crates-io/
 COPY packages/web-rust-lang/package.json /app/packages/web-rust-lang/
 
 # Yarn config
-COPY packages-cache/ /app/packages-cache/
-COPY .yarnrc /app/.yarnrc
+COPY common /app/common
 
-RUN yarn --frozen-lockfile --offline
+# TODO: switch to install instead of update
+# RUN rush install
+RUN node ./common/scripts/install-run-rush.js install
 
 # Only build the server project with the "builder" as base
 
