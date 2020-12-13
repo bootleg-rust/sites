@@ -8,7 +8,15 @@
    */
   "commands": [
     {
-      "name": "package",
+      "name": "dev",
+      "commandKind": "bulk",
+      "summary": "Start all projects in development mode (rushx dev)",
+      "enableParallelism": true,
+      "ignoreDependencyOrder": true,
+      "ignoreMissingScript": true
+    },
+    {
+      "name": "test",
       "commandKind": "bulk",
       "summary": "Create package artifacts (rushx package)",
       "enableParallelism": true,
@@ -16,7 +24,15 @@
       "ignoreMissingScript": true
     },
     {
-      "name": "test",
+      "name": "verify",
+      "commandKind": "bulk",
+      "summary": "Verify all projects (rushx verify)",
+      "enableParallelism": true,
+      "ignoreDependencyOrder": true,
+      "ignoreMissingScript": true
+    },
+    {
+      "name": "package",
       "commandKind": "bulk",
       "summary": "Create package artifacts (rushx package)",
       "enableParallelism": true,

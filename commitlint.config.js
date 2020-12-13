@@ -31,7 +31,7 @@ module.exports = {
         "test",
         "migration",
         "type",
-        "lint",
+        "verify",
       ],
     ],
   },
