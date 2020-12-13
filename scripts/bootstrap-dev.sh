@@ -8,6 +8,4 @@ find . -name "node_modules" -type d -prune -exec rm -rf '{}' +;
 
 echo "INFO: finished removing node_modules";
 
-yarn;
-
-yarn lerna-bootstrap;
+# TODO: install with rush
