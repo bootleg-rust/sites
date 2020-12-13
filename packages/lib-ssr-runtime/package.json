@@ -6,8 +6,8 @@
   "author": "pseudo-su",
   "main": "universal.tsx",
   "scripts": {
-    "lint": "eslint --max-warnings=0 .",
-    "lint:fix": "eslint --max-warnings=0 --fix .",
+    "verify": "eslint --max-warnings=0 .",
+    "verify:fix": "eslint --max-warnings=0 --fix .",
     "test": "jest"
   },
   "dependencies": {
