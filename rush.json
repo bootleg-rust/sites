@@ -1,0 +1,156 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+
+  "rushVersion": "5.35.2",
+  "pnpmVersion": "4.14.4",
+
+  "pnpmOptions": {
+    // "pnpmStore": "local",
+    "strictPeerDependencies": true,
+
+    /**
+     * Configures the strategy used to select versions during installation.
+     *
+     * This feature requires PNPM version 3.1 or newer.  It corresponds to the "--resolution-strategy" command-line
+     * option for PNPM.  Possible values are "fast" and "fewer-dependencies".  PNPM's default is "fast", but this may
+     * be incompatible with certain packages, for example the "@types" packages from DefinitelyTyped.  Rush's default
+     * is "fewer-dependencies", which causes PNPM to avoid installing a newer version if an already installed version
+     * can be reused; this is more similar to NPM's algorithm.
+     *
+     * After modifying this field, it's recommended to run "rush update --full" so that the package manager
+     * will recalculate all version selections.
+     */
+    // "resolutionStrategy": "fast",
+
+    "preventManualShrinkwrapChanges": true
+
+    /**
+     * If true, then `rush install` will use the PNPM workspaces feature to perform the
+     * install.
+     *
+     * This feature uses PNPM to peform the entire monorepo install. When using workspaces, Rush will
+     * generate a "pnpm-workspace.yaml" file referencing all local projects to install. Rush will
+     * also generate a "pnpmfile.js" which is used to provide preferred versions support. When install
+     * is run, this pnpmfile will be used to replace dependency version ranges with a smaller subset
+     * of the original range. If the preferred version is not fully a subset of the original version
+     * range, it will be left as-is. After this, the pnpmfile.js provided in the repository (if one
+     * exists) will be called to further modify package dependencies.
+     *
+     * This option is experimental. The default value is false.
+     */
+    // "useWorkspaces": true
+  },
+
+  "nodeSupportedVersionRange": ">=12.13.0 <13.0.0",
+  // "suppressNodeLtsWarning": false,
+
+  /**
+   * If you would like the version specifiers for your dependencies to be consistent, then
+   * uncomment this line. This is effectively similar to running "rush check" before any
+   * of the following commands:
+   *
+   *   rush install, rush update, rush link, rush version, rush publish
+   *
+   * In some cases you may want this turned on, but need to allow certain packages to use a different
+   * version. In those cases, you will need to add an entry to the "allowedAlternativeVersions"
+   * section of the common-versions.json.
+   */
+  "ensureConsistentVersions": true,
+
+  "allowMostlyStandardPackageNames": false,
+
+  "approvedPackagesPolicy": {
+    "reviewCategories": ["production", "tools", "prototypes"],
+    "ignoredNpmScopes": ["@types"]
+  },
+
+  "gitPolicy": {
+    "versionBumpCommitMessage": "Applying package updates. [skip-ci]"
+  },
+
+  "repository": {
+    "url": "https://github.com/bootleg-rust/sites",
+    "defaultBranch": "master",
+    "defaultRemote": "origin"
+  },
+
+  "eventHooks": {
+    "preRushInstall": [],
+    "postRushInstall": [],
+    "preRushBuild": [],
+    "postRushBuild": []
+  },
+
+  "variants": [],
+  "telemetryEnabled": true,
+
+  /**
+   * Allows creation of hotfix changes. This feature is experimental so it is disabled by default.
+   * If this is set, 'rush change' only allows a 'hotfix' change type to be specified. This change type
+   * will be used when publishing subsequent changes from the monorepo.
+   */
+  // "hotfixChangeEnabled": false,
+
+  "projects": [
+    {
+      "packageName": "@bootleg-rust/build-tooling",
+      "projectFolder": "packages/build-tooling",
+      "reviewCategory": "tools",
+      "cyclicDependencyProjects": []
+    },
+    {
+      "packageName": "@bootleg-rust/lib-config",
+      "projectFolder": "packages/lib-config",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
+    {
+      "packageName": "@bootleg-rust/lib-design-system",
+      "projectFolder": "packages/lib-design-system",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
+    {
+      "packageName": "@bootleg-rust/lib-features",
+      "projectFolder": "packages/lib-features",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
+    {
+      "packageName": "@bootleg-rust/lib-ssr-runtime",
+      "projectFolder": "packages/lib-ssr-runtime",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
+    {
+      "packageName": "@bootleg-rust/lib-ssr-toolbox",
+      "projectFolder": "packages/lib-ssr-toolbox",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
+    {
+      "packageName": "@bootleg-rust/web-api-proxy",
+      "projectFolder": "packages/web-api-proxy",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
+    {
+      "packageName": "@bootleg-rust/web-components",
+      "projectFolder": "packages/web-components",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
+    {
+      "packageName": "@bootleg-rust/web-crates-io",
+      "projectFolder": "packages/web-crates-io",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
+    {
+      "packageName": "@bootleg-rust/web-rust-lang",
+      "projectFolder": "packages/web-rust-lang",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
+  ]
+}
