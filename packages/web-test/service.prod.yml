@@ -1,8 +1,0 @@
-spec:
-  template:
-    spec:
-      containers:
-        - env:
-            # Basic
-            - name: ENV
-              value: ${env:ENV}
