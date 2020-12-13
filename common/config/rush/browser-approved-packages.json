@@ -56,7 +56,7 @@
     },
     {
       "name": "@bootleg-rust/build-tooling",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "@bootleg-rust/lib-config",
@@ -79,11 +79,23 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "@commitlint/cli",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@commitlint/config-conventional",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "@jest/globals",
       "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "@octokit/rest",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@sfomin/for-each-package",
       "allowedCategories": [ "tools" ]
     },
     {
@@ -171,6 +183,10 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "concurrently",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "core-js",
       "allowedCategories": [ "production" ]
     },
@@ -184,7 +200,7 @@
     },
     {
       "name": "eslint",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "eslint-config-prettier",
@@ -235,6 +251,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "husky",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "identity-obj-proxy",
       "allowedCategories": [ "tools" ]
     },
@@ -244,7 +264,7 @@
     },
     {
       "name": "jest",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "jest-cli",
@@ -295,6 +315,14 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "lint-staged",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "lodash",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "lodash.merge",
       "allowedCategories": [ "tools" ]
     },
@@ -304,10 +332,14 @@
     },
     {
       "name": "npm-run-all",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "null-loader",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "prettier",
       "allowedCategories": [ "tools" ]
     },
     {
@@ -371,6 +403,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "sort-package-json",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "source-map-support",
       "allowedCategories": [ "production" ]
     },
@@ -396,7 +432,7 @@
     },
     {
       "name": "typescript",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "webpack-bundle-analyzer",
