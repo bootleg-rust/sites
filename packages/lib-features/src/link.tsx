@@ -8,7 +8,7 @@ type LinkAnchorProps = {
 } & React.ComponentProps<typeof Anchor>;
 
 const SiteAnchor = React.forwardRef<HTMLAnchorElement, LinkAnchorProps>(
-  function _SiteAnchor(props, ref) {
+  function _SiteAnchor(props: any, ref: any) {
     const { navigate, shouldNavigate, ...passthrough } = props;
     return (
       <Anchor

@@ -8,6 +8,7 @@
   "scripts": {
     "verify": "eslint --max-warnings=0 .",
     "verify:fix": "eslint --max-warnings=0 --fix .",
+    "build": "echo \"Nothing to build\"",
     "test": "jest"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
     "@jest/globals": "^26.6.2",
+    "@types/react": "^16.13.1",
     "@types/react-router-dom": "^5.1.4",
     "eslint": "^7.15.0",
     "typescript": "~3.8.3"

@@ -16,7 +16,7 @@ $ gcloud --version
 ## Install node dependencies
 
 ```sh
-$ yarn install
+$ rush update;
 ```
 
 A script to open all [./SITES.md](./SITES.md) at once is [./open-local.sh](../open-local.sh)

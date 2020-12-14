@@ -18,6 +18,7 @@ The following steps are if you want to build, publish and/or deploy all sites at
 ### Package
 
 ```sh
+# TODO: Move building the base image into the build-tooling package and wire up with rush
 docker-compose -f docker-compose.builder.yml build builder-base
 docker-compose -f docker-compose.sites.yml build
 ```
