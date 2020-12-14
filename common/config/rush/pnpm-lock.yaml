@@ -38,6 +38,7 @@ dependencies:
   '@testing-library/user-event': 7.2.1_@testing-library+dom@7.29.0
   '@tusbar/cache-control': 0.4.0
   '@types/combined-stream': 1.0.2
+  '@types/history': 4.7.8
   '@types/jest': 26.0.19
   '@types/koa': 2.11.6
   '@types/koa-compress': 4.0.1
@@ -3081,6 +3082,16 @@ packages:
       globals: 11.12.0
       lodash: 4.17.20
     dev: false
+    peerDependencies:
+      supports-color: '*'
+    resolution:
+      integrity: sha512-6aEtf0IeRgbYWzta29lePeYSk+YAFIC3kyqESeft8o5CkFlYIMX+EQDDWEiAQ9LHOA3d0oHdgrSsID/CKqXJlg==
+  /@babel/traverse/7.12.10_supports-color@5.5.0:
+    dependencies:
+      debug: 4.3.1_supports-color@5.5.0
+    dev: false
+    peerDependencies:
+      supports-color: '*'
     resolution:
       integrity: sha512-6aEtf0IeRgbYWzta29lePeYSk+YAFIC3kyqESeft8o5CkFlYIMX+EQDDWEiAQ9LHOA3d0oHdgrSsID/CKqXJlg==
   /@babel/types/7.12.10:
@@ -8331,6 +8342,20 @@ packages:
   /debug/4.3.1:
     dependencies:
       ms: 2.1.2
+    dev: false
+    engines:
+      node: '>=6.0'
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    resolution:
+      integrity: sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
+  /debug/4.3.1_supports-color@5.5.0:
+    dependencies:
+      ms: 2.1.2
+      supports-color: 5.5.0
     dev: false
     engines:
       node: '>=6.0'
@@ -18426,7 +18451,7 @@ packages:
   /styled-components/5.2.1_e9c460b9a74d742899d58632cd56c5d4:
     dependencies:
       '@babel/helper-module-imports': 7.12.5
-      '@babel/traverse': 7.12.10
+      '@babel/traverse': 7.12.10_supports-color@5.5.0
       '@emotion/is-prop-valid': 0.8.8
       '@emotion/stylis': 0.8.5
       '@emotion/unitless': 0.7.5
@@ -20424,21 +20449,25 @@ packages:
   'file:projects/lib-design-system.tgz':
     dependencies:
       '@jest/globals': 26.6.2
+      '@types/react': 16.14.2
       '@types/styled-components': 5.1.5
       eslint: 7.15.0
+      npm-run-all: 4.1.5
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
       styled-components: 5.2.1_e9c460b9a74d742899d58632cd56c5d4
+      stylelint: 13.8.0
       typescript: 3.8.3
     dev: false
     name: '@rush-temp/lib-design-system'
     resolution:
-      integrity: sha512-bL15cI6wwFmV4+nu/xDof9rPgbb3vXj1sZp5kgANn9Z1da5MixsCz0KQ4qXTmXAjadIwArrbbRoQOMZ29je8Zg==
+      integrity: sha512-NLsKxuyWTGZBLQTpZGdWh09xiLwn7YtKyHyB+HtxQO0uhcehSkT6H0LJPn4YLckAA/zFlpcK58qXIdj9LYJ5KQ==
       tarball: 'file:projects/lib-design-system.tgz'
     version: 0.0.0
   'file:projects/lib-features.tgz':
     dependencies:
       '@jest/globals': 26.6.2
+      '@types/react': 16.14.2
       '@types/react-router-dom': 5.1.6
       eslint: 7.15.0
       react: 16.14.0
@@ -20448,7 +20477,7 @@ packages:
     dev: false
     name: '@rush-temp/lib-features'
     resolution:
-      integrity: sha512-O49Ck9nrrJrxJyW8ApzIHOjiERrEFwJ1q52xpG8mDEWO5P5TORklzECOUpUkd22w4+vbQE6yPYAnULF84f9ZHw==
+      integrity: sha512-qoVwhKeR63sBbfjeSkITPHYVgn521y1moBepPGcrCTkyySaF/wsTFmEwkP+ZeU/hr/9bf77Hhnvle2W5uRkFxQ==
       tarball: 'file:projects/lib-features.tgz'
     version: 0.0.0
   'file:projects/lib-ssr-runtime.tgz_ce6257d54d1a9bcaffbf936797f325a3':
@@ -20464,11 +20493,14 @@ packages:
       '@types/koa-logger': 3.1.1
       '@types/koa-router': 7.4.1
       '@types/koa-static': 4.0.1
+      '@types/react': 16.14.2
+      '@types/react-dom': 16.9.10
       '@types/react-router': 5.1.8
       '@types/react-router-dom': 5.1.6
       '@types/serialize-javascript': 4.0.0
       '@types/styled-components': 5.1.5
       combined-stream: 1.0.8
+      eslint: 7.15.0
       koa: 2.13.0
       koa-compress: 5.0.1
       koa-conditional-get: 2.0.0
@@ -20496,15 +20528,18 @@ packages:
       babel-preset-razzle: '*'
       razzle-dev-utils: '*'
     resolution:
-      integrity: sha512-SJvTicg3hSTdg8nfQSsqfCKlThPvMChTAxdC53YqfWsZxcwhdilHj0FsWpxx8WH52w/MwcJIX62bLuWkPjlM6w==
+      integrity: sha512-RkIdPnk2QFrEeR2OSyFLgF35Xs7vruBYoXhJce8hAiEuNrhIOigogqR/opcqFWb++CkpMNzkzvLBJI0J4JfwdA==
       tarball: 'file:projects/lib-ssr-runtime.tgz'
     version: 0.0.0
   'file:projects/lib-ssr-toolbox.tgz_ce6257d54d1a9bcaffbf936797f325a3':
     dependencies:
       '@jest/globals': 26.6.2
+      '@types/history': 4.7.8
+      '@types/react': 16.14.2
       '@types/react-router': 5.1.8
       '@types/react-router-dom': 5.1.6
       '@types/styled-components': 5.1.5
+      eslint: 7.15.0
       history: 4.10.1
       razzle: 4.0.0-canary.8_c0b0bfb56014f9f7426e6fdff9b044e2
       react: 16.14.0
@@ -20524,19 +20559,22 @@ packages:
       babel-preset-razzle: '*'
       razzle-dev-utils: '*'
     resolution:
-      integrity: sha512-psmOm4KVO904SVJj9Zo8Py8NZ+zI8hP0NWVH0uUxC80JhQB5FjAejXgPd3zO1Xrp9ZbR4vbvOZkhZ0uPUb8Cng==
+      integrity: sha512-vuJuQ2NkhjsM/daTwFy77HLaTT80IasN9Z5RhzOiTw70Ck1hhHtJQilp0pQzqvxpwAZJB103aPZfSeY5MA2j0A==
       tarball: 'file:projects/lib-ssr-toolbox.tgz'
     version: 0.0.0
   'file:projects/web-api-proxy.tgz_ce6257d54d1a9bcaffbf936797f325a3':
     dependencies:
       '@jest/globals': 26.6.2
+      '@types/react': 16.14.2
       core-js: 3.8.1
       eslint: 7.15.0
       koa: 2.13.0
       koa-proxies: 0.11.0_koa@2.13.0
       koa-router: 7.4.0
+      npm-run-all: 4.1.5
       razzle: 4.0.0-canary.8_c0b0bfb56014f9f7426e6fdff9b044e2
       source-map-support: 0.5.19
+      stylelint: 13.8.0
       typescript: 3.8.3
     dev: false
     id: 'file:projects/web-api-proxy.tgz'
@@ -20545,7 +20583,7 @@ packages:
       babel-preset-razzle: '*'
       razzle-dev-utils: '*'
     resolution:
-      integrity: sha512-IiOAKRjQMkqf2RnwtnR1fON5J1Gaf/UtoGECALP1d6sYKB+zpJZsmz6pXjrA95Z7agfjSAUcy07FD3U3GFL4IA==
+      integrity: sha512-Xcygolcz9p/if2j2amsuzGPJbbLNThujkp2wK7Q70cGtP40meDBRpQTeEDN0gy60R6Zfy/O2cFChVdw+3Df5tg==
       tarball: 'file:projects/web-api-proxy.tgz'
     version: 0.0.0
   'file:projects/web-components.tgz_9cf04b4724be20abc7e48e1f2c4f4c74':
@@ -20574,6 +20612,7 @@ packages:
       react-router-dom: 5.2.0_react@16.14.0
       react-scripts: 4.0.1_typescript@3.8.3
       source-map-support: 0.5.19
+      stylelint: 13.8.0
       typescript: 3.8.3
     dev: false
     id: 'file:projects/web-components.tgz'
@@ -20582,7 +20621,7 @@ packages:
       '@babel/core': '*'
       react-dom: '*'
     resolution:
-      integrity: sha512-/3jZij/YaMoJ+/OS0Wmx2qx9sGav+T5w6+3pSwrYV6hFdQ4XSNB9F8ftf1TB9wIvmZzZE8jv5NdKbwWGBcgwXQ==
+      integrity: sha512-DbyaJBMMUlfrhMIgEc6O/+2tuC4QlU4R36u4RyF/ncC9tHfMDYvhtEkIa7CRfSgPcNWYKbreHHiingqA02wzag==
       tarball: 'file:projects/web-components.tgz'
     version: 0.0.0
   'file:projects/web-crates-io.tgz_ce6257d54d1a9bcaffbf936797f325a3':
@@ -20601,6 +20640,7 @@ packages:
       isomorphic-fetch: 2.2.1
       koa-router: 7.4.0
       md5: 2.3.0
+      npm-run-all: 4.1.5
       query-string: 6.13.7
       razzle: 4.0.0-canary.8_c0b0bfb56014f9f7426e6fdff9b044e2
       razzle-plugin-scss: 4.0.0-canary.8_razzle-dev-utils@4.0.0-canary.8
@@ -20612,6 +20652,7 @@ packages:
       regenerator-runtime: 0.13.7
       source-map-support: 0.5.19
       styled-components: 5.2.1_e9c460b9a74d742899d58632cd56c5d4
+      stylelint: 13.8.0
       typescript: 3.8.3
     dev: false
     id: 'file:projects/web-crates-io.tgz'
@@ -20620,7 +20661,7 @@ packages:
       babel-preset-razzle: '*'
       razzle-dev-utils: '*'
     resolution:
-      integrity: sha512-6tNqGDhYXwUBLC3R1XKkQC/A3imVY6GR6SK1/7vbIktGQ2HpJvlV0+UV4dkPWRROug5uXsz7RhfWMLmmRgcK6w==
+      integrity: sha512-zO5DsHwshv8rIbW6K04pl9MRav3DJ6JfC9bLcylB2JM1ogz1ELl/6DLYrLlOqoUHDFn09bfQ6txZHfv2WOU7Eg==
       tarball: 'file:projects/web-crates-io.tgz'
     version: 0.0.0
   'file:projects/web-rust-lang.tgz_ce6257d54d1a9bcaffbf936797f325a3':
@@ -20640,6 +20681,7 @@ packages:
       isomorphic-fetch: 2.2.1
       koa-router: 7.4.0
       md5: 2.3.0
+      npm-run-all: 4.1.5
       query-string: 6.13.7
       razzle: 4.0.0-canary.8_c0b0bfb56014f9f7426e6fdff9b044e2
       razzle-plugin-scss: 4.0.0-canary.8_razzle-dev-utils@4.0.0-canary.8
@@ -20651,6 +20693,7 @@ packages:
       regenerator-runtime: 0.13.7
       source-map-support: 0.5.19
       styled-components: 5.2.1_e9c460b9a74d742899d58632cd56c5d4
+      stylelint: 13.8.0
       typescript: 3.8.3
     dev: false
     id: 'file:projects/web-rust-lang.tgz'
@@ -20659,9 +20702,10 @@ packages:
       babel-preset-razzle: '*'
       razzle-dev-utils: '*'
     resolution:
-      integrity: sha512-og2UyDQuiJTXhyQIacKRLgVZY2xbzMV6dAfWcYw2bBYzmEdraybutjYCNp6q9DSovJ4ELSk/DJYaDeQTSHkjHQ==
+      integrity: sha512-KiFU5XCmGMw7zB3zsv7EJSPRRTutsJdA0XR2xl6nJdzNy0kjFyTidE3bC7mhHCbJbnkY+QzRNwecpF1pp5YcRw==
       tarball: 'file:projects/web-rust-lang.tgz'
     version: 0.0.0
+registry: ''
 specifiers:
   '@babel/cli': ^7.10.5
   '@babel/core': ^7.10.5
@@ -20702,6 +20746,7 @@ specifiers:
   '@testing-library/user-event': ^7.1.2
   '@tusbar/cache-control': ^0.4.0
   '@types/combined-stream': ^1.0.2
+  '@types/history': ^4.7.8
   '@types/jest': ^26.0.7
   '@types/koa': ^2.11.3
   '@types/koa-compress': ^4.0.0

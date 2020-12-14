@@ -4,12 +4,16 @@ module.exports = {
   stories: ["../src/**/*.stories.@(js|jsx|ts|tsx|mdx)"],
   logLevel: "debug",
   addons: [
-    "@storybook/preset-create-react-app",
+    {
+      name: "@storybook/preset-create-react-app",
+      options: {
+        scriptsPackageName: "react-scripts",
+      },
+    },
     "@storybook/addon-actions",
     "@storybook/addon-knobs",
     "@storybook/addon-links",
     "@storybook/addon-viewport",
-    "@storybook/preset-create-react-app",
     // {
     //   name: "@storybook/addon-docs",
     //   options: {
@@ -18,22 +22,33 @@ module.exports = {
     // },
   ],
   webpackFinal: (config) => {
-    // TODO: use node resolution instead of path relative to sibling package
-    const siblingLibs = [
-      path.join(__dirname, "../../lib-ssr-toolbox"),
-      path.join(__dirname, "../../lib-design-system"),
+    config.performance.hints = false;
+
+    const additionalIncludes = [
+      "@bootleg-rust/lib-ssr-toolbox",
+      "@bootleg-rust/lib-design-system",
     ];
+
+    const resolvedAdditionalIncludes = additionalIncludes.map((name) => {
+      const packageJson = path.join(name, "package.json");
+      const resolvedPackageJson = require.resolve(packageJson);
+      const moduleDir = path.dirname(resolvedPackageJson);
+      return moduleDir;
+    });
 
     // Babel
     const plugins = config.module.rules[2].oneOf;
     const babelLoader = plugins[2];
 
-    babelLoader.include = [...babelLoader.include, ...siblingLibs];
+    babelLoader.include = [
+      ...babelLoader.include,
+      ...resolvedAdditionalIncludes,
+    ];
 
     // add monorepo root as a valid directory to import modules from
     config.resolve.plugins.forEach((p) => {
       if (Array.isArray(p.appSrcs)) {
-        p.appSrcs = [...p.appSrcs, ...siblingLibs];
+        p.appSrcs = [...p.appSrcs, ...resolvedAdditionalIncludes];
       }
     });
 

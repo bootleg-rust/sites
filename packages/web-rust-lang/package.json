@@ -46,6 +46,7 @@
     "@types/node": "^14.0.26",
     "@types/react": "^16.13.1",
     "@types/react-dom": "^16.9.8",
+    "@types/koa-router": "^7.4.0",
     "@types/react-router": "^5.1.5",
     "@types/react-router-dom": "^5.1.4",
     "@types/styled-components": "^5.1.1",
@@ -54,6 +55,7 @@
     "razzle-plugin-scss": "4.0.0-canary.8",
     "stylelint": "^13.6.1",
     "eslint": "^7.15.0",
+    "jest-cli": "26.1.0",
     "typescript": "~3.8.3"
   },
   "engines": {

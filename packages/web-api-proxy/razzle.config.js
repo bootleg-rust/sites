@@ -1,19 +1,9 @@
-const path = require("path");
-
-const siblingPackages = [
-  "lib-design-system",
-  "lib-features",
-  "lib-ssr-runtime",
-  "lib-ssr-toolbox",
-  "lib-config",
-];
-
 const {
   externalsPlugin,
   typescriptCheckerPlugin,
-  siblingPackagesPlugin,
   cacheableAssetsPlugin,
   bundleAnalysisPlugin,
+  additionalIncludesPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
 module.exports = {
@@ -24,11 +14,13 @@ module.exports = {
     { object: typescriptCheckerPlugin },
     { object: externalsPlugin },
     {
-      object: siblingPackagesPlugin,
+      object: additionalIncludesPlugin,
       options: {
-        include: siblingPackages.map((packageName) =>
-          path.join(__dirname, "..", packageName),
-        ),
+        include: [
+          "@bootleg-rust/lib-ssr-runtime",
+          "@bootleg-rust/lib-config",
+          "@bootleg-rust/lib-ssr-toolbox",
+        ],
       },
     },
     { object: cacheableAssetsPlugin },

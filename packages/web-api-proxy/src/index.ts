@@ -23,11 +23,13 @@ const server = config.USE_HTTP2
   ? http2.createServer(currentHandler)
   : http.createServer(currentHandler);
 
+const port = config.PORT;
+
 /* eslint-disable no-console */
-server.listen(config.PORT, () => {
+server.listen(port, () => {
   console.log(
     "App is running at http://localhost:%d in %s mode for the %s environment",
-    config.PORT,
+    port,
     config.NODE_ENV,
     config.ENV,
   );
@@ -35,9 +37,13 @@ server.listen(config.PORT, () => {
   console.log("Press CTRL-C to stop\n");
 });
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 if (module.hot) {
   console.log("✅ Server-side HMR Enabled!");
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   module.hot.accept("./server", () => {
     console.log("🔁 HMR Reloading `./server`...");
 

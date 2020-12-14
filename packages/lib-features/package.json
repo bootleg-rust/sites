@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
+    "jest-cli": "26.1.0",
     "@jest/globals": "^26.6.2",
     "@types/react": "^16.13.1",
     "@types/react-router-dom": "^5.1.4",
