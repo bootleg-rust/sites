@@ -268,7 +268,7 @@
     },
     {
       "name": "jest-cli",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "jest-svg-transformer",

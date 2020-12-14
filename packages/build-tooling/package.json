@@ -44,7 +44,6 @@
     "fork-ts-checker-webpack-plugin": "^5.0.9",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.1.0",
-    "jest-cli": "26.1.0",
     "jest-svg-transformer": "^1.0.0",
     "js-yaml": "^3.14.0",
     "lodash.merge": "^4.6.2",
