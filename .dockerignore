@@ -8,4 +8,6 @@ Dockerfile
 .git
 .cache
 *.md
+# Rush files
 /common/temp
+.rush/
