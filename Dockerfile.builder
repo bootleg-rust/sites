@@ -7,10 +7,11 @@ WORKDIR /app
 
 RUN apk add rsync
 
-COPY package.json rush.json /app/
+COPY rush.json /app/
 
 # shared tooling libraries
 COPY packages/build-tooling/package.json /app/packages/build-tooling/
+COPY packages/build-tooling/cli/cli.js /app/packages/build-tooling/cli/cli.js
 
 COPY packages/lib-design-system/package.json /app/packages/lib-design-system/
 COPY packages/lib-features/package.json /app/packages/lib-features/
@@ -26,8 +27,6 @@ COPY packages/web-rust-lang/package.json /app/packages/web-rust-lang/
 # Rush config
 COPY common /app/common
 
-# TODO: switch to install instead of update
-# RUN rush install
 RUN node ./common/scripts/install-run-rush.js install
 
 # Only build the server project with the "builder" as base

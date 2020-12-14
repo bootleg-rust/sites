@@ -180,7 +180,6 @@ deploy
 
 # editor
 .vscode
-.editorconfig
 .idea
 
 # test

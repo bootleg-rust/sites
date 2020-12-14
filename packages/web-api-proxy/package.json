@@ -5,15 +5,15 @@
   "scripts": {
     "build": "rushx clean && razzle build && rsync -a ./public/ ./build/public",
     "clean": "rm -rf build",
-    "deploy": "build-tooling-cli service deploy --service-name web-api-proxy",
     "dev": "razzle start",
     "verify": "npm-run-all verify:eslint verify:stylelint",
     "verify:eslint": "eslint --max-warnings=0 .",
     "verify:eslint:fix": "eslint --max-warnings=0 --fix .",
     "verify:fix": "npm-run-all verify:eslint:fix",
     "verify:stylelint": "stylelint './src/**/*.{ts,tsx,js,jsx}' ",
-    "package": "build-tooling-cli service package --service-name web-api-proxy",
-    "publish": "build-tooling-cli service publish --service-name web-api-proxy",
+    "service:package": "build-tooling-cli service package --service-name web-api-proxy",
+    "service:publish": "build-tooling-cli service publish --service-name web-api-proxy",
+    "service:deploy": "build-tooling-cli service deploy --service-name web-api-proxy",
     "serve": "node build/server.js",
     "test": "jest"
   },

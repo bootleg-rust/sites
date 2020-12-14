@@ -16,6 +16,14 @@
       "ignoreMissingScript": true
     },
     {
+      "name": "verify",
+      "commandKind": "bulk",
+      "summary": "Verify all projects (rushx verify)",
+      "enableParallelism": true,
+      "ignoreDependencyOrder": true,
+      "ignoreMissingScript": true
+    },
+    {
       "name": "test",
       "commandKind": "bulk",
       "summary": "Create package artifacts (rushx package)",
@@ -25,37 +33,29 @@
       "ignoreMissingScript": true
     },
     {
-      "name": "verify",
-      "commandKind": "bulk",
-      "summary": "Verify all projects (rushx verify)",
-      "enableParallelism": true,
-      "ignoreDependencyOrder": true,
-      "ignoreMissingScript": true
-    },
-    {
-      "name": "package",
+      "name": "service:package",
       "commandKind": "bulk",
       "summary": "Create package artifacts (rushx package)",
       "enableParallelism": true,
       "ignoreDependencyOrder": true,
       "ignoreMissingScript": true
     },
-    // {
-    //   "name": "publish",
-    //   "commandKind": "bulk",
-    //   "summary": "Publish package artifacts (rushx publish)",
-    //   "enableParallelism": true,
-    //   "ignoreDependencyOrder": true,
-    //   "ignoreMissingScript": true
-    // },
-    // {
-    //   "name": "deploy",
-    //   "commandKind": "bulk",
-    //   "summary": "Deploy projects using artifact (rushx deploy)",
-    //   "enableParallelism": true,
-    //   "ignoreDependencyOrder": true,
-    //   "ignoreMissingScript": true
-    // }
+    {
+      "name": "service:publish",
+      "commandKind": "bulk",
+      "summary": "Publish package artifacts (rushx publish)",
+      "enableParallelism": true,
+      "ignoreDependencyOrder": true,
+      "ignoreMissingScript": true
+    },
+    {
+      "name": "service:deploy",
+      "commandKind": "bulk",
+      "summary": "Deploy projects using artifact (rushx deploy)",
+      "enableParallelism": true,
+      "ignoreDependencyOrder": true,
+      "ignoreMissingScript": true
+    }
   ],
 
   /**
