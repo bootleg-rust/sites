@@ -20,6 +20,7 @@
       "commandKind": "bulk",
       "summary": "Create package artifacts (rushx package)",
       "enableParallelism": true,
+      "allowWarningsInSuccessfulBuild": true,
       "ignoreDependencyOrder": true,
       "ignoreMissingScript": true
     },
