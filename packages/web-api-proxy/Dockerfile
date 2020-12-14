@@ -3,7 +3,7 @@ FROM builder-base as web-api-proxy-builder
 COPY packages/ /app/packages/
 
 RUN cd packages/web-api-proxy && \
-    yarn build
+    rushx build
 
 # Our minimal node server image
 FROM node as server

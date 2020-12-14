@@ -5,7 +5,8 @@
     "build-tooling-cli": "./cli/cli.js"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "echo \"Nothing to build\""
   },
   "dependencies": {
     "@babel/cli": "^7.10.5",

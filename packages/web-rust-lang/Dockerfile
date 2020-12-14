@@ -3,7 +3,7 @@ FROM builder-base as web-rust-lang-builder
 COPY packages/ /app/packages/
 
 RUN cd packages/web-rust-lang && \
-    yarn build
+    rushx build
 
 # Our minimal node server image
 FROM node as server

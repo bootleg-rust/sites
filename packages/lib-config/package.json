@@ -8,6 +8,7 @@
   "scripts": {
     "verify": "eslint --max-warnings=0 .",
     "verify:fix": "eslint --max-warnings=0 --fix .",
+    "build": "echo \"Nothing to build\"",
     "test": "jest"
   },
   "dependencies": {

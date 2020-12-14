@@ -3,7 +3,7 @@ FROM builder-base as web-components-builder
 COPY packages/ /app/packages/
 
 RUN cd packages/web-components && \
-    yarn build
+    rushx build
 
 # Our minimal node server image
 FROM node as server

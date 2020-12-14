@@ -23,7 +23,7 @@ COPY packages/web-api-proxy/package.json /app/packages/web-api-proxy/
 COPY packages/web-crates-io/package.json /app/packages/web-crates-io/
 COPY packages/web-rust-lang/package.json /app/packages/web-rust-lang/
 
-# Yarn config
+# Rush config
 COPY common /app/common
 
 # TODO: switch to install instead of update

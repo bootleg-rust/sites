@@ -4,7 +4,6 @@ dist
 .env
 .env.*
 deploy.sh
-yarn-error.log
 Dockerfile
 .git
 .cache

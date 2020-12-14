@@ -3,7 +3,7 @@ FROM builder-base as web-crates-io-builder
 COPY packages/ /app/packages/
 
 RUN cd packages/web-crates-io && \
-    yarn build
+    rushx build
 
 # Our minimal node server image
 FROM node as server

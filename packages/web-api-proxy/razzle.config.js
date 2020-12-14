@@ -10,6 +10,7 @@ const siblingPackages = [
 
 const {
   externalsPlugin,
+  typescriptCheckerPlugin,
   siblingPackagesPlugin,
   cacheableAssetsPlugin,
   bundleAnalysisPlugin,
@@ -20,6 +21,7 @@ module.exports = {
     useReactRefresh: true,
   },
   plugins: [
+    { object: typescriptCheckerPlugin },
     { object: externalsPlugin },
     {
       object: siblingPackagesPlugin,

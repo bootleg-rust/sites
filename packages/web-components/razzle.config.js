@@ -10,6 +10,7 @@ const siblingPackages = [
 
 const {
   externalsPlugin,
+  typescriptCheckerPlugin,
   siblingPackagesPlugin,
   modifyEntryPointsPlugin,
   cacheableAssetsPlugin,
@@ -28,6 +29,7 @@ module.exports = {
         client: path.join(__dirname, "./src/docker-client"),
       },
     },
+    { object: typescriptCheckerPlugin },
     { object: externalsPlugin },
     {
       object: siblingPackagesPlugin,

@@ -36,7 +36,7 @@ Some rough goals of this project are:
 
 Some things I'm considering (or intending) to implement are:
 
-* Switch from using `lerna + yarn` to `rush + bazel` to support other languages in the monorepo and possibly speed up docker builds.
+* Switch from using `lerna + yarn` to `rush + pnpm` and/or maybe `bazel` to support other languages in the monorepo and possibly speed up docker builds.
 * Use terraform to manage all/most infra & deployments.
   * Should there be a seperate repo to track deployments that uses branches to track changes between environments?
   * Think about where should the following live:
