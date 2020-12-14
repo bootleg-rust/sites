@@ -14,14 +14,18 @@ function stop_port_process () {
   fi
 }
 
+# web-rust-lang
+stop_port_process 4000;
+stop_port_process 4100;
+
+# web-crates-io
 stop_port_process 4001;
-stop_port_process 4003;
-stop_port_process 4005;
-
 stop_port_process 4101;
-stop_port_process 4103;
-stop_port_process 4105;
 
-stop_port_process 4040;
-stop_port_process 4041;
+# web-component
+stop_port_process 4050;
+stop_port_process 4150;
 
+# API
+stop_port_process 8000;
+stop_port_process 8100;

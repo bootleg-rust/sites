@@ -2,7 +2,7 @@
 import React from "react";
 import { styled, Div, H4, Span } from "@bootleg-rust/lib-design-system";
 import { SiteLink } from "@bootleg-rust/lib-features";
-// import { ReactComponent as RustLogo } from './rust-logo-blk.svg';
+// import { ReactComponent as RustLogo } from "./rust-logo-blk.svg";
 
 const ProfileImage = styled.img`
   width: 36px;
@@ -29,7 +29,7 @@ function Header() {
         <Span block>🔍</Span>
       </HeaderSearch>
       <Div justify="center" alignItems="center">
-        <ProfileImage src={"http://github.com/pseudo-su.png"} alt="gravatar" />
+        <ProfileImage src={"https://github.com/pseudo-su.png"} alt="gravatar" />
       </Div>
     </Div>
   );

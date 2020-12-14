@@ -3,7 +3,7 @@ export {};
 // import { LoadResource, Resource } from "../../common";
 
 // function cratesSummaryResource() {
-//   const url = `http://localhost:4003/api/v1/summary`;
+//   const url = `http://localhost:8000/api/v1/summary`;
 //   const headers = {};
 
 //   const transformFn = ({ json }) => ({
@@ -23,7 +23,7 @@ export {};
 // }
 
 // function cratesStatsResource() {
-//   const url = `http://localhost:4003/api/v1/summary`;
+//   const url = `http://localhost:8000/api/v1/summary`;
 //   const headers = {};
 
 //   const transformFn = ({ json }: { json: any }) => ({

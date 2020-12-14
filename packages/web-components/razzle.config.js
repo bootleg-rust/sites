@@ -9,13 +9,17 @@ const siblingPackages = [
 ];
 
 const {
-  standardPlugin,
-  babelTypescriptPlugin,
+  externalsPlugin,
+  siblingPackagesPlugin,
   modifyEntryPointsPlugin,
+  cacheableAssetsPlugin,
   bundleAnalysisPlugin,
 } = require("@bootleg-rust/build-tooling/razzle-plugins");
 
 module.exports = {
+  options: {
+    useReactRefresh: true,
+  },
   plugins: [
     {
       object: modifyEntryPointsPlugin,
@@ -24,15 +28,16 @@ module.exports = {
         client: path.join(__dirname, "./src/docker-client"),
       },
     },
-    { object: standardPlugin },
+    { object: externalsPlugin },
     {
-      object: babelTypescriptPlugin,
+      object: siblingPackagesPlugin,
       options: {
         include: siblingPackages.map((packageName) =>
           path.join(__dirname, "..", packageName),
         ),
       },
     },
+    { object: cacheableAssetsPlugin },
     { object: bundleAnalysisPlugin },
   ],
 };

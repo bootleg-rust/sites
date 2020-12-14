@@ -1,15 +1,15 @@
-const { standardPlugin } = require("./standard");
-const { babelTypescriptPlugin } = require("./typescript");
+const { externalsPlugin } = require("./externals");
+const { siblingPackagesPlugin } = require("./sibling-packages");
 const { modifyEntryPointsPlugin } = require("./modify-entry");
 const { bundleAnalysisPlugin } = require("./bundle-analysis");
 const { reactSvgPlugin } = require("./react-svg");
-const { staticAssetsJsonPlugin } = require("./static-assets-json");
+const { cacheableAssetsPlugin } = require("./cacheable-assets");
 
 module.exports = {
-  standardPlugin,
+  externalsPlugin,
   modifyEntryPointsPlugin,
-  babelTypescriptPlugin,
+  siblingPackagesPlugin,
   bundleAnalysisPlugin,
   reactSvgPlugin,
-  staticAssetsJsonPlugin,
+  cacheableAssetsPlugin,
 };

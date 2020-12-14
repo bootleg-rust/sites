@@ -11,7 +11,9 @@
 # production
 /build
 /public
+/cache
 service.build.yml
+
 
 # misc
 .DS_Store

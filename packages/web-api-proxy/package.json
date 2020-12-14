@@ -29,7 +29,7 @@
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
     "@jest/globals": "^26.6.2",
-    "razzle": "^3.3.8",
+    "razzle": "4.0.0-canary.8",
     "typescript": "~3.8.3"
   },
   "engines": {

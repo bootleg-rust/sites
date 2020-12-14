@@ -1,17 +1,18 @@
 version: "3.3"
 services:
-  web-components:
-    image: web-components
+  # Websites - 4000-4049
+  web-rust-lang:
+    image: web-rust-lang
     ports:
-      - "4040:4040"
+      - "4000:4000"
     environment:
-      PORT: "4040"
+      PORT: "4000"
     env_file:
       - .env
       - .env.local
     build:
       context: "."
-      dockerfile: packages/web-components/Dockerfile
+      dockerfile: packages/web-rust-lang/Dockerfile
   web-crates-io:
     image: web-crates-io
     ports:
@@ -23,25 +24,30 @@ services:
       - .env.local
     build:
       context: "."
+
       dockerfile: packages/web-crates-io/Dockerfile
-  web-rust-lang:
-    image: web-rust-lang
+
+  # Website Test harness UI - 4050-4099
+  web-components:
+    image: web-components
     ports:
-      - "4005:4005"
+      - "4050:4050"
     environment:
-      PORT: "4005"
+      PORT: "4050"
     env_file:
       - .env
       - .env.local
     build:
       context: "."
-      dockerfile: packages/web-rust-lang/Dockerfile
+      dockerfile: packages/web-components/Dockerfile
+
+  # API 8000-8049
   web-api-proxy:
     image: web-api-proxy
     ports:
-      - "4003:4003"
+      - "8000:8000"
     environment:
-      PORT: "4003"
+      PORT: "8000"
     env_file:
       - .env
       - .env.local
