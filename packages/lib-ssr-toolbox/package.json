@@ -29,9 +29,13 @@
     "@types/react-router-dom": "^5.1.4",
     "@types/styled-components": "^5.1.1",
     "razzle": "4.0.0-canary.8",
+    "eslint": "^7.15.0",
     "typescript": "~3.8.3"
   },
   "engines": {
-    "node": "12.16.3"
+    "node": "12.16.3",
+    "npm": "DO_NOT_USE",
+    "yarn": "DO_NOT_USE",
+    "pnpm": ">=3"
   }
 }

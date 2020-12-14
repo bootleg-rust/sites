@@ -7,10 +7,10 @@
     "clean": "rm -rf build",
     "deploy": "build-tooling-cli service deploy --service-name web-crates-io",
     "dev": "razzle start",
-    "verify": "npm-run-all lint:eslint lint:stylelint",
+    "verify": "npm-run-all verify:eslint verify:stylelint",
     "verify:eslint": "eslint --max-warnings=0 .",
     "verify:eslint:fix": "eslint --max-warnings=0 --fix .",
-    "verify:fix": "npm-run-all lint:eslint:fix",
+    "verify:fix": "npm-run-all verify:eslint:fix",
     "verify:stylelint": "stylelint './src/**/*.{ts,tsx,js,jsx}' ",
     "package": "build-tooling-cli service package --service-name web-crates-io",
     "publish": "build-tooling-cli service publish --service-name web-crates-io",
@@ -50,9 +50,15 @@
     "@types/styled-components": "^5.1.1",
     "razzle": "4.0.0-canary.8",
     "razzle-plugin-scss": "4.0.0-canary.8",
+    "npm-run-all": "^4.1.5",
+    "stylelint": "^13.6.1",
+    "eslint": "^7.15.0",
     "typescript": "~3.8.3"
   },
   "engines": {
-    "node": "12.16.3"
+    "node": "12.16.3",
+    "npm": "DO_NOT_USE",
+    "yarn": "DO_NOT_USE",
+    "pnpm": ">=3"
   }
 }

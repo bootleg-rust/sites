@@ -18,6 +18,7 @@ module.exports = {
     // },
   ],
   webpackFinal: (config) => {
+    // TODO: use node resolution instead of path relative to sibling package
     const siblingLibs = [
       path.join(__dirname, "../../lib-ssr-toolbox"),
       path.join(__dirname, "../../lib-design-system"),

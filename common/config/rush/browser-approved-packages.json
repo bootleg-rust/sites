@@ -416,7 +416,7 @@
     },
     {
       "name": "stylelint",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "stylelint-config-recommended",

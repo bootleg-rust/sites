@@ -11,10 +11,10 @@
     "clean": "rm -rf build",
     "deploy": "build-tooling-cli service deploy --service-name web-components",
     "dev": "start-storybook --quiet --ci -p 4050 -s .storybook/public",
-    "verify": "npm-run-all lint:eslint lint:stylelint",
+    "verify": "npm-run-all verify:eslint verify:stylelint",
     "verify:eslint": "eslint --max-warnings=0 .",
     "verify:eslint:fix": "eslint --max-warnings=0 --fix .",
-    "verify:fix": "npm-run-all lint:eslint:fix",
+    "verify:fix": "npm-run-all verify:eslint:fix",
     "verify:stylelint": "stylelint './src/**/*.{ts,tsx,js,jsx}' ",
     "package": "build-tooling-cli service package --service-name web-components",
     "publish": "build-tooling-cli service publish --service-name web-components",
@@ -65,6 +65,8 @@
     "babel-loader": "^8.1.0",
     "npm-run-all": "^4.1.5",
     "react-scripts": "^4.0.1",
+    "stylelint": "^13.6.1",
+    "eslint": "^7.15.0",
     "typescript": "~3.8.3"
   }
 }
