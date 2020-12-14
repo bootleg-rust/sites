@@ -23,9 +23,7 @@ async function deployDockerService({
 
   // Generate service.build.yml
   const inputs = [
-    `../../config/service.yml`,
     `service.yml`,
-    `../../config/service.${env}.yml`,
     `service.${env}.yml`,
   ];
   const output = "service.build.yml";

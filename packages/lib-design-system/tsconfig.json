@@ -2,6 +2,6 @@
   "compilerOptions": {
     "rootDir": "."
   },
-  "extends": "../../tsconfig.json",
+  "extends": "@bootleg-rust/build-tooling/typescript/tsconfig-base.json",
   "include": ["."]
 }

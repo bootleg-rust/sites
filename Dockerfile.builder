@@ -10,8 +10,6 @@ RUN apk add rsync
 COPY package.json rush.json /app/
 
 # shared tooling libraries
-COPY tsconfig.json /app/
-
 COPY packages/build-tooling/package.json /app/packages/build-tooling/
 
 COPY packages/lib-design-system/package.json /app/packages/lib-design-system/

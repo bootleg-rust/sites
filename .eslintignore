@@ -1,6 +1,0 @@
-**/__snapshots__
-**/build/**
-**/dist/**
-**/web-components/public/**
-!.eslintrc.js
-**/node_modules/**

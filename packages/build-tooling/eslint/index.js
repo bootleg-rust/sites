@@ -34,6 +34,10 @@ module.exports = {
     "no-console": "warn",
     "prettier/prettier": "warn",
     // Typescript
+    "@typescript-eslint/naming-convention": [
+      "warn",
+      { selector: "variableLike", format: ["camelCase", "PascalCase", "UPPER_CASE"], leadingUnderscore: "allow" },
+    ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/indent": "off", // conflicts with prettier
     "@typescript-eslint/no-empty-function": "off",
@@ -88,7 +92,7 @@ module.exports = {
   ],
   settings: {
     react: {
-      version: "detect",
+      version: "16.13.1",
     },
     "import/resolver": {
       node: {

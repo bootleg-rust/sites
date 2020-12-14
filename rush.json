@@ -94,12 +94,12 @@
   // "hotfixChangeEnabled": false,
 
   "projects": [
-    {
-      "packageName": "@bootleg-rust/sites",
-      "projectFolder": ".",
-      "reviewCategory": "tools",
-      "cyclicDependencyProjects": []
-    },
+    // {
+    //   "packageName": "@bootleg-rust/sites",
+    //   "projectFolder": ".",
+    //   "reviewCategory": "tools",
+    //   "cyclicDependencyProjects": []
+    // },
     {
       "packageName": "@bootleg-rust/build-tooling",
       "projectFolder": "packages/build-tooling",

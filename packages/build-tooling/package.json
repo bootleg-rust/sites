@@ -55,6 +55,7 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
     "webpack-bundle-analyzer": "^3.8.0",
+    "prettier": "^2.2.1",
     "webpack-manifest-plugin": "^3.0.0"
   },
   "devDependencies": {
