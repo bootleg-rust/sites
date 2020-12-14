@@ -2,9 +2,10 @@ FROM builder-base as web-components-builder
 
 COPY packages/ /app/packages/
 
-RUN cd packages/web-components && \
-    rushx build
+RUN node ./common/scripts/install-run-rush.js install
 
+RUN cd packages/web-components && \
+    node ../../common/scripts/install-run-rushx.js build
 # Our minimal node server image
 FROM node as server
 

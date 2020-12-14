@@ -119,6 +119,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "@storybook/node-logger",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "@storybook/preset-create-react-app",
       "allowedCategories": [ "production" ]
     },
@@ -159,6 +163,10 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "babel-eslint",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "babel-jest",
       "allowedCategories": [ "tools" ]
     },
@@ -191,6 +199,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "debug",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "dotenv",
       "allowedCategories": [ "tools" ]
     },
@@ -212,6 +224,10 @@
     },
     {
       "name": "eslint-import-resolver-typescript",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "eslint-plugin-flowtype",
       "allowedCategories": [ "tools" ]
     },
     {
@@ -331,11 +347,19 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "mini-css-extract-plugin",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "npm-run-all",
       "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "null-loader",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "postcss",
       "allowedCategories": [ "tools" ]
     },
     {
@@ -356,7 +380,7 @@
     },
     {
       "name": "razzle-plugin-scss",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "react",
@@ -371,11 +395,19 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "react-is",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "react-lightyear",
       "allowedCategories": [ "production" ]
     },
     {
       "name": "react-query",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-refresh",
       "allowedCategories": [ "production" ]
     },
     {
@@ -435,7 +467,15 @@
       "allowedCategories": [ "production", "tools" ]
     },
     {
+      "name": "webpack",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "webpack-bundle-analyzer",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "webpack-dev-server",
       "allowedCategories": [ "tools" ]
     },
     {

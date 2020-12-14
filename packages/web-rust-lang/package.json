@@ -53,7 +53,6 @@
     "@types/styled-components": "^5.1.1",
     "npm-run-all": "^4.1.5",
     "razzle": "4.0.0-canary.8",
-    "razzle-plugin-scss": "4.0.0-canary.8",
     "stylelint": "^13.6.1",
     "eslint": "^7.15.0",
     "jest-cli": "26.1.0",

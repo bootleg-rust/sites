@@ -50,7 +50,6 @@
     "@types/react-router-dom": "^5.1.4",
     "@types/styled-components": "^5.1.1",
     "razzle": "4.0.0-canary.8",
-    "razzle-plugin-scss": "4.0.0-canary.8",
     "npm-run-all": "^4.1.5",
     "jest-cli": "26.1.0",
     "stylelint": "^13.6.1",
