@@ -1,4 +1,4 @@
-FROM builder-base as web-components-builder
+FROM node-builder-base:12.16.3-alpine as web-components-builder
 
 COPY packages/ /app/packages/
 

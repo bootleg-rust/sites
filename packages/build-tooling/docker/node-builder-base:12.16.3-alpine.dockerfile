@@ -1,7 +1,4 @@
-FROM node:12.16.3-alpine as node
-
-# Image for settings up our monorepo
-FROM node as builder-base
+FROM node:12.16.3-alpine as builder-base
 
 WORKDIR /app
 

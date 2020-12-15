@@ -1,4 +1,4 @@
-FROM builder-base as web-api-proxy-builder
+FROM node-builder-base:12.16.3-alpine as web-api-proxy-builder
 
 COPY packages/ /app/packages/
 

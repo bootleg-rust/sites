@@ -6,7 +6,8 @@
 
   "pnpmOptions": {
     "pnpmStore": "local",
-    "strictPeerDependencies": true,
+    // TODO: enable strict dependencies
+    // "strictPeerDependencies": true,
     "resolutionStrategy": "fewer-dependencies",
     "preventManualShrinkwrapChanges": true
 
@@ -126,13 +127,12 @@
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     },
-    // TODO: enable web-components website
-    // {
-    //   "packageName": "@bootleg-rust/web-components",
-    //   "projectFolder": "packages/web-components",
-    //   "reviewCategory": "production",
-    //   "cyclicDependencyProjects": []
-    // },
+    {
+      "packageName": "@bootleg-rust/web-components",
+      "projectFolder": "packages/web-components",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
     {
       "packageName": "@bootleg-rust/web-crates-io",
       "projectFolder": "packages/web-crates-io",
