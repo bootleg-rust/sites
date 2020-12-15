@@ -1,4 +1,4 @@
-FROM builder-base as web-crates-io-builder
+FROM node-builder-base:12.16.3-alpine as web-crates-io-builder
 
 COPY packages/ /app/packages/
 
