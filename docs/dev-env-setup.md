@@ -4,19 +4,63 @@
 
 ```sh
 # gcloud CLI (https://cloud.google.com/sdk/docs/downloads-interactive)
-$ curl https://sdk.cloud.google.com | bash
-$ gcloud init
-$ gcloud auth login
-$ gcloud auth application-default login
-$ gcloud auth configure-docker
-$ gcloud beta auth configure-docker asia-docker.pkg.dev
-$ gcloud --version
+curl https://sdk.cloud.google.com | bash;
+gcloud init;
+gcloud auth login;
+gcloud auth application-default login;
+gcloud auth configure-docker;
+gcloud beta auth configure-docker asia-docker.pkg.dev;
+gcloud --version;
 ```
 
-## Install node dependencies
+## Dev scripts
+
+To run scripts for all packages at once
 
 ```sh
-$ rush update;
+# Install or update node_modules in all packages
+rush update;
+# Run the dev server for all packages that have one
+rush dev;
+# Run code verification/static-analysis/linting for all packages
+rush verify;
+# Run tests of all packages
+rush test;
+# Run the build script for all packages
+rush build;
+```
+
+When working on individual packages
+
+```sh
+rushx dev;
+rushx verify;
+rushx test;
+rushx build;
+```
+
+## Deploy scripts
+
+To run scripts for all packages at once
+
+```sh
+# Create build artifacts for services
+rush service:package;
+# Tag and publish build artifacts for services
+env GIT_TAG=master rush service:publish;
+# Deploy new versions of services using tagged+published artifacts to
+# ENV=dev|prod
+env GIT_TAG=master ENV=dev rush service:deploy;
+env GIT_TAG=master ENV=prod rush service:deploy;
+```
+
+When working on individual packages
+
+```sh
+rushx service:package;
+env GIT_TAG=master rushx service:publish;
+env GIT_TAG=master ENV=dev rushx service:deploy;
+env GIT_TAG=master ENV=prod rushx service:deploy;
 ```
 
 A script to open all [./SITES.md](./SITES.md) at once is [./open-local.sh](../open-local.sh)
