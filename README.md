@@ -47,9 +47,9 @@ Package and deploy all
 
 ```fish
 rush service:package; and \
-env GIT_REF=master rush service:publish; and \
-env GIT_REF=master ENV=dev rush service:deploy; and \
-env GIT_REF=master ENV=prod rush service:deploy;
+env GIT_REF=main rush service:publish; and \
+env GIT_REF=main ENV=dev rush service:deploy; and \
+env GIT_REF=main ENV=prod rush service:deploy;
 ```
 
 ### Overview

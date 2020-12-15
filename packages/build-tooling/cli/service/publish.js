@@ -24,7 +24,7 @@ async function publishDockerService({
   await tagAndPush({ name, registryUrl, tag: `${gitRefSlug}.${dateTime}` });
   await tagAndPush({ name, registryUrl, tag: `${gitRefSlug}.latest` });
 
-  if (gitRef === "master") {
-    await tagAndPush({ name, registryUrl, tag: "master" });
+  if (gitRef === "main") {
+    await tagAndPush({ name, registryUrl, tag: "main" });
   }
 }

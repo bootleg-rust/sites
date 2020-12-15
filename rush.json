@@ -57,7 +57,7 @@
 
   "repository": {
     "url": "https://github.com/bootleg-rust/sites",
-    "defaultBranch": "master",
+    "defaultBranch": "main",
     "defaultRemote": "origin"
   },
 

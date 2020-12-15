@@ -57,20 +57,20 @@ To run scripts for all packages at once
 # Create build artifacts for services
 rush service:package;
 # Tag and publish build artifacts for services
-env GIT_REF=master rush service:publish;
+env GIT_REF=main rush service:publish;
 # Deploy new versions of services using tagged+published artifacts to
 # ENV=dev|prod
-env GIT_REF=master ENV=dev rush service:deploy;
-env GIT_REF=master ENV=prod rush service:deploy;
+env GIT_REF=main ENV=dev rush service:deploy;
+env GIT_REF=main ENV=prod rush service:deploy;
 ```
 
 When working on individual packages
 
 ```sh
 rushx service:package;
-env GIT_REF=master rushx service:publish;
-env GIT_REF=master ENV=dev rushx service:deploy;
-env GIT_REF=master ENV=prod rushx service:deploy;
+env GIT_REF=main rushx service:publish;
+env GIT_REF=main ENV=dev rushx service:deploy;
+env GIT_REF=main ENV=prod rushx service:deploy;
 ```
 
 A script to open all [./SITES.md](./SITES.md) at once is [./open-local.sh](../open-local.sh)

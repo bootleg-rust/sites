@@ -3,7 +3,7 @@
 Examples:
 
 ```sh
-yarn build-tooling-cli trigger ci deploy:all --git-ref=master
+yarn build-tooling-cli trigger ci deploy:all --git-ref=main
 
 yarn build-tooling-cli notify deployment
 
