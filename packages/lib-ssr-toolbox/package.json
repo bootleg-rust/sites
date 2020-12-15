@@ -6,10 +6,10 @@
   "author": "pseudo-su",
   "main": "src/universal.ts",
   "scripts": {
-    "verify": "eslint --max-warnings=0 .",
-    "verify:fix": "eslint --max-warnings=0 --fix .",
     "build": "echo \"Nothing to build\"",
-    "test": "jest"
+    "test": "jest",
+    "verify": "eslint --max-warnings=0 .",
+    "verify:fix": "eslint --max-warnings=0 --fix ."
   },
   "dependencies": {
     "history": "^4.10.0",
@@ -30,15 +30,15 @@
     "@types/react-router": "^5.1.5",
     "@types/react-router-dom": "^5.1.4",
     "@types/styled-components": "^5.1.1",
+    "eslint": "^7.15.0",
     "jest-cli": "26.1.0",
     "razzle": "4.0.0-canary.8",
-    "eslint": "^7.15.0",
     "typescript": "~3.8.3"
   },
   "engines": {
     "node": "12.16.3",
     "npm": "DO_NOT_USE",
-    "yarn": "DO_NOT_USE",
-    "pnpm": ">=3"
+    "pnpm": ">=4.14.4",
+    "yarn": "DO_NOT_USE"
   }
 }

@@ -44,6 +44,16 @@ Some things I'm considering (or intending) to implement are:
 * Investigate switching from using `docker` (Docker desktop) for local development to using podman.
 * Update to use React v6 beta and replace the janky hacks I've put in `@bootleg-rust/lib-features/src/link.tsx`.
 * Create a new package and rename the set of flexbox-by-default components that are currently in the `@bootleg-rust/lib-components` package. EG: from `<Div />` to `<flx.div />`
+* Add extra linting
+  * yml/yaml
+  * markdown
+  * Dockerfile/Containerfile
+  * npm/package.json
+  * OpenAPI/AsyncAPI
+* Add-back some things removed when switching to `rush + pnpm`.
+  * Sort all `package.json`s
+  * lint-staged?
+* Update to latest NodeJS LTS
 * Use terraform to manage all/most infra & deployments.
   * Should there be a seperate repo to track deployments that uses branches to track changes between environments?
   * Think about where should the following live:
