@@ -12,6 +12,7 @@ Some rough goals of this project are:
 * SSR runtime library to abstract the runtime SSR server/client across different website packages (`lib-ssr-runtime`).
 * GCP Serverless deployment that costs $0 when not recieving traffic (Cloud run).
 * GCP CI/CD automation (terraform + Cloud Build).
+* Monorepo management using `pnpm + rush`
 
 ## Sites
 
@@ -36,7 +37,27 @@ Some rough goals of this project are:
 
 Some things I'm considering (or intending) to implement are:
 
-* Switch from using `lerna + yarn` to `rush + bazel` to support other languages in the monorepo and possibly speed up docker builds.
+* Investigate switching to `bazel` to support other languages in the monorepo and possibly speed up docker builds.
+* Automate CI/CD by setting up GCP Cloud build.
+* [Canary deployments](https://github.com/ahmetb/cloud-run-faq#how-to-do-canary-or-bluegreen-deployments-on-cloud-run) (maybe after switching to using terraform for everything).
+* Investigate deploying on top of a managed k8s (possibly on top of knative) in order to support deploying long-lived compute containers (EG: kafka streams applications) from this monorepo.
+* Investigate switching from using `docker` (Docker desktop) for local development to using podman.
+* Update to use React v6 beta and replace the janky hacks I've put in `@bootleg-rust/lib-features/src/link.tsx`.
+* Create a new package and rename the set of flexbox-by-default components that are currently in the `@bootleg-rust/lib-components` package. EG: from `<Div />` to `<flx.div />`
+* Add extra linting
+  * yml/yaml
+  * markdown
+  * Dockerfile/Containerfile
+  * npm/package.json
+  * OpenAPI/AsyncAPI
+* Add-back some things removed when switching to `rush + pnpm`.
+  * Sort all `package.json`s
+  * lint-staged
+    * prettier
+    * linters
+    * sort-package-json
+* Update to latest NodeJS LTS
+* Update to latest ReactJS version.
 * Use terraform to manage all/most infra & deployments.
   * Should there be a seperate repo to track deployments that uses branches to track changes between environments?
   * Think about where should the following live:
@@ -45,9 +66,3 @@ Some things I'm considering (or intending) to implement are:
     * terraform to manage infra shared across all `packages/` in `@bootleg-rust/sites`.
     * terraform to manage infra specific to a single `@bootleg-rust/sites` package.
     * terraform to manage stateful infra that is either shared across multiple `packages/` or specific to a single `package/` (EG: instead of `web-api-proxy` have a `web-api-crates-io` package that requires a database to store package info).
-* Automate CI/CD by setting up GCP Cloud build (maybe after switching to `rush + bazel`).
-* [Canary deployments](https://github.com/ahmetb/cloud-run-faq#how-to-do-canary-or-bluegreen-deployments-on-cloud-run) (maybe after switching to using terraform for everything).
-* Investigate deploying on top of a managed k8s (possibly with knative) in order to support deploying long-lived compute containers (EG: kafka streams applications) from this monorepo.
-* Make it easier to set immutable cache-control headers for all razzle assets [#1371 (issue)](https://github.com/jaredpalmer/razzle/issues/1371).
-* Razzle 3 should reduce the need for manual typescript config in `build-tooling` as it will support typescript natively.
-* Implement `<Redirect />` in `lib-ssr-toolkit` and stop using `staticContext` in `react-router` v6 as it will be removed [#7267 (issue)](https://github.com/ReactTraining/react-router/issues/7267)

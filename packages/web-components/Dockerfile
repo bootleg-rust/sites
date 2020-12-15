@@ -1,10 +1,11 @@
-FROM builder-base as web-components-builder
+FROM node-builder-base:12.16.3-alpine as web-components-builder
 
 COPY packages/ /app/packages/
 
-RUN cd packages/web-components && \
-    yarn build
+RUN node ./common/scripts/install-run-rush.js install
 
+RUN cd packages/web-components && \
+    node ../../common/scripts/install-run-rushx.js build
 # Our minimal node server image
 FROM node as server
 

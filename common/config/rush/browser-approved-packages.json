@@ -1,0 +1,486 @@
+// DO NOT ADD COMMENTS IN THIS FILE.  They will be lost when the Rush tool resaves it.
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
+  "packages": [
+    {
+      "name": "@babel/cli",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/core",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/node",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/plugin-proposal-async-generator-functions",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/plugin-proposal-class-properties",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/plugin-proposal-export-default-from",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/plugin-proposal-export-namespace-from",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/plugin-proposal-numeric-separator",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/plugin-proposal-object-rest-spread",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/plugin-proposal-optional-chaining",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/preset-env",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/preset-react",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@babel/preset-typescript",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@bootleg-rust/build-tooling",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "@bootleg-rust/lib-config",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@bootleg-rust/lib-design-system",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@bootleg-rust/lib-features",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@bootleg-rust/lib-ssr-runtime",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@bootleg-rust/lib-ssr-toolbox",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@commitlint/cli",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@commitlint/config-conventional",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@jest/globals",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "@octokit/rest",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@sfomin/for-each-package",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@storybook/addon-actions",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/addon-knobs",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/addon-links",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/addon-viewport",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/addons",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/node-logger",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/preset-create-react-app",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@svgr/webpack",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@testing-library/dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@testing-library/jest-dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@testing-library/react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@testing-library/user-event",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@tusbar/cache-control",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@typescript-eslint/eslint-plugin",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@typescript-eslint/parser",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "babel-eslint",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "babel-jest",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "babel-loader",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "babel-preset-razzle",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "clean-webpack-plugin",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "combined-stream",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "commander",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "concurrently",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "core-js",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "debug",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "dotenv",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "envalid",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "eslint",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "eslint-config-prettier",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "eslint-config-react-app",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "eslint-import-resolver-typescript",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "eslint-plugin-flowtype",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "eslint-plugin-import",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "eslint-plugin-jsx-a11y",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "eslint-plugin-prettier",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "eslint-plugin-react",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "eslint-plugin-react-hooks",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "eslint-plugin-unicorn",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "fork-ts-checker-webpack-plugin",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "framer-motion",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "history",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "husky",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "identity-obj-proxy",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "isomorphic-fetch",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "jest",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "jest-cli",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "jest-svg-transformer",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "js-yaml",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "koa",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "koa-compress",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "koa-conditional-get",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "koa-etag",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "koa-helmet",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "koa-logger",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "koa-proxies",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "koa-router",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "koa-static",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "lint-staged",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "lodash",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "lodash.merge",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "md5",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "mini-css-extract-plugin",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "npm-run-all",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "null-loader",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "postcss",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "prettier",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "query-string",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "razzle",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "razzle-dev-utils",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "razzle-plugin-scss",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "react",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-helmet-async",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-is",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-lightyear",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-query",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-refresh",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-router",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-router-dom",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-scripts",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-ssr-prepass",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "regenerator-runtime",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "serialize-javascript",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "sort-package-json",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "source-map-support",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "styled-components",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "stylelint",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "stylelint-config-recommended",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "stylelint-config-styled-components",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "stylelint-processor-styled-components",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "typescript",
+      "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "webpack",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "webpack-bundle-analyzer",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "webpack-dev-server",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "webpack-manifest-plugin",
+      "allowedCategories": [ "tools" ]
+    }
+  ]
+}

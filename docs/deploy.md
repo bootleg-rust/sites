@@ -18,21 +18,20 @@ The following steps are if you want to build, publish and/or deploy all sites at
 ### Package
 
 ```sh
-docker-compose -f docker-compose.builder.yml build builder-base
-docker-compose -f docker-compose.sites.yml build
+rush service:package;
 ```
 
 ### Publish
 
 ```sh
-env GIT_REF="<current-branch-name>" yarn run publish
+env GIT_REF="<current-branch-name>" rush service:publish;
 ```
 
 ### Deploy
 
 ```sh
 # use ENV: dev|uat|staging|prod
-env ENV="dev" GIT_REF="<current-branch-name>" yarn run deploy
+env ENV="dev" GIT_REF="<current-branch-name>" rush service:deploy;
 ```
 
 ## Deploying a single site
@@ -44,21 +43,21 @@ NOTE: from within the specific package's folder EG `cd packages/web-crates-io`
 ### Package
 
 ```sh
-# Make sure to re-build the base image "builder" after any changes are made to package.json dependencies
-yarn run package
+# You will need to re-package the the base image in `@bootleg-rust/build-tooling` whenever dependencies are changed
+rushx service:package
 ```
 
 ### Publish
 
 ```sh
-env GIT_REF="<current-branch-name>" yarn run publish
+env GIT_REF="<current-branch-name>" rushx service:publish
 ```
 
 ### Deploy
 
 ```sh
 # use ENV: dev|uat|staging|prod
-env ENV="dev" GIT_REF="<current-branch-name>" yarn run deploy
+env ENV="dev" GIT_REF="<current-branch-name>" rushx service:deploy
 ```
 
 ## Running CDN invalidations
@@ -66,5 +65,5 @@ env ENV="dev" GIT_REF="<current-branch-name>" yarn run deploy
 You can run CDN invalidations in any of the "web-" packages by running:
 
 ```sh
-env ENV="dev" yarn build-tooling-cli service run-invalidation --service-name <name-of-service>
+env ENV="dev" ./node_modules/.bin/build-tooling-cli service run-invalidation --service-name <name-of-service>
 ```

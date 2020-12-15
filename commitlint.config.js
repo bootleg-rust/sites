@@ -1,3 +1,5 @@
+// TODO: use this in a git hook
+// commitlint -E HUSKY_GIT_PARAMS
 module.exports = {
   rules: {
     "body-leading-blank": [1, "always"],

@@ -37,9 +37,13 @@ server.listen(port, () => {
   console.log("Press CTRL-C to stop\n");
 });
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 if (module.hot) {
   console.log("✅ Server-side HMR Enabled!");
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   module.hot.accept("./server", () => {
     console.log("🔁 HMR Reloading `./server`...");
 

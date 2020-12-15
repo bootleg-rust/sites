@@ -1,6 +1,6 @@
 const identityFn = (n) => n;
 
-module.exports = function JestConfig({ rootDir = "." } = {}, fn = identityFn) {
+module.exports = function JestConfig({} = {}, fn = identityFn) {
   return fn({
     moduleNameMapper: {
       "\\.(css)$": "identity-obj-proxy",
@@ -9,7 +9,7 @@ module.exports = function JestConfig({ rootDir = "." } = {}, fn = identityFn) {
     transform: {
       "\\.(ts|tsx)$": require.resolve("babel-jest"),
       "^.+\\.svg$": require.resolve("jest-svg-transformer"),
-      "^(?!.*\\.(js|jsx|css|json)$)": `<rootDir>/${rootDir}/node_modules/razzle/config/jest/fileTransform.js`,
+      "^(?!.*\\.(js|jsx|css|json)$)": require.resolve("razzle/config/jest/fileTransform.js"),
     },
     testMatch: [
       `<rootDir>/src/**/__tests__/**/*.(ts|js)?(x)`,

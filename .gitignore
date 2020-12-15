@@ -8,7 +8,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-
 .terraform/
 
 # Runtime data
@@ -62,7 +61,6 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-lerna-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -181,7 +179,6 @@ deploy
 
 # editor
 .vscode
-.editorconfig
 .idea
 
 # test
@@ -189,3 +186,10 @@ reports
 
 # typescript composite build info
 tsconfig.tsbuildinfo
+
+
+# Rush temporary files
+common/deploy/
+common/temp/
+common/autoinstallers/*/.npmrc
+**/.rush/temp/

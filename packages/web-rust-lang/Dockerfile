@@ -1,9 +1,11 @@
-FROM builder-base as web-rust-lang-builder
+FROM node-builder-base:12.16.3-alpine as web-rust-lang-builder
 
 COPY packages/ /app/packages/
 
+RUN node ./common/scripts/install-run-rush.js install
+
 RUN cd packages/web-rust-lang && \
-    yarn build
+    node ../../common/scripts/install-run-rushx.js build
 
 # Our minimal node server image
 FROM node as server

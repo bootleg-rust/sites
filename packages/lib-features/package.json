@@ -6,9 +6,10 @@
   "author": "pseudo-su",
   "main": "src",
   "scripts": {
-    "lint": "eslint --max-warnings=0 .",
-    "lint:fix": "eslint --max-warnings=0 --fix .",
-    "test": "jest"
+    "build": "echo \"Nothing to build\"",
+    "test": "jest",
+    "verify": "eslint --max-warnings=0 .",
+    "verify:fix": "eslint --max-warnings=0 --fix ."
   },
   "dependencies": {
     "@bootleg-rust/lib-design-system": "*",
@@ -19,11 +20,16 @@
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
     "@jest/globals": "^26.6.2",
+    "@types/react": "^16.13.1",
     "@types/react-router-dom": "^5.1.4",
-    "eslint": "^7.5.0",
+    "eslint": "^7.15.0",
+    "jest-cli": "26.1.0",
     "typescript": "~3.8.3"
   },
   "engines": {
-    "node": "12.16.3"
+    "node": "12.16.3",
+    "npm": "DO_NOT_USE",
+    "pnpm": ">=4.14.4",
+    "yarn": "DO_NOT_USE"
   }
 }
