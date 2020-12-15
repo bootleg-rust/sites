@@ -6,10 +6,10 @@
   "author": "pseudo-su",
   "main": "src/index.ts",
   "scripts": {
-    "verify": "eslint --max-warnings=0 .",
-    "verify:fix": "eslint --max-warnings=0 --fix .",
     "build": "echo \"Nothing to build\"",
-    "test": "jest"
+    "test": "jest",
+    "verify": "eslint --max-warnings=0 .",
+    "verify:fix": "eslint --max-warnings=0 --fix ."
   },
   "dependencies": {
     "@bootleg-rust/lib-ssr-toolbox": "*",
@@ -17,13 +17,13 @@
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
-    "jest-cli": "26.1.0",
-    "@jest/globals": "^26.6.2"
+    "@jest/globals": "^26.6.2",
+    "jest-cli": "26.1.0"
   },
   "engines": {
     "node": "12.16.3",
     "npm": "DO_NOT_USE",
-    "yarn": "DO_NOT_USE",
-    "pnpm": ">=3"
+    "pnpm": ">=4.14.4",
+    "yarn": "DO_NOT_USE"
   }
 }
