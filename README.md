@@ -52,8 +52,12 @@ Some things I'm considering (or intending) to implement are:
   * OpenAPI/AsyncAPI
 * Add-back some things removed when switching to `rush + pnpm`.
   * Sort all `package.json`s
-  * lint-staged?
+  * lint-staged
+    * prettier
+    * linters
+    * sort-package-json
 * Update to latest NodeJS LTS
+* Update to latest ReactJS version.
 * Use terraform to manage all/most infra & deployments.
   * Should there be a seperate repo to track deployments that uses branches to track changes between environments?
   * Think about where should the following live:
