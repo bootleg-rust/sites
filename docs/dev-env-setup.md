@@ -41,12 +41,12 @@ rushx build;
 
 ## GCP configurations setup
 
-In order to use the `gcloud` command and switch between the relevant environments you will need to copy all the environment files from the `${projectRoot}/config/gcloud/environments/` folder into your gcloud config configurations folder.
+In order to use the `gcloud` command and switch between the relevant environments you will need to copy all the environment files from the `${projectRoot}/docs/config/gcloud/environments/` folder into your gcloud config configurations folder.
 
 NOTE: you will need to update any values in these files so they match your specific details (EG: `account = <your-email-address>`)
 
 ```sh
-cp -r ./config/gcloud/configurations/ ~/.config/gcloud/configurations/;
+cp -r ./docs/config/gcloud/configurations/ ~/.config/gcloud/configurations/;
 ```
 
 ## Deploy scripts
