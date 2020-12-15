@@ -74,7 +74,7 @@ Some things I'm considering (or intending) to implement are:
   - Dockerfile/Containerfile
   - npm/package.json
   - OpenAPI/AsyncAPI
-- Add-back some things removed when switching to `rush + pnpm`.
+- Add-back some things removed when switching to `rush + pnpm` (Investigate rush autoinstallers).
   - Sort all `package.json`s
   - lint-staged
     - prettier
@@ -82,6 +82,7 @@ Some things I'm considering (or intending) to implement are:
     - sort-package-json
 - Update to latest NodeJS LTS
 - Update to latest ReactJS version.
+- Add proper JSON logging
 - Use terraform to manage all/most infra & deployments.
   - Should there be a seperate repo to track deployments that uses branches to track changes between environments?
   - Think about where should the following live:
