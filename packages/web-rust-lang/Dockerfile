@@ -1,4 +1,4 @@
-FROM node-builder-base:12.16.3-alpine as web-rust-lang-builder
+FROM node-builder-base:14.15-alpine as web-rust-lang-builder
 
 COPY packages/ /app/packages/
 

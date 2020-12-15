@@ -6,7 +6,7 @@
   },
   "scripts": {
     "build": "echo \"Nothing to build\"",
-    "service:package": "docker build -t node-builder-base:12.16.3-alpine -f docker/node-builder-base:12.16.3-alpine.dockerfile ../..",
+    "service:package": "docker build -t node-builder-base:14.15-alpine -f docker/node-builder-base:14.15-alpine.dockerfile ../..",
     "test": "jest"
   },
   "dependencies": {
@@ -70,5 +70,11 @@
   "devDependencies": {
     "@jest/globals": "^26.6.2",
     "@types/jest": "^26.0.7"
+  },
+  "engines": {
+    "node": "14.15",
+    "npm": "DO_NOT_USE",
+    "pnpm": ">=4.14.4",
+    "yarn": "DO_NOT_USE"
   }
 }
