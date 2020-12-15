@@ -8,7 +8,7 @@ RUN cd packages/web-crates-io && \
     node ../../common/scripts/install-run-rushx.js build
 
 # Our minimal node server image
-FROM node as server
+FROM node:14.15-alpine as server
 
 WORKDIR /app/packages/web-crates-io
 
