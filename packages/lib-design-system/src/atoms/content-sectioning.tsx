@@ -37,7 +37,7 @@ import { DefaultFlex, DefaultBlock } from "./_shared";
 export const Main = DefaultFlex("main");
 export const Nav = DefaultFlex("nav");
 export const Section = DefaultFlex("section");
-export const Article = DefaultFlex("address");
+export const Article = DefaultFlex("article");
 export const Aside = DefaultFlex("aside");
 export const H1 = styled(DefaultFlex("h1"))`
   font-family: ${({ theme }) => theme.fontFamily.heading.join(",")};

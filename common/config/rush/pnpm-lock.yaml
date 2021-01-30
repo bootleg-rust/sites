@@ -15,6 +15,7 @@ dependencies:
   '@jest/globals': 26.6.2
   '@octokit/rest': 18.0.12
   '@rush-temp/build-tooling': 'file:projects/build-tooling.tgz_8abe8fc7b68f4b01dbe67963b03cea50'
+  '@rush-temp/flex-elements': 'file:projects/flex-elements.tgz_313e54260144196186d95a9d2cc1b31a'
   '@rush-temp/lib-config': 'file:projects/lib-config.tgz'
   '@rush-temp/lib-design-system': 'file:projects/lib-design-system.tgz'
   '@rush-temp/lib-features': 'file:projects/lib-features.tgz'
@@ -19888,6 +19889,28 @@ packages:
       integrity: sha512-pOELU39BHCI90kARA3QMkphjx1r9C9rKwWVXne8t97zGBqvatrKs+G1byOxkImdQIfLXw0YL+Ix+eIeUh1ICZg==
       tarball: 'file:projects/build-tooling.tgz'
     version: 0.0.0
+  'file:projects/flex-elements.tgz_313e54260144196186d95a9d2cc1b31a':
+    dependencies:
+      '@jest/globals': 26.6.2
+      '@types/react': 16.14.2
+      '@types/styled-components': 5.1.5
+      eslint: 7.15.0
+      jest-cli: 26.1.0
+      npm-run-all: 4.1.5
+      react: 16.14.0
+      styled-components: 5.2.1_1c445a3943a16117b8d6f5fe3eb8e46d
+      stylelint: 13.8.0
+      typescript: 3.8.3
+    dev: false
+    id: 'file:projects/flex-elements.tgz'
+    name: '@rush-temp/flex-elements'
+    peerDependencies:
+      react-dom: '*'
+      react-is: '*'
+    resolution:
+      integrity: sha512-kTAw5o6g1ks4ZOxjvvDMS0nVK+AdyYP9uIRegE/cXQ6/R9qAd2sKrikaWBvRUO3aV5O+/oGGoscDbzjfMD0emw==
+      tarball: 'file:projects/flex-elements.tgz'
+    version: 0.0.0
   'file:projects/lib-config.tgz':
     dependencies:
       '@jest/globals': 26.6.2
@@ -20220,6 +20243,7 @@ specifiers:
   '@jest/globals': ^26.6.2
   '@octokit/rest': ^18.0.0
   '@rush-temp/build-tooling': 'file:./projects/build-tooling.tgz'
+  '@rush-temp/flex-elements': 'file:./projects/flex-elements.tgz'
   '@rush-temp/lib-config': 'file:./projects/lib-config.tgz'
   '@rush-temp/lib-design-system': 'file:./projects/lib-design-system.tgz'
   '@rush-temp/lib-features': 'file:./projects/lib-features.tgz'
