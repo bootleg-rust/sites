@@ -25,6 +25,7 @@ module.exports = {
           "@bootleg-rust/lib-ssr-runtime",
           "@bootleg-rust/lib-ssr-toolbox",
           "@bootleg-rust/lib-config",
+          "@pseudo-su/flex-elements",
         ],
       },
     },

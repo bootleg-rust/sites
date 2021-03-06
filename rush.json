@@ -79,12 +79,12 @@
   // "hotfixChangeEnabled": false,
 
   "projects": [
-    // {
-    //   "packageName": "@bootleg-rust/sites",
-    //   "projectFolder": ".",
-    //   "reviewCategory": "tools",
-    //   "cyclicDependencyProjects": []
-    // },
+    {
+      "packageName": "@pseudo-su/flex-elements",
+      "projectFolder": "packages/lib-flex-elements",
+      "reviewCategory": "production",
+      "cyclicDependencyProjects": []
+    },
     {
       "packageName": "@bootleg-rust/build-tooling",
       "projectFolder": "packages/build-tooling",

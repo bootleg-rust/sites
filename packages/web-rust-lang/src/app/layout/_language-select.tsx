@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouteMatch } from "react-router";
-import { css, Div, Select } from "@bootleg-rust/lib-design-system";
+import { css, Select } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 
 const selectCss = css`
   flex-direction: row;
@@ -11,7 +12,7 @@ const selectCss = css`
 
   color: black;
 
-  ${Select} {
+  ${flx.select} {
     text-align: center;
   }
 `;
@@ -21,11 +22,11 @@ export function LanguageSelect({
   ...props
 }: {
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
-} & React.ComponentProps<typeof Div>) {
+} & React.ComponentProps<typeof flx.div>) {
   const match = useRouteMatch<{ lang: string }>();
   const lang = match.params.lang || "en-US";
   return (
-    <Div css={selectCss} {...props}>
+    <flx.div css={selectCss} {...props}>
       <Select
         value={lang}
         data-current-lang={lang}
@@ -74,6 +75,6 @@ export function LanguageSelect({
           正體中文 (zh-TW)
         </Select.Option>
       </Select>
-    </Div>
+    </flx.div>
   );
 }

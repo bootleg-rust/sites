@@ -25,6 +25,7 @@ module.exports = {
     config.performance.hints = false;
 
     const additionalIncludes = [
+      "@pseudo-su/flex-elements",
       "@bootleg-rust/lib-ssr-toolbox",
       "@bootleg-rust/lib-design-system",
     ];

@@ -1,5 +1,5 @@
 import React from "react";
-import { styled, css } from "../theming/typed-styled-components";
+import styled, { css } from "styled-components";
 
 type FlexJustifyContent =
   | "flex-start"

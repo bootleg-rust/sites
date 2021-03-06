@@ -2,13 +2,11 @@ import React from "react";
 import { useRouteMatch } from "react-router";
 import {
   css,
-  Nav,
-  Div,
   Anchor,
-  Span,
   UnorderedList,
   ListItem,
 } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 import { SiteLink } from "@bootleg-rust/lib-features";
 import { LanguageSelect } from "./_language-select";
 import rustLogoSvg from "./rust-logo-blk.svg";
@@ -18,7 +16,7 @@ const navLogoCss = css`
     width: 80px;
     max-width: 80px;
   }
-  ${Span} {
+  ${flx.span} {
     font-family: ${({ theme }) => theme.fontFamily.hero.join(", ")};
     font-size: ${({ theme }) => theme.fontSize["5xl"]};
   }
@@ -39,14 +37,14 @@ function NavLogo({ children }: { children?: React.ReactNode }) {
     match.params.lang === "en-US" ? "" : match.params.lang || ""
   }`;
   return (
-    <Div grow={1} css={navLogoCss} direction="row" justify="center">
+    <flx.div grow={1} css={navLogoCss} direction="row" justify="center">
       <SiteLink to={href} flex direction="row" alignItems="center">
         <img alt="Rust Logo" src={rustLogoSvg} />
-        <Span flex direction="column" justify="center">
+        <flx.span flex direction="column" justify="center">
           {children}
-        </Span>
+        </flx.span>
       </SiteLink>
-    </Div>
+    </flx.div>
   );
 }
 
@@ -143,7 +141,7 @@ export function TopNav({
   onSelectLanguage(locale: string): void;
 }) {
   return (
-    <Nav
+    <flx.nav
       css={css`
         ._lang-select {
           justify-content: center;
@@ -169,6 +167,6 @@ export function TopNav({
         onChange={(e) => onSelectLanguage(e.target.value)}
         className="_lang-select"
       />
-    </Nav>
+    </flx.nav>
   );
 }

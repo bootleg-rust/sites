@@ -4,17 +4,13 @@ import {
   css,
   styled,
   useTheme,
-  Div,
   HeroHeading,
   H2,
   Anchor,
   Paragraph,
-  Section,
   H3,
-  Blockquote,
-  Strong,
-  HorizontalRule,
 } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 import {
   PageSectionCentered,
   PageHeaderCentered,
@@ -72,7 +68,7 @@ export function HomepageHeader() {
         flex-flow: wrap;
       `}
     >
-      <Div grow>
+      <flx.div grow>
         <HeroHeading
           block
           css={css`
@@ -98,8 +94,8 @@ export function HomepageHeader() {
           A language empowering everyone <br /> to build reliable and efficient
           software.
         </H2>
-      </Div>
-      <Div
+      </flx.div>
+      <flx.div
         css={css`
           justify-content: center;
           align-items: center;
@@ -118,7 +114,7 @@ export function HomepageHeader() {
         >
           Get Started
         </AnchorButton>
-        <Div>
+        <flx.div>
           <Anchor
             css={css`
               text-align: center;
@@ -131,8 +127,8 @@ export function HomepageHeader() {
           >
             Version 1.45.2
           </Anchor>
-        </Div>
-      </Div>
+        </flx.div>
+      </flx.div>
     </PageHeaderCentered>
   );
 }
@@ -152,24 +148,24 @@ function SectionWhyRust() {
       <SectionHeader>
         <H2>Why Rust?</H2>
       </SectionHeader>
-      <Div>
-        <Section>
+      <flx.div>
+        <flx.section>
           <H3>Performance</H3>
           <Paragraph>
             Rust is blazingly fast and memory-efficient: with no runtime or
             garbage collector, it can power performance-critical services, run
             on embedded devices, and easily integrate with other languages.
           </Paragraph>
-        </Section>
-        <Section>
+        </flx.section>
+        <flx.section>
           <H3>Reliability</H3>
           <Paragraph>
             Rust’s rich type system and ownership model guarantee memory-safety
             and thread-safety — enabling you to eliminate many classes of bugs
             at compile-time.
           </Paragraph>
-        </Section>
-        <Section>
+        </flx.section>
+        <flx.section>
           <H3>Productivity</H3>
           <Paragraph>
             Rust has great documentation, a friendly compiler with useful error
@@ -177,8 +173,8 @@ function SectionWhyRust() {
             build tool, smart multi-editor support with auto-completion and type
             inspections, an auto-formatter, and more.
           </Paragraph>
-        </Section>
-      </Div>
+        </flx.section>
+      </flx.div>
     </PageSectionCentered>
   );
 }
@@ -197,7 +193,7 @@ function SectionBuildInRust() {
         <H2>Build it in Rust</H2>
       </SectionHeader>
 
-      <Div>
+      <flx.div>
         <Paragraph>
           In 2018, the Rust community decided to improve programming experience
           for a few distinct domains (see{" "}
@@ -207,14 +203,14 @@ function SectionBuildInRust() {
           ). For these, you can find many high-quality crates and some awesome
           guides on how to get started.
         </Paragraph>
-      </Div>
+      </flx.div>
 
-      <Div>
-        <Div>
-          <Div>
+      <flx.div>
+        <flx.div>
+          <flx.div>
             <img src={cliSvg} alt="terminal" />
-          </Div>
-          <Div>
+          </flx.div>
+          <flx.div>
             <H3>Command Line</H3>
             <Paragraph>
               Whip up a CLI tool quickly with Rust’s robust ecosystem. Rust
@@ -222,51 +218,51 @@ function SectionBuildInRust() {
               ease.
             </Paragraph>
             <Anchor href="/what/cli">Building Tools</Anchor>
-          </Div>
-        </Div>
+          </flx.div>
+        </flx.div>
 
-        <Div>
-          <Div>
+        <flx.div>
+          <flx.div>
             <img src={webassemblySvg} alt="gear with puzzle piece elements" />
-          </Div>
-          <Div>
+          </flx.div>
+          <flx.div>
             <H3>WebAssembly</H3>
             <Paragraph>
               Use Rust to supercharge your JavaScript, one module at a time.
               Publish to npm, bundle with webpack, and you’re off to the races.
             </Paragraph>
             <Anchor href="/what/wasm">Writing Web Apps</Anchor>
-          </Div>
-        </Div>
+          </flx.div>
+        </flx.div>
 
-        <Div>
-          <Div>
+        <flx.div>
+          <flx.div>
             <img src={networkingSvg} alt="a cloud with nodes" />
-          </Div>
-          <Div>
+          </flx.div>
+          <flx.div>
             <H3>Networking</H3>
             <Paragraph>
               Predictable performance. Tiny resource footprint. Rock-solid
               reliability. Rust is great for network services.
             </Paragraph>
             <Anchor href="/what/networking">Working On Servers</Anchor>
-          </Div>
-        </Div>
+          </flx.div>
+        </flx.div>
 
-        <Div>
-          <Div>
+        <flx.div>
+          <flx.div>
             <img src={embeddedSvg} alt="an embedded device chip" />
-          </Div>
-          <Div>
+          </flx.div>
+          <flx.div>
             <H3>Embedded</H3>
             <Paragraph>
               Targeting low-resource devices? Need low-level control without
               giving up high-level conveniences? Rust has you covered.
             </Paragraph>
             <Anchor href="/what/embedded">Starting With Embedded</Anchor>
-          </Div>
-        </Div>
-      </Div>
+          </flx.div>
+        </flx.div>
+      </flx.div>
     </PageSectionCentered>
   );
 }
@@ -277,7 +273,7 @@ function SectionInProduction() {
       <SectionHeader>
         <H2>Rust in production</H2>
       </SectionHeader>
-      <Div>
+      <flx.div>
         <Paragraph>
           Hundreds of companies around the world are using Rust in production
           today for fast, low-resource, cross-platform solutions. Software you
@@ -294,43 +290,43 @@ function SectionInProduction() {
             Cloudflare
           </Anchor>
           , uses Rust.{" "}
-          <Strong>
+          <flx.strong>
             From startups to large corporations, from embedded devices to
             scalable web services, Rust is a great fit.
-          </Strong>
+          </flx.strong>
         </Paragraph>
-      </Div>
-      <Div>
-        <Div>
-          <Div>
-            <Blockquote>
+      </flx.div>
+      <flx.div>
+        <flx.div>
+          <flx.div>
+            <flx.blockquote>
               My biggest compliment to Rust is that it's boring, and this is an
               amazing compliment.
-            </Blockquote>
+            </flx.blockquote>
             <Paragraph>– Chris Dickinson, Engineer at npm, Inc</Paragraph>
-          </Div>
-          <Div>
+          </flx.div>
+          <flx.div>
             <Anchor href="https://www.npmjs.com/">
               <img src={npmLogoSvg} alt="npm Logo" />
             </Anchor>
-          </Div>
-        </Div>
-        <HorizontalRule />
-        <Div>
-          <Div>
+          </flx.div>
+        </flx.div>
+        <flx.hr />
+        <flx.div>
+          <flx.div>
             <Anchor href="https://www.youtube.com/watch?v=u6ZbF4apABk">
               <img src={yelpLogoPng} alt="Yelp Logo" />
             </Anchor>
-          </Div>
-          <Div>
-            <Blockquote>
+          </flx.div>
+          <flx.div>
+            <flx.blockquote>
               All the documentation, the tooling, the community is great - you
               have all the tools to succeed in writing Rust code.
-            </Blockquote>
+            </flx.blockquote>
             <Paragraph>– Antonio Verardi, Infrastructure Engineer</Paragraph>
-          </Div>
-        </Div>
-      </Div>
+          </flx.div>
+        </flx.div>
+      </flx.div>
       <Anchor href="/production">Learn More</Anchor>
     </PageSectionCentered>
   );
@@ -350,16 +346,16 @@ function SectionGetInvolved() {
       <SectionHeader>
         <H2>Get involved</H2>
       </SectionHeader>
-      <Div>
-        <Div id="read-rust">
+      <flx.div>
+        <flx.div id="read-rust">
           <H3>Read Rust</H3>
           <Paragraph>
             We love documentation! Take a look at the books available online, as
             well as key blog posts and user guides.
           </Paragraph>
           <Anchor href="learn">Read the book</Anchor>
-        </Div>
-        <Div id="watch-rust">
+        </flx.div>
+        <flx.div id="watch-rust">
           <H3>Watch Rust</H3>
           <Paragraph>
             The Rust community has a dedicated YouTube channel collecting a huge
@@ -368,9 +364,9 @@ function SectionGetInvolved() {
           <Anchor href="https://www.youtube.com/channel/UCaYhcUwRBNscFNUKTjgPFiA">
             Watch the Videos
           </Anchor>
-        </Div>
-      </Div>
-      <Div>
+        </flx.div>
+      </flx.div>
+      <flx.div>
         <H3>Contribute code</H3>
         <Paragraph>
           Rust is truly a community effort, and we welcome contribution from
@@ -380,7 +376,7 @@ function SectionGetInvolved() {
         <Anchor href="https://rustc-dev-guide.rust-lang.org/getting-started.html">
           Read Contribution Guide
         </Anchor>
-      </Div>
+      </flx.div>
     </PageSectionCentered>
   );
 }
@@ -391,15 +387,15 @@ function SectionThanks() {
       <SectionHeader>
         <H2>Thanks</H2>
       </SectionHeader>
-      <Div>
+      <flx.div>
         <Paragraph>
           Rust would not exist without the generous contributions of time, work,
           and resources from individuals and companies. We are very grateful for
           the support!
         </Paragraph>
-      </Div>
-      <Div>
-        <Div id="individual-code">
+      </flx.div>
+      <flx.div>
+        <flx.div id="individual-code">
           <H3>Individuals</H3>
           <Paragraph>
             Rust is a community project and is very thankful for the many
@@ -408,16 +404,16 @@ function SectionThanks() {
           <Anchor href="https://thanks.rust-lang.org/">
             See individual contributors
           </Anchor>
-        </Div>
-        <Div id="company-sponsorships">
+        </flx.div>
+        <flx.div id="company-sponsorships">
           <H3>Corporate sponsors</H3>
           <Paragraph>
             The Rust project receives support from companies through the
             donation of infrastructure.
           </Paragraph>
           <Anchor href="/sponsors">See sponsors</Anchor>
-        </Div>
-      </Div>
+        </flx.div>
+      </flx.div>
     </PageSectionCentered>
   );
 }

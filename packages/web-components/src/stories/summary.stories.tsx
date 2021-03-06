@@ -1,12 +1,11 @@
 import React from "react";
 import {
-  Div,
-  H1,
-  Anchor,
   Paragraph,
   UnorderedList,
   ListItem,
+  H1,
 } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 import { StorybookWrapper } from "./shared";
 import atomicDesignProcess from "./atomic-design-process.png";
 
@@ -18,16 +17,16 @@ export default {
 export function AtomicDesign() {
   return (
     <StorybookWrapper>
-      <Div>
+      <flx.div>
         <H1>
           Atomic design (
-          <Anchor href="https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology">
+          <flx.a href="https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology">
             https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology
-          </Anchor>
+          </flx.a>
           )
-          <Anchor href="https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology">
+          <flx.a href="https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology">
             https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology
-          </Anchor>
+          </flx.a>
           https://bradfrost.com/blog/post/atomic-web-design/
         </H1>
         <Paragraph>
@@ -51,7 +50,7 @@ export function AtomicDesign() {
           src={atomicDesignProcess}
           alt="atomic design process including atoms, molecules, organisms, templates and pages"
         />
-      </Div>
+      </flx.div>
     </StorybookWrapper>
   );
 }

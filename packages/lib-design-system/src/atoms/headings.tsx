@@ -1,5 +1,5 @@
+import { flx } from "@pseudo-su/flex-elements";
 import { styled } from "../theming/typed-styled-components";
-import { DefaultFlex, DefaultBlock } from "./_shared";
 
 // TODO: these styles were taken from rust-lang.org
 // --- Highlight
@@ -32,33 +32,21 @@ import { DefaultFlex, DefaultBlock } from "./_shared";
 //   color: $gray;
 // }
 
-// MDN content section elements docs https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning
-
-export const Main = DefaultFlex("main");
-export const Nav = DefaultFlex("nav");
-export const Section = DefaultFlex("section");
-export const Article = DefaultFlex("address");
-export const Aside = DefaultFlex("aside");
-export const H1 = styled(DefaultFlex("h1"))`
+export const H1 = styled(flx.h1)`
   font-family: ${({ theme }) => theme.fontFamily.heading.join(",")};
 `;
-export const H2 = styled(DefaultFlex("h2"))`
+export const H2 = styled(flx.h2)`
   font-family: ${({ theme }) => theme.fontFamily.heading.join(",")};
 `;
-export const H3 = styled(DefaultFlex("h3"))`
+export const H3 = styled(flx.h3)`
   font-family: ${({ theme }) => theme.fontFamily.heading.join(",")};
 `;
-export const H4 = styled(DefaultFlex("h4"))`
+export const H4 = styled(flx.h4)`
   font-family: ${({ theme }) => theme.fontFamily.heading.join(",")};
 `;
-export const H5 = styled(DefaultFlex("h5"))`
+export const H5 = styled(flx.h5)`
   font-family: ${({ theme }) => theme.fontFamily.heading.join(",")};
 `;
-export const H6 = styled(DefaultFlex("h6"))`
+export const H6 = styled(flx.h6)`
   font-family: ${({ theme }) => theme.fontFamily.heading.join(",")};
 `;
-export const HeadingGroup = DefaultFlex("hgroup");
-export const Header = DefaultFlex("header");
-export const Footer = DefaultFlex("footer");
-
-export const Address = DefaultBlock("address");

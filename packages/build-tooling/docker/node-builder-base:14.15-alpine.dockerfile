@@ -10,6 +10,7 @@ COPY rush.json /app/
 COPY packages/build-tooling/package.json /app/packages/build-tooling/
 COPY packages/build-tooling/cli/cli.js /app/packages/build-tooling/cli/cli.js
 
+COPY packages/lib-flex-elements/package.json /app/packages/lib-flex-elements/
 COPY packages/lib-design-system/package.json /app/packages/lib-design-system/
 COPY packages/lib-features/package.json /app/packages/lib-features/
 COPY packages/lib-config/package.json /app/packages/lib-config/

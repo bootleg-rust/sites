@@ -1,8 +1,8 @@
 {
-  "name": "@bootleg-rust/lib-design-system",
+  "name": "@pseudo-su/flex-elements",
   "version": "0.0.1",
   "private": true,
-  "description": "`bootleg` rust-lang design system",
+  "description": "styled-components elements that default to `display: flex`",
   "author": "pseudo-su",
   "main": "src",
   "scripts": {
@@ -16,10 +16,7 @@
   },
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-is": "^16.13.1",
-    "styled-components": "^5.1.1",
-    "@pseudo-su/flex-elements": "*"
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",

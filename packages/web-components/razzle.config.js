@@ -26,6 +26,7 @@ module.exports = {
       object: additionalIncludesPlugin,
       options: {
         include: [
+          "@pseudo-su/flex-elements",
           "@bootleg-rust/lib-design-system",
           "@bootleg-rust/lib-features",
           "@bootleg-rust/lib-ssr-runtime",
