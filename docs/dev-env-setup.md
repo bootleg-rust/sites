@@ -9,6 +9,7 @@ gcloud init;
 gcloud auth login;
 gcloud auth application-default login;
 gcloud auth configure-docker;
+gcloud components install beta;
 gcloud beta auth configure-docker asia-docker.pkg.dev;
 gcloud --version;
 ```

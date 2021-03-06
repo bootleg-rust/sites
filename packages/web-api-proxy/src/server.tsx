@@ -8,7 +8,7 @@ function ApiProxyRouter() {
   const router = new Router();
 
   // CORS
-  router.all("*", async (ctx: Koa.Context, next: Koa.Next) => {
+  router.all("(.*)", async (ctx: Koa.Context, next: Koa.Next) => {
     if (ctx.req.method === "OPTIONS") {
       ctx.status = 200;
       ctx.set("Access-Control-Allow-Methods", "GET, PUT, PATCH, POST, DELETE");

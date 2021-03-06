@@ -47,6 +47,7 @@ export function streamSsrPage({
   const assets = require(process.env.RAZZLE_ASSETS_MANIFEST!);
 
   return async (ctx: Koa.Context) => {
+    const cspNonce = ctx.state.cspNonce;
     const queryCache = makeQueryCache();
     const helmetContext: { helmet?: HelmetData } = {};
     const httpContext: HttpContextData = {
@@ -108,6 +109,7 @@ export function streamSsrPage({
         assets,
         ssrData: {},
         configData: universalConfig,
+        cspNonce,
       }),
     ]);
 
