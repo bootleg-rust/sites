@@ -11,6 +11,10 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "@babel/eslint-parser",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "@babel/node",
       "allowedCategories": [ "tools" ]
     },
@@ -55,6 +59,10 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "@babel/runtime",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "@bootleg-rust/build-tooling",
       "allowedCategories": [ "production", "tools" ]
     },
@@ -93,6 +101,10 @@
     {
       "name": "@octokit/rest",
       "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@pseudo-su/flex-elements",
+      "allowedCategories": [ "production" ]
     },
     {
       "name": "@sfomin/for-each-package",
@@ -160,10 +172,6 @@
     },
     {
       "name": "@typescript-eslint/parser",
-      "allowedCategories": [ "tools" ]
-    },
-    {
-      "name": "@babel/eslint-parser",
       "allowedCategories": [ "tools" ]
     },
     {
@@ -253,10 +261,6 @@
     {
       "name": "eslint-plugin-unicorn",
       "allowedCategories": [ "tools" ]
-    },
-    {
-      "name": "@pseudo-su/flex-elements",
-      "allowedCategories": [ "production" ]
     },
     {
       "name": "fork-ts-checker-webpack-plugin",

@@ -27,11 +27,5 @@ module.exports = {
  * The return value is the updated object.
  */
 function readPackage(packageJson, context) {
-  // TODO: investigate and fix this
-
-  // ERROR: Internal Error: Cannot find installed dependency "@jest/globals" in
-  // "/{projectDir}/common/temp/node_modules/.pnpm/local/%2Fcommon%2Ftemp%2Fprojects%2Fflex-elements.tgz/node_modules"
-  // You have encountered a software defect. Please consider reporting the issue to the maintainers of this application.
-
   return packageJson;
 }
