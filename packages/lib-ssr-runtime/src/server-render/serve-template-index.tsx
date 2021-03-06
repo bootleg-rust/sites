@@ -23,7 +23,9 @@ export function serveIndexTemplate({
   return (ctx: Koa.Context) => {
     const c = serialize(universalConfig, { isJSON: true });
     const cspNonce = ctx.state.cspNonce;
-    const configTag = `<script nonce=${serialize(cspNonce, { isJSON: true })}>window.__CONFIG_DATA__ = ${c};</script>`;
+    const configTag = `<script nonce=${serialize(cspNonce, {
+      isJSON: true,
+    })}>window.__CONFIG_DATA__ = ${c};</script>`;
     const data = indexTemplate.replace(/<\/head>/g, `${configTag}</head>`);
     ctx.status = 200;
     ctx.body = data;

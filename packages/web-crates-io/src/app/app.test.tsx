@@ -30,7 +30,9 @@ test("renders an App", () => {
   );
   const nameElement = getByTestId("env:SERVICE_NAME");
   const envElement = getByTestId("env:ENV");
-  // TODO: uncomment
+  // TODO: re-enable this test
   // expect(nameElement).toContainHTML("web-crates-io");
   // expect(envElement).toContainHTML("dev");
+  expect(nameElement).toBeDefined();
+  expect(envElement).toBeDefined();
 });
