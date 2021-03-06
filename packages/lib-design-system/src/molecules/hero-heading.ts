@@ -1,5 +1,5 @@
-import { styled } from "../theming/typed-styled-components";
 import { flx } from "@pseudo-su/flex-elements";
+import { styled } from "../theming/typed-styled-components";
 
 export const HeroHeading = styled(flx.h1)`
   line-height: 1.2;

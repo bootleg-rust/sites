@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  styled,
-  css,
-  SemanticColor,
-} from "@bootleg-rust/lib-design-system";
+import { styled, css, SemanticColor } from "@bootleg-rust/lib-design-system";
 import { flx } from "@pseudo-su/flex-elements";
 
 type SectionBrandConfig = {
