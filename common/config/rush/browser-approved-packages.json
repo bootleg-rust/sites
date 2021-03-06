@@ -163,7 +163,7 @@
       "allowedCategories": [ "tools" ]
     },
     {
-      "name": "babel-eslint",
+      "name": "@babel/eslint-parser",
       "allowedCategories": [ "tools" ]
     },
     {

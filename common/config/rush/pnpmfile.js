@@ -27,12 +27,11 @@ module.exports = {
  * The return value is the updated object.
  */
 function readPackage(packageJson, context) {
+  // TODO: investigate and fix this
 
-  // // The karma types have a missing dependency on typings from the log4js package.
-  // if (packageJson.name === '@types/karma') {
-  //  context.log('Fixed up dependencies for @types/karma');
-  //  packageJson.dependencies['log4js'] = '0.6.38';
-  // }
+  // ERROR: Internal Error: Cannot find installed dependency "@jest/globals" in
+  // "/{projectDir}/common/temp/node_modules/.pnpm/local/%2Fcommon%2Ftemp%2Fprojects%2Fflex-elements.tgz/node_modules"
+  // You have encountered a software defect. Please consider reporting the issue to the maintainers of this application.
 
   return packageJson;
 }
