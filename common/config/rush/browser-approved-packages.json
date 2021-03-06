@@ -255,6 +255,10 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "@pseudo-su/flex-elements",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "fork-ts-checker-webpack-plugin",
       "allowedCategories": [ "tools" ]
     },

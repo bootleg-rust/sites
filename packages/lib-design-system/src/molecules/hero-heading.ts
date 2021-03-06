@@ -1,7 +1,7 @@
 import { styled } from "../theming/typed-styled-components";
-import { H1 } from "../atoms";
+import { flx } from "@pseudo-su/flex-elements";
 
-export const HeroHeading = styled(H1)`
+export const HeroHeading = styled(flx.h1)`
   line-height: 1.2;
   font-family: ${({ theme }) => theme.fontFamily.hero.join(",")};
   font-size: ${({ theme }) => theme.fontSize["6xl"]};

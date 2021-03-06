@@ -62,6 +62,8 @@ export const flx = {
   ol: DefaultFlex("ol"),
   ul: DefaultFlex("ul"),
   dl: DefaultFlex("dl"),
+  dd: DefaultFlex("dd"),
+  dt: DefaultFlex("dt"),
   li: DefaultFlex("li"),
   figure: DefaultFlex("figure"),
   figcaption: DefaultBlock("figcaption"),
@@ -99,4 +101,5 @@ export const flx = {
   ins: DefaultInline("ins"),
 };
 
+// eslint-disable-next-line import/no-default-export
 export default flx;

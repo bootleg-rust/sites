@@ -1,4 +1,4 @@
-import { Div } from "../../atoms";
+import { flx } from "@pseudo-su/flex-elements";
 import { styled, css, createGlobalStyle } from "../typed-styled-components";
 import { cssResetStyle } from "./css-reset";
 import { cssThemeColors } from "./colors";
@@ -48,12 +48,12 @@ export const GlobalDefaultPageStyle = createGlobalStyle`
   ${defaultPageStyle}
 `;
 
-export const CssResetStyle = styled(Div)`
+export const CssResetStyle = styled(flx.div)`
   ${cssResetStyle}
 `;
-export const CssThemeColors = styled(Div)`
+export const CssThemeColors = styled(flx.div)`
   ${cssThemeColors}
 `;
-export const DefaultPageStyle = styled(Div)`
+export const DefaultPageStyle = styled(flx.div)`
   ${defaultPageStyle}
 `;

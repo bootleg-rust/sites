@@ -1,5 +1,5 @@
 {
-  "name": "flex-elements",
+  "name": "@pseudo-su/flex-elements",
   "version": "0.0.1",
   "private": true,
   "description": "styled-components elements that default to `display: flex`",

@@ -39,6 +39,7 @@
     "@bootleg-rust/lib-features": "*",
     "@bootleg-rust/lib-ssr-runtime": "*",
     "@bootleg-rust/lib-ssr-toolbox": "*",
+    "@pseudo-su/flex-elements": "*",
     "core-js": "^3.6.4",
     "koa-router": "^10.0.0",
     "react": "^16.13.1",

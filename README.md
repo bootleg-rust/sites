@@ -91,3 +91,34 @@ Some things I'm considering (or intending) to implement are:
     - terraform to manage infra shared across all `packages/` in `@bootleg-rust/sites`.
     - terraform to manage infra specific to a single `@bootleg-rust/sites` package.
     - terraform to manage stateful infra that is either shared across multiple `packages/` or specific to a single `package/` (EG: instead of `web-api-proxy` have a `web-api-crates-io` package that requires a database to store package info).
+
+## Brainstorm structure
+
+```raw
+@pseudo-su/flex-elements
+
+@ssr-kit/runtime
+@ssr-kit/toolbox
+
+@bootleg-rust/design-system
+@bootleg-rust/base-service-config
+@bootleg-rust/features
+@bootleg-rust/web-rust-lang
+@bootleg-rust/web-crates-io
+
+sites/
+  @pseudo-su/
+    flex-elements/
+  @ssr-kit/
+    runtime/
+    toolbox
+  libs/
+    design-system/
+    features/
+    base-service-config/
+  services/
+    web-components
+    web-rust-lang
+    web-crates-io
+
+```

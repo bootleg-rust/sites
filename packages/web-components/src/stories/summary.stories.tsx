@@ -1,12 +1,10 @@
 import React from "react";
 import {
-  Div,
-  H1,
-  Anchor,
   Paragraph,
   UnorderedList,
   ListItem,
 } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 import { StorybookWrapper } from "./shared";
 import atomicDesignProcess from "./atomic-design-process.png";
 
@@ -18,18 +16,18 @@ export default {
 export function AtomicDesign() {
   return (
     <StorybookWrapper>
-      <Div>
-        <H1>
+      <flx.div>
+        <flx.h1>
           Atomic design (
-          <Anchor href="https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology">
+          <flx.a href="https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology">
             https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology
-          </Anchor>
+          </flx.a>
           )
-          <Anchor href="https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology">
+          <flx.a href="https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology">
             https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology
-          </Anchor>
+          </flx.a>
           https://bradfrost.com/blog/post/atomic-web-design/
-        </H1>
+        </flx.h1>
         <Paragraph>
           Atomic design is a methodology composed of five distinct stages
           working together to create interface design systems in a more
@@ -51,7 +49,7 @@ export function AtomicDesign() {
           src={atomicDesignProcess}
           alt="atomic design process including atoms, molecules, organisms, templates and pages"
         />
-      </Div>
+      </flx.div>
     </StorybookWrapper>
   );
 }

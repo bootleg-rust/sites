@@ -80,7 +80,7 @@
 
   "projects": [
     {
-      "packageName": "flex-elements",
+      "packageName": "@pseudo-su/flex-elements",
       "projectFolder": "packages/lib-flex-elements",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
