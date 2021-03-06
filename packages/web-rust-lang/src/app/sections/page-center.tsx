@@ -2,11 +2,9 @@ import React from "react";
 import {
   styled,
   css,
-  Div,
-  Section,
-  Header,
   SemanticColor,
 } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 
 type SectionBrandConfig = {
   foreground?: SemanticColor;
@@ -15,7 +13,7 @@ type SectionBrandConfig = {
   link?: SemanticColor;
 };
 
-const CenteredWrapper = styled(Div)<{
+const CenteredWrapper = styled(flx.div)<{
   brand?: SectionBrandConfig;
 }>`
   justify-content: center;
@@ -52,12 +50,12 @@ const CenteredWrapper = styled(Div)<{
 export function PageCentered({
   brand,
   ...props
-}: React.ComponentProps<typeof Div> & {
+}: React.ComponentProps<typeof flx.div> & {
   brand?: SectionBrandConfig;
 }) {
   return (
     <CenteredWrapper brand={brand}>
-      <Div {...props} />
+      <flx.div {...props} />
     </CenteredWrapper>
   );
 }
@@ -65,7 +63,7 @@ export function PageCentered({
 export function PageSectionCentered({
   brand,
   ...props
-}: React.ComponentProps<typeof Section> & {
+}: React.ComponentProps<typeof flx.section> & {
   brand?: SectionBrandConfig;
 }) {
   return (
@@ -75,7 +73,7 @@ export function PageSectionCentered({
         padding-bottom: ${({ theme }) => theme.spacing[24]};
       `}
     >
-      <Section {...props} />
+      <flx.section {...props} />
     </CenteredWrapper>
   );
 }
@@ -83,7 +81,7 @@ export function PageSectionCentered({
 export function PageHeaderCentered({
   brand,
   ...props
-}: React.ComponentProps<typeof Header> & {
+}: React.ComponentProps<typeof flx.header> & {
   brand?: SectionBrandConfig;
 }) {
   return (
@@ -94,7 +92,7 @@ export function PageHeaderCentered({
         padding-bottom: ${({ theme }) => theme.spacing[32]};
       `}
     >
-      <Header {...props} />
+      <flx.header {...props} />
     </CenteredWrapper>
   );
 }

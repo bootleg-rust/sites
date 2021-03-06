@@ -1,10 +1,11 @@
 import React from "react";
-import { css, Div, Header } from "@bootleg-rust/lib-design-system";
+import { css } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 
 export function SectionHeader({ children }: { children: React.ReactNode }) {
   return (
-    <Header block>
-      <Div
+    <flx.header block>
+      <flx.div
         css={`
           display: inline-block;
           font-size: 3rem;
@@ -15,7 +16,7 @@ export function SectionHeader({ children }: { children: React.ReactNode }) {
         `}
       >
         {children}
-        <Div
+        <flx.div
           block
           css={css`
             position: relative;
@@ -26,7 +27,7 @@ export function SectionHeader({ children }: { children: React.ReactNode }) {
             background-color: ${({ theme }) => theme.colors.accent.var};
           `}
         />
-      </Div>
-    </Header>
+      </flx.div>
+    </flx.header>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
-import { styled, Div, HeroHeading, H2 } from "@bootleg-rust/lib-design-system";
+import { styled, HeroHeading } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 import { PageHeaderCentered } from "../sections";
 import ferrisErrorImg from "./ferris-img.png";
 
@@ -7,7 +8,7 @@ const PageHeader = styled(PageHeaderCentered)`
   text-align: center;
   gap: ${({ theme }) => theme.spacing[10]};
 
-  ${H2} {
+  ${flx.h2} {
     font-size: ${({ theme }) => theme.fontSize["3xl"]};
     color: ${({ theme }) => theme.colors.textMuted.var};
     font-weight: ${({ theme }) => theme.fontWeight.semibold};
@@ -21,7 +22,7 @@ const PageHeader = styled(PageHeaderCentered)`
   }
 
   @media ${({ theme }) => theme.media.notSmall} {
-    ${H2} {
+    ${flx.h2} {
       font-size: ${({ theme }) => theme.fontSize["5xl"]};
     }
   }
@@ -43,13 +44,13 @@ const PageHeader = styled(PageHeaderCentered)`
 export function FerrisErrorSection({ code }: { code: number }) {
   return (
     <PageHeader alignItems="center">
-      <Div alignItems="center" justify="center" className="_error-message">
+      <flx.div alignItems="center" justify="center" className="_error-message">
         <HeroHeading>{code}</HeroHeading>
-        <H2>Whoops, this page doesn’t exist :-(</H2>
-      </Div>
-      <Div justify="center" alignItems="center" grow className="_ferris">
+        <flx.h2>Whoops, this page doesn’t exist :-(</flx.h2>
+      </flx.div>
+      <flx.div justify="center" alignItems="center" grow className="_ferris">
         <img src={ferrisErrorImg} alt="404 not found image" />
-      </Div>
+      </flx.div>
     </PageHeader>
   );
 }

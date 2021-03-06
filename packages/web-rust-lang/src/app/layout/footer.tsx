@@ -2,14 +2,12 @@ import React from "react";
 import {
   styled,
   css,
-  Div,
   Anchor,
   UnorderedList,
   ListItem,
-  Footer,
   H4,
-  Span,
 } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 import { SiteLink } from "@bootleg-rust/lib-features";
 import { PageCentered } from "../sections";
 import { LanguageSelect } from "./_language-select";
@@ -56,15 +54,15 @@ export function SiteFooter({
   onSelectLanguage(locale: string): void;
 }) {
   return (
-    <Footer css={footerCss}>
+    <flx.footer css={footerCss}>
       <FooterContent>
         <GetHelp onSelectLanguage={onSelectLanguage} />
         <TermsAndPolicies />
         <SocialIcons />
       </FooterContent>
-      <Div className="_bottom-text" alignItems="center" justify="center">
-        <Div block>
-          <Span>Maintained by the Rust Team. See a bug? </Span>
+      <flx.div className="_bottom-text" alignItems="center" justify="center">
+        <flx.div block>
+          <flx.span>Maintained by the Rust Team. See a bug? </flx.span>
           <Anchor
             css={`
               white-space: nowrap;
@@ -73,17 +71,17 @@ export function SiteFooter({
           >
             File an issue!
           </Anchor>
-        </Div>
-        <Div block>
+        </flx.div>
+        <flx.div block>
           Looking for the{" "}
           <Anchor href="https://prev.rust-lang.org">previous website</Anchor>?
-        </Div>
-      </Div>
-    </Footer>
+        </flx.div>
+      </flx.div>
+    </flx.footer>
   );
 }
 
-const FooterColumn = styled(Div)`
+const FooterColumn = styled(flx.div)`
   ${H4} {
     font-size: ${({ theme }) => theme.fontSize["3xl"]};
     font-weight: ${({ theme }) => theme.fontWeight.semibold};
@@ -182,7 +180,7 @@ function SocialIcons() {
   return (
     <FooterColumn grow>
       <H4>Social</H4>
-      <Div direction="row" wrap gap="1.6rem">
+      <flx.div direction="row" wrap gap="1.6rem">
         <SocialIcon
           socialUrl="https://twitter.com/rustlang"
           imageUrl={twitterLogo}
@@ -207,7 +205,7 @@ function SocialIcons() {
           alt="github logo"
           title="GitHub"
         />
-      </Div>
+      </flx.div>
     </FooterColumn>
   );
 }

@@ -24,6 +24,7 @@
     "@bootleg-rust/lib-features": "*",
     "@bootleg-rust/lib-ssr-runtime": "*",
     "@bootleg-rust/lib-ssr-toolbox": "*",
+    "@pseudo-su/flex-elements": "*",
     "core-js": "^3.6.4",
     "framer-motion": "^2.6.1",
     "isomorphic-fetch": "^2.2.1",

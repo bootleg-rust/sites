@@ -14,9 +14,8 @@ import {
   GlobalCssResetStyle,
   GlobalCssThemeColors,
   GlobalDefaultPageStyle,
-  Div,
-  Main,
 } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 import { useConfig } from "./config";
 import { TopNav, SiteFooter } from "./layout";
 import { Homepage, FerrisErrorSection } from "./pages";
@@ -141,7 +140,7 @@ function PageContent() {
           }
           onSelectLanguage={navigateToLanguage}
         />
-        <Main grow justify="center">
+        <flx.main grow justify="center">
           {/* Routing */}
           <Switch>
             <Route exact path={match.path + "/"} component={Homepage} />
@@ -156,7 +155,7 @@ function PageContent() {
               )}
             />
           </Switch>
-        </Main>
+        </flx.main>
         <SiteFooter onSelectLanguage={navigateToLanguage} />
       </AnimateSharedLayout>
     </>
@@ -199,12 +198,12 @@ export function App() {
       <LocalisedPageContent />
 
       {/* Test data */}
-      <Div data-testid="env:SERVICE_NAME" style={{ display: "none" }}>
+      <flx.div data-testid="env:SERVICE_NAME" style={{ display: "none" }}>
         {config.SERVICE_NAME}
-      </Div>
-      <Div data-testid="env:ENV" style={{ display: "none" }}>
+      </flx.div>
+      <flx.div data-testid="env:ENV" style={{ display: "none" }}>
         {config.ENV}
-      </Div>
+      </flx.div>
     </ApplicationProviders>
   );
 }
