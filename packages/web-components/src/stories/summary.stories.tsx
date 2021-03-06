@@ -3,6 +3,7 @@ import {
   Paragraph,
   UnorderedList,
   ListItem,
+  H1,
 } from "@bootleg-rust/lib-design-system";
 import { flx } from "@pseudo-su/flex-elements";
 import { StorybookWrapper } from "./shared";
@@ -17,7 +18,7 @@ export function AtomicDesign() {
   return (
     <StorybookWrapper>
       <flx.div>
-        <flx.h1>
+        <H1>
           Atomic design (
           <flx.a href="https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology">
             https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology
@@ -27,7 +28,7 @@ export function AtomicDesign() {
             https://atomicdesign.bradfrost.com/chapter-2/#the-atomic-design-methodology
           </flx.a>
           https://bradfrost.com/blog/post/atomic-web-design/
-        </flx.h1>
+        </H1>
         <Paragraph>
           Atomic design is a methodology composed of five distinct stages
           working together to create interface design systems in a more

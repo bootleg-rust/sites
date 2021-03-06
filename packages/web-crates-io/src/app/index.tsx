@@ -12,8 +12,8 @@ import {
   GlobalCssThemeColors,
   GlobalDefaultPageStyle,
   H1,
-  Div,
 } from "@bootleg-rust/lib-design-system";
+import { flx } from "@pseudo-su/flex-elements";
 import { useConfig } from "./config";
 import { CrateDetails } from "./features/crate-details";
 import { CrateSearchResults } from "./features/crate-search";
@@ -149,12 +149,12 @@ export function App() {
         </Switch>
       </PageLayout>
       {/* Test data */}
-      <Div data-testid="env:SERVICE_NAME" style={{ display: "none" }}>
+      <flx.div data-testid="env:SERVICE_NAME" style={{ display: "none" }}>
         {config.SERVICE_NAME}
-      </Div>
-      <Div data-testid="env:ENV" style={{ display: "none" }}>
+      </flx.div>
+      <flx.div data-testid="env:ENV" style={{ display: "none" }}>
         {config.ENV}
-      </Div>
+      </flx.div>
     </ApplicationProviders>
   );
 }
