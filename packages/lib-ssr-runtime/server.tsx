@@ -1,4 +1,5 @@
 import fs from "fs";
+import crypto from "crypto";
 import Koa from "koa";
 import conditional from "koa-conditional-get";
 import etag from "koa-etag";
@@ -59,7 +60,23 @@ export function createKoaApp({
 
   // `koa-helmet` provides security headers to help prevent common, well known attacks
   // @see https://helmetjs.github.io/
-  app.use(helmet());
+  app.use(async (ctx, next) => {
+    ctx.state.cspNonce = crypto.randomBytes(16).toString("hex");
+
+    // TODO: enable CSP
+    // const defaultAllowDev = process.env.NODE_ENV !== "production" ? ["localhost:*"] : [];
+    // const defaultAllow = ["'self'", ...defaultAllowDev];
+    return helmet({
+      contentSecurityPolicy: false,
+      // contentSecurityPolicy: {
+      //   directives: {
+      //     defaultSrc: [...defaultAllow],
+      //     styleSrc: [...defaultAllow],
+      //     scriptSrc: [...defaultAllow, `'nonce-${ctx.state.cspNonce}'`],
+      //   },
+      // }
+    })(ctx, next);
+  });
 
   // etag works together with conditional-get
   app.use(conditional());
@@ -142,18 +159,18 @@ export function createKoaApp({
 
 export function createStaticIndexRouter(cfg: ServeIndexTemplateConfig) {
   const router = new Router();
-  router.get("/*", serveIndexTemplate(cfg));
+  router.get("/(.*)", serveIndexTemplate(cfg));
   return router;
 }
 
 export function createKoaSsrRouter(cfg: StreamSsrPageConfig) {
   const router = new Router();
-  router.get("/*", streamSsrPage(cfg));
+  router.get("/(.*)", streamSsrPage(cfg));
   return router;
 }
 
 export function createKoaSsrRouterLightyear(cfg: StreamSsrPageConfig) {
   const router = new Router();
-  router.get("/*", streamSsrPageLightyear(cfg));
+  router.get("/(.*)", streamSsrPageLightyear(cfg));
   return router;
 }

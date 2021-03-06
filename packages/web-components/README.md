@@ -3,7 +3,7 @@
 WIP: docs
 
 ```sh
-docker build -t web-components -f Dockerfile ../..
+docker build --progress=plain -t web-components -f Dockerfile ../..
 docker run -it --init -p 8080:8080 \
   -e ENV=dev \
   web-components

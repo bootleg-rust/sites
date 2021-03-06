@@ -6,7 +6,7 @@
   },
   "scripts": {
     "build": "echo \"Nothing to build\"",
-    "service:package": "docker build -t node-builder-base:14.15-alpine -f docker/node-builder-base:14.15-alpine.dockerfile ../..",
+    "service:package": "docker build --progress=plain -t node-builder-base:14.15-alpine -f docker/node-builder-base:14.15-alpine.dockerfile ../..",
     "test": "jest"
   },
   "dependencies": {
@@ -30,7 +30,7 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
-    "babel-preset-razzle": "4.0.0-canary.8",
+    "babel-preset-razzle": "4.0.1-canary.6",
     "clean-webpack-plugin": "^3.0.0",
     "commander": "^5.1.0",
     "debug": "^4.3.1",
@@ -55,9 +55,9 @@
     "null-loader": "^4.0.0",
     "postcss": "8.1.0",
     "prettier": "^2.2.1",
-    "razzle": "4.0.0-canary.8",
-    "razzle-dev-utils": "4.0.0-canary.8",
-    "razzle-plugin-scss": "4.0.0-canary.8",
+    "razzle": "4.0.1-canary.6",
+    "razzle-dev-utils": "4.0.1-canary.6",
+    "razzle-plugin-scss": "4.0.1-canary.6",
     "stylelint": "^13.6.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",

@@ -11,11 +11,21 @@ function modifyWebpackConfig({
 }) {
   webpackConfig.plugins.push(new ForkTSCheckerWebpackPlugin());
 
-  // TODO: should tree shaking be in a seperate plugin?
-  // Client: tree shaking on production
-  if (target === "web" && !dev) {
+  // TODO: move this somewhere else
+  if (target === "node") {
+    // Critical dependency: the request of a dependency is an expression
+    // @ {projectDir}/bootleg-rust/sites/common/temp/node_modules/.pnpm/registry.npmjs.org/any-promise/1.3.0/node_modules/any-promise/index.js
+    // @ {projectDir}/bootleg-rust/sites/common/temp/node_modules/.pnpm/registry.npmjs.org/koa-compose/3.2.1/node_modules/koa-compose/index.js
+    // @ {projectDir}/bootleg-rust/sites/common/temp/node_modules/.pnpm/registry.npmjs.org/koa-convert/1.2.0/node_modules/koa-convert/index.js
+    // @ {projectDir}/bootleg-rust/sites/common/temp/node_modules/.pnpm/registry.npmjs.org/koa/2.13.1/node_modules/koa/lib/application.js
     webpackConfig.plugins = [
-      new CleanWebpackPlugin(),
+      new webpackObject.ContextReplacementPlugin(
+        /\/(koa|koa-convert|koa-compose|any-promise)\//,
+        (data) => {
+          delete data.dependencies[0].critical;
+          return data;
+        },
+      ),
       ...webpackConfig.plugins,
     ];
   }

@@ -13,6 +13,7 @@ type PostRenderArgs = {
   assets: any;
   ssrData: any;
   configData: any;
+  cspNonce: string;
 };
 
 export function streamOpenHTML({ assets, helmet }: PreRenderArgs) {
@@ -51,12 +52,13 @@ export function streamCloseHTML({
   assets,
   ssrData,
   configData,
+  cspNonce,
 }: PostRenderArgs) {
   // prettier-ignore
   const tags = {
     razzleJS: `<script src="${String(assets.client.js)}" defer${NODE_ENV === "production" ? "" : " crossorigin"}></script>`,
     inlinedConfig: `
-    <script>
+    <script nonce=${serialize(cspNonce, { isJSON: true })}>
       window.__CONFIG_DATA__ = ${serialize(configData, { isJSON: true })};
       window.__SSR_DATA__ = ${serialize(ssrData, { isJSON: true })};
     </script>

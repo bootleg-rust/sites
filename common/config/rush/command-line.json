@@ -37,7 +37,8 @@
       "commandKind": "bulk",
       "summary": "Create package artifacts (rushx package)",
       "enableParallelism": true,
-      "ignoreDependencyOrder": true,
+      "allowWarningsInSuccessfulBuild": true,
+      "ignoreDependencyOrder": false,
       "ignoreMissingScript": true
     },
     {
@@ -45,6 +46,7 @@
       "commandKind": "bulk",
       "summary": "Publish package artifacts (rushx publish)",
       "enableParallelism": true,
+      "allowWarningsInSuccessfulBuild": true,
       "ignoreDependencyOrder": true,
       "ignoreMissingScript": true
     },
@@ -53,6 +55,7 @@
       "commandKind": "bulk",
       "summary": "Deploy projects using artifact (rushx deploy)",
       "enableParallelism": true,
+      "allowWarningsInSuccessfulBuild": true,
       "ignoreDependencyOrder": true,
       "ignoreMissingScript": true
     }
