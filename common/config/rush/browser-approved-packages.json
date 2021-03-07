@@ -67,23 +67,23 @@
       "allowedCategories": [ "production", "tools" ]
     },
     {
-      "name": "@bootleg-rust/lib-config",
+      "name": "@bootleg-rust/base-service-config",
       "allowedCategories": [ "production" ]
     },
     {
-      "name": "@bootleg-rust/lib-design-system",
+      "name": "@bootleg-rust/design-system",
       "allowedCategories": [ "production" ]
     },
     {
-      "name": "@bootleg-rust/lib-features",
+      "name": "@bootleg-rust/features",
       "allowedCategories": [ "production" ]
     },
     {
-      "name": "@bootleg-rust/lib-ssr-runtime",
+      "name": "@ssr-kit/runtime",
       "allowedCategories": [ "production" ]
     },
     {
-      "name": "@bootleg-rust/lib-ssr-toolbox",
+      "name": "@ssr-kit/toolbox",
       "allowedCategories": [ "production" ]
     },
     {

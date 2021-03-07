@@ -1,0 +1,35 @@
+{
+  "name": "@bootleg-rust/features",
+  "version": "0.0.1",
+  "private": true,
+  "description": "bootleg-crates.io features",
+  "author": "pseudo-su",
+  "main": "src",
+  "scripts": {
+    "build": "echo \"Nothing to build\"",
+    "test": "jest",
+    "verify": "eslint --max-warnings=0 .",
+    "verify:fix": "eslint --max-warnings=0 --fix ."
+  },
+  "dependencies": {
+    "@bootleg-rust/design-system": "*",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@bootleg-rust/build-tooling": "*",
+    "@jest/globals": "^26.6.2",
+    "@types/react": "^16.13.1",
+    "@types/react-router-dom": "^5.1.4",
+    "eslint": "^7.15.0",
+    "jest-cli": "26.1.0",
+    "typescript": "~3.8.3"
+  },
+  "engines": {
+    "node": "14.15",
+    "npm": "DO_NOT_USE",
+    "pnpm": ">=4.14.4",
+    "yarn": "DO_NOT_USE"
+  }
+}

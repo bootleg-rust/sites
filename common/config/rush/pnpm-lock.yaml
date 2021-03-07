@@ -16,13 +16,13 @@ dependencies:
   '@babel/runtime': 7.13.9
   '@jest/globals': 26.6.2
   '@octokit/rest': 18.0.12
+  '@rush-temp/base-service-config': 'file:projects/base-service-config.tgz'
   '@rush-temp/build-tooling': 'file:projects/build-tooling.tgz_8abe8fc7b68f4b01dbe67963b03cea50'
+  '@rush-temp/design-system': 'file:projects/design-system.tgz'
+  '@rush-temp/features': 'file:projects/features.tgz'
   '@rush-temp/flex-elements': 'file:projects/flex-elements.tgz_313e54260144196186d95a9d2cc1b31a'
-  '@rush-temp/lib-config': 'file:projects/lib-config.tgz'
-  '@rush-temp/lib-design-system': 'file:projects/lib-design-system.tgz'
-  '@rush-temp/lib-features': 'file:projects/lib-features.tgz'
-  '@rush-temp/lib-ssr-runtime': 'file:projects/lib-ssr-runtime.tgz_ee7bf82e261d80061d7f9a2aa0a625c5'
-  '@rush-temp/lib-ssr-toolbox': 'file:projects/lib-ssr-toolbox.tgz_1970bc6cda57b853ef3a741f3581b86c'
+  '@rush-temp/runtime': 'file:projects/runtime.tgz_ee7bf82e261d80061d7f9a2aa0a625c5'
+  '@rush-temp/toolbox': 'file:projects/toolbox.tgz_1970bc6cda57b853ef3a741f3581b86c'
   '@rush-temp/web-api-proxy': 'file:projects/web-api-proxy.tgz_7f61a60de31b72ed98836f0234042fde'
   '@rush-temp/web-components': 'file:projects/web-components.tgz_c6b15677f334fd5f4ffa3217ecf3a440'
   '@rush-temp/web-crates-io': 'file:projects/web-crates-io.tgz_1970bc6cda57b853ef3a741f3581b86c'
@@ -20818,6 +20818,17 @@ packages:
     dev: false
     resolution:
       integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==
+  'file:projects/base-service-config.tgz':
+    dependencies:
+      '@jest/globals': 26.6.2
+      envalid: 6.0.2
+      jest-cli: 26.1.0
+    dev: false
+    name: '@rush-temp/base-service-config'
+    resolution:
+      integrity: sha512-WmL9jw/kJy0FhfgGw921etufcYpijjhiYIj99kucZMsStwsIop+ctJKZGmVyBltarjf3YRlTKY65ki7K1r+iMQ==
+      tarball: 'file:projects/base-service-config.tgz'
+    version: 0.0.0
   'file:projects/build-tooling.tgz_8abe8fc7b68f4b01dbe67963b03cea50':
     dependencies:
       '@babel/cli': 7.13.0_@babel+core@7.13.8
@@ -20891,6 +20902,43 @@ packages:
       integrity: sha512-97Tbz5ZMXdEJjN41adtMTkaJgWsA60d2vvpCJHBPLd0fMvwidllWvTsyHH7zzfbab90r/06ILF8qR4pAIeNwDQ==
       tarball: 'file:projects/build-tooling.tgz'
     version: 0.0.0
+  'file:projects/design-system.tgz':
+    dependencies:
+      '@jest/globals': 26.6.2
+      '@types/react': 16.14.2
+      '@types/styled-components': 5.1.5
+      eslint: 7.15.0
+      jest-cli: 26.1.0
+      npm-run-all: 4.1.5
+      react: 16.14.0
+      react-dom: 16.14.0_react@16.14.0
+      react-is: 16.13.1
+      styled-components: 5.2.1_1c445a3943a16117b8d6f5fe3eb8e46d
+      stylelint: 13.8.0
+      typescript: 3.8.3
+    dev: false
+    name: '@rush-temp/design-system'
+    resolution:
+      integrity: sha512-StY0DCqGZ/v0XqfLWNRHif/BRXwo6Y3jAzCBH6q+V5vNB986hpAq+a1pUwXtUU0c3QC3d9x3cm+ydSFeugcVGQ==
+      tarball: 'file:projects/design-system.tgz'
+    version: 0.0.0
+  'file:projects/features.tgz':
+    dependencies:
+      '@jest/globals': 26.6.2
+      '@types/react': 16.14.2
+      '@types/react-router-dom': 5.1.6
+      eslint: 7.15.0
+      jest-cli: 26.1.0
+      react: 16.14.0
+      react-dom: 16.14.0_react@16.14.0
+      react-router-dom: 5.2.0_react@16.14.0
+      typescript: 3.8.3
+    dev: false
+    name: '@rush-temp/features'
+    resolution:
+      integrity: sha512-Jsn5qVlyvnlwnu9+MSVHMkBvx3B+vqHUG2dwAg663LVfcYIzSkYMfTh1vtsf5rB59bauRwi6ztZpFn2VK6jHlA==
+      tarball: 'file:projects/features.tgz'
+    version: 0.0.0
   'file:projects/flex-elements.tgz_313e54260144196186d95a9d2cc1b31a':
     dependencies:
       '@jest/globals': 26.6.2
@@ -20913,55 +20961,7 @@ packages:
       integrity: sha512-kTAw5o6g1ks4ZOxjvvDMS0nVK+AdyYP9uIRegE/cXQ6/R9qAd2sKrikaWBvRUO3aV5O+/oGGoscDbzjfMD0emw==
       tarball: 'file:projects/flex-elements.tgz'
     version: 0.0.0
-  'file:projects/lib-config.tgz':
-    dependencies:
-      '@jest/globals': 26.6.2
-      envalid: 6.0.2
-      jest-cli: 26.1.0
-    dev: false
-    name: '@rush-temp/lib-config'
-    resolution:
-      integrity: sha512-7W5F1HgV1LcXJP3wa9Y/+DQncHVczz4j81DxZsJyC4s5bfXk/xoSzCLaIGBjs597oQpoabBhDaFB9nDaPBhMVw==
-      tarball: 'file:projects/lib-config.tgz'
-    version: 0.0.0
-  'file:projects/lib-design-system.tgz':
-    dependencies:
-      '@jest/globals': 26.6.2
-      '@types/react': 16.14.2
-      '@types/styled-components': 5.1.5
-      eslint: 7.15.0
-      jest-cli: 26.1.0
-      npm-run-all: 4.1.5
-      react: 16.14.0
-      react-dom: 16.14.0_react@16.14.0
-      react-is: 16.13.1
-      styled-components: 5.2.1_1c445a3943a16117b8d6f5fe3eb8e46d
-      stylelint: 13.8.0
-      typescript: 3.8.3
-    dev: false
-    name: '@rush-temp/lib-design-system'
-    resolution:
-      integrity: sha512-It1lGdSIw/ogC15fKcabtNXa7sFTECxg4s784ZkSGPBwTpcws6KdcUTHRBkC24fcdRjrO/OKOswqFA3pI2alDw==
-      tarball: 'file:projects/lib-design-system.tgz'
-    version: 0.0.0
-  'file:projects/lib-features.tgz':
-    dependencies:
-      '@jest/globals': 26.6.2
-      '@types/react': 16.14.2
-      '@types/react-router-dom': 5.1.6
-      eslint: 7.15.0
-      jest-cli: 26.1.0
-      react: 16.14.0
-      react-dom: 16.14.0_react@16.14.0
-      react-router-dom: 5.2.0_react@16.14.0
-      typescript: 3.8.3
-    dev: false
-    name: '@rush-temp/lib-features'
-    resolution:
-      integrity: sha512-sJqgFwk2RPMktB/fKtjoKzfzZAsVZO6tSzddTxBdn9m8Xvrpeb9JL7HMaQkwySviGE37vk57EY1G2FlJltld/Q==
-      tarball: 'file:projects/lib-features.tgz'
-    version: 0.0.0
-  'file:projects/lib-ssr-runtime.tgz_ee7bf82e261d80061d7f9a2aa0a625c5':
+  'file:projects/runtime.tgz_ee7bf82e261d80061d7f9a2aa0a625c5':
     dependencies:
       '@jest/globals': 26.6.2
       '@tusbar/cache-control': 0.4.0
@@ -21005,8 +21005,8 @@ packages:
       styled-components: 5.2.1_1c445a3943a16117b8d6f5fe3eb8e46d
       typescript: 3.8.3
     dev: false
-    id: 'file:projects/lib-ssr-runtime.tgz'
-    name: '@rush-temp/lib-ssr-runtime'
+    id: 'file:projects/runtime.tgz'
+    name: '@rush-temp/runtime'
     peerDependencies:
       '@babel/core': '*'
       babel-preset-razzle: '*'
@@ -21015,10 +21015,10 @@ packages:
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-dV6iG5/xvIS35ZVtOMHQcEy8pMDULy4PfLHgl+TdRSg8/kxQU4khPwh+G+pZnZDZ5SZKYHRHdB4Xm0GiF425hA==
-      tarball: 'file:projects/lib-ssr-runtime.tgz'
+      integrity: sha512-MgEAn9hXWHvGhDlXOLvbQ8rK55SVoJ/osId3j/YZzeHUUxTy9JYupAkEt400TAtU6AgoHOW3/h+pLXHrMweoDg==
+      tarball: 'file:projects/runtime.tgz'
     version: 0.0.0
-  'file:projects/lib-ssr-toolbox.tgz_1970bc6cda57b853ef3a741f3581b86c':
+  'file:projects/toolbox.tgz_1970bc6cda57b853ef3a741f3581b86c':
     dependencies:
       '@jest/globals': 26.6.2
       '@types/history': 4.7.8
@@ -21040,8 +21040,8 @@ packages:
       styled-components: 5.2.1_1c445a3943a16117b8d6f5fe3eb8e46d
       typescript: 3.8.3
     dev: false
-    id: 'file:projects/lib-ssr-toolbox.tgz'
-    name: '@rush-temp/lib-ssr-toolbox'
+    id: 'file:projects/toolbox.tgz'
+    name: '@rush-temp/toolbox'
     peerDependencies:
       '@babel/core': '*'
       babel-preset-razzle: '*'
@@ -21051,8 +21051,8 @@ packages:
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-uB+h7hGBdvl6Mpjps08pFEloPna3NU63YOMmTV4bQNmixINIJcwhGsH5XXc7ZtiDnyM51axK1l5HbydYJjmOzA==
-      tarball: 'file:projects/lib-ssr-toolbox.tgz'
+      integrity: sha512-S/rvioYeeLu81vZndQSOwRtkTHSwrlDi+fcEpisxbug1WcgzJQwOKc88lGWNiZDO8BUN5GcvWsfQK/7eApi/Zg==
+      tarball: 'file:projects/toolbox.tgz'
     version: 0.0.0
   'file:projects/web-api-proxy.tgz_7f61a60de31b72ed98836f0234042fde':
     dependencies:
@@ -21083,7 +21083,7 @@ packages:
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-JXuoGgTq/r69ebXNcr79nqmjBLBiMVK47OHpy919GgiiW3gKARIuJ3GD4tDvtd5WwcI8kuePs8qY9ihj6zGkTA==
+      integrity: sha512-XjfT6jb4Z0CEtdhqC3ohU3QK6OuwBiGD14QAGE1Vng8Yksn1GBFz0UhPBDCmRgbZKy0CixurLoQAa912/fzRpQ==
       tarball: 'file:projects/web-api-proxy.tgz'
     version: 0.0.0
   'file:projects/web-components.tgz_c6b15677f334fd5f4ffa3217ecf3a440':
@@ -21131,7 +21131,7 @@ packages:
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-NDI5CGmatLvTmfE3XYZDQ5nEqZ5WzGjrdhA8U6WmrAYGMMEK9t/fw4xqMf9sIImsjcI6zMyr9zYU6kRO31ZvVg==
+      integrity: sha512-iVEiR27O1lZPtAxpdKeFvh3yVLUIQOCBUZMyLgjsz96lCOsjtIatJEHon0GZhDC3IbOj664rnlX2cX71q9xKVw==
       tarball: 'file:projects/web-components.tgz'
     version: 0.0.0
   'file:projects/web-crates-io.tgz_1970bc6cda57b853ef3a741f3581b86c':
@@ -21177,7 +21177,7 @@ packages:
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-LH9XyLVeEv+EqPPxufxK4GUhbCJBJHEq+hUkepDaUMPGV/qdrouHaAf3qpvKNez7EMhRYGJd48Vha2a7zXZXxQ==
+      integrity: sha512-+SEKmMYRTZO34kkUwbYNtr9o5j0T2lL1guCuBBUinzz3Jae7xUnJ4lEVSMdnwS2jwi7q9498HSBzF6M4d0sD7A==
       tarball: 'file:projects/web-crates-io.tgz'
     version: 0.0.0
   'file:projects/web-rust-lang.tgz_1970bc6cda57b853ef3a741f3581b86c':
@@ -21224,7 +21224,7 @@ packages:
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-GrY6j1plz6uSrk+phZOGAlRt548SdQp+hICAqKoB96gUjNvLByGw7CHzUuH75/7kuw62JAQpVjI85ROlCRiNJQ==
+      integrity: sha512-OROXx8GvIW387IBykUtTDXcNnqIYqPsuhnuO2q1nO/4gJX4t8w44u50Zb61a9V/kTWUQgufjJQ1S3u1MX0X4xw==
       tarball: 'file:projects/web-rust-lang.tgz'
     version: 0.0.0
 registry: ''
@@ -21246,13 +21246,13 @@ specifiers:
   '@babel/runtime': ^7.13
   '@jest/globals': ^26.6.2
   '@octokit/rest': ^18.0.0
+  '@rush-temp/base-service-config': 'file:./projects/base-service-config.tgz'
   '@rush-temp/build-tooling': 'file:./projects/build-tooling.tgz'
+  '@rush-temp/design-system': 'file:./projects/design-system.tgz'
+  '@rush-temp/features': 'file:./projects/features.tgz'
   '@rush-temp/flex-elements': 'file:./projects/flex-elements.tgz'
-  '@rush-temp/lib-config': 'file:./projects/lib-config.tgz'
-  '@rush-temp/lib-design-system': 'file:./projects/lib-design-system.tgz'
-  '@rush-temp/lib-features': 'file:./projects/lib-features.tgz'
-  '@rush-temp/lib-ssr-runtime': 'file:./projects/lib-ssr-runtime.tgz'
-  '@rush-temp/lib-ssr-toolbox': 'file:./projects/lib-ssr-toolbox.tgz'
+  '@rush-temp/runtime': 'file:./projects/runtime.tgz'
+  '@rush-temp/toolbox': 'file:./projects/toolbox.tgz'
   '@rush-temp/web-api-proxy': 'file:./projects/web-api-proxy.tgz'
   '@rush-temp/web-components': 'file:./projects/web-components.tgz'
   '@rush-temp/web-crates-io': 'file:./projects/web-crates-io.tgz'
