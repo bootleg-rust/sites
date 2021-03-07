@@ -12,7 +12,7 @@ services:
       - .env.local
     build:
       context: "."
-      dockerfile: packages/web-rust-lang/Dockerfile
+      dockerfile: packages/services/web-rust-lang/Dockerfile
   web-crates-io:
     image: web-crates-io
     ports:
@@ -25,7 +25,7 @@ services:
     build:
       context: "."
 
-      dockerfile: packages/web-crates-io/Dockerfile
+      dockerfile: packages/services/web-crates-io/Dockerfile
 
   # Website Test harness UI - 4050-4099
   web-components:
@@ -39,7 +39,7 @@ services:
       - .env.local
     build:
       context: "."
-      dockerfile: packages/web-components/Dockerfile
+      dockerfile: packages/services/web-components/Dockerfile
 
   # API 8000-8049
   web-api-proxy:
@@ -53,4 +53,4 @@ services:
       - .env.local
     build:
       context: "."
-      dockerfile: packages/web-api-proxy/Dockerfile
+      dockerfile: packages/services/web-api-proxy/Dockerfile

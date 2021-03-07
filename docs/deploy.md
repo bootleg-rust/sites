@@ -38,7 +38,7 @@ env ENV="dev" GIT_REF="<current-branch-name>" rush service:deploy;
 
 The following steps are if you want to build, publish and/or deploy one site at a time.
 
-NOTE: from within the specific package's folder EG `cd packages/web-crates-io`
+NOTE: from within the specific package's folder EG `cd packages/services/web-crates-io`
 
 ### Package
 

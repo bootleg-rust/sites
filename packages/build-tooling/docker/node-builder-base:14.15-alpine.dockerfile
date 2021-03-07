@@ -10,17 +10,17 @@ COPY rush.json /app/
 COPY packages/build-tooling/package.json /app/packages/build-tooling/
 COPY packages/build-tooling/cli/cli.js /app/packages/build-tooling/cli/cli.js
 
-COPY packages/lib-flex-elements/package.json /app/packages/lib-flex-elements/
-COPY packages/lib-design-system/package.json /app/packages/lib-design-system/
-COPY packages/lib-features/package.json /app/packages/lib-features/
-COPY packages/lib-config/package.json /app/packages/lib-config/
-COPY packages/lib-ssr-runtime/package.json /app/packages/lib-ssr-runtime/
-COPY packages/lib-ssr-toolbox/package.json /app/packages/lib-ssr-toolbox/
+COPY packages/@pseudo-su/flex-elements/package.json /app/packages/@pseudo-su/flex-elements/
+COPY packages/libs/design-system/package.json /app/packages/libs/design-system/
+COPY packages/libs/features/package.json /app/packages/libs/features/
+COPY packages/libs/base-service-config/package.json /app/packages/libs/base-service-config/
+COPY packages/@ssr-kit/runtime/package.json /app/packages/@ssr-kit/runtime/
+COPY packages/@ssr-kit/toolbox/package.json /app/packages/@ssr-kit/toolbox/
 
-COPY packages/web-components/package.json /app/packages/web-components/
-COPY packages/web-api-proxy/package.json /app/packages/web-api-proxy/
-COPY packages/web-crates-io/package.json /app/packages/web-crates-io/
-COPY packages/web-rust-lang/package.json /app/packages/web-rust-lang/
+COPY packages/services/web-components/package.json /app/packages/services/web-components/
+COPY packages/services/web-api-proxy/package.json /app/packages/services/web-api-proxy/
+COPY packages/services/web-crates-io/package.json /app/packages/services/web-crates-io/
+COPY packages/services/web-rust-lang/package.json /app/packages/services/web-rust-lang/
 
 # Rush config
 COPY common /app/common

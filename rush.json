@@ -4,12 +4,15 @@
   "rushVersion": "5.35.2",
   "pnpmVersion": "4.14.4",
 
+  "projectFolderMinDepth": 2,
+  "projectFolderMaxDepth": 3,
+
   "pnpmOptions": {
     "pnpmStore": "local",
     // TODO: enable strict dependencies
     // "strictPeerDependencies": true,
     "resolutionStrategy": "fewer-dependencies",
-    "preventManualShrinkwrapChanges": true
+    "preventManualShrinkwrapChanges": true,
 
     /**
      * If true, then `rush install` will use the PNPM workspaces feature to perform the
@@ -81,7 +84,7 @@
   "projects": [
     {
       "packageName": "@pseudo-su/flex-elements",
-      "projectFolder": "packages/lib-flex-elements",
+      "projectFolder": "packages/@pseudo-su/flex-elements",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     },
@@ -92,56 +95,56 @@
       "cyclicDependencyProjects": []
     },
     {
-      "packageName": "@bootleg-rust/lib-config",
-      "projectFolder": "packages/lib-config",
+      "packageName": "@bootleg-rust/base-service-config",
+      "projectFolder": "packages/libs/base-service-config",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     },
     {
-      "packageName": "@bootleg-rust/lib-design-system",
-      "projectFolder": "packages/lib-design-system",
+      "packageName": "@bootleg-rust/design-system",
+      "projectFolder": "packages/libs/design-system",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     },
     {
-      "packageName": "@bootleg-rust/lib-features",
-      "projectFolder": "packages/lib-features",
+      "packageName": "@bootleg-rust/features",
+      "projectFolder": "packages/libs/features",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     },
     {
-      "packageName": "@bootleg-rust/lib-ssr-runtime",
-      "projectFolder": "packages/lib-ssr-runtime",
+      "packageName": "@ssr-kit/runtime",
+      "projectFolder": "packages/@ssr-kit/runtime",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     },
     {
-      "packageName": "@bootleg-rust/lib-ssr-toolbox",
-      "projectFolder": "packages/lib-ssr-toolbox",
+      "packageName": "@ssr-kit/toolbox",
+      "projectFolder": "packages/@ssr-kit/toolbox",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     },
     {
       "packageName": "@bootleg-rust/web-api-proxy",
-      "projectFolder": "packages/web-api-proxy",
+      "projectFolder": "packages/services/web-api-proxy",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     },
     {
       "packageName": "@bootleg-rust/web-components",
-      "projectFolder": "packages/web-components",
+      "projectFolder": "packages/services/web-components",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     },
     {
       "packageName": "@bootleg-rust/web-crates-io",
-      "projectFolder": "packages/web-crates-io",
+      "projectFolder": "packages/services/web-crates-io",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     },
     {
       "packageName": "@bootleg-rust/web-rust-lang",
-      "projectFolder": "packages/web-rust-lang",
+      "projectFolder": "packages/services/web-rust-lang",
       "reviewCategory": "production",
       "cyclicDependencyProjects": []
     }

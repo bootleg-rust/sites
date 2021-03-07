@@ -6,7 +6,7 @@ While I really dislike the whole “css utility driven” driven nature of tailw
 
 I also think most of tailwind's theme for default config/vaiables is a great starting point for a design system.
 
-A lot of the [default theme](../packages/lib-design-system/src/theming/theme.tsx) is just taken directly from [tailwind.config.js default config](https://gist.github.com/benfurfie/2290b626b8964b6b0dd68394827868db) (spacing, borderWidth, boxShadow etc))
+A lot of the [default theme](../packages/libs/design-system/src/theming/theme.tsx) is just taken directly from [tailwind.config.js default config](https://gist.github.com/benfurfie/2290b626b8964b6b0dd68394827868db) (spacing, borderWidth, boxShadow etc))
 
 ## Default styles
 
