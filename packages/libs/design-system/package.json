@@ -15,16 +15,16 @@
     "verify:stylelint": "stylelint './src/**/*.{ts,tsx,js,jsx}' "
   },
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-is": "^16.13.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-is": "^17.0.1",
     "styled-components": "^5.1.1",
     "@pseudo-su/flex-elements": "*"
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
     "@jest/globals": "^26.6.2",
-    "@types/react": "^16.13.1",
+    "@types/react": "^17.0.1",
     "@types/styled-components": "^5.1.1",
     "eslint": "^7.15.0",
     "jest-cli": "26.1.0",
