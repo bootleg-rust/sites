@@ -19,14 +19,14 @@ dependencies:
   '@rush-temp/base-service-config': 'file:projects/base-service-config.tgz'
   '@rush-temp/build-tooling': 'file:projects/build-tooling.tgz_836e542550c44b14f715cf66d42d177d'
   '@rush-temp/design-system': 'file:projects/design-system.tgz'
-  '@rush-temp/features': 'file:projects/features.tgz'
+  '@rush-temp/features': 'file:projects/features.tgz_history@4.10.1'
   '@rush-temp/flex-elements': 'file:projects/flex-elements.tgz_react-dom@17.0.1+react-is@17.0.1'
-  '@rush-temp/runtime': 'file:projects/runtime.tgz_ee7bf82e261d80061d7f9a2aa0a625c5'
+  '@rush-temp/runtime': 'file:projects/runtime.tgz_4a4f452bf1c32ed1c3eb39186f752401'
   '@rush-temp/toolbox': 'file:projects/toolbox.tgz_21ed83cfc6d84f67d80e726362b0e009'
   '@rush-temp/web-api-proxy': 'file:projects/web-api-proxy.tgz_7f61a60de31b72ed98836f0234042fde'
-  '@rush-temp/web-components': 'file:projects/web-components.tgz_184f35a1371d19d37e63e729dbd19c62'
-  '@rush-temp/web-crates-io': 'file:projects/web-crates-io.tgz_21ed83cfc6d84f67d80e726362b0e009'
-  '@rush-temp/web-rust-lang': 'file:projects/web-rust-lang.tgz_21ed83cfc6d84f67d80e726362b0e009'
+  '@rush-temp/web-components': 'file:projects/web-components.tgz_a0582316e962bba21482e98ce2341185'
+  '@rush-temp/web-crates-io': 'file:projects/web-crates-io.tgz_33c921a2b8c2257bd93716dc5f741a4a'
+  '@rush-temp/web-rust-lang': 'file:projects/web-rust-lang.tgz_33c921a2b8c2257bd93716dc5f741a4a'
   '@storybook/addon-actions': 6.1.21_e342ee84aa4c58264377ee43e7695221
   '@storybook/addon-knobs': 6.1.21_e342ee84aa4c58264377ee43e7695221
   '@storybook/addon-links': 6.1.21_react-dom@17.0.1+react@17.0.1
@@ -118,8 +118,8 @@ dependencies:
   react-lightyear: 16.10.0_react-dom@17.0.1+react@17.0.1
   react-query: 2.26.4_react-dom@17.0.1+react@17.0.1
   react-refresh: 0.9.0
-  react-router: 5.2.0_react@17.0.1
-  react-router-dom: 5.2.0_react@17.0.1
+  react-router: 6.0.0-beta.0_history@4.10.1+react@17.0.1
+  react-router-dom: 6.0.0-beta.0_b1ec21a2a2119b1d48eeeb9b2c514b70
   react-scripts: 4.0.3_react@17.0.1+typescript@3.8.3
   react-ssr-prepass: 1.2.1_react-is@17.0.1+react@17.0.1
   regenerator-runtime: 0.13.7
@@ -14304,18 +14304,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
-  /mini-create-react-context/0.4.1_prop-types@15.7.2+react@17.0.1:
-    dependencies:
-      '@babel/runtime': 7.12.5
-      prop-types: 15.7.2
-      react: 17.0.1
-      tiny-warning: 1.0.3
-    dev: false
-    peerDependencies:
-      prop-types: ^15.0.0
-      react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-    resolution:
-      integrity: sha512-YWCYEmd5CQeHGSAKrYvXgmzzkrvssZcuuQDDeqkT+PziKGMgE+0MCCtcKbROzocGBG1meBLl2FotlRwf4gAzbQ==
   /mini-css-extract-plugin/0.11.3_webpack@4.44.2:
     dependencies:
       loader-utils: 1.4.0
@@ -17153,39 +17141,31 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==
-  /react-router-dom/5.2.0_react@17.0.1:
+  /react-router-dom/6.0.0-beta.0_b1ec21a2a2119b1d48eeeb9b2c514b70:
     dependencies:
-      '@babel/runtime': 7.12.5
       history: 4.10.1
-      loose-envify: 1.4.0
       prop-types: 15.7.2
       react: 17.0.1
-      react-router: 5.2.0_react@17.0.1
-      tiny-invariant: 1.1.0
-      tiny-warning: 1.0.3
+      react-dom: 17.0.1_react@17.0.1
+      react-router: 6.0.0-beta.0_history@4.10.1+react@17.0.1
     dev: false
     peerDependencies:
-      react: '>=15'
+      history: '>=5'
+      react: '>=16.8'
+      react-dom: '>=16.8'
     resolution:
-      integrity: sha512-gxAmfylo2QUjcwxI63RhQ5G85Qqt4voZpUXSEqCwykV0baaOTQDR1f0PmY8AELqIyVc0NEZUj0Gov5lNGcXgsA==
-  /react-router/5.2.0_react@17.0.1:
+      integrity: sha512-36yNNGMT8RB9FRPL9nKJi6HKDkgOakU+o/2hHpSzR6e37gN70MpOU6QQlmif4oAWWBwjyGc3ZNOMFCsFuHUY5w==
+  /react-router/6.0.0-beta.0_history@4.10.1+react@17.0.1:
     dependencies:
-      '@babel/runtime': 7.12.5
       history: 4.10.1
-      hoist-non-react-statics: 3.3.2
-      loose-envify: 1.4.0
-      mini-create-react-context: 0.4.1_prop-types@15.7.2+react@17.0.1
-      path-to-regexp: 1.8.0
       prop-types: 15.7.2
       react: 17.0.1
-      react-is: 16.13.1
-      tiny-invariant: 1.1.0
-      tiny-warning: 1.0.3
     dev: false
     peerDependencies:
-      react: '>=15'
+      history: '>=5'
+      react: '>=16.8'
     resolution:
-      integrity: sha512-smz1DUuFHRKdcJC0jobGo8cVbhO3x50tCL4icacOlcwDOEQPq4TMqwx3sY1TP+DvtTgz4nm3thuo7A+BK2U0Dw==
+      integrity: sha512-VgMdfpVcmFQki/LZuLh8E/MNACekDetz4xqft+a6fBZvvJnVqKbLqebF7hyoawGrV1HcO5tVaUang2Og4W2j1Q==
   /react-scripts/4.0.3_react@17.0.1+typescript@3.8.3:
     dependencies:
       '@babel/core': 7.12.3
@@ -20931,7 +20911,7 @@ packages:
       integrity: sha512-HxHHHmrYdusNddxBSI8UecKzHu3zj1ul9faxz9l7WGr4VOM4M9h/WfOUJZ/NMbYIAmo/IOvoarCPBCPAkFXhow==
       tarball: 'file:projects/design-system.tgz'
     version: 0.0.0
-  'file:projects/features.tgz':
+  'file:projects/features.tgz_history@4.10.1':
     dependencies:
       '@jest/globals': 26.6.2
       '@types/react': 17.0.3
@@ -20940,12 +20920,15 @@ packages:
       jest-cli: 26.1.0
       react: 17.0.1
       react-dom: 17.0.1_react@17.0.1
-      react-router-dom: 5.2.0_react@17.0.1
+      react-router-dom: 6.0.0-beta.0_b1ec21a2a2119b1d48eeeb9b2c514b70
       typescript: 3.8.3
     dev: false
+    id: 'file:projects/features.tgz'
     name: '@rush-temp/features'
+    peerDependencies:
+      history: '*'
     resolution:
-      integrity: sha512-eSute/vbodVUNKuhjZR62aSlIo7ZM1i5+243Oz4Uc3Dq194svFNSZ+U6w5QWuuxNtOthvTNrBKlNeBYfvF8oBA==
+      integrity: sha512-YIF8VUc7aKIEqjh6JuRAfuMfiDkezZnoCpajbyw7p1TFbfybtKmrnkYiMXLVzm35Bbjv7dj6kHJxrZ2SNg70DA==
       tarball: 'file:projects/features.tgz'
     version: 0.0.0
   'file:projects/flex-elements.tgz_react-dom@17.0.1+react-is@17.0.1':
@@ -20970,7 +20953,7 @@ packages:
       integrity: sha512-EzGsm68S5cpbbLjiljk796X0Pt6E4nRAYlIIOJmVBknJ+J/oeB9jEMUX7SHvQdOxzIo7bcZU0sH00NXrd1Oq3g==
       tarball: 'file:projects/flex-elements.tgz'
     version: 0.0.0
-  'file:projects/runtime.tgz_ee7bf82e261d80061d7f9a2aa0a625c5':
+  'file:projects/runtime.tgz_4a4f452bf1c32ed1c3eb39186f752401':
     dependencies:
       '@jest/globals': 26.6.2
       '@tusbar/cache-control': 0.4.0
@@ -21007,8 +20990,8 @@ packages:
       react-is: 17.0.1
       react-lightyear: 16.10.0_react-dom@17.0.1+react@17.0.1
       react-query: 2.26.4_react-dom@17.0.1+react@17.0.1
-      react-router: 5.2.0_react@17.0.1
-      react-router-dom: 5.2.0_react@17.0.1
+      react-router: 6.0.0-beta.0_history@4.10.1+react@17.0.1
+      react-router-dom: 6.0.0-beta.0_b1ec21a2a2119b1d48eeeb9b2c514b70
       react-ssr-prepass: 1.2.1_react-is@17.0.1+react@17.0.1
       serialize-javascript: 4.0.0
       styled-components: 5.2.1_6dc1471b350314abfd17820811a14371
@@ -21019,12 +21002,13 @@ packages:
     peerDependencies:
       '@babel/core': '*'
       babel-preset-razzle: '*'
+      history: '*'
       mini-css-extract-plugin: '*'
       razzle-dev-utils: '*'
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-vQgyjH4+f3wruZv0dV66PngZCDSQeqNNffvGWDzuPr+xfS6kFgs5+og0kRhHPR12d+Bs8NE6WWg3AmPNsE9j0Q==
+      integrity: sha512-Y+XUEKJJhPMuS+OiNNF7lV4EVJvUENOR6fSdjY36SZloYtsR+eZWafGWoF3zJBVV/83d5qtHbmLo5H5YaohRVw==
       tarball: 'file:projects/runtime.tgz'
     version: 0.0.0
   'file:projects/toolbox.tgz_21ed83cfc6d84f67d80e726362b0e009':
@@ -21044,8 +21028,8 @@ packages:
       react-helmet-async: 1.0.7_react-dom@17.0.1+react@17.0.1
       react-lightyear: 16.10.0_react-dom@17.0.1+react@17.0.1
       react-query: 2.26.4_react-dom@17.0.1+react@17.0.1
-      react-router: 5.2.0_react@17.0.1
-      react-router-dom: 5.2.0_react@17.0.1
+      react-router: 6.0.0-beta.0_history@4.10.1+react@17.0.1
+      react-router-dom: 6.0.0-beta.0_b1ec21a2a2119b1d48eeeb9b2c514b70
       styled-components: 5.2.1_6dc1471b350314abfd17820811a14371
       typescript: 3.8.3
     dev: false
@@ -21060,7 +21044,7 @@ packages:
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-1VJ9Hg6w9lowl49LsDrVuVlpyc54LNI56MEwZWIdTNXMrgmvi5/MUwcAjYr+nwy2i0ZZyNa2s6yTH+cEuX4G6A==
+      integrity: sha512-r7VGSvPJ7TA78frvx50Nu7X0XuWcziwMSu85l03XUQFADmNIc4WlA7fGYI1r5UEn7wrxrcvvOF3/AEiXXNoLUw==
       tarball: 'file:projects/toolbox.tgz'
     version: 0.0.0
   'file:projects/web-api-proxy.tgz_7f61a60de31b72ed98836f0234042fde':
@@ -21095,7 +21079,7 @@ packages:
       integrity: sha512-QFoap3yp3PS5WuaaelexhXCyWtUKmyn9C4t41WRExvrNkMg7R1XZ+kIT9vqJCFz0rHPwntIhyQGuq42LNHPP6w==
       tarball: 'file:projects/web-api-proxy.tgz'
     version: 0.0.0
-  'file:projects/web-components.tgz_184f35a1371d19d37e63e729dbd19c62':
+  'file:projects/web-components.tgz_a0582316e962bba21482e98ce2341185':
     dependencies:
       '@jest/globals': 26.6.2
       '@storybook/addon-actions': 6.1.21_e342ee84aa4c58264377ee43e7695221
@@ -21123,7 +21107,7 @@ packages:
       razzle: 4.0.1-canary.6_ed8bdbcb8106e989df35ac79cc8b1b6c
       react: 17.0.1
       react-refresh: 0.9.0
-      react-router-dom: 5.2.0_react@17.0.1
+      react-router-dom: 6.0.0-beta.0_b1ec21a2a2119b1d48eeeb9b2c514b70
       react-scripts: 4.0.3_react@17.0.1+typescript@3.8.3
       source-map-support: 0.5.19
       stylelint: 13.8.0
@@ -21134,16 +21118,17 @@ packages:
     peerDependencies:
       '@babel/core': '*'
       babel-preset-razzle: '*'
+      history: '*'
       mini-css-extract-plugin: '*'
       razzle-dev-utils: '*'
       react-dom: '*'
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-qmWiiIAihbeH7/FlwWG9YQIY7lf3IgBXM38uQkV+KSPrB8N9WM/BmpoiHs9uRWDXcDHx78o+mrDWHU8+KEONsw==
+      integrity: sha512-bqdh9VcNmB3ieFLkNYTvUZUgT7FnQd+uUSDWgydB4OB1N0Njw+K8mJRoa0gPB5jJlb8+n23E9+6sHjl41cJc7A==
       tarball: 'file:projects/web-components.tgz'
     version: 0.0.0
-  'file:projects/web-crates-io.tgz_21ed83cfc6d84f67d80e726362b0e009':
+  'file:projects/web-crates-io.tgz_33c921a2b8c2257bd93716dc5f741a4a':
     dependencies:
       '@jest/globals': 26.6.2
       '@testing-library/jest-dom': 5.11.9
@@ -21167,8 +21152,8 @@ packages:
       react: 17.0.1
       react-dom: 17.0.1_react@17.0.1
       react-helmet-async: 1.0.7_react-dom@17.0.1+react@17.0.1
-      react-router: 5.2.0_react@17.0.1
-      react-router-dom: 5.2.0_react@17.0.1
+      react-router: 6.0.0-beta.0_history@4.10.1+react@17.0.1
+      react-router-dom: 6.0.0-beta.0_b1ec21a2a2119b1d48eeeb9b2c514b70
       regenerator-runtime: 0.13.7
       source-map-support: 0.5.19
       styled-components: 5.2.1_6dc1471b350314abfd17820811a14371
@@ -21180,16 +21165,17 @@ packages:
     peerDependencies:
       '@babel/core': '*'
       babel-preset-razzle: '*'
+      history: '*'
       mini-css-extract-plugin: '*'
       razzle-dev-utils: '*'
       react-is: '*'
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-wLTVIxqbCmdY6Vsi2Ff8EPAPSo5cIBheK2p8zHDQd6Mcj41P4TOa/vQqO2jFwusvvtMqmsMJSH8lN8UZz7Uh7Q==
+      integrity: sha512-a9gHk1vc3iKhA7Pj9USGYTSetI4T8Pld2nU4GWpfZXFh3+5Q8d7jWkMC9hYVENdsuaoV28gD5QQofCFwnlxOCw==
       tarball: 'file:projects/web-crates-io.tgz'
     version: 0.0.0
-  'file:projects/web-rust-lang.tgz_21ed83cfc6d84f67d80e726362b0e009':
+  'file:projects/web-rust-lang.tgz_33c921a2b8c2257bd93716dc5f741a4a':
     dependencies:
       '@jest/globals': 26.6.2
       '@testing-library/jest-dom': 5.11.9
@@ -21214,8 +21200,8 @@ packages:
       react: 17.0.1
       react-dom: 17.0.1_react@17.0.1
       react-helmet-async: 1.0.7_react-dom@17.0.1+react@17.0.1
-      react-router: 5.2.0_react@17.0.1
-      react-router-dom: 5.2.0_react@17.0.1
+      react-router: 6.0.0-beta.0_history@4.10.1+react@17.0.1
+      react-router-dom: 6.0.0-beta.0_b1ec21a2a2119b1d48eeeb9b2c514b70
       regenerator-runtime: 0.13.7
       source-map-support: 0.5.19
       styled-components: 5.2.1_6dc1471b350314abfd17820811a14371
@@ -21227,13 +21213,14 @@ packages:
     peerDependencies:
       '@babel/core': '*'
       babel-preset-razzle: '*'
+      history: '*'
       mini-css-extract-plugin: '*'
       razzle-dev-utils: '*'
       react-is: '*'
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-apMQPI+Rn02/qIMngN0M/FwpCGZKO2mTtvIL7QD+DuKfMnfsrGB0/1i2gZXcsEVczJ6+rtZwOx167GBXILW9OQ==
+      integrity: sha512-y0dcVuFpHLoOIp1LJoMe1XJ5k8wbzSEJiVWOVRV7wrocaeUKScCByE3QFEL8X7LwmJjd8BkAZB6P54WKTNOe4w==
       tarball: 'file:projects/web-rust-lang.tgz'
     version: 0.0.0
 registry: ''
@@ -21357,8 +21344,8 @@ specifiers:
   react-lightyear: ^16.10.0
   react-query: ^2.5.6
   react-refresh: ^0.9.0
-  react-router: ^5.1.2
-  react-router-dom: ^5.1.2
+  react-router: ^6.0.0-beta.0
+  react-router-dom: ^6.0.0-beta.0
   react-scripts: ^4.0.3
   react-ssr-prepass: ^1.2.1
   regenerator-runtime: ^0.13.7
