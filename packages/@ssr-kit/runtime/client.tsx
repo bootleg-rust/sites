@@ -37,21 +37,6 @@ export function ClientConfigProvider({ children }: ConfigProviderProps) {
   );
 }
 
-// TODO: Pass this in as config
-const defaultLanguage = "en-US";
-const supportedLanguages = [
-  "en-US",
-  "es",
-  "fr",
-  "it",
-  "ja",
-  "pt-BR",
-  "ru",
-  "tr",
-  "zh-CN",
-  "zh-TW",
-];
-
 export function hydrate({
   // errorReporter = defaultErrorReporter,
   logger = defaultLogger,
@@ -68,12 +53,7 @@ export function hydrate({
               <ErrorReporterProvider reporter={defaultErrorReporter}>
                 <LoggerProvider logger={logger}>
                   <BrowserRouter>
-                    <I18nProvider
-                      supportedLanguages={supportedLanguages}
-                      defaultLanguage={defaultLanguage}
-                    >
-                      {render()}
-                    </I18nProvider>
+                    {render()}
                   </BrowserRouter>
                 </LoggerProvider>
               </ErrorReporterProvider>

@@ -36,21 +36,6 @@ export type StreamSsrPageConfig = {
   render(ctx: Koa.Context): React.ReactElement;
 };
 
-// TODO: Pass this in as config
-const defaultLanguage = "en-US";
-const supportedLanguages = [
-  "en-US",
-  "es",
-  "fr",
-  "it",
-  "ja",
-  "pt-BR",
-  "ru",
-  "tr",
-  "zh-CN",
-  "zh-TW",
-];
-
 export function streamSsrPage({
   render,
   universalConfig = {},
@@ -85,12 +70,7 @@ export function streamSsrPage({
                   <ErrorReporterProvider reporter={errorReporter}>
                     <LoggerProvider logger={logger}>
                       <StaticRouter location={ctx.request.url}>
-                        <I18nProvider
-                          supportedLanguages={supportedLanguages}
-                          defaultLanguage={defaultLanguage}
-                        >
-                          {render(ctx)}
-                        </I18nProvider>
+                        {render(ctx)}
                       </StaticRouter>
                     </LoggerProvider>
                   </ErrorReporterProvider>

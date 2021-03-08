@@ -7,6 +7,7 @@ import {
   TwitterCard,
   OpenGraph,
   useI18n,
+  I18nProvider,
 } from "@ssr-kit/toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Routes } from "react-router";
@@ -25,8 +26,29 @@ import "@bootleg-rust/design-system/src/theming/fonts/index.scss";
 
 const GlobalAppStyles = createGlobalStyle``;
 
-function ApplicationProviders({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+const defaultLanguage = "en-US";
+const supportedLanguages = [
+  "en-US",
+  "es",
+  "fr",
+  "it",
+  "ja",
+  "pt-BR",
+  "ru",
+  "tr",
+  "zh-CN",
+  "zh-TW",
+];
+
+function ApplicationProviders({ children }: { children?: React.ReactNode }) {
+  return (
+    <I18nProvider
+      supportedLanguages={supportedLanguages}
+      defaultLanguage={defaultLanguage}
+    >
+      {children}
+    </I18nProvider>
+  );
 }
 
 function GlobalPageMetadata() {

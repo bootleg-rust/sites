@@ -1,5 +1,5 @@
 import React from "react";
-import { HttpStatus, CacheControl, Redirect, useI18n } from "@ssr-kit/toolbox";
+import { HttpStatus, CacheControl, Redirect, useI18n, I18nProvider } from "@ssr-kit/toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Routes, useParams } from "react-router";
 import {
@@ -65,8 +65,29 @@ export function CrateDetailsPage() {
   return <>CrateDetails {crateId}</>;
 }
 
-function ApplicationProviders({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+const defaultLanguage = "en-US";
+const supportedLanguages = [
+  "en-US",
+  "es",
+  "fr",
+  "it",
+  "ja",
+  "pt-BR",
+  "ru",
+  "tr",
+  "zh-CN",
+  "zh-TW",
+];
+
+function ApplicationProviders({ children }: { children?: React.ReactNode }) {
+  return (
+    <I18nProvider
+      supportedLanguages={supportedLanguages}
+      defaultLanguage={defaultLanguage}
+    >
+      {children}
+    </I18nProvider>
+  );
 }
 
 function PageContent() {

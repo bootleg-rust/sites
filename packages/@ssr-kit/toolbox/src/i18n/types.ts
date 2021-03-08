@@ -7,7 +7,7 @@ export type I18nData = {
 };
 
 export type I18nProps = {
-  children?: React.ReactElement;
+  children?: React.ReactNode;
   supportedLanguages: string[];
   defaultLanguage: string;
 };
