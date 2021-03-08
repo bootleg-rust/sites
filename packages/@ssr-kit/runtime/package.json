@@ -53,7 +53,7 @@
     "@types/serialize-javascript": "^4.0.0",
     "@types/styled-components": "^5.1.1",
     "eslint": "^7.15.0",
-    "jest-cli": "26.1.0",
+    "jest-cli": "^26.6.3",
     "razzle": "4.0.1-canary.6",
     "typescript": "~3.8.3"
   },

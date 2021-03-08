@@ -18,7 +18,7 @@
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
     "@jest/globals": "^26.6.2",
-    "jest-cli": "26.1.0"
+    "jest-cli": "^26.6.3"
   },
   "engines": {
     "node": "14.15",
