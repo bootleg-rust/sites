@@ -1,8 +1,5 @@
 import { DefaultTheme, ThemeProvider } from "@bootleg-rust/design-system";
-import {
-  createKoaApp,
-  createKoaSsrRouter,
-} from "@ssr-kit/runtime/server";
+import { createKoaApp, createKoaSsrRouter } from "@ssr-kit/runtime/server";
 import Router from "koa-router";
 import React from "react";
 import { App } from "./app";

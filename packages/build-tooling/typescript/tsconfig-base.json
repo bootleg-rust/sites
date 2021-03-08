@@ -51,10 +51,7 @@
     /* List of folders to include type definitions from. */
     "typeRoots": [
       "./@types",
-      "./node_modules/@types",
-      // TODO: do we still need this if we're using rush
-      // "../node_modules/@types",
-      // "../../node_modules/@types"
+      "./node_modules/@types"
       ],
     // "types": [],                           /* Type declaration files to be included in compilation. */
     // "allowSyntheticDefaultImports": true,  /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */

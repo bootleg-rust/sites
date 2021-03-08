@@ -6,7 +6,7 @@ import React from "react";
 // @ts-ignore
 import { renderToNodeStreamAsync } from "react-lightyear/server";
 import { makeQueryCache, ReactQueryCacheProvider } from "react-query";
-import { StaticRouter } from "react-router";
+import { StaticRouter } from "react-router-dom/server";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 import { HelmetProvider, HelmetData } from "react-helmet-async";
 import {
@@ -18,6 +18,7 @@ import {
   reconcileCacheControlOptions,
   HttpProvider,
   HttpContextData,
+  I18nProvider,
 } from "@ssr-kit/toolbox";
 import { format } from "@tusbar/cache-control";
 import { defaultSsrCacheControlMaximums } from "../cache-control";
@@ -106,9 +107,12 @@ export function streamSsrPageLightyear({
 
     renderStream.on("end", () => {
       // Redirect when <Redirect /> is rendered
-      if (httpContext.redirectLocation) {
+      if (httpContext.redirectPath) {
         // Somewhere a `<Redirect>` was rendered
-        ctx.redirect(httpContext.redirectLocation);
+        if ([301, 302].includes(httpContext.statusCode)) {
+          ctx.status = httpContext.statusCode;
+        }
+        ctx.redirect(httpContext.redirectPath.pathname);
         return;
       }
 

@@ -8,10 +8,7 @@ import {
   SiteReferences,
   AssetCachingConfigProvider,
 } from "@bootleg-rust/base-service-config";
-import {
-  createKoaApp,
-  createStaticIndexRouter,
-} from "@ssr-kit/runtime/server";
+import { createKoaApp, createStaticIndexRouter } from "@ssr-kit/runtime/server";
 import Router from "koa-router";
 import "source-map-support/register";
 import packageJSON from "../package.json";

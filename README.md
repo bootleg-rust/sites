@@ -64,10 +64,6 @@ Some things I'm considering (or intending) to implement are:
 - Investigate switching to `bazel` to support other languages in the monorepo and possibly speed up docker builds.
 - Automate CI/CD by setting up GCP Cloud build.
 - [Canary deployments](https://github.com/ahmetb/cloud-run-faq#how-to-do-canary-or-bluegreen-deployments-on-cloud-run) (maybe after switching to using terraform for everything).
-- Investigate deploying on top of a managed k8s (possibly on top of knative) in order to support deploying long-lived compute containers (EG: kafka streams applications) from this monorepo.
-- Investigate switching from using `docker` (Docker desktop) for local development to using podman.
-- Update to use React v6 beta and replace the janky hacks I've put in `@bootleg-rust/features/src/link.tsx`.
-- Create a new package and rename the set of flexbox-by-default components that are currently in the `@bootleg-rust/lib-components` package. EG: from `<Div />` to `<flx.div />`
 - Add extra linting
   - yml/yaml
   - markdown
@@ -80,7 +76,7 @@ Some things I'm considering (or intending) to implement are:
     - prettier
     - linters
     - sort-package-json
-- Add proper JSON logging
+- Add structured JSON logging
 - Use terraform to manage all/most infra & deployments.
   - Should there be a seperate repo to track deployments that uses branches to track changes between environments?
   - Think about where should the following live:

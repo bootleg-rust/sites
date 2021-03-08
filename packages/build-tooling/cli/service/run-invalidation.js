@@ -34,9 +34,6 @@ async function runInvalidation({
 
   const asyncFlag = wait ? "" : "--async";
 
-  // await exec(
-  //   `gcloud compute url-maps invalidate-cdn-cache ${urlMapName} --host=${host} --path=${path} ${asyncFlag}`,
-  // );
   await exec(
     `echo "TODO: implement Cloudflare run-invalidation (${urlMapName} --host=${host} --path=${path} ${asyncFlag})"`,
   );

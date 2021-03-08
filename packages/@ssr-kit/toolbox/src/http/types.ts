@@ -1,7 +1,9 @@
+import { Path } from "history";
+
 export type HttpContextData = {
   cacheControl: CacheControlOptions[];
   statusCode: number;
-  redirectLocation?: string;
+  redirectPath?: Path;
 };
 
 export type CacheControlOptions = {

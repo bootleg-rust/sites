@@ -1,7 +1,7 @@
 import React from "react";
-import { useRouteMatch } from "react-router";
 import { css, Select } from "@bootleg-rust/design-system";
 import { flx } from "@pseudo-su/flex-elements";
+import { useI18n } from "@ssr-kit/toolbox";
 
 const selectCss = css`
   flex-direction: row;
@@ -23,8 +23,7 @@ export function LanguageSelect({
 }: {
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
 } & React.ComponentProps<typeof flx.div>) {
-  const match = useRouteMatch<{ lang: string }>();
-  const lang = match.params.lang || "en-US";
+  const { lang } = useI18n();
   return (
     <flx.div css={selectCss} {...props}>
       <Select

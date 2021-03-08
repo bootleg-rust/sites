@@ -5,15 +5,15 @@
 - rust-lang.org language that demonstrate RTL page layout
 - Replicate all rust-lang.org pages
   - [ ] /
-  - [ ] /tools/install
   - [ ] /learn
+  - [ ] /community
   - [ ] /tools
+  - [ ] /tools/install
   - [ ] /governance
   - [ ] /governance/teams/{team_name}
   - [ ] /governance/wgs/{workgroup_name}
-  - [ ] /community
-  - [ ] /policies/code-of-conduct
   - [ ] /policies
+  - [ ] /policies/code-of-conduct
   - [ ] /policies/licenses
   - [ ] /policies/media-guide
   - [ ] /policies/security

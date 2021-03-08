@@ -1,6 +1,6 @@
 # Ideas for SSR
 
-# Data fetching preloading
+## Data fetching preloading
 
 TODO
 

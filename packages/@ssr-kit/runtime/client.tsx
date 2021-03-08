@@ -11,6 +11,7 @@ import {
   ErrorReporterProvider,
   StaticConfigProvider,
   ConfigProviderProps,
+  I18nProvider,
 } from "@ssr-kit/toolbox";
 import { StyleSheetManager } from "styled-components";
 
@@ -51,7 +52,9 @@ export function hydrate({
             <ClientConfigProvider>
               <ErrorReporterProvider reporter={defaultErrorReporter}>
                 <LoggerProvider logger={logger}>
-                  <BrowserRouter>{render()}</BrowserRouter>
+                  <BrowserRouter>
+                    {render()}
+                  </BrowserRouter>
                 </LoggerProvider>
               </ErrorReporterProvider>
             </ClientConfigProvider>

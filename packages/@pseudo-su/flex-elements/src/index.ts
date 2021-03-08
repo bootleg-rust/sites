@@ -1,14 +1,6 @@
 import styled from "styled-components";
 import { DefaultFlex, DefaultBlock, DefaultInline } from "./_shared";
 
-// TODO: add default paragraph config to design system
-// margin-top: 0;
-// margin-bottom: 2.5rem;
-
-// TODO: default link style to design system
-// color: ${({ theme }) => theme.colors.link.var};
-// text-decoration: underline;
-
 export const flx = {
   // MDN content section elements docs https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning
   // Flex
