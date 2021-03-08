@@ -73,16 +73,18 @@ function _I18nProvider({
 
   const navigateToLanguage = useCallback(
     (newLang: string) => {
-      const replacePrefix = basePath === '/' ? '' : basePath;
-      const newLangPrefix = newLang === defaultLanguage ? '' : `/${newLang}`;
+      const replacePrefix = basePath === "/" ? "" : basePath;
+      const newLangPrefix = newLang === defaultLanguage ? "" : `/${newLang}`;
       const newPath = location.pathname.replace(replacePrefix, newLangPrefix);
-      const newPathNoTrailingSlash = newPath.endsWith('/') ? newPath.slice(0, -1) : newPath;
+      const newPathNoTrailingSlash = newPath.endsWith("/")
+        ? newPath.slice(0, -1)
+        : newPath;
       navigate({
         pathname: newPathNoTrailingSlash || "/",
         search: location.search,
       });
     },
-    [location, defaultLanguage, basePath, navigate, lang, defaultLanguage, basePath],
+    [location, defaultLanguage, basePath, navigate],
   );
 
   const context = useMemo(

@@ -18,7 +18,6 @@ import {
   reconcileCacheControlOptions,
   HttpProvider,
   HttpContextData,
-  I18nProvider,
 } from "@ssr-kit/toolbox";
 import { format } from "@tusbar/cache-control";
 import { defaultSsrCacheControlMaximums } from "../cache-control";
