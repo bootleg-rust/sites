@@ -1,5 +1,4 @@
 import React from "react";
-import { useRouteMatch } from "react-router";
 import {
   css,
   Anchor,
@@ -32,13 +31,9 @@ const navLogoCss = css`
 `;
 
 function NavLogo({ children }: { children?: React.ReactNode }) {
-  const match = useRouteMatch<{ lang?: string }>();
-  const href = `/${
-    match.params.lang === "en-US" ? "" : match.params.lang || ""
-  }`;
   return (
     <flx.div grow={1} css={navLogoCss} direction="row" justify="center">
-      <SiteLink to={href} flex direction="row" alignItems="center">
+      <SiteLink to="." flex direction="row" alignItems="center">
         <img alt="Rust Logo" src={rustLogoSvg} />
         <flx.span flex direction="column" justify="center">
           {children}
@@ -89,18 +84,15 @@ const linksCss = css`
 `;
 
 function NavLinks() {
-  const match = useRouteMatch<{ lang?: string }>();
-  const lang = !match.params.lang ? "" : match.params.lang + "/";
-  const base = `/${lang || ""}`;
   return (
     <UnorderedList css={linksCss}>
       <ListItem>
-        <SiteLink to={`${base}tools/install`} flex>
+        <SiteLink to="tools/install" flex>
           Install
         </SiteLink>
       </ListItem>
       <ListItem>
-        <SiteLink to={`${base}learn`} flex>
+        <SiteLink to="learn" flex>
           Learn
         </SiteLink>
       </ListItem>
@@ -110,17 +102,17 @@ function NavLinks() {
         </Anchor>
       </ListItem>
       <ListItem>
-        <SiteLink to={`${base}tools`} flex>
+        <SiteLink to="tools" flex>
           Tools
         </SiteLink>
       </ListItem>
       <ListItem>
-        <SiteLink to={`${base}governance`} flex>
+        <SiteLink to="governance" flex>
           Governance
         </SiteLink>
       </ListItem>
       <ListItem>
-        <SiteLink to={`${base}community`} flex>
+        <SiteLink to="community" flex>
           Community
         </SiteLink>
       </ListItem>

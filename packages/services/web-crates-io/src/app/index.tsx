@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  HttpStatus,
-  CacheControl,
-  Redirect,
-} from "@ssr-kit/toolbox";
+import { HttpStatus, CacheControl, Redirect, useI18n } from "@ssr-kit/toolbox";
 import { Helmet } from "react-helmet-async";
-import { Route, Switch } from "react-router";
+import { Route, Routes, useParams } from "react-router";
 import {
   createGlobalStyle,
   GlobalCssResetStyle,
@@ -15,7 +11,6 @@ import {
 } from "@bootleg-rust/design-system";
 import { flx } from "@pseudo-su/flex-elements";
 import { useConfig } from "./config";
-import { CrateDetails } from "./features/crate-details";
 import { CrateSearchResults } from "./features/crate-search";
 import { Dashboard } from "./features/dashboard";
 import { PageLayout } from "./layout";
@@ -25,7 +20,7 @@ import "@bootleg-rust/design-system/src/theming/fonts/index.scss";
 
 const GlobalAppStyles = createGlobalStyle``;
 
-function QueryCrateSearch() {
+function QueryCrateSearchPage() {
   return (
     <>
       <H1>Search by query string</H1>
@@ -34,7 +29,7 @@ function QueryCrateSearch() {
   );
 }
 
-function ExploreCrateSearch() {
+function ExploreCrateSearchPage() {
   return (
     <>
       <H1>Explore all crates</H1>
@@ -43,7 +38,8 @@ function ExploreCrateSearch() {
   );
 }
 
-function UserCrateSearch({ userId }: { userId: string }) {
+function UserCrateSearchPage() {
+  const { userId } = useParams();
   return (
     <>
       <H1>Search crates for user {userId}</H1>
@@ -52,7 +48,8 @@ function UserCrateSearch({ userId }: { userId: string }) {
   );
 }
 
-function TeamCrateSearch({ teamId }: { teamId: string }) {
+function TeamCrateSearchPage() {
+  const { teamId } = useParams();
   return (
     <>
       <H1>Search crates for team {teamId}</H1>
@@ -61,12 +58,63 @@ function TeamCrateSearch({ teamId }: { teamId: string }) {
   );
 }
 
+export function CrateDetailsPage() {
+  const { crateId } = useParams();
+  // latest version
+  // reverse_dependencies
+  return <>CrateDetails {crateId}</>;
+}
+
 function ApplicationProviders({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
+function PageContent() {
+  return (
+    <PageLayout>
+      {/* Routing */}
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/redirect" element={<Redirect to="/" />} />
+        <Route
+          path="/redirect-permanently"
+          element={<Redirect to="/" movedPermanently />}
+        />
+
+        {/* Search crates */}
+        <Route path="/crates/*" element={<QueryCrateSearchPage />} />
+        <Route path="/crates/explore/*" element={<ExploreCrateSearchPage />} />
+        <Route
+          path="/crates/user/:userId/*"
+          element={<UserCrateSearchPage />}
+        />
+        <Route
+          path="/crates/team/:teamId/*"
+          element={<TeamCrateSearchPage />}
+        />
+
+        {/* View individual crate */}
+        <Route path="/crates/:crateId" element={<CrateDetailsPage />} />
+
+        {/* Page not found 404 */}
+        <Route
+          path="/*"
+          element={
+            <>
+              <HttpStatus code={404} />
+              ERROR 404!
+              <img src={ferrisErrorImg} />
+            </>
+          }
+        />
+      </Routes>
+    </PageLayout>
+  );
+}
+
 export function App() {
   const config = useConfig();
+  const { lang } = useI18n();
   return (
     <ApplicationProviders>
       {/* Default page config */}
@@ -79,7 +127,7 @@ export function App() {
         defaultTitle="Bootleg crates.io"
         titleTemplate="%s - Bootleg crates.io"
       >
-        <html lang="en" />
+        <html lang={lang} />
         <base href="/" />
         <meta
           name="description"
@@ -108,46 +156,8 @@ export function App() {
       {/* Global app styles */}
       <GlobalAppStyles />
 
-      <PageLayout>
-        {/* Routing */}
-        <Switch>
-          <Route exact path="/" component={Dashboard} />
-          <Route exact path="/redirect" render={() => <Redirect to="/" />} />
-          <Route
-            exact
-            path="/redirect-permanently"
-            render={() => <Redirect to="/" movedPermanently />}
-          />
+      <PageContent />
 
-          {/* Search crates */}
-          <Route exact path="/crates" component={QueryCrateSearch} />
-          <Route exact path="/crates/explore" component={ExploreCrateSearch} />
-          <Route
-            exact
-            path="/crates/user/:userId"
-            component={UserCrateSearch}
-          />
-          <Route
-            exact
-            path="/crates/team/:teamId"
-            component={TeamCrateSearch}
-          />
-
-          {/* View individual crate */}
-          <Route exact path="/crates/:crateId" component={CrateDetails} />
-
-          {/* Page not found 404 */}
-          <Route
-            render={() => (
-              <>
-                <HttpStatus code={404} />
-                ERROR 404!
-                <img src={ferrisErrorImg} />
-              </>
-            )}
-          />
-        </Switch>
-      </PageLayout>
       {/* Test data */}
       <flx.div data-testid="env:SERVICE_NAME" style={{ display: "none" }}>
         {config.SERVICE_NAME}

@@ -1,14 +1,15 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useResolvedPath } from "react-router-dom";
 import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import {
   HttpStatus,
   CacheControl,
   TwitterCard,
   OpenGraph,
+  useI18n,
 } from "@ssr-kit/toolbox";
 import { Helmet } from "react-helmet-async";
-import { Route, Switch, useRouteMatch, useHistory } from "react-router";
+import { Route, Routes } from "react-router";
 import {
   createGlobalStyle,
   GlobalCssResetStyle,
@@ -28,34 +29,15 @@ function ApplicationProviders({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-const defaultLanguage = "en-US";
-const supportedLanguages = [
-  "en-US",
-  "es",
-  "fr",
-  "it",
-  "ja",
-  "pt-BR",
-  "ru",
-  "tr",
-  "zh-CN",
-  "zh-TW",
-];
-
-const matchLangs = new RegExp(
-  // ^(\/(en\-US|es|fr|it|ja|pt\-BR|ru|tr|zh\-CN|zh\-TW))?(\/.*)?$
-  `^(\\/(${supportedLanguages.join("|")}))?(\\/.*)?$`,
-);
-
 function GlobalPageMetadata() {
-  const match = useRouteMatch<{ lang?: string }>();
+  const { lang } = useI18n();
   return (
     <>
       <Helmet
         defaultTitle="(Unofficial) Rust Programming Language"
         titleTemplate="%s - (Unofficial) Rust Programming Language"
       >
-        <html lang={match.params.lang || defaultLanguage} />
+        <html lang={lang} />
         <base href="/" />
         <meta
           name="description"
@@ -108,23 +90,10 @@ function GlobalPageMetadata() {
 }
 
 function PageContent() {
-  const match = useRouteMatch<{ lang?: string }>();
-  const location = useLocation();
-  const history = useHistory();
-  const isIndex = (pathname: string) => pathname === match.url;
-  const navigateToLanguage = (lang: string) => {
-    const newUrlLang = lang === defaultLanguage ? "" : "/" + lang;
-    const regexMatch = matchLangs.exec(location.pathname);
-    const oldUrlLang = regexMatch ? regexMatch[1] : null;
-    const urlPath = regexMatch ? regexMatch[3] : null;
-    const newPath = oldUrlLang
-      ? location.pathname.replace(oldUrlLang, newUrlLang)
-      : newUrlLang + (urlPath || "");
-    history.push({
-      ...location,
-      pathname: newPath,
-    });
-  };
+  const { navigateToLanguage } = useI18n();
+  const currentLocation = useLocation();
+  const relativeLocation = useResolvedPath(".");
+  const isIndex = currentLocation.pathname === relativeLocation.pathname;
 
   return (
     <>
@@ -133,7 +102,7 @@ function PageContent() {
         <TopNav
           title={
             <AnimatePresence>
-              {!isIndex(location.pathname) ? (
+              {!isIndex ? (
                 <motion.span layoutId="main-heading">Rust</motion.span>
               ) : null}
             </AnimatePresence>
@@ -142,36 +111,24 @@ function PageContent() {
         />
         <flx.main grow justify="center">
           {/* Routing */}
-          <Switch>
-            <Route exact path={match.path + "/"} component={Homepage} />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
 
             {/* Page not found 404 */}
             <Route
-              render={() => (
+              path="/*"
+              element={
                 <>
                   <HttpStatus code={404} />
                   <FerrisErrorSection code={404} />
                 </>
-              )}
+              }
             />
-          </Switch>
+          </Routes>
         </flx.main>
         <SiteFooter onSelectLanguage={navigateToLanguage} />
       </AnimateSharedLayout>
     </>
-  );
-}
-
-function LocalisedPageContent() {
-  return (
-    <Switch>
-      {supportedLanguages.map((lang) => {
-        return (
-          <Route path={`/:lang(${lang})`} key="lang" component={PageContent} />
-        );
-      })}
-      <Route component={PageContent} />
-    </Switch>
   );
 }
 
@@ -195,7 +152,7 @@ export function App() {
       <GlobalAppStyles />
 
       {/* Render the application */}
-      <LocalisedPageContent />
+      <PageContent />
 
       {/* Test data */}
       <flx.div data-testid="env:SERVICE_NAME" style={{ display: "none" }}>

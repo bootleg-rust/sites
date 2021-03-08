@@ -4,7 +4,7 @@ import CombinedStream from "combined-stream";
 import React from "react";
 import { renderToNodeStream } from "react-dom/server";
 import { makeQueryCache, ReactQueryCacheProvider } from "react-query";
-import { StaticRouter } from "react-router";
+import { StaticRouter } from "react-router-dom/server";
 import ssrPrepass from "react-ssr-prepass";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 import { HelmetProvider, HelmetData } from "react-helmet-async";
@@ -20,6 +20,7 @@ import {
   reconcileCacheControlOptions,
   HttpProvider,
   HttpContextData,
+  I18nProvider,
 } from "@ssr-kit/toolbox";
 import {
   SSRCacheControlMaximums,
@@ -34,6 +35,21 @@ export type StreamSsrPageConfig = {
   universalConfig: any;
   render(ctx: Koa.Context): React.ReactElement;
 };
+
+// TODO: Pass this in as config
+const defaultLanguage = "en-US";
+const supportedLanguages = [
+  "en-US",
+  "es",
+  "fr",
+  "it",
+  "ja",
+  "pt-BR",
+  "ru",
+  "tr",
+  "zh-CN",
+  "zh-TW",
+];
 
 export function streamSsrPage({
   render,
@@ -69,7 +85,12 @@ export function streamSsrPage({
                   <ErrorReporterProvider reporter={errorReporter}>
                     <LoggerProvider logger={logger}>
                       <StaticRouter location={ctx.request.url}>
-                        {render(ctx)}
+                        <I18nProvider
+                          supportedLanguages={supportedLanguages}
+                          defaultLanguage={defaultLanguage}
+                        >
+                          {render(ctx)}
+                        </I18nProvider>
                       </StaticRouter>
                     </LoggerProvider>
                   </ErrorReporterProvider>
@@ -115,12 +136,12 @@ export function streamSsrPage({
 
     renderStream.on("end", () => {
       // Redirect when <Redirect /> is rendered
-      if (httpContext.redirectLocation) {
+      if (httpContext.redirectPath) {
         // Somewhere a `<Redirect>` was rendered
         if ([301, 302].includes(httpContext.statusCode)) {
           ctx.status = httpContext.statusCode;
         }
-        ctx.redirect(httpContext.redirectLocation);
+        ctx.redirect(httpContext.redirectPath.pathname);
         return;
       }
 

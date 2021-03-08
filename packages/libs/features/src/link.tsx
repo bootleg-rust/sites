@@ -1,48 +1,60 @@
 import React from "react";
-import { Link as ReactRouterLink, useLocation } from "react-router-dom";
+import { createPath } from "history";
+import {
+  LinkProps,
+  useLocation,
+  useNavigate,
+  useHref,
+  useResolvedPath,
+} from "react-router-dom";
 import { Anchor } from "@bootleg-rust/design-system";
 
-type LinkAnchorProps = {
-  shouldNavigate?: boolean;
-  navigate(): void;
-} & React.ComponentProps<typeof Anchor>;
+function isModifiedEvent(event: React.MouseEvent) {
+  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+}
 
-const SiteAnchor = React.forwardRef<HTMLAnchorElement, LinkAnchorProps>(
-  function _SiteAnchor(props: any, ref: any) {
-    const { navigate, shouldNavigate, ...passthrough } = props;
-    return (
-      <Anchor
-        ref={ref}
-        onClick={(e: any) => {
-          e.preventDefault();
-          if (shouldNavigate) {
-            navigate();
-          }
-        }}
-        {...passthrough}
-      />
-    );
-  },
-);
-
-// SiteLink alias of react-router-com <Link /> except it defaults to using the <Anchor />
-// tag in the copmponent library
-type Props = React.ComponentProps<typeof Anchor> &
-  React.ComponentProps<typeof ReactRouterLink>;
-
-export function SiteLink(props: Props) {
-  const { Component = SiteAnchor, ...passthrough } = props;
+/**
+ * TODO: copied from react-router-dom <Link /> because it doesn't support providing an alternate
+ * base component (<Anchor /> instead of <a />).
+ */
+export const SiteLink = React.forwardRef<
+  HTMLAnchorElement,
+  LinkProps & React.ComponentProps<typeof Anchor>
+>(function LinkWithRef(
+  { onClick, replace: replaceProp = false, state, target, to, ...rest },
+  ref,
+) {
+  const href = useHref(to);
+  const navigate = useNavigate();
   const location = useLocation();
-  // TODO: should make this work if you pass other valid props as the
-  // `to` value not just strings.
-  const shouldNavigate = props.to !== location.pathname;
+  const path = useResolvedPath(to);
+
+  function handleClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    if (onClick) onClick(event);
+    if (
+      !event.defaultPrevented && // onClick prevented default
+      event.button === 0 && // Ignore everything but left clicks
+      (!target || target === "_self") && // Let browser handle "target=_blank" etc.
+      !isModifiedEvent(event) // Ignore clicks with modifier keys
+    ) {
+      event.preventDefault();
+
+      // If the URL hasn't changed, a regular <a> will do a replace instead of
+      // a push, so do the same here.
+      const replace =
+        !!replaceProp || createPath(location) === createPath(path);
+
+      navigate(to, { replace, state });
+    }
+  }
+
   return (
-    <ReactRouterLink
-      component={Component}
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      shouldNavigate={shouldNavigate}
-      {...passthrough}
+    <Anchor
+      {...rest}
+      href={href}
+      onClick={handleClick}
+      ref={ref}
+      target={target}
     />
   );
-}
+});

@@ -24,6 +24,14 @@
       "ignoreMissingScript": true
     },
     {
+      "name": "verify:fix",
+      "commandKind": "bulk",
+      "summary": "Verify all projects (rushx verify)",
+      "enableParallelism": true,
+      "ignoreDependencyOrder": true,
+      "ignoreMissingScript": true
+    },
+    {
       "name": "test",
       "commandKind": "bulk",
       "summary": "Create package artifacts (rushx package)",

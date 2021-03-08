@@ -11,6 +11,7 @@ import {
   ErrorReporterProvider,
   StaticConfigProvider,
   ConfigProviderProps,
+  I18nProvider,
 } from "@ssr-kit/toolbox";
 import { StyleSheetManager } from "styled-components";
 
@@ -36,6 +37,21 @@ export function ClientConfigProvider({ children }: ConfigProviderProps) {
   );
 }
 
+// TODO: Pass this in as config
+const defaultLanguage = "en-US";
+const supportedLanguages = [
+  "en-US",
+  "es",
+  "fr",
+  "it",
+  "ja",
+  "pt-BR",
+  "ru",
+  "tr",
+  "zh-CN",
+  "zh-TW",
+];
+
 export function hydrate({
   // errorReporter = defaultErrorReporter,
   logger = defaultLogger,
@@ -51,7 +67,14 @@ export function hydrate({
             <ClientConfigProvider>
               <ErrorReporterProvider reporter={defaultErrorReporter}>
                 <LoggerProvider logger={logger}>
-                  <BrowserRouter>{render()}</BrowserRouter>
+                  <BrowserRouter>
+                    <I18nProvider
+                      supportedLanguages={supportedLanguages}
+                      defaultLanguage={defaultLanguage}
+                    >
+                      {render()}
+                    </I18nProvider>
+                  </BrowserRouter>
                 </LoggerProvider>
               </ErrorReporterProvider>
             </ClientConfigProvider>
