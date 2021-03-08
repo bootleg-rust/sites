@@ -1,5 +1,11 @@
 import React from "react";
-import { HttpStatus, CacheControl, Redirect, useI18n, I18nProvider } from "@ssr-kit/toolbox";
+import {
+  HttpStatus,
+  CacheControl,
+  Redirect,
+  useI18n,
+  I18nProvider,
+} from "@ssr-kit/toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Routes, useParams } from "react-router";
 import {
@@ -133,11 +139,12 @@ function PageContent() {
   );
 }
 
-export function App() {
+function GlobalPageMetadata() {
   const config = useConfig();
   const { lang } = useI18n();
+
   return (
-    <ApplicationProviders>
+    <>
       {/* Default page config */}
       <CacheControl
         maxAge={config.SSR_CACHING_DEFAULT_MAX_AGE}
@@ -169,6 +176,15 @@ export function App() {
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/logo227.png" />
       </Helmet>
+    </>
+  );
+}
+
+export function App() {
+  const config = useConfig();
+  return (
+    <ApplicationProviders>
+      <GlobalPageMetadata />
 
       {/* Global design-system styles */}
       <GlobalCssResetStyle />
