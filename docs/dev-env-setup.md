@@ -12,6 +12,9 @@ gcloud auth configure-docker;
 gcloud components install beta;
 gcloud auth configure-docker asia-docker.pkg.dev;
 gcloud --version;
+
+# Login to github container registry though docker using Personal access token (GITHUB_PERSONAL_ACCESS_TOKEN)
+docker login https://ghcr.io -u USERNAME
 ```
 
 ## Dev scripts

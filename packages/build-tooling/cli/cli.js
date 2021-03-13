@@ -12,13 +12,25 @@ const {
 const { triggerCICD } = require("./trigger");
 const fs = require("./fs");
 
-const envFiles = [".env", ".env.local"].filter((path) => fs.existsSync(path));
+const envFiles = [
+  "..env",
+  ".env.local",
+  "../../../.env",
+  "../../../.env.local",
+].filter((path) => fs.existsSync(path));
 
 envFiles.forEach((path) => {
   dotenv.config({ path });
 });
 
 /* eslint-disable no-console */
+
+const containerRegistryUrls = (process.env.CONTAINER_REGISTRY_URLS || "")
+  .split(",")
+  .filter(Boolean);
+const firstContainerRegistryUrl = containerRegistryUrls.find(Boolean);
+
+console.log({ containerRegistryUrls, firstContainerRegistryUrl });
 
 const program = new Command();
 
@@ -93,9 +105,9 @@ function makeServiceCmd() {
     .requiredOption("-s, --service-name <serviceName>", "service name")
     .requiredOption("-ref, --git-ref <gitRef>", "git ref", process.env.GIT_REF)
     .option(
-      "-reg, --registry-url <registryUrl>",
+      "-reg, --registry-url <registryUrls...>",
       "container registry",
-      "asia-docker.pkg.dev/bootleg-crates-shared/sites",
+      containerRegistryUrls,
     )
     .action(async (options) => {
       await publishDockerService(options);
@@ -111,9 +123,9 @@ function makeServiceCmd() {
       process.env.ENV,
     )
     .option(
-      "-reg, --registry-url <registry-url>",
+      "-reg, --registry-url <registryUrl>",
       "container registry",
-      "asia-docker.pkg.dev/bootleg-crates-shared/sites",
+      firstContainerRegistryUrl,
     )
     .requiredOption("-ref, --git-ref <git-ref>", "git ref", process.env.GIT_REF)
     .option("-r, --gcp-region <gcp-region>", "GCP Region", "asia-northeast1")

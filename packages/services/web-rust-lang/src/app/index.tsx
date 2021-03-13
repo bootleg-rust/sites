@@ -8,6 +8,7 @@ import {
   OpenGraph,
   useI18n,
   I18nProvider,
+  I18nDirection,
 } from "@ssr-kit/toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Routes } from "react-router";
@@ -26,25 +27,51 @@ import "@bootleg-rust/design-system/src/theming/fonts/index.scss";
 
 const GlobalAppStyles = createGlobalStyle``;
 
-const defaultLanguage = "en-US";
-const supportedLanguages = [
-  "en-US",
-  "es",
-  "fr",
-  "it",
-  "ja",
-  "pt-BR",
-  "ru",
-  "tr",
-  "zh-CN",
-  "zh-TW",
-];
+const defaultLocale = "en-US";
+
+const onlyInDev = () => process.env.NODE_ENV === "development";
+
+const availableLocales = {
+  "en-US": { name: "English", emoji: "🇺🇸" },
+  es: { name: "Español", emoji: "🇪🇸" },
+  fr: { name: "Français", emoji: "🇫🇷" },
+  it: { name: "Italiano", emoji: "🇮🇹" },
+  ja: { name: "日本語", emoji: "🇯🇵" },
+  "pt-BR": { name: "Português", emoji: "🇧🇷" },
+  ru: { name: "Русский", emoji: "🇷🇺" },
+  tr: { name: "Türkçe", emoji: "🇹🇷" },
+  "zh-CN": { name: "简体中文", emoji: "🇨🇳" },
+  "zh-TW": { name: "正體中文", emoji: "🇹🇼" },
+
+  // IN-PROGRESS languages
+  de: { name: "Deutsch", emoji: "🇩🇪", isActive: onlyInDev },
+  fa: {
+    name: "فارسی",
+    emoji: "🇮🇷",
+    isActive: onlyInDev,
+    direction: I18nDirection.RTL,
+  },
+  ko: { name: "한국어", emoji: "🇰🇷", isActive: onlyInDev },
+  pl: { name: "Polskie", emoji: "🇵🇱", isActive: onlyInDev },
+  he: {
+    name: "עברית",
+    emoji: "🇮🇱",
+    direction: I18nDirection.RTL,
+    isActive: onlyInDev,
+  },
+  "xx-AU": {
+    // Upside down back to front
+    name: "ɥsılbuə",
+    direction: I18nDirection.RTL,
+    isActive: onlyInDev,
+  },
+};
 
 function ApplicationProviders({ children }: { children?: React.ReactNode }) {
   return (
     <I18nProvider
-      supportedLanguages={supportedLanguages}
-      defaultLanguage={defaultLanguage}
+      availableLocales={availableLocales}
+      defaultLocale={defaultLocale}
     >
       {children}
     </I18nProvider>
@@ -52,14 +79,14 @@ function ApplicationProviders({ children }: { children?: React.ReactNode }) {
 }
 
 function GlobalPageMetadata() {
-  const { lang } = useI18n();
+  const { locale } = useI18n();
   return (
     <>
       <Helmet
         defaultTitle="(Unofficial) Rust Programming Language"
         titleTemplate="%s - (Unofficial) Rust Programming Language"
       >
-        <html lang={lang} />
+        <html lang={locale.code} dir={locale.direction} />
         <base href="/" />
         <meta
           name="description"
@@ -112,7 +139,7 @@ function GlobalPageMetadata() {
 }
 
 function PageContent() {
-  const { navigateToLanguage } = useI18n();
+  const { navigateToLocale } = useI18n();
   const currentLocation = useLocation();
   const relativeLocation = useResolvedPath(".");
   const isIndex = currentLocation.pathname === relativeLocation.pathname;
@@ -129,7 +156,7 @@ function PageContent() {
               ) : null}
             </AnimatePresence>
           }
-          onSelectLanguage={navigateToLanguage}
+          onSelectLocale={navigateToLocale}
         />
         <flx.main grow justify="center">
           {/* Routing */}
@@ -148,7 +175,7 @@ function PageContent() {
             />
           </Routes>
         </flx.main>
-        <SiteFooter onSelectLanguage={navigateToLanguage} />
+        <SiteFooter onSelectLocale={navigateToLocale} />
       </AnimateSharedLayout>
     </>
   );

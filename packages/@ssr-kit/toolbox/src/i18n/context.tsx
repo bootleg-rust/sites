@@ -6,7 +6,14 @@ import {
   useNavigate,
   useLocation,
 } from "react-router";
-import { I18nProps, I18nData } from "./types";
+import {
+  I18nProps,
+  I18nData,
+  I18nLocale,
+  I18nLocaleArg,
+  I18nAvailableLocalesArg,
+  I18nDirection,
+} from "./types";
 
 const I18nContext = createContext<I18nData | null>(null);
 
@@ -22,21 +29,23 @@ export function useI18n() {
 
 export function I18nProvider({
   children,
-  supportedLanguages,
-  defaultLanguage,
+  availableLocales,
+  defaultLocale,
 }: I18nProps) {
+  const originalBasePath = useResolvedPath(".").pathname;
   return (
     <Routes>
-      {supportedLanguages.map((lang) => {
+      {Object.keys(availableLocales).map((locale) => {
         return (
           <Route
-            path={`/${lang}/*`}
-            key="lang"
+            path={`/${locale}/*`}
+            key={locale}
             element={
               <_I18nProvider
-                supportedLanguages={supportedLanguages}
-                defaultLanguage={defaultLanguage}
-                lang={lang}
+                originalBasePath={originalBasePath}
+                availableLocales={availableLocales}
+                defaultLocale={defaultLocale}
+                locale={locale}
               >
                 {children}
               </_I18nProvider>
@@ -48,9 +57,10 @@ export function I18nProvider({
         path="/*"
         element={
           <_I18nProvider
-            supportedLanguages={supportedLanguages}
-            defaultLanguage={defaultLanguage}
-            lang={defaultLanguage}
+            originalBasePath={originalBasePath}
+            availableLocales={availableLocales}
+            defaultLocale={defaultLocale}
+            locale={defaultLocale}
           >
             {children}
           </_I18nProvider>
@@ -60,43 +70,78 @@ export function I18nProvider({
   );
 }
 
+const LocaleDefaults = {
+  emoji: null,
+  direction: I18nDirection.LTR,
+};
+
+function buildLocales(
+  localeOptions: I18nAvailableLocalesArg,
+): Map<string, I18nLocale> {
+  const locales = new Map();
+  for (const [code, localeOption] of Object.entries(localeOptions)) {
+    const localeData: I18nLocaleArg =
+      typeof localeOption === "string" ? { name: localeOption } : localeOption;
+    const normalized: I18nLocale = { code, ...LocaleDefaults, ...localeData };
+
+    if (!normalized.isActive || normalized.isActive()) {
+      locales.set(normalized.code, normalized);
+    }
+  }
+
+  return locales;
+}
+
 function _I18nProvider({
   children,
-  supportedLanguages,
-  defaultLanguage,
-  lang,
-}: I18nProps & { lang: string }) {
+  availableLocales: availableLocalesArg,
+  defaultLocale: defaultLocaleArg,
+  locale: localeArg,
+  originalBasePath,
+}: I18nProps & { locale: string; originalBasePath: string }) {
   const basePath = useResolvedPath(".").pathname;
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const navigateToLanguage = useCallback(
-    (newLang: string) => {
+  const navigateToLocale = useCallback(
+    (newLocale: string) => {
       const replacePrefix = basePath === "/" ? "" : basePath;
-      const newLangPrefix = newLang === defaultLanguage ? "" : `/${newLang}`;
-      const newPath = location.pathname.replace(replacePrefix, newLangPrefix);
+
+      const newLocaleBaseUrl = originalBasePath === "/" ? "" : originalBasePath;
+      const newLocalePrefix =
+        newLocale === defaultLocaleArg
+          ? originalBasePath
+          : `${newLocaleBaseUrl}/${newLocale}`;
+      const newPath = location.pathname.replace(replacePrefix, newLocalePrefix);
       const newPathNoTrailingSlash = newPath.endsWith("/")
         ? newPath.slice(0, -1)
         : newPath;
+
       navigate({
         pathname: newPathNoTrailingSlash || "/",
         search: location.search,
       });
     },
-    [location, defaultLanguage, basePath, navigate],
+    [location, defaultLocaleArg, basePath, navigate, originalBasePath],
   );
 
-  const context = useMemo(
-    () => ({
-      supportedLanguages,
-      defaultLanguage,
-      lang,
+  const context = useMemo(() => {
+    const availableLocales = buildLocales(availableLocalesArg);
+    return {
+      availableLocales,
+      defaultLocale: availableLocales.get(defaultLocaleArg) as I18nLocale,
+      locale: availableLocales.get(localeArg) as I18nLocale,
       basePath,
-      navigateToLanguage,
-    }),
-    [supportedLanguages, defaultLanguage, lang, basePath, navigateToLanguage],
-  );
+      navigateToLocale,
+    };
+  }, [
+    availableLocalesArg,
+    defaultLocaleArg,
+    localeArg,
+    basePath,
+    navigateToLocale,
+  ]);
 
   return (
     <I18nContext.Provider value={context}>{children}</I18nContext.Provider>
