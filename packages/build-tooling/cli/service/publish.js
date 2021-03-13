@@ -20,14 +20,25 @@ async function publishDockerService({
   const gitRefSlug = gitRef.replace(/\//g, "-");
   const dateTime = await exec("date +%Y-%m-%d-%H%M");
 
-  for (const registryUrl of registryUrls) {
-    await tagAndPush({ name, registryUrl, tag: gitRefSha });
-    await tagAndPush({ name, registryUrl, tag: `${gitRefSlug}.${dateTime}` });
-    await tagAndPush({ name, registryUrl, tag: `${gitRefSlug}.latest` });
+  const [mainRegistryUrl, ...secondaryRegistryUrls] = registryUrls;
 
+  // Publish all to main registry
+  await tagAndPush({ name, registryUrl: mainRegistryUrl, tag: gitRefSha });
+  await tagAndPush({ name, registryUrl: mainRegistryUrl, tag: `${gitRefSlug}.${dateTime}` });
+  await tagAndPush({ name, registryUrl: mainRegistryUrl, tag: `${gitRefSlug}.latest` });
+
+  if (gitRef === "main") {
+    await tagAndPush({ name, registryUrl: mainRegistryUrl, tag: "main" });
+    await tagAndPush({ name, registryUrl: mainRegistryUrl, tag: "latest" });
+  }
+
+  // Publish to secondary registries under specific circumstances
+  for (const registryUrl of secondaryRegistryUrls) {
     if (gitRef === "main") {
-      await tagAndPush({ name, registryUrl, tag: "main" });
+      await tagAndPush({ name, registryUrl, tag: gitRefSha });
       await tagAndPush({ name, registryUrl, tag: "latest" });
     }
+    // TODO: publsh with version from git tag
+    // await tagAndPush({ name, registryUrl: mainRegistryUrl, tag: gitRefVersionTag });
   }
 }

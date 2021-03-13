@@ -21,6 +21,17 @@ Some rough goals of this project are:
 - `web-components`: [components.bootleg-rust-lang.org](https://components.bootleg-rust-lang.org)
 - `web-api-proxy`: [api.bootleg-crates.io](https://api.bootleg-crates.io/api/v1/summary)
 
+## Published packages
+
+Public containers are published to the Github container registry.
+
+```sh
+docker run --init -p 4000:4000 -e PORT=4000 -e ENV=dev ghcr.io/bootleg-rust/sites/web-rust-lang
+docker run --init -p 4001:4001 -e PORT=4001 -e ENV=dev ghcr.io/bootleg-rust/sites/web-crates-io
+docker run --init -p 4050:4050 -e PORT=4050 -e ENV=dev ghcr.io/bootleg-rust/sites/web-components
+docker run --init -p 8000:8000 -e PORT=8000 -e ENV=dev ghcr.io/bootleg-rust/sites/web-api-proxy
+```
+
 ## Contributing
 
 ### Quick start
