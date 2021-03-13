@@ -115,11 +115,7 @@ function SocialIcon({ socialUrl, imageUrl, alt, title }: SocialIconProps) {
   );
 }
 
-function GetHelp({
-  onSelectLocale,
-}: {
-  onSelectLocale(locale: string): void;
-}) {
+function GetHelp({ onSelectLocale }: { onSelectLocale(locale: string): void }) {
   return (
     <FooterColumn grow>
       <H4>Get help!</H4>

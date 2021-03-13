@@ -45,7 +45,12 @@ const availableLocales = {
 
   // IN-PROGRESS languages
   de: { name: "Deutsch", emoji: "🇩🇪", isActive: onlyInDev },
-  fa: { name: "فارسی", emoji: "🇮🇷", isActive: onlyInDev, direction: I18nDirection.RTL },
+  fa: {
+    name: "فارسی",
+    emoji: "🇮🇷",
+    isActive: onlyInDev,
+    direction: I18nDirection.RTL,
+  },
   ko: { name: "한국어", emoji: "🇰🇷", isActive: onlyInDev },
   pl: { name: "Polskie", emoji: "🇵🇱", isActive: onlyInDev },
   he: {

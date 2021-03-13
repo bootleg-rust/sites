@@ -82,12 +82,19 @@ const availableLocales = {
 
 function ApplicationProviders({ children }: { children?: React.ReactNode }) {
   return (
-    <I18nProvider
-      availableLocales={availableLocales}
-      defaultLocale={defaultLocale}
-    >
-      {children}
-    </I18nProvider>
+    <Routes>
+      <Route
+        path="/base-url/*"
+        element={
+          <I18nProvider
+            availableLocales={availableLocales}
+            defaultLocale={defaultLocale}
+          >
+            {children}
+          </I18nProvider>
+        }
+      />
+    </Routes>
   );
 }
 

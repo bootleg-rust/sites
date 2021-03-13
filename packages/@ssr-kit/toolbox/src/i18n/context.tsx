@@ -32,6 +32,7 @@ export function I18nProvider({
   availableLocales,
   defaultLocale,
 }: I18nProps) {
+  const originalBasePath = useResolvedPath(".").pathname;
   return (
     <Routes>
       {Object.keys(availableLocales).map((locale) => {
@@ -41,6 +42,7 @@ export function I18nProvider({
             key={locale}
             element={
               <_I18nProvider
+                originalBasePath={originalBasePath}
                 availableLocales={availableLocales}
                 defaultLocale={defaultLocale}
                 locale={locale}
@@ -55,6 +57,7 @@ export function I18nProvider({
         path="/*"
         element={
           <_I18nProvider
+            originalBasePath={originalBasePath}
             availableLocales={availableLocales}
             defaultLocale={defaultLocale}
             locale={defaultLocale}
@@ -94,8 +97,10 @@ function _I18nProvider({
   availableLocales: availableLocalesArg,
   defaultLocale: defaultLocaleArg,
   locale: localeArg,
-}: I18nProps & { locale: string }) {
+  originalBasePath,
+}: I18nProps & { locale: string; originalBasePath: string }) {
   const basePath = useResolvedPath(".").pathname;
+  const currentLanguagePrefix = basePath.replace(originalBasePath, "");
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -103,12 +108,15 @@ function _I18nProvider({
   const navigateToLocale = useCallback(
     (newLocale: string) => {
       const replacePrefix = basePath === "/" ? "" : basePath;
+
+      const newLocaleBaseUrl = originalBasePath === "/" ? "" : originalBasePath;
       const newLocalePrefix =
-        newLocale === defaultLocaleArg ? "" : `/${newLocale}`;
+        newLocale === defaultLocaleArg ? originalBasePath : `${newLocaleBaseUrl}/${newLocale}`;
       const newPath = location.pathname.replace(replacePrefix, newLocalePrefix);
       const newPathNoTrailingSlash = newPath.endsWith("/")
         ? newPath.slice(0, -1)
         : newPath;
+
       navigate({
         pathname: newPathNoTrailingSlash || "/",
         search: location.search,

@@ -18,7 +18,7 @@ export type I18nData = {
   defaultLocale: I18nLocale;
   locale: I18nLocale;
   basePath: string;
-  navigateToLocale(locale: string): void;
+  navigateToLocale(code: string): void;
 };
 
 export type I18nLocaleArg = {

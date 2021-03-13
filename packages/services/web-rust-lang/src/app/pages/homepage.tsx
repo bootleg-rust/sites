@@ -124,9 +124,9 @@ export function HomepageHeader() {
                 font-size: 2.25rem;
               }
             `}
-            href="https://blog.rust-lang.org/2020/08/03/Rust-1.45.2.html"
+            href="https://blog.rust-lang.org/2021/02/11/Rust-1.50.0.html"
           >
-            Version 1.45.2
+            Version 1.50.0
           </Anchor>
         </flx.div>
       </flx.div>

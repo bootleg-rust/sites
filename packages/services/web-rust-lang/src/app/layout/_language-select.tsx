@@ -33,6 +33,7 @@ export function LanguageSelect({
         aria-label="Language"
         title="Language"
       >
+        {/* eslint-disable-next-line unicorn/prefer-spread */}
         {Array.from(availableLocales, ([code, { name }]) => (
           <Select.Option title={`${name} (${code})`} value={code} key={code}>
             {name} ({code})
