@@ -95,7 +95,7 @@ function makeServiceCmd() {
     .option(
       "-reg, --registry-url <registryUrl>",
       "container registry",
-      "asia-docker.pkg.dev/bootleg-crates-shared/sites",
+      process.env.CONTAINER_REGISTRY_URL,
     )
     .action(async (options) => {
       await publishDockerService(options);
