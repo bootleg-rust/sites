@@ -13,18 +13,21 @@ async function tagAndPush({ name, registryUrl, tag }) {
 async function publishDockerService({
   serviceName: name,
   gitRef,
-  registryUrl,
+  registryUrl: registryUrls,
 }) {
   const gitRefSha = await exec(`git rev-parse --short ${gitRef}`);
   // const currentRef = await exec("git rev-parse --abbrev-ref HEAD");
   const gitRefSlug = gitRef.replace(/\//g, "-");
   const dateTime = await exec("date +%Y-%m-%d-%H%M");
 
-  await tagAndPush({ name, registryUrl, tag: gitRefSha });
-  await tagAndPush({ name, registryUrl, tag: `${gitRefSlug}.${dateTime}` });
-  await tagAndPush({ name, registryUrl, tag: `${gitRefSlug}.latest` });
+  for (const registryUrl of registryUrls) {
+    await tagAndPush({ name, registryUrl, tag: gitRefSha });
+    await tagAndPush({ name, registryUrl, tag: `${gitRefSlug}.${dateTime}` });
+    await tagAndPush({ name, registryUrl, tag: `${gitRefSlug}.latest` });
 
-  if (gitRef === "main") {
-    await tagAndPush({ name, registryUrl, tag: "main" });
+    if (gitRef === "main") {
+      await tagAndPush({ name, registryUrl, tag: "main" });
+      await tagAndPush({ name, registryUrl, tag: "latest" });
+    }
   }
 }
