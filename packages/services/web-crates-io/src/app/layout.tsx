@@ -22,7 +22,7 @@ const HeaderSearch = styled(flx.div)`
 function Header() {
   return (
     <flx.div direction="row">
-      <SiteLink flex justify="center" alignItems="center" to="/">
+      <SiteLink flex justify="center" alignItems="center" to=".">
         {/* <RustLogo style={{ minWidth: 60 }} /> */}
         <H4>bootleg-crates.io</H4>
       </SiteLink>
@@ -42,12 +42,12 @@ export function PageLayout({ children }: { children: React.ReactNode }) {
       <Header />
       <flx.div style={{ margin: "0 auto" }}>
         <flx.div direction="row">
-          <SiteLink to="/">dashboard</SiteLink> |
-          <SiteLink to="/crates">query</SiteLink> |
-          <SiteLink to="/crates/explore">explore</SiteLink> |
-          <SiteLink to="/crates/user/123">user 123</SiteLink> |
-          <SiteLink to="/crates/team/123">team 123</SiteLink> |
-          <SiteLink to="/crates/123">crate 123</SiteLink>
+          <SiteLink to=".">dashboard</SiteLink> |
+          <SiteLink to="./crates">query</SiteLink> |
+          <SiteLink to="./crates/explore">explore</SiteLink> |
+          <SiteLink to="./crates/user/123">user 123</SiteLink> |
+          <SiteLink to="./crates/team/123">team 123</SiteLink> |
+          <SiteLink to="./crates/123">crate 123</SiteLink>
         </flx.div>
         {children}
       </flx.div>

@@ -102,10 +102,10 @@ function PageContent() {
       {/* Routing */}
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/redirect" element={<Redirect to="/" />} />
+        <Route path="/redirect" element={<Redirect to=".." />} />
         <Route
           path="/redirect-permanently"
-          element={<Redirect to="/" movedPermanently />}
+          element={<Redirect to=".." movedPermanently />}
         />
 
         {/* Search crates */}

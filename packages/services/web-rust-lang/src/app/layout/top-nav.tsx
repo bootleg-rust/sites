@@ -87,12 +87,12 @@ function NavLinks() {
   return (
     <UnorderedList css={linksCss}>
       <ListItem>
-        <SiteLink to="tools/install" flex>
+        <SiteLink to="./tools/install" flex>
           Install
         </SiteLink>
       </ListItem>
       <ListItem>
-        <SiteLink to="learn" flex>
+        <SiteLink to="./learn" flex>
           Learn
         </SiteLink>
       </ListItem>
@@ -102,17 +102,17 @@ function NavLinks() {
         </Anchor>
       </ListItem>
       <ListItem>
-        <SiteLink to="tools" flex>
+        <SiteLink to="./tools" flex>
           Tools
         </SiteLink>
       </ListItem>
       <ListItem>
-        <SiteLink to="governance" flex>
+        <SiteLink to="./governance" flex>
           Governance
         </SiteLink>
       </ListItem>
       <ListItem>
-        <SiteLink to="community" flex>
+        <SiteLink to="./community" flex>
           Community
         </SiteLink>
       </ListItem>

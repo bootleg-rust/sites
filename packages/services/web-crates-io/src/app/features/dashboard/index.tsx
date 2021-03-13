@@ -29,7 +29,7 @@ function StatNumber({ number = 0 }) {
 export function Dashboard() {
   return (
     <>
-      <Link to="/redirect">Redirect</Link>
+      <Link to="./redirect">Redirect</Link>
       <H1>The Rust community’s crate registry (but not)</H1>
       <flx.div>
         <flx.button>

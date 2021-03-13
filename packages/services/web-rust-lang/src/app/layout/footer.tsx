@@ -125,7 +125,7 @@ function GetHelp({
       <H4>Get help!</H4>
       <UnorderedList>
         <ListItem>
-          <SiteLink to="/learn">Documentation</SiteLink>
+          <SiteLink to="./learn">Documentation</SiteLink>
         </ListItem>
         <ListItem>
           <Anchor href="http://forge.rust-lang.org">
@@ -152,24 +152,24 @@ function TermsAndPolicies() {
       <H4>Terms and policies</H4>
       <UnorderedList>
         <ListItem>
-          <SiteLink to="/policies/code-of-conduct">Code of Conduct</SiteLink>
+          <SiteLink to="./policies/code-of-conduct">Code of Conduct</SiteLink>
         </ListItem>
         <ListItem>
-          <SiteLink to="/policies/licenses">Licenses</SiteLink>
+          <SiteLink to="./policies/licenses">Licenses</SiteLink>
         </ListItem>
         <ListItem>
-          <SiteLink to="/policies/media-guide">
+          <SiteLink to="./policies/media-guide">
             Logo Policy and Media Guide
           </SiteLink>
         </ListItem>
         <ListItem>
-          <SiteLink to="/policies/security">Security Disclosures</SiteLink>
+          <SiteLink to="./policies/security">Security Disclosures</SiteLink>
         </ListItem>
         <ListItem>
-          <SiteLink to="/policies/privacy">Privacy Notice</SiteLink>
+          <SiteLink to="./policies/privacy">Privacy Notice</SiteLink>
         </ListItem>
         <ListItem>
-          <SiteLink to="/policies">All Policies</SiteLink>
+          <SiteLink to="./policies">All Policies</SiteLink>
         </ListItem>
       </UnorderedList>
     </FooterColumn>
