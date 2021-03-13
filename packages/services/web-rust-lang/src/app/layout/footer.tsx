@@ -49,14 +49,14 @@ const FooterContent = styled(PageCentered)`
 `;
 
 export function SiteFooter({
-  onSelectLanguage,
+  onSelectLocale,
 }: {
-  onSelectLanguage(locale: string): void;
+  onSelectLocale(locale: string): void;
 }) {
   return (
     <flx.footer css={footerCss}>
       <FooterContent>
-        <GetHelp onSelectLanguage={onSelectLanguage} />
+        <GetHelp onSelectLocale={onSelectLocale} />
         <TermsAndPolicies />
         <SocialIcons />
       </FooterContent>
@@ -116,9 +116,9 @@ function SocialIcon({ socialUrl, imageUrl, alt, title }: SocialIconProps) {
 }
 
 function GetHelp({
-  onSelectLanguage,
+  onSelectLocale,
 }: {
-  onSelectLanguage(locale: string): void;
+  onSelectLocale(locale: string): void;
 }) {
   return (
     <FooterColumn grow>
@@ -141,7 +141,7 @@ function GetHelp({
           <Anchor href="http://ping.rust-lang.org">Check Website Status</Anchor>
         </ListItem>
       </UnorderedList>
-      <LanguageSelect onChange={(e) => onSelectLanguage(e.target.value)} />
+      <LanguageSelect onChange={(e) => onSelectLocale(e.target.value)} />
     </FooterColumn>
   );
 }

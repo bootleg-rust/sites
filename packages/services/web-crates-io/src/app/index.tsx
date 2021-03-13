@@ -71,25 +71,20 @@ export function CrateDetailsPage() {
   return <>CrateDetails {crateId}</>;
 }
 
-const defaultLanguage = "en-US";
-const supportedLanguages = [
-  "en-US",
-  "es",
-  "fr",
-  "it",
-  "ja",
-  "pt-BR",
-  "ru",
-  "tr",
-  "zh-CN",
-  "zh-TW",
-];
+const defaultLocale = "en-US";
+
+const onlyInDev = () => process.env.NODE_ENV === "development";
+
+const availableLocales = {
+  "en-US": { name: "English" },
+  "en-PR": { name: "Pirate", emoji: "🏴‍☠️", isHidden: onlyInDev },
+};
 
 function ApplicationProviders({ children }: { children?: React.ReactNode }) {
   return (
     <I18nProvider
-      supportedLanguages={supportedLanguages}
-      defaultLanguage={defaultLanguage}
+      availableLocales={availableLocales}
+      defaultLocale={defaultLocale}
     >
       {children}
     </I18nProvider>
@@ -141,7 +136,7 @@ function PageContent() {
 
 function GlobalPageMetadata() {
   const config = useConfig();
-  const { lang } = useI18n();
+  const { locale } = useI18n();
 
   return (
     <>
@@ -155,7 +150,7 @@ function GlobalPageMetadata() {
         defaultTitle="Bootleg crates.io"
         titleTemplate="%s - Bootleg crates.io"
       >
-        <html lang={lang} />
+        <html lang={locale.code} dir={locale.direction} />
         <base href="/" />
         <meta
           name="description"

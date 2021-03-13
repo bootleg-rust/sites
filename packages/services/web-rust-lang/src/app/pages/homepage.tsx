@@ -117,6 +117,7 @@ export function HomepageHeader() {
         <flx.div>
           <Anchor
             css={css`
+              margin-top: 1rem;
               text-align: center;
               line-height: 2;
               @media ${({ theme }) => theme.media.notSmall} {

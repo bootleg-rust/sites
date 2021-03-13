@@ -29,7 +29,7 @@ export function reconcileCacheControlOptions(ctx: HttpContextData): CacheControl
     if (anyPresent(acc.noTransform, current.noTransform)) acc.noTransform = true;
     if (anyPresent(acc.mustRevalidate, current.mustRevalidate)) acc.mustRevalidate = true;
     if (anyPresent(acc.proxyRevalidate, current.proxyRevalidate)) acc.proxyRevalidate = true;
-    if (anyPresent(acc.mustRevalidate, current.mustRevalidate)) acc.mustRevalidate = true;
+    if (anyPresent(acc.immutable, current.immutable)) acc.immutable = true;
 
     // Values
     if (anyPresent(acc.staleIfError, current.staleIfError)) acc.staleIfError = lowestInteger(acc.staleIfError, current.staleIfError);

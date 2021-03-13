@@ -127,10 +127,10 @@ function NavLinks() {
 
 export function TopNav({
   title,
-  onSelectLanguage,
+  onSelectLocale,
 }: {
   title: React.ReactNode;
-  onSelectLanguage(locale: string): void;
+  onSelectLocale(locale: string): void;
 }) {
   return (
     <flx.nav
@@ -156,7 +156,7 @@ export function TopNav({
       <NavLogo>{title}</NavLogo>
       <NavLinks />
       <LanguageSelect
-        onChange={(e) => onSelectLanguage(e.target.value)}
+        onChange={(e) => onSelectLocale(e.target.value)}
         className="_lang-select"
       />
     </flx.nav>
