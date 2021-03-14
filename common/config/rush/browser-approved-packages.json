@@ -87,6 +87,14 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "@fluent/bundle",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@fluent/react",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "@jest/globals",
       "allowedCategories": [ "production", "tools" ]
     },
@@ -185,6 +193,18 @@
     {
       "name": "babel-preset-razzle",
       "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "bufferutil",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "canvas",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "cheerio",
+      "allowedCategories": [ "production" ]
     },
     {
       "name": "clean-webpack-plugin",
@@ -469,6 +489,10 @@
     {
       "name": "typescript",
       "allowedCategories": [ "production", "tools" ]
+    },
+    {
+      "name": "utf-8-validate",
+      "allowedCategories": [ "production" ]
     },
     {
       "name": "webpack",

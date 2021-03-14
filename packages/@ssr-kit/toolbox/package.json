@@ -19,7 +19,9 @@
     "history": "^5.0.0",
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.0.0-beta.0",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "@fluent/bundle": "~0.16.0",
+    "@fluent/react": "~0.13.0"
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",

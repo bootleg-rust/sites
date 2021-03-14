@@ -8,6 +8,7 @@ import ssrPrepass from "react-ssr-prepass";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 import { HelmetProvider, HelmetData } from "react-helmet-async";
 import { format } from "@tusbar/cache-control";
+import { FluentServerConfigProvider } from "../fluent/server";
 import {
   defaultErrorReporter,
   ErrorReporterProvider,
@@ -26,6 +27,7 @@ import {
 } from "../cache-control";
 import { streamCloseHTML, streamOpenHTML } from "./template";
 import { joinStreams } from "./stream-utils";
+import { FluentConfigStaticRef } from "@ssr-kit/toolbox";
 
 export type StreamSsrPageConfig = {
   streamingEnabled?: boolean;
@@ -56,6 +58,7 @@ export function streamSsrPage({
       cacheControl: [],
       statusCode: 200,
     };
+    const fluentStaticRef: FluentConfigStaticRef = {};
 
     const sheet = new ServerStyleSheet();
     const element = (
@@ -71,7 +74,9 @@ export function streamSsrPage({
                   <ErrorReporterProvider reporter={errorReporter}>
                     <LoggerProvider logger={logger}>
                       <StaticRouter location={ctx.request.url}>
-                        {render(ctx)}
+                        <FluentServerConfigProvider staticRef={fluentStaticRef}>
+                          {render(ctx)}
+                        </FluentServerConfigProvider>
                       </StaticRouter>
                     </LoggerProvider>
                   </ErrorReporterProvider>
@@ -104,6 +109,7 @@ export function streamSsrPage({
         ssrData: {},
         configData: universalConfig,
         cspNonce,
+        localizationData: fluentStaticRef.resources,
       }),
     ]);
 

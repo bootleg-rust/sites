@@ -1,4 +1,5 @@
 import React from "react";
+import { Localized } from "@fluent/react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   css,
@@ -23,6 +24,10 @@ import networkingSvg from "./networking.svg";
 import embeddedSvg from "./embedded.svg";
 import npmLogoSvg from "./npm-logo.svg";
 import yelpLogoPng from "./yelp-logo.png";
+
+const CURRENT_VERSION_NUMBER = "1.50.0";
+const CURRENT_VERSION_BLOG_URL =
+  "https://blog.rust-lang.org/2021/02/11/Rust-1.50.0.html";
 
 export function Homepage() {
   return (
@@ -91,8 +96,11 @@ export function HomepageHeader() {
             }
           `}
         >
-          A language empowering everyone <br /> to build reliable and efficient
-          software.
+          <Localized id="tagline">
+            <span>
+              {"A language empowering everyone <br /> to build reliable and efficient software."}
+            </span>
+          </Localized>
         </H2>
       </flx.div>
       <flx.div
@@ -124,9 +132,14 @@ export function HomepageHeader() {
                 font-size: 2.25rem;
               }
             `}
-            href="https://blog.rust-lang.org/2021/02/11/Rust-1.50.0.html"
+            href={CURRENT_VERSION_BLOG_URL}
           >
-            Version 1.50.0
+            <Localized
+              id="homepage-version"
+              vars={{ number: CURRENT_VERSION_NUMBER }}
+            >
+              {"Version ${ number }"}
+            </Localized>
           </Anchor>
         </flx.div>
       </flx.div>
@@ -147,7 +160,9 @@ function SectionWhyRust() {
       }}
     >
       <SectionHeader>
-        <H2>Why Rust?</H2>
+        <H2>
+          <Localized id="why-rust">Why Rust?</Localized>
+        </H2>
       </SectionHeader>
       <flx.div>
         <flx.section>
@@ -272,11 +287,14 @@ function SectionInProduction() {
   return (
     <PageSectionCentered>
       <SectionHeader>
-        <H2>Rust in production</H2>
+        <H2>
+          <Localized id="production-title" />
+        </H2>
       </SectionHeader>
       <flx.div>
         <Paragraph>
-          Hundreds of companies around the world are using Rust in production
+          <Localized id="production-blurb" />
+          {/* Hundreds of companies around the world are using Rust in production
           today for fast, low-resource, cross-platform solutions. Software you
           know and love, like{" "}
           <Anchor href="https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/">
@@ -294,7 +312,7 @@ function SectionInProduction() {
           <flx.strong>
             From startups to large corporations, from embedded devices to
             scalable web services, Rust is a great fit.
-          </flx.strong>
+          </flx.strong> */}
         </Paragraph>
       </flx.div>
       <flx.div>

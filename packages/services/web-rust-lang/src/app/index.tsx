@@ -9,6 +9,7 @@ import {
   useI18n,
   I18nProvider,
   I18nDirection,
+  I18nFluentProvider,
 } from "@ssr-kit/toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Routes } from "react-router";
@@ -22,6 +23,7 @@ import { flx } from "@pseudo-su/flex-elements";
 import { useConfig } from "./config";
 import { TopNav, SiteFooter } from "./layout";
 import { Homepage, FerrisErrorSection } from "./pages";
+import { localeResources } from "./locales";
 
 import "@bootleg-rust/design-system/src/theming/fonts/index.scss";
 
@@ -73,7 +75,9 @@ function ApplicationProviders({ children }: { children?: React.ReactNode }) {
       availableLocales={availableLocales}
       defaultLocale={defaultLocale}
     >
-      {children}
+      <I18nFluentProvider resources={localeResources}>
+        {children}
+      </I18nFluentProvider>
     </I18nProvider>
   );
 }

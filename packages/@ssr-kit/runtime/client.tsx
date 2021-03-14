@@ -13,6 +13,7 @@ import {
   ConfigProviderProps,
 } from "@ssr-kit/toolbox";
 import { StyleSheetManager } from "styled-components";
+import { FluentClientConfigProvider } from "./src/fluent/client";
 
 type HydrateConfig = {
   logger?: Logger;
@@ -51,7 +52,11 @@ export function hydrate({
             <ClientConfigProvider>
               <ErrorReporterProvider reporter={defaultErrorReporter}>
                 <LoggerProvider logger={logger}>
-                  <BrowserRouter>{render()}</BrowserRouter>
+                  <BrowserRouter>
+                    <FluentClientConfigProvider>
+                      {render()}
+                    </FluentClientConfigProvider>
+                  </BrowserRouter>
                 </LoggerProvider>
               </ErrorReporterProvider>
             </ClientConfigProvider>

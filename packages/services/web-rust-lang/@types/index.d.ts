@@ -10,6 +10,7 @@ declare module "*.svg" {
 }
 
 declare module "*.png";
+declare module "*.ftl";
 
 // TODO: write better types
 declare module "@tusbar/cache-control";

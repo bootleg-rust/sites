@@ -39,7 +39,8 @@
     "react-router-dom": "^6.0.0-beta.0",
     "regenerator-runtime": "^0.13.7",
     "source-map-support": "^0.5.19",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "@fluent/react": "~0.13.0"
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",

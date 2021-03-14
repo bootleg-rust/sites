@@ -36,3 +36,5 @@ export type I18nProps = {
   availableLocales: I18nAvailableLocalesArg;
   defaultLocale: string;
 };
+
+export * from "./fluent/types";
