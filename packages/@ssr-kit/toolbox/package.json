@@ -15,7 +15,6 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.6",
-    "react-lightyear": "^16.10.0",
     "react-query": "^2.5.6",
     "history": "^5.0.0",
     "react-router": "^6.0.0-beta.0",

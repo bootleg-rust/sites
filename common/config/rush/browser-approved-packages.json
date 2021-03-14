@@ -63,12 +63,12 @@
       "allowedCategories": [ "tools" ]
     },
     {
-      "name": "@bootleg-rust/build-tooling",
-      "allowedCategories": [ "production", "tools" ]
-    },
-    {
       "name": "@bootleg-rust/base-service-config",
       "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@bootleg-rust/build-tooling",
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "@bootleg-rust/design-system",
@@ -76,14 +76,6 @@
     },
     {
       "name": "@bootleg-rust/features",
-      "allowedCategories": [ "production" ]
-    },
-    {
-      "name": "@ssr-kit/runtime",
-      "allowedCategories": [ "production" ]
-    },
-    {
-      "name": "@ssr-kit/toolbox",
       "allowedCategories": [ "production" ]
     },
     {
@@ -109,6 +101,14 @@
     {
       "name": "@sfomin/for-each-package",
       "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@ssr-kit/runtime",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@ssr-kit/toolbox",
+      "allowedCategories": [ "production" ]
     },
     {
       "name": "@storybook/addon-actions",
@@ -191,7 +191,7 @@
       "allowedCategories": [ "tools" ]
     },
     {
-      "name": "combined-stream",
+      "name": "combined-stream2",
       "allowedCategories": [ "production" ]
     },
     {
@@ -404,10 +404,6 @@
     },
     {
       "name": "react-is",
-      "allowedCategories": [ "production" ]
-    },
-    {
-      "name": "react-lightyear",
       "allowedCategories": [ "production" ]
     },
     {

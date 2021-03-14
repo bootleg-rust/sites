@@ -10,7 +10,6 @@ import Router from "koa-router";
 import serve from "koa-static";
 import {
   streamSsrPage,
-  streamSsrPageLightyear,
   serveIndexTemplate,
   ServeIndexTemplateConfig,
   StreamSsrPageConfig,
@@ -166,11 +165,5 @@ export function createStaticIndexRouter(cfg: ServeIndexTemplateConfig) {
 export function createKoaSsrRouter(cfg: StreamSsrPageConfig) {
   const router = new Router();
   router.get("/(.*)", streamSsrPage(cfg));
-  return router;
-}
-
-export function createKoaSsrRouterLightyear(cfg: StreamSsrPageConfig) {
-  const router = new Router();
-  router.get("/(.*)", streamSsrPageLightyear(cfg));
   return router;
 }

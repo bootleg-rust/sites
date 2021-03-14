@@ -1,6 +1,5 @@
 import { Readable } from "stream";
 import Koa from "koa";
-import CombinedStream from "combined-stream";
 import React from "react";
 import { renderToNodeStream } from "react-dom/server";
 import { makeQueryCache, ReactQueryCacheProvider } from "react-query";
@@ -26,8 +25,10 @@ import {
   defaultSsrCacheControlMaximums,
 } from "../cache-control";
 import { streamCloseHTML, streamOpenHTML } from "./template";
+import { joinStreams } from "./stream-utils";
 
 export type StreamSsrPageConfig = {
+  streamingEnabled?: boolean;
   ssrCacheControlMaximums?: SSRCacheControlMaximums;
   logger?: Logger;
   errorReporter?: ErrorReporter;
@@ -36,6 +37,7 @@ export type StreamSsrPageConfig = {
 };
 
 export function streamSsrPage({
+  streamingEnabled = true,
   render,
   universalConfig = {},
   logger = defaultLogger,
@@ -85,17 +87,9 @@ export function streamSsrPage({
 
     ctx.set("Content-Type", "text/html; charset=utf-8");
 
-    const output = CombinedStream.create();
-
-    ctx.response.body = output;
-
-    output.on("error", (error: Error) => {
-      ctx.app.emit("error", error, ctx);
-    });
-
     // Render streams
     const jsx = sheet.collectStyles(element);
-    const renderStream = sheet.interleaveWithNodeStream(
+    const appRenderStream = sheet.interleaveWithNodeStream(
       renderToNodeStream(jsx),
     );
     const preRenderStream = Readable.from([
@@ -113,7 +107,7 @@ export function streamSsrPage({
       }),
     ]);
 
-    renderStream.on("end", () => {
+    appRenderStream.on("end", () => {
       // Redirect when <Redirect /> is rendered
       if (httpContext.redirectPath) {
         // Somewhere a `<Redirect>` was rendered
@@ -150,8 +144,32 @@ export function streamSsrPage({
       }
     });
 
-    output.append(preRenderStream);
-    output.append(renderStream);
-    output.append(postRenderStream);
+    const renderStream = joinStreams(
+      preRenderStream,
+      appRenderStream,
+      postRenderStream,
+    );
+
+    renderStream.on("error", (error: Error) => {
+      ctx.app.emit("error", error, ctx);
+    });
+
+    if (streamingEnabled) {
+      // Streaming is enabled so just stream the response body
+      ctx.response.body = renderStream;
+    } else {
+      // Streaming is not enabled which means the entire response stream
+      // is buffered before sending any response. This is the safer option until
+      // there's a better way for the react app to signal when it's safe to start the stream with the
+      // initial request headers
+
+      const chunks = [];
+
+      for await (const chunk of renderStream) {
+        chunks.push(chunk);
+      }
+
+      ctx.response.body = Buffer.concat(chunks as Buffer[]);
+    }
   };
 }

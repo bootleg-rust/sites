@@ -14,7 +14,6 @@
   "dependencies": {
     "@ssr-kit/toolbox": "*",
     "@tusbar/cache-control": "^0.4.0",
-    "combined-stream": "^1.0.8",
     "koa": "^2.13.1",
     "koa-compress": "^5.0.1",
     "koa-conditional-get": "^3.0.0",
@@ -27,7 +26,6 @@
     "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.6",
     "react-is": "^17.0.1",
-    "react-lightyear": "^16.10.0",
     "react-query": "^2.5.6",
     "history": "^5.0.0",
     "react-router": "^6.0.0-beta.0",
@@ -39,7 +37,6 @@
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
     "@jest/globals": "^26.6.2",
-    "@types/combined-stream": "^1.0.2",
     "@types/koa": "^2.11.3",
     "@types/koa-compress": "^4.0.0",
     "@types/koa-conditional-get": "^2.0.0",

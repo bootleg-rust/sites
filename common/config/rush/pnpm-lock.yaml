@@ -63,7 +63,7 @@ dependencies:
   babel-loader: 8.2.2_9cf79196fce02a1b9074ba33a6f2520d
   babel-preset-razzle: 4.0.1-canary.6
   clean-webpack-plugin: 3.0.0_webpack@4.44.2
-  combined-stream: 1.0.8
+  combined-stream2: 1.1.2
   commander: 5.1.0
   core-js: 3.8.1
   debug: 4.3.1
@@ -113,7 +113,6 @@ dependencies:
   react-dom: 17.0.1_react@17.0.1
   react-helmet-async: 1.0.7_react-dom@17.0.1+react@17.0.1
   react-is: 17.0.1
-  react-lightyear: 16.10.0_react-dom@17.0.1+react@17.0.1
   react-query: 2.26.4_react-dom@17.0.1+react@17.0.1
   react-refresh: 0.9.0
   react-router: 6.0.0-beta.0_history@5.0.0+react@17.0.1
@@ -7541,6 +7540,10 @@ packages:
     optional: true
     resolution:
       integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==
+  /bluebird/2.11.0:
+    dev: false
+    resolution:
+      integrity: sha1-U0uQM8AiyVecVro7Plpcqvu2UOE=
   /bluebird/3.7.2:
     dev: false
     resolution:
@@ -8361,6 +8364,14 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==
+  /combined-stream2/1.1.2:
+    dependencies:
+      bluebird: 2.11.0
+      debug: 2.6.9
+      stream-length: 1.0.2
+    dev: false
+    resolution:
+      integrity: sha1-9uFLegFWZvjHsKH6xQYkAWSsNXA=
   /comma-separated-tokens/1.0.8:
     dev: false
     resolution:
@@ -18592,6 +18603,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-+TSkfINHDo4J+ZobQLWiMouQYB+UVYFttRA94FpEzzJ7ZdqcL4uUUQ7WkdkI4DSozGmgBUE/a47L+38PenXhUw==
+  /stream-length/1.0.2:
+    dependencies:
+      bluebird: 2.11.0
+    dev: false
+    resolution:
+      integrity: sha1-gnfzy+5JpNqrz9tOL0qbXp8snwA=
   /stream-shift/1.0.1:
     dev: false
     resolution:
@@ -20865,6 +20882,7 @@ packages:
       '@types/serialize-javascript': 4.0.0
       '@types/styled-components': 5.1.5
       combined-stream: 1.0.8
+      combined-stream2: 1.1.2
       eslint: 7.15.0
       history: 5.0.0
       jest-cli: 26.6.3
@@ -20900,7 +20918,7 @@ packages:
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-TORoNJPGZSrIypxo6DQImdm4wxmJp9kheh0iB0otZ9vkA3gWKtUG2szlkfvDWnLSIDUkTOO7Ij1mWcCwv9/G1A==
+      integrity: sha512-4LgCIGWR8Fid155fSetPkrCnv5Pn/l4lonnJJF45U2ZdbJeW4LmnGxF8bLUWMha9JQjcUce1t0/NNCo6i5jqlw==
       tarball: 'file:projects/runtime.tgz'
     version: 0.0.0
   'file:projects/toolbox.tgz_21ed83cfc6d84f67d80e726362b0e009':
@@ -20936,7 +20954,7 @@ packages:
       webpack: '*'
       webpack-dev-server: '*'
     resolution:
-      integrity: sha512-eZB7EHJ1KZCPx/w0557fjBF2/fS5haLDXM07DeIjgSLdFjjkD5XVSdYhp9Xt/gfEQSvimzKe8F4X+jKFFARHNA==
+      integrity: sha512-U25QfjMfLaCDmBTMtxqhpIwr59ilQzkUuM0DPvm8zReD+1ipOgupyf1wwCpEI4FeAo2zLDwcZkxw1T7TqxiUGA==
       tarball: 'file:projects/toolbox.tgz'
     version: 0.0.0
   'file:projects/web-api-proxy.tgz_7f61a60de31b72ed98836f0234042fde':
@@ -21181,7 +21199,7 @@ specifiers:
   babel-loader: ^8.1.0
   babel-preset-razzle: 4.0.1-canary.6
   clean-webpack-plugin: ^3.0.0
-  combined-stream: ^1.0.8
+  combined-stream2: ^1.1.2
   commander: ^5.1.0
   core-js: ^3.6.4
   debug: ^4.3.1
@@ -21231,7 +21249,6 @@ specifiers:
   react-dom: ^17.0.1
   react-helmet-async: ^1.0.6
   react-is: ^17.0.1
-  react-lightyear: ^16.10.0
   react-query: ^2.5.6
   react-refresh: ^0.9.0
   react-router: ^6.0.0-beta.0
