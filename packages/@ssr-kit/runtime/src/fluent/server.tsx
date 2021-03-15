@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import cheerio from "cheerio";
 import {
   FluentConfigProvider,
   FluentConfigProviderProps,

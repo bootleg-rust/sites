@@ -32,11 +32,7 @@
     "react-router-dom": "^6.0.0-beta.0",
     "react-ssr-prepass": "^1.2.1",
     "serialize-javascript": "^4.0.0",
-    "styled-components": "^5.1.1",
-    "bufferutil": "~4.0.3",
-    "canvas": "~2.7.0",
-    "utf-8-validate": "~5.0.4",
-    "cheerio": "~1.0.0-rc.5"
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
@@ -56,8 +52,7 @@
     "eslint": "^7.15.0",
     "jest-cli": "^26.6.3",
     "razzle": "4.0.1-canary.6",
-    "typescript": "~3.8.3",
-    "@types/cheerio": "~0.22.27"
+    "typescript": "~3.8.3"
   },
   "engines": {
     "node": "14.15",
