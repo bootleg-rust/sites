@@ -4,6 +4,8 @@ module.exports = function JestConfig({} = {}, fn = identityFn) {
   return fn({
     moduleNameMapper: {
       "\\.(css)$": "identity-obj-proxy",
+      // TODO: add proper config for ftl files
+      "\\.(ftl)$": require.resolve("./ftl-mock.js"),
       "\\.(svg)$": require.resolve("./svg-mock.js"),
     },
     transform: {
