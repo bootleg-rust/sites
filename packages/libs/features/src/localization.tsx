@@ -85,8 +85,6 @@ export function Localized({
 }: LocalizedProps): React.ReactElement | null {
   const ctx = useLocalizedMessage(id, { vars, attrs });
 
-  console.log(ctx);
-
   if (attrs || element) {
     return (
       <LocalizedContext.Provider value={ctx}>

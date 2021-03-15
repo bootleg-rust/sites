@@ -1,5 +1,6 @@
 const {
   externalsPlugin,
+  fluentPlugin,
   typescriptCheckerPlugin,
   additionalIncludesPlugin,
   reactSvgPlugin,
@@ -14,6 +15,7 @@ module.exports = {
   plugins: [
     "scss",
     { object: typescriptCheckerPlugin },
+    { object: fluentPlugin },
     { object: externalsPlugin },
     { object: reactSvgPlugin },
     {

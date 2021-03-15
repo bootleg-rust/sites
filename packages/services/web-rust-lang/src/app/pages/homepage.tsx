@@ -102,7 +102,7 @@ export function HomepageHeader() {
             }
           `}
         >
-          <Localized id="tagline" />
+          <Localized id="tagline" vars={{ linebreak: "<br />" }} />
         </H2>
       </flx.div>
       <flx.div

@@ -23,7 +23,7 @@ import { flx } from "@pseudo-su/flex-elements";
 import { useConfig } from "./config";
 import { TopNav, SiteFooter } from "./layout";
 import { Homepage, FerrisErrorSection } from "./pages";
-import { localeResources } from "./locales";
+import { localizationResources } from "./locales";
 
 import "@bootleg-rust/design-system/src/theming/fonts/index.scss";
 
@@ -75,7 +75,7 @@ function ApplicationProviders({ children }: { children?: React.ReactNode }) {
       availableLocales={availableLocales}
       defaultLocale={defaultLocale}
     >
-      <I18nFluentProvider resources={localeResources}>
+      <I18nFluentProvider resources={localizationResources}>
         {children}
       </I18nFluentProvider>
     </I18nProvider>
