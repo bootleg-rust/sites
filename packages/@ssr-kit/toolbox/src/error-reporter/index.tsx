@@ -41,5 +41,6 @@ export function useErrorReporter() {
       );
     }
   }
+
   return context?.errorReporter;
 }

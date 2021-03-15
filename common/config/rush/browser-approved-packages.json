@@ -295,6 +295,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "html-react-parser",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "husky",
       "allowedCategories": [ "tools" ]
     },
@@ -420,6 +424,10 @@
     },
     {
       "name": "react-helmet-async",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "react-html-parser",
       "allowedCategories": [ "production" ]
     },
     {

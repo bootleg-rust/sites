@@ -1,5 +1,5 @@
 import React from "react";
-import { Localized } from "@fluent/react";
+import { Localized } from "@bootleg-rust/features";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   css,
@@ -73,7 +73,13 @@ export function HomepageHeader() {
         flex-flow: wrap;
       `}
     >
-      <flx.div grow>
+      <flx.div
+        grow
+        basis={"65%"}
+        css={`
+          min-width: 65%;
+        `}
+      >
         <HeroHeading
           block
           css={css`
@@ -96,11 +102,7 @@ export function HomepageHeader() {
             }
           `}
         >
-          <Localized id="tagline">
-            <span>
-              {"A language empowering everyone <br /> to build reliable and efficient software."}
-            </span>
-          </Localized>
+          <Localized id="tagline" />
         </H2>
       </flx.div>
       <flx.div
@@ -114,13 +116,14 @@ export function HomepageHeader() {
       >
         <AnchorButton
           css={css`
+            white-space: nowrap;
             @media ${({ theme }) => theme.media.large} {
               max-width: 340px;
             }
           `}
           href="/learn/get-started"
         >
-          Get Started
+          <Localized id="get-started" />
         </AnchorButton>
         <flx.div>
           <Anchor
@@ -137,9 +140,7 @@ export function HomepageHeader() {
             <Localized
               id="homepage-version"
               vars={{ number: CURRENT_VERSION_NUMBER }}
-            >
-              {"Version ${ number }"}
-            </Localized>
+            />
           </Anchor>
         </flx.div>
       </flx.div>
@@ -161,39 +162,39 @@ function SectionWhyRust() {
     >
       <SectionHeader>
         <H2>
-          <Localized id="why-rust">Why Rust?</Localized>
+          <Localized id="why-rust" />
         </H2>
       </SectionHeader>
       <flx.div>
         <flx.section>
-          <H3>Performance</H3>
+          <H3>
+            <Localized id="language-values-performance" />
+          </H3>
           <Paragraph>
-            Rust is blazingly fast and memory-efficient: with no runtime or
-            garbage collector, it can power performance-critical services, run
-            on embedded devices, and easily integrate with other languages.
+            <Localized id="language-values-performance-blurb" />
           </Paragraph>
         </flx.section>
         <flx.section>
-          <H3>Reliability</H3>
+          <H3>
+            <Localized id="language-values-reliability" />
+          </H3>
           <Paragraph>
-            Rust’s rich type system and ownership model guarantee memory-safety
-            and thread-safety — enabling you to eliminate many classes of bugs
-            at compile-time.
+            <Localized id="language-values-reliability-blurb" />
           </Paragraph>
         </flx.section>
         <flx.section>
-          <H3>Productivity</H3>
+          <H3>
+            <Localized id="language-values-productivity" />
+          </H3>
           <Paragraph>
-            Rust has great documentation, a friendly compiler with useful error
-            messages, and top-notch tooling — an integrated package manager and
-            build tool, smart multi-editor support with auto-completion and type
-            inspections, an auto-formatter, and more.
+            <Localized id="language-values-productivity-blurb" />
           </Paragraph>
         </flx.section>
       </flx.div>
     </PageSectionCentered>
   );
 }
+
 function SectionBuildInRust() {
   const theme = useTheme();
   return (
@@ -294,25 +295,6 @@ function SectionInProduction() {
       <flx.div>
         <Paragraph>
           <Localized id="production-blurb" />
-          {/* Hundreds of companies around the world are using Rust in production
-          today for fast, low-resource, cross-platform solutions. Software you
-          know and love, like{" "}
-          <Anchor href="https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/">
-            Firefox
-          </Anchor>
-          ,
-          <Anchor href="https://blogs.dropbox.com/tech/2016/06/lossless-compression-with-brotli/">
-            Dropbox
-          </Anchor>
-          , and{" "}
-          <Anchor href="https://blog.cloudflare.com/cloudflare-workers-as-a-serverless-rust-platform/">
-            Cloudflare
-          </Anchor>
-          , uses Rust.{" "}
-          <flx.strong>
-            From startups to large corporations, from embedded devices to
-            scalable web services, Rust is a great fit.
-          </flx.strong> */}
         </Paragraph>
       </flx.div>
       <flx.div>

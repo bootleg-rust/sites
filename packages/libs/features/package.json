@@ -12,11 +12,15 @@
     "verify:fix": "eslint --max-warnings=0 --fix ."
   },
   "dependencies": {
+    "@ssr-kit/toolbox": "*",
     "@bootleg-rust/design-system": "*",
     "react": "^17.0.1",
     "history": "^5.0.0",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^6.0.0-beta.0"
+    "react-router-dom": "^6.0.0-beta.0",
+    "@fluent/react": "~0.13.0",
+    "@fluent/bundle": "~0.16.0",
+    "html-react-parser": "~1.2.4"
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "*",
