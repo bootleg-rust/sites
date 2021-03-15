@@ -46,7 +46,8 @@ function useLocales() {
   const { locale, defaultLocale } = useI18n();
 
   const locales = useMemo(() => {
-    return [locale, defaultLocale];
+    // TODO: figure out how should this allow multiple locales?
+    return [locale];
   }, [locale, defaultLocale]);
 
   return locales;
