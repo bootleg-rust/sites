@@ -8,7 +8,6 @@ import ssrPrepass from "react-ssr-prepass";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 import { HelmetProvider, HelmetData } from "react-helmet-async";
 import { format } from "@tusbar/cache-control";
-import { FluentServerConfigProvider } from "../fluent/server";
 import {
   defaultErrorReporter,
   ErrorReporterProvider,
@@ -20,14 +19,15 @@ import {
   reconcileCacheControlOptions,
   HttpProvider,
   HttpContextData,
+  FluentConfigStaticRef,
 } from "@ssr-kit/toolbox";
+import { FluentServerConfigProvider } from "../fluent/server";
 import {
   SSRCacheControlMaximums,
   defaultSsrCacheControlMaximums,
 } from "../cache-control";
 import { streamCloseHTML, streamOpenHTML } from "./template";
 import { joinStreams } from "./stream-utils";
-import { FluentConfigStaticRef } from "@ssr-kit/toolbox";
 
 export type StreamSsrPageConfig = {
   streamingEnabled?: boolean;

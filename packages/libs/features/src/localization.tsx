@@ -1,7 +1,7 @@
 import React, { useMemo, createContext, useContext } from "react";
 import { useLocalization } from "@fluent/react";
 import { FluentVariable } from "@fluent/bundle";
-import { useI18n } from "@ssr-kit/toolbox";
+// import { useI18n } from "@ssr-kit/toolbox";
 import parse from "html-react-parser";
 
 type LocalizedVarsProp = Record<string, FluentVariable>;
@@ -24,11 +24,9 @@ export function useLocalizedMessage(
     attrs?: Record<string, boolean>;
   },
 ) {
-  const { locale } = useI18n();
   const { l10n: localizations } = useLocalization();
 
   const result = useMemo(() => {
-
     // TODO: does this need to support getting from multiple bundles?
     const bundle = localizations.getBundle(id);
 
@@ -63,7 +61,7 @@ export function useLocalizedMessage(
       formattedAttrs,
       errors,
     } as LocalizedContextData;
-  }, [attrs, id, locale.code, localizations, vars]);
+  }, [attrs, id, localizations, vars]);
 
   return result;
 }

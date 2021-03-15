@@ -1,2 +1,2 @@
-export * from "./localization-resolver"
-export * from "./config-context"
+export * from "./localization-resolver";
+export * from "./config-context";

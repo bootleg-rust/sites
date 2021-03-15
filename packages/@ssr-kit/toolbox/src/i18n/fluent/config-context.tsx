@@ -13,18 +13,20 @@ export function FluentConfigProvider({
   parseMarkup,
   initialResources,
 }: FluentConfigProviderProps) {
-  const ctx = useMemo(() => ({
-    staticRef: staticRef || {},
-    parseMarkup,
-    initialResources,
-  }), [staticRef, initialResources, parseMarkup]);
+  const ctx = useMemo(
+    () => ({
+      staticRef: staticRef || {},
+      parseMarkup,
+      initialResources,
+    }),
+    [staticRef, initialResources, parseMarkup],
+  );
   return (
     <FluentServerContext.Provider value={ctx}>
       {children}
     </FluentServerContext.Provider>
   );
 }
-
 
 export function useFluentConfig(): AllOptional<FluentConfigData> {
   const context = useContext(FluentServerContext);

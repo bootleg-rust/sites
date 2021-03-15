@@ -1,11 +1,11 @@
 import React, { useMemo, useEffect, useState } from "react";
-import { isServer } from "../../is-client-server";
 import { FluentBundle, FluentResource } from "@fluent/bundle";
 import {
   ReactLocalization,
   LocalizationProvider,
   MarkupParser,
 } from "@fluent/react";
+import { isServer } from "../../is-client-server";
 import { useI18n } from "../context";
 import { I18nLocale } from "../types";
 import {
@@ -30,7 +30,7 @@ function makeEmbeddedLocalizations(
         return null;
       }
       const bundle = new FluentBundle(localeCode);
-      for (let messages of embeddedResources) {
+      for (const messages of embeddedResources) {
         const resource = new FluentResource(messages.data);
         bundle.addResource(resource);
       }
@@ -43,12 +43,17 @@ function makeEmbeddedLocalizations(
 }
 
 function useLocales() {
-  const { locale, defaultLocale } = useI18n();
+  const { locale } = useI18n();
+
+  // TODO: figure out how should this allow multiple locales?
+  // const locales = useMemo(() => {
+  //   return [locale, defaultLocale];
+  // }, [locale, defaultLocale]);
 
   const locales = useMemo(() => {
     // TODO: figure out how should this allow multiple locales?
     return [locale];
-  }, [locale, defaultLocale]);
+  }, [locale]);
 
   return locales;
 }
@@ -62,10 +67,10 @@ function EmbeddingFluentProvider({
 
   const localization = useMemo(() => {
     return makeEmbeddedLocalizations(resources, locales, parseMarkup || null);
-  }, [locales]);
+  }, [locales, parseMarkup, resources]);
 
   if (staticRef) {
-    let filteredResources = {} as any;
+    const filteredResources = {} as any;
 
     for (const locale of locales) {
       filteredResources[locale.code] = resources[locale.code];
@@ -75,7 +80,9 @@ function EmbeddingFluentProvider({
   }
 
   return (
-    <LocalizationProvider l10n={localization} children={<>{children}</>} />
+    <LocalizationProvider l10n={localization}>
+      <>{children}</>
+    </LocalizationProvider>
   );
 }
 
@@ -97,9 +104,9 @@ async function fetchMessages(
 }
 
 function* lazilyParsedBundles(fetchedMessages: Array<[string, string]>) {
-  for (let [locale, messages] of fetchedMessages) {
-    let resource = new FluentResource(messages);
-    let bundle = new FluentBundle(locale);
+  for (const [locale, messages] of fetchedMessages) {
+    const resource = new FluentResource(messages);
+    const bundle = new FluentBundle(locale);
     bundle.addResource(resource);
     yield bundle;
   }
@@ -109,11 +116,11 @@ async function fetchLocalization(
   resources: ResourcesArg<RemoteResource>,
   currentLocales: Array<I18nLocale>,
 ): Promise<ReactLocalization> {
-  let fetchedMessages = await Promise.all(
+  const fetchedMessages = await Promise.all(
     currentLocales.map((locale) => fetchMessages(resources, locale.code)),
   );
 
-  let bundles = lazilyParsedBundles(fetchedMessages);
+  const bundles = lazilyParsedBundles(fetchedMessages);
 
   return new ReactLocalization(bundles);
 }
@@ -126,29 +133,28 @@ function FetchingFluentProvider({ resources, children }: RemoteProviderProps) {
       return new ReactLocalization([]);
     }
     return makeEmbeddedLocalizations(initialResources, locales, null);
-  }, []);
+  }, [initialResources, locales]);
+
   const [localization, setLocalization] = useState<ReactLocalization>(
     initialLocalization,
   );
 
   // TODO: this is super simple fetching logic, should make it more suspense-y
   useEffect(() => {
-    if (!initialResources) {
-      fetchLocalization(resources, locales).then(setLocalization);
-    }
-  }, []);
-
-  useEffect(() => {
-    const alreadyHaveAllResources = locales.every(locale => {
-      return initialResources && Object.keys(initialResources).includes(locale.code)
-    })
+    const alreadyHaveAllResources = locales.every((locale) => {
+      return (
+        initialResources && Object.keys(initialResources).includes(locale.code)
+      );
+    });
     if (alreadyHaveAllResources) return;
 
     fetchLocalization(resources, locales).then(setLocalization);
-  }, [locales]);
+  }, [locales, initialResources, resources]);
 
   return (
-    <LocalizationProvider l10n={localization} children={<>{children}</>} />
+    <LocalizationProvider l10n={localization}>
+      <>{children}</>
+    </LocalizationProvider>
   );
 }
 
@@ -166,17 +172,16 @@ export function I18nFluentProvider(props: FluentProviderProps) {
       <EmbeddingFluentProvider
         mode={ResourceMode.EMBEDDED}
         resources={resources}
-        children={children}
-      />
+      >
+        {children}
+      </EmbeddingFluentProvider>
     );
   } else {
     const { resources, children } = props as RemoteProviderProps;
     return (
-      <FetchingFluentProvider
-        mode={ResourceMode.REMOTE}
-        resources={resources}
-        children={children}
-      />
+      <FetchingFluentProvider mode={ResourceMode.REMOTE} resources={resources}>
+        {children}
+      </FetchingFluentProvider>
     );
   }
 }

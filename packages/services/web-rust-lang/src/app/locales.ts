@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { isServer, isClient } from "@ssr-kit/toolbox";
 
 import commonResources from "./locales/*.ftl";
@@ -41,10 +42,10 @@ export const localizationResources = {
 
 if (isServer) {
   for (const [_key, values] of Object.entries(localizationResources)) {
-    let key = _key as keyof typeof localizationResources;
+    const key = _key as keyof typeof localizationResources;
     localizationResources[key] = values.map((mod) => {
       return {
-        data: mod.default
+        data: mod.default,
       };
     });
   }
@@ -52,7 +53,7 @@ if (isServer) {
 
 if (isClient) {
   for (const [_key, values] of Object.entries(localizationResources)) {
-    let key = _key as keyof typeof localizationResources;
+    const key = _key as keyof typeof localizationResources;
     localizationResources[key] = values.map((url) => {
       return {
         url,

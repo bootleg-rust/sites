@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { FluentConfigProvider, FluentConfigProviderProps } from "@ssr-kit/toolbox";
+import { FluentConfigProvider } from "@ssr-kit/toolbox";
 
 function getLocaleData() {
   const win = window as any;
@@ -7,7 +7,11 @@ function getLocaleData() {
   return localeData;
 }
 
-export function FluentClientConfigProvider({ children }: { children: React.ReactNode }) {
+export function FluentClientConfigProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const localeData = useMemo(() => getLocaleData(), []);
   return (
     <FluentConfigProvider initialResources={localeData}>
