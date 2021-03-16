@@ -10,6 +10,7 @@ import {
   I18nProvider,
   I18nDirection,
   I18nFluentProvider,
+  useI18nAlternatePathResolver,
 } from "@ssr-kit/toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Routes } from "react-router";
@@ -20,6 +21,7 @@ import {
   GlobalDefaultPageStyle,
 } from "@bootleg-rust/design-system";
 import { flx } from "@pseudo-su/flex-elements";
+import { Localized, useLocalizedMessage } from "@bootleg-rust/features";
 import { useConfig } from "./config";
 import { TopNav, SiteFooter } from "./layout";
 import { Homepage, FerrisErrorSection } from "./pages";
@@ -83,18 +85,33 @@ function ApplicationProviders({ children }: { children?: React.ReactNode }) {
 }
 
 function GlobalPageMetadata() {
-  const { locale } = useI18n();
+  const { locale, defaultLocale, availableLocales } = useI18n();
+  const alternatePathResolver = useI18nAlternatePathResolver();
+
+  // Page title
+  const titleMessage = useLocalizedMessage("index-title");
+
+  const pageTitlePrefix = "(Unofficial)";
+  const localizedTitle = titleMessage?.formattedMessage || "";
+  const pageTitle = `${pageTitlePrefix} ${localizedTitle}`;
+  const pageTitleTemplate = `%s - ${pageTitle}`;
+
+  const descriptionMessage = useLocalizedMessage("meta-description");
+  const metaDescription = descriptionMessage?.formattedMessage || "";
+  const logoAltMessage = useLocalizedMessage("nav-logo-alt");
+  const navLogoAlt = logoAltMessage?.formattedMessage || "";
+
+  // Twitter card meta
+
+  // OpenGraph meta
   return (
     <>
-      <Helmet
-        defaultTitle="(Unofficial) Rust Programming Language"
-        titleTemplate="%s - (Unofficial) Rust Programming Language"
-      >
+      <Helmet defaultTitle={pageTitle} titleTemplate={pageTitleTemplate}>
         <html lang={locale.code} dir={locale.direction} />
         <base href="/" />
         <meta
           name="description"
-          content="A language empowering everyone to build reliable and efficient software."
+          content={descriptionMessage?.formattedMessage || ""}
         />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -113,6 +130,24 @@ function GlobalPageMetadata() {
           <link rel="alternate" href="https://www.rust-lang.org/en-US" hreflang="en-US"></link>
           <link rel="alternate" href="https://www.rust-lang.org/es" hreflang="es"></link>
         */}
+        <link
+          rel="alternate"
+          href={alternatePathResolver(defaultLocale).pathname}
+          hrefLang="x-default"
+        ></link>
+        {[...availableLocales].map(([, alternateLocale], idx) => {
+          const alternatePath = alternatePathResolver(alternateLocale, {
+            defaultLocaleStrategy: "include",
+          });
+          return (
+            <link
+              key={idx}
+              rel="alternate"
+              href={alternatePath.pathname}
+              hrefLang={alternateLocale.code}
+            ></link>
+          );
+        })}
       </Helmet>
 
       {/* OpenGraph and twitter */}
@@ -121,23 +156,32 @@ function GlobalPageMetadata() {
         card="summary"
         site="@rustlang"
         creator="@rustlang"
-        title=""
-        description="A language empowering everyone to build reliable and efficient software."
+        title={pageTitle}
+        description={metaDescription}
       />
       <TwitterCard.Image
         url="https://www.rust-lang.org/static/images/rust-social-wide.jpg"
-        alt="Rust logo"
+        alt={navLogoAlt}
       />
 
-      <OpenGraph
-        type="website"
-        locale="en_US"
-        description="A language empowering everyone to build reliable and efficient software."
-      />
+      <OpenGraph type="website" locale="en_US" description={metaDescription} />
       <OpenGraph.Image
         url="https://www.rust-lang.org/static/images/rust-social-wide.jpg"
-        alt="Rust logo"
+        alt={navLogoAlt}
       />
+    </>
+  );
+}
+
+function Error404Page() {
+  const titleMessage = useLocalizedMessage("error404-page-title", {});
+  return (
+    <>
+      <Helmet>
+        <title>{titleMessage?.formattedMessage}</title>
+      </Helmet>
+      <HttpStatus code={404} />
+      <FerrisErrorSection code={404} />
     </>
   );
 }
@@ -156,27 +200,18 @@ function PageContent() {
           title={
             <AnimatePresence>
               {!isIndex ? (
-                <motion.span layoutId="main-heading">Rust</motion.span>
+                <motion.span layoutId="main-heading">
+                  <Localized id="rust" />
+                </motion.span>
               ) : null}
             </AnimatePresence>
           }
           onSelectLocale={navigateToLocale}
         />
         <flx.main grow justify="center">
-          {/* Routing */}
           <Routes>
             <Route path="/" element={<Homepage />} />
-
-            {/* Page not found 404 */}
-            <Route
-              path="/*"
-              element={
-                <>
-                  <HttpStatus code={404} />
-                  <FerrisErrorSection code={404} />
-                </>
-              }
-            />
+            <Route path="/*" element={<Error404Page />} />
           </Routes>
         </flx.main>
         <SiteFooter onSelectLocale={navigateToLocale} />

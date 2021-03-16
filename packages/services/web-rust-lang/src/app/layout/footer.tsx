@@ -8,7 +8,7 @@ import {
   H4,
 } from "@bootleg-rust/design-system";
 import { flx } from "@pseudo-su/flex-elements";
-import { SiteLink } from "@bootleg-rust/features";
+import { SiteLink, Localized } from "@bootleg-rust/features";
 import { PageCentered } from "../sections";
 import { LanguageSelect } from "./_language-select";
 
@@ -62,7 +62,9 @@ export function SiteFooter({
       </FooterContent>
       <flx.div className="_bottom-text" alignItems="center" justify="center">
         <flx.div block>
-          <flx.span>Maintained by the Rust Team. See a bug? </flx.span>
+          {/* TODO: check this */}
+          <Localized id="footer-attribution" />
+          {/* <flx.span>Maintained by the Rust Team. See a bug? </flx.span>
           <Anchor
             css={`
               white-space: nowrap;
@@ -70,11 +72,13 @@ export function SiteFooter({
             href="https://github.com/rust-lang/www.rust-lang.org/issues/new/choose"
           >
             File an issue!
-          </Anchor>
+          </Anchor> */}
         </flx.div>
         <flx.div block>
-          Looking for the{" "}
-          <Anchor href="https://prev.rust-lang.org">previous website</Anchor>?
+          {/* TODO: check this */}
+          <Localized id="footer-old-site" />
+          {/* Looking for the{" "}
+          <Anchor href="https://prev.rust-lang.org">previous website</Anchor>? */}
         </flx.div>
       </flx.div>
     </flx.footer>
@@ -118,23 +122,29 @@ function SocialIcon({ socialUrl, imageUrl, alt, title }: SocialIconProps) {
 function GetHelp({ onSelectLocale }: { onSelectLocale(locale: string): void }) {
   return (
     <FooterColumn grow>
-      <H4>Get help!</H4>
+      <H4>
+        <Localized id="footer-get-help" />
+      </H4>
       <UnorderedList>
         <ListItem>
-          <SiteLink to="./learn">Documentation</SiteLink>
+          <SiteLink to="./learn">
+            <Localized id="footer-doc" />
+          </SiteLink>
         </ListItem>
         <ListItem>
           <Anchor href="http://forge.rust-lang.org">
-            Rust Forge (Contributor Documentation)
+            <Localized id="footer-sup-doc" />
           </Anchor>
         </ListItem>
         <ListItem>
           <Anchor href="https://users.rust-lang.org">
-            Ask a Question on the Users Forum
+            <Localized id="footer-ask" />
           </Anchor>
         </ListItem>
         <ListItem>
-          <Anchor href="http://ping.rust-lang.org">Check Website Status</Anchor>
+          <Anchor href="http://ping.rust-lang.org">
+            <Localized id="footer-status" />
+          </Anchor>
         </ListItem>
       </UnorderedList>
       <LanguageSelect onChange={(e) => onSelectLocale(e.target.value)} />
@@ -145,27 +155,39 @@ function GetHelp({ onSelectLocale }: { onSelectLocale(locale: string): void }) {
 function TermsAndPolicies() {
   return (
     <FooterColumn grow>
-      <H4>Terms and policies</H4>
+      <H4>
+        <Localized id="footer-policies" />
+      </H4>
       <UnorderedList>
         <ListItem>
-          <SiteLink to="./policies/code-of-conduct">Code of Conduct</SiteLink>
-        </ListItem>
-        <ListItem>
-          <SiteLink to="./policies/licenses">Licenses</SiteLink>
-        </ListItem>
-        <ListItem>
-          <SiteLink to="./policies/media-guide">
-            Logo Policy and Media Guide
+          <SiteLink to="./policies/code-of-conduct">
+            <Localized id="footer-coc" />
           </SiteLink>
         </ListItem>
         <ListItem>
-          <SiteLink to="./policies/security">Security Disclosures</SiteLink>
+          <SiteLink to="./policies/licenses">
+            <Localized id="footer-licenses" />
+          </SiteLink>
         </ListItem>
         <ListItem>
-          <SiteLink to="./policies/privacy">Privacy Notice</SiteLink>
+          <SiteLink to="./policies/media-guide">
+            <Localized id="footer-media" />
+          </SiteLink>
         </ListItem>
         <ListItem>
-          <SiteLink to="./policies">All Policies</SiteLink>
+          <SiteLink to="./policies/security">
+            <Localized id="footer-security" />
+          </SiteLink>
+        </ListItem>
+        <ListItem>
+          <SiteLink to="./policies/privacy">
+            <Localized id="policies-privacy-link" />
+          </SiteLink>
+        </ListItem>
+        <ListItem>
+          <SiteLink to="./policies">
+            <Localized id="footer-policies-all" />
+          </SiteLink>
         </ListItem>
       </UnorderedList>
     </FooterColumn>
@@ -175,7 +197,17 @@ function TermsAndPolicies() {
 function SocialIcons() {
   return (
     <FooterColumn grow>
-      <H4>Social</H4>
+      <H4>
+        <Localized id="footer-social" />
+      </H4>
+      {/* TODO: fix alt tags */}
+      {/*
+        footer-youtube-alt = Twitter
+        footer-alt-youtube = youtube logo
+        footer-discord-alt = { discord }
+        footer-github-alt = GitHub
+      */}
+      <Localized id="footer-attribution" />
       <flx.div direction="row" wrap gap="1.6rem">
         <SocialIcon
           socialUrl="https://twitter.com/rustlang"

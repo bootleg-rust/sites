@@ -16,14 +16,12 @@ type LocalizedProps = {
 
 export function useLocalizedMessage(
   id: string,
-  {
-    vars,
-    attrs,
-  }: {
+  opts?: {
     vars?: LocalizedVarsProp;
     attrs?: Record<string, boolean>;
   },
 ) {
+  const { vars, attrs } = opts || {};
   const { l10n: localizations } = useLocalization();
 
   const result = useMemo(() => {
