@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useLocation, useResolvedPath } from "react-router-dom";
 import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import {
@@ -23,7 +23,7 @@ import {
 } from "@bootleg-rust/design-system";
 import { flx } from "@pseudo-su/flex-elements";
 import { Localized, useLocalizedMessage } from "@bootleg-rust/features";
-import { useConfig } from "./config";
+import { UniversalConfig, useConfig } from "./config";
 import { TopNav, SiteFooter } from "./layout";
 import { Homepage, FerrisErrorSection } from "./pages";
 import { localizationResources } from "./locales";
@@ -36,45 +36,59 @@ const GlobalAppStyles = createGlobalStyle``;
 
 const defaultLocale = "en-US";
 
-const onlyInDev = () => process.env.NODE_ENV === "development";
+function makeAvailableLocales(config: UniversalConfig) {
+  const allButLocalDev = config.NODE_ENV !== "development";
+  const onlyInProd = config.ENV === "prod";
 
-const availableLocales = {
-  "en-US": { name: "English", emoji: "🇺🇸" },
-  es: { name: "Español", emoji: "🇪🇸" },
-  fr: { name: "Français", emoji: "🇫🇷" },
-  it: { name: "Italiano", emoji: "🇮🇹" },
-  ja: { name: "日本語", emoji: "🇯🇵" },
-  "pt-BR": { name: "Português", emoji: "🇧🇷" },
-  ru: { name: "Русский", emoji: "🇷🇺" },
-  tr: { name: "Türkçe", emoji: "🇹🇷" },
-  "zh-CN": { name: "简体中文", emoji: "🇨🇳" },
-  "zh-TW": { name: "正體中文", emoji: "🇹🇼" },
+  return {
+    "en-US": { name: "English", emoji: "🇺🇸" },
+    es: { name: "Español", emoji: "🇪🇸" },
+    fr: { name: "Français", emoji: "🇫🇷" },
+    it: { name: "Italiano", emoji: "🇮🇹" },
+    ja: { name: "日本語", emoji: "🇯🇵" },
+    "pt-BR": { name: "Português", emoji: "🇧🇷" },
+    ru: { name: "Русский", emoji: "🇷🇺" },
+    tr: { name: "Türkçe", emoji: "🇹🇷" },
+    "zh-CN": { name: "简体中文", emoji: "🇨🇳" },
+    "zh-TW": { name: "正體中文", emoji: "🇹🇼" },
 
-  // IN-PROGRESS languages
-  de: { name: "Deutsch", emoji: "🇩🇪", isActive: onlyInDev },
-  fa: {
-    name: "فارسی",
-    emoji: "🇮🇷",
-    isActive: onlyInDev,
-    direction: I18nDirection.RTL,
-  },
-  ko: { name: "한국어", emoji: "🇰🇷", isActive: onlyInDev },
-  pl: { name: "Polskie", emoji: "🇵🇱", isActive: onlyInDev },
-  he: {
-    name: "עברית",
-    emoji: "🇮🇱",
-    direction: I18nDirection.RTL,
-    isActive: onlyInDev,
-  },
-  "xx-AU": {
-    // Upside down back to front
-    name: "ɥsılbuə",
-    direction: I18nDirection.RTL,
-    isActive: onlyInDev,
-  },
-};
+    // IN-PROGRESS languages
+    de: { name: "Deutsch", emoji: "🇩🇪", isDisabled: allButLocalDev },
+    fa: {
+      name: "فارسی",
+      emoji: "🇮🇷",
+      isDisabled: onlyInProd,
+      direction: I18nDirection.RTL,
+    },
+    ko: { name: "한국어", emoji: "🇰🇷", isActive: allButLocalDev },
+    pl: { name: "Polskie", emoji: "🇵🇱", isActive: allButLocalDev },
+    he: {
+      name: "עברית",
+      emoji: "🇮🇱",
+      direction: I18nDirection.RTL,
+      isActive: allButLocalDev,
+    },
+    "xx-AU": {
+      // Upside down back to front
+      name: "ɥsılbuə",
+      direction: I18nDirection.RTL,
+      isActive: allButLocalDev,
+    },
+  };
+}
+
+function useAvailableLocales() {
+  const config = useConfig();
+
+  const availableLocales = useMemo(() => makeAvailableLocales(config), [
+    config,
+  ]);
+
+  return availableLocales;
+}
 
 function ApplicationProviders({ children }: { children?: React.ReactNode }) {
+  const availableLocales = useAvailableLocales();
   return (
     <I18nProvider
       availableLocales={availableLocales}

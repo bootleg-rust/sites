@@ -8,7 +8,7 @@ export type I18nLocale = {
   name: string;
   direction: I18nDirection;
   emoji: string | null;
-  isActive?(): boolean;
+  isDisabled: boolean;
 };
 
 export type I18nLocales = Map<string, I18nLocale>;
@@ -24,6 +24,7 @@ export type I18nLocaleArg = {
   name: string;
   emoji?: string;
   direction?: I18nDirection;
+  isDisabled?: boolean;
 };
 
 export type I18nAvailableLocalesArg = {

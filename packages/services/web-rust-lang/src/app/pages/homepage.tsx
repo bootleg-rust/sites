@@ -318,7 +318,7 @@ function SectionInProduction() {
               <Localized id="production-testimonial-npm" />
             </flx.blockquote>
             <Paragraph>
-              – <Localized id="testimonial-npm-attribution" />
+              – <Localized id="production-testimonial-npm-attribution" />
             </Paragraph>
           </flx.div>
           <flx.div>
@@ -373,10 +373,10 @@ function SectionGetInvolved() {
             <Localized id="get-involved-read-rust" />
           </H3>
           <Paragraph>
-            <Localized id="involved-read-rust-blurb" />
+            <Localized id="get-involved-read-rust-blurb" />
           </Paragraph>
           <Anchor href="learn">
-            <Localized id="involved-read-rust-link" />
+            <Localized id="get-involved-read-rust-link" />
           </Anchor>
         </flx.div>
         <flx.div id="watch-rust">
@@ -384,10 +384,10 @@ function SectionGetInvolved() {
             <Localized id="get-involved-watch-rust" />
           </H3>
           <Paragraph>
-            <Localized id="involved-watch-rust-blurb" />
+            <Localized id="get-involved-watch-rust-blurb" />
           </Paragraph>
           <Anchor href="https://www.youtube.com/channel/UCaYhcUwRBNscFNUKTjgPFiA">
-            <Localized id="involved-watch-rust-link" />
+            <Localized id="get-involved-watch-rust-link" />
           </Anchor>
         </flx.div>
       </flx.div>
@@ -396,10 +396,10 @@ function SectionGetInvolved() {
           <Localized id="get-involved-contribute" />
         </H3>
         <Paragraph>
-          <Localized id="involved-contribute-blurb" />
+          <Localized id="get-involved-contribute-blurb" />
         </Paragraph>
         <Anchor href="https://rustc-dev-guide.rust-lang.org/getting-started.html">
-          <Localized id="involved-contribute-link" />
+          <Localized id="get-involved-contribute-link" />
         </Anchor>
       </flx.div>
     </PageSectionCentered>
@@ -428,7 +428,7 @@ function SectionThanks() {
             <Localized id="thanks-individuals-blurb" />
           </Paragraph>
           <Anchor href="https://thanks.rust-lang.org/">
-            <Localized id="thanks-indiviuals-link" />
+            <Localized id="thanks-individuals-link" />
           </Anchor>
         </flx.div>
         <flx.div id="company-sponsorships">

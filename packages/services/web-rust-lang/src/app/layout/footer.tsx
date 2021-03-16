@@ -8,7 +8,11 @@ import {
   H4,
 } from "@bootleg-rust/design-system";
 import { flx } from "@pseudo-su/flex-elements";
-import { SiteLink, Localized } from "@bootleg-rust/features";
+import {
+  SiteLink,
+  Localized,
+  useLocalizedString,
+} from "@bootleg-rust/features";
 import { PageCentered } from "../sections";
 import { LanguageSelect } from "./_language-select";
 
@@ -195,43 +199,45 @@ function TermsAndPolicies() {
 }
 
 function SocialIcons() {
+  // NOTE: these aren't properly localized
+  const twitterTitle = "Twitter";
+  const twitterAlt = "twitter logo";
+  const youtubeTitle = "Youtube";
+  const youtubeAlt = useLocalizedString("footer-alt-youtube");
+  const discordTitle = "Discord";
+  const discordAlt = "discord logo";
+  const githubTitle = "Github";
+  const githubAlt = "github logo";
+
   return (
     <FooterColumn grow>
       <H4>
         <Localized id="footer-social" />
       </H4>
-      {/* TODO: fix alt tags */}
-      {/*
-        footer-youtube-alt = Twitter
-        footer-alt-youtube = youtube logo
-        footer-discord-alt = { discord }
-        footer-github-alt = GitHub
-      */}
-      <Localized id="footer-attribution" />
       <flx.div direction="row" wrap gap="1.6rem">
         <SocialIcon
           socialUrl="https://twitter.com/rustlang"
+          title={twitterTitle}
+          alt={twitterAlt}
           imageUrl={twitterLogo}
-          alt="twitter logo"
-          title="Twitter"
         />
         <SocialIcon
           socialUrl="https://www.youtube.com/channel/UCaYhcUwRBNscFNUKTjgPFiA"
+          title={youtubeTitle}
+          alt={youtubeAlt}
           imageUrl={youtubeLogo}
-          alt="youtube logo"
-          title="YouTube"
         />
         <SocialIcon
           socialUrl="https://discord.gg/rust-lang"
+          title={discordTitle}
+          alt={discordAlt}
           imageUrl={discordLogo}
-          alt="discord logo"
-          title="Discord"
         />
         <SocialIcon
           socialUrl="https://github.com/rust-lang"
+          title={githubTitle}
+          alt={githubAlt}
           imageUrl={githubLogo}
-          alt="github logo"
-          title="GitHub"
         />
       </flx.div>
     </FooterColumn>

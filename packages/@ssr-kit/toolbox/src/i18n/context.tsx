@@ -170,9 +170,15 @@ function buildLocales(
   for (const [code, localeOption] of Object.entries(localeOptions)) {
     const localeData: I18nLocaleArg =
       typeof localeOption === "string" ? { name: localeOption } : localeOption;
-    const normalized: I18nLocale = { code, ...LocaleDefaults, ...localeData };
 
-    if (!normalized.isActive || normalized.isActive()) {
+    const normalized: I18nLocale = {
+      code,
+      ...LocaleDefaults,
+      ...localeData,
+      isDisabled: Boolean(localeData.isDisabled),
+    };
+
+    if (!normalized.isDisabled) {
       locales.set(normalized.code, normalized);
     }
   }

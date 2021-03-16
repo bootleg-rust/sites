@@ -19,10 +19,11 @@ export function useLocalizedString(
   opts?: {
     vars?: LocalizedVarsProp;
     attrs?: Record<string, boolean>;
+    fallback?: string;
   },
 ) {
   const msg = useLocalizedMessage(id, opts);
-  return msg?.formattedMessage || id;
+  return msg?.formattedMessage || opts?.fallback || id;
 }
 
 export function useLocalizedMessage(
