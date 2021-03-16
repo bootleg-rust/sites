@@ -14,6 +14,17 @@ type LocalizedProps = {
   element?: React.ReactNode;
 };
 
+export function useLocalizedString(
+  id: string,
+  opts?: {
+    vars?: LocalizedVarsProp;
+    attrs?: Record<string, boolean>;
+  },
+) {
+  const msg = useLocalizedMessage(id, opts);
+  return msg?.formattedMessage || id;
+}
+
 export function useLocalizedMessage(
   id: string,
   opts?: {

@@ -161,7 +161,6 @@ function GlobalPageMetadata() {
       <SupportedLanguagesMetadata />
 
       {/* OpenGraph and twitter */}
-      {/* TODO: Fix image URLs */}
       <TwitterCard
         card="summary"
         site="@rustlang"

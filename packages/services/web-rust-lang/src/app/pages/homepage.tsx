@@ -11,6 +11,7 @@ import {
   Paragraph,
   H3,
 } from "@bootleg-rust/design-system";
+import { useLocalizedString } from "@bootleg-rust/features";
 import { flx } from "@pseudo-su/flex-elements";
 import {
   PageSectionCentered,
@@ -197,6 +198,11 @@ function SectionWhyRust() {
 
 function SectionBuildInRust() {
   const theme = useTheme();
+  const cliAlt = useLocalizedString("domains-cli-alt");
+  const wasmAlt = useLocalizedString("domains-wasm-alt");
+  const netAlt = useLocalizedString("domains-net-alt");
+  const embeddedAlt = useLocalizedString("domains-embedded-alt");
+
   return (
     <PageSectionCentered
       brand={{
@@ -221,9 +227,7 @@ function SectionBuildInRust() {
       <flx.div>
         <flx.div>
           <flx.div>
-            {/* TODO: localization alt text */}
-            <Localized id="domains-cli-alt" />
-            <img src={cliSvg} alt="terminal" />
+            <img src={cliSvg} alt={cliAlt} />
           </flx.div>
           <flx.div>
             <H3>
@@ -240,9 +244,7 @@ function SectionBuildInRust() {
 
         <flx.div>
           <flx.div>
-            {/* TODO: alt text localization */}
-            <Localized id="domains-wasm-alt" />
-            <img src={webassemblySvg} alt="gear with puzzle piece elements" />
+            <img src={webassemblySvg} alt={wasmAlt} />
           </flx.div>
           <flx.div>
             <H3>
@@ -259,9 +261,7 @@ function SectionBuildInRust() {
 
         <flx.div>
           <flx.div>
-            {/* TODO: alt text localization */}
-            <Localized id="domains-net-alt" />
-            <img src={networkingSvg} alt="a cloud with nodes" />
+            <img src={networkingSvg} alt={netAlt} />
           </flx.div>
           <flx.div>
             <H3>
@@ -278,9 +278,7 @@ function SectionBuildInRust() {
 
         <flx.div>
           <flx.div>
-            {/* TODO: alt text localization */}
-            <Localized id="domains-embedded-alt" />
-            <img src={embeddedSvg} alt="an embedded device chip" />
+            <img src={embeddedSvg} alt={embeddedAlt} />
           </flx.div>
           <flx.div>
             <H3>
@@ -300,6 +298,8 @@ function SectionBuildInRust() {
 }
 
 function SectionInProduction() {
+  const npmAlt = useLocalizedString("production-testimonial-npm-alt");
+  const yelpAlt = useLocalizedString("production-testimonial-yelp-alt");
   return (
     <PageSectionCentered>
       <SectionHeader>
@@ -324,9 +324,7 @@ function SectionInProduction() {
           </flx.div>
           <flx.div>
             <Anchor href="https://www.npmjs.com/">
-              {/* TODO: alt text localization */}
-              <Localized id="production-testimonial-npm-alt" />
-              <img src={npmLogoSvg} alt="npm Logo" />
+              <img src={npmLogoSvg} alt={npmAlt} />
             </Anchor>
           </flx.div>
         </flx.div>
@@ -334,9 +332,7 @@ function SectionInProduction() {
         <flx.div>
           <flx.div>
             <Anchor href="https://www.youtube.com/watch?v=u6ZbF4apABk">
-              {/* TODO: alt text localization */}
-              <Localized id="production-testimonial-yelp-alt" />
-              <img src={yelpLogoPng} alt="Yelp Logo" />
+              <img src={yelpLogoPng} alt={yelpAlt} />
             </Anchor>
           </flx.div>
           <flx.div>
