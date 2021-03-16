@@ -49,10 +49,12 @@ export function createKoaApp({
     // eslint-disable-next-line no-console
     ctx.status = err?.httpStatus || 500;
     ctx.body = "Internal Server Error";
+
     if (process.env.NODE_ENV !== "production") {
       ctx.set("Content-type", "text/plain");
       ctx.body = err?.toString() || "Internal Server Error";
     }
+    console.error("500 Internal Server Error", { err, ctx });
   });
 
   app.use(koaLogger());
