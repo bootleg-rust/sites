@@ -45,7 +45,7 @@ export function useLocationValues(): Location {
     hostname: ctx?.hostname || globalThis.location.hostname,
     href: ctx?.href || globalThis.location.href,
     origin: ctx?.origin || globalThis.location.origin,
-    port: ctx?.port || globalThis.location.port,
+    port: ctx?.port || globalThis?.location?.port || "",
     protocol,
     // pathname
     // search
