@@ -20,6 +20,7 @@ import {
   HttpProvider,
   HttpContextData,
   FluentConfigStaticRef,
+  LocationValuesProvider,
 } from "@ssr-kit/toolbox";
 import { FluentServerConfigProvider } from "../fluent/server";
 import {
@@ -37,6 +38,8 @@ export type StreamSsrPageConfig = {
   universalConfig: any;
   render(ctx: Koa.Context): React.ReactElement;
 };
+
+const ENDS_WITH_PORT_REGEX = /:\d{4}$/;
 
 export function streamSsrPage({
   streamingEnabled = true,
@@ -61,6 +64,17 @@ export function streamSsrPage({
     const fluentStaticRef: FluentConfigStaticRef = {};
 
     const sheet = new ServerStyleSheet();
+    const port = ENDS_WITH_PORT_REGEX.exec(ctx.origin)?.[0] || null;
+
+    const locationValues = {
+      host: ctx.host,
+      hostname: ctx.hostname,
+      href: ctx.href,
+      origin: ctx.origin,
+      port,
+      protocol: ctx.protocol,
+    };
+
     const element = (
       <React.StrictMode>
         <ReactQueryCacheProvider queryCache={queryCache}>
@@ -73,11 +87,15 @@ export function streamSsrPage({
                 <HttpProvider context={httpContext}>
                   <ErrorReporterProvider reporter={errorReporter}>
                     <LoggerProvider logger={logger}>
-                      <StaticRouter location={ctx.request.url}>
-                        <FluentServerConfigProvider staticRef={fluentStaticRef}>
-                          {render(ctx)}
-                        </FluentServerConfigProvider>
-                      </StaticRouter>
+                      <LocationValuesProvider {...locationValues}>
+                        <StaticRouter location={ctx.request.url}>
+                          <FluentServerConfigProvider
+                            staticRef={fluentStaticRef}
+                          >
+                            {render(ctx)}
+                          </FluentServerConfigProvider>
+                        </StaticRouter>
+                      </LocationValuesProvider>
                     </LoggerProvider>
                   </ErrorReporterProvider>
                 </HttpProvider>

@@ -51,7 +51,6 @@ function useLocales() {
   // }, [locale, defaultLocale]);
 
   const locales = useMemo(() => {
-    // TODO: figure out how should this allow multiple locales?
     return [locale];
   }, [locale]);
 

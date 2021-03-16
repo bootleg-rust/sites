@@ -11,6 +11,7 @@ import {
   I18nDirection,
   I18nFluentProvider,
   useI18nAlternatePathResolver,
+  // useLocationValues,
 } from "@ssr-kit/toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Routes } from "react-router";
@@ -26,6 +27,8 @@ import { useConfig } from "./config";
 import { TopNav, SiteFooter } from "./layout";
 import { Homepage, FerrisErrorSection } from "./pages";
 import { localizationResources } from "./locales";
+
+import rustSocialWideJpg from "./rust-social-wide.jpg";
 
 import "@bootleg-rust/design-system/src/theming/fonts/index.scss";
 
@@ -84,9 +87,39 @@ function ApplicationProviders({ children }: { children?: React.ReactNode }) {
   );
 }
 
-function GlobalPageMetadata() {
-  const { locale, defaultLocale, availableLocales } = useI18n();
+function SupportedLanguagesMetadata() {
+  const { defaultLocale, availableLocales } = useI18n();
   const alternatePathResolver = useI18nAlternatePathResolver();
+
+  return (
+    <Helmet>
+      <link
+        rel="alternate"
+        href={alternatePathResolver(defaultLocale).pathname}
+        hrefLang="x-default"
+      ></link>
+      {[...availableLocales].map(([, alternateLocale], idx) => {
+        const alternatePath = alternatePathResolver(alternateLocale, {
+          defaultLocaleStrategy: "include",
+        });
+        return (
+          <link
+            key={idx}
+            rel="alternate"
+            href={alternatePath.pathname}
+            hrefLang={alternateLocale.code}
+          ></link>
+        );
+      })}
+    </Helmet>
+  );
+}
+
+function GlobalPageMetadata() {
+  const { locale } = useI18n();
+  // TODO: use locationValues to build absolute URLs because
+  // meta tags require them
+  // const locationValues = useLocationValues();
 
   // Page title
   const titleMessage = useLocalizedMessage("index-title");
@@ -123,32 +156,9 @@ function GlobalPageMetadata() {
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon-32x32.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-        {/* TODO: list alternates for all supported languages */}
-        {/*
-          <link rel="alternate" href="https://www.rust-lang.org/" hreflang="x-default"></link>
-          <link rel="alternate" href="https://www.rust-lang.org/en-US" hreflang="en-US"></link>
-          <link rel="alternate" href="https://www.rust-lang.org/es" hreflang="es"></link>
-        */}
-        <link
-          rel="alternate"
-          href={alternatePathResolver(defaultLocale).pathname}
-          hrefLang="x-default"
-        ></link>
-        {[...availableLocales].map(([, alternateLocale], idx) => {
-          const alternatePath = alternatePathResolver(alternateLocale, {
-            defaultLocaleStrategy: "include",
-          });
-          return (
-            <link
-              key={idx}
-              rel="alternate"
-              href={alternatePath.pathname}
-              hrefLang={alternateLocale.code}
-            ></link>
-          );
-        })}
       </Helmet>
+
+      <SupportedLanguagesMetadata />
 
       {/* OpenGraph and twitter */}
       {/* TODO: Fix image URLs */}
@@ -159,16 +169,10 @@ function GlobalPageMetadata() {
         title={pageTitle}
         description={metaDescription}
       />
-      <TwitterCard.Image
-        url="https://www.rust-lang.org/static/images/rust-social-wide.jpg"
-        alt={navLogoAlt}
-      />
+      <TwitterCard.Image url={rustSocialWideJpg} alt={navLogoAlt} />
 
       <OpenGraph type="website" locale="en_US" description={metaDescription} />
-      <OpenGraph.Image
-        url="https://www.rust-lang.org/static/images/rust-social-wide.jpg"
-        alt={navLogoAlt}
-      />
+      <OpenGraph.Image url={rustSocialWideJpg} alt={navLogoAlt} />
     </>
   );
 }

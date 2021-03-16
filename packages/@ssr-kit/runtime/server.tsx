@@ -129,7 +129,6 @@ export function createKoaApp({
           );
           return;
         }
-        // console.log("CACHE defaults", filename);
         // TODO: add more options to assetCaching'
         // - assetCaching.immutableAssets
         // - assetCaching.mutableAssets

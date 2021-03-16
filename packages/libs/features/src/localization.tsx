@@ -25,7 +25,8 @@ export function useLocalizedMessage(
   const { l10n: localizations } = useLocalization();
 
   const result = useMemo(() => {
-    // TODO: does this need to support getting from multiple bundles?
+    // TODO: does this need to support getting from a specific bundle
+    // when multiple bundles are present?
     const bundle = localizations.getBundle(id);
 
     if (!bundle) {
