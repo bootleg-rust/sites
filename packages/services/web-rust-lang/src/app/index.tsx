@@ -209,6 +209,7 @@ function Error404Page() {
         <title>{titleMessage?.formattedMessage}</title>
       </Helmet>
       <HttpStatus code={404} />
+      <CacheControl noCache />
       <FerrisErrorSection code={404} />
     </>
   );
