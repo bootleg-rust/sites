@@ -46,7 +46,10 @@ export function createKoaApp({
   });
 
   app.on("error", (err, ctx) => {
+    // TODO: structured logging
     // eslint-disable-next-line no-console
+    console.error("500 Internal Server Error", { err, ctx });
+
     ctx.status = err?.httpStatus || 500;
     ctx.body = "Internal Server Error";
 
@@ -54,7 +57,6 @@ export function createKoaApp({
       ctx.set("Content-type", "text/plain");
       ctx.body = err?.toString() || "Internal Server Error";
     }
-    console.error("500 Internal Server Error", { err, ctx });
   });
 
   app.use(koaLogger());
