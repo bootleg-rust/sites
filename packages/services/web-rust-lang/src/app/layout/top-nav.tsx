@@ -6,7 +6,11 @@ import {
   ListItem,
 } from "@bootleg-rust/design-system";
 import { flx } from "@pseudo-su/flex-elements";
-import { SiteLink } from "@bootleg-rust/features";
+import {
+  SiteLink,
+  Localized,
+  useLocalizedMessage,
+} from "@bootleg-rust/features";
 import { LanguageSelect } from "./_language-select";
 import rustLogoSvg from "./rust-logo-blk.svg";
 
@@ -31,10 +35,11 @@ const navLogoCss = css`
 `;
 
 function NavLogo({ children }: { children?: React.ReactNode }) {
+  const logoAltText = useLocalizedMessage("nav-logo-alt", {});
   return (
     <flx.div grow={1} css={navLogoCss} direction="row" justify="center">
       <SiteLink to="." flex direction="row" alignItems="center">
-        <img alt="Rust Logo" src={rustLogoSvg} />
+        <img alt={logoAltText?.formattedMessage || ""} src={rustLogoSvg} />
         <flx.span flex direction="column" justify="center">
           {children}
         </flx.span>
@@ -44,6 +49,7 @@ function NavLogo({ children }: { children?: React.ReactNode }) {
 }
 
 const linksCss = css`
+  white-space: nowrap;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
@@ -88,37 +94,37 @@ function NavLinks() {
     <UnorderedList css={linksCss}>
       <ListItem>
         <SiteLink to="./tools/install" flex>
-          Install
+          <Localized id="nav-install" />
         </SiteLink>
       </ListItem>
       <ListItem>
         <SiteLink to="./learn" flex>
-          Learn
+          <Localized id="nav-learn" />
         </SiteLink>
       </ListItem>
       <ListItem>
         <Anchor href="https://play.rust-lang.org/" flex>
-          Playground
+          <Localized id="nav-playground" />
         </Anchor>
       </ListItem>
       <ListItem>
         <SiteLink to="./tools" flex>
-          Tools
+          <Localized id="nav-tools" />
         </SiteLink>
       </ListItem>
       <ListItem>
         <SiteLink to="./governance" flex>
-          Governance
+          <Localized id="nav-governance" />
         </SiteLink>
       </ListItem>
       <ListItem>
         <SiteLink to="./community" flex>
-          Community
+          <Localized id="nav-community" />
         </SiteLink>
       </ListItem>
       <ListItem>
         <Anchor href="https://blog.rust-lang.org/" flex>
-          Blog
+          <Localized id="nav-blog" />
         </Anchor>
       </ListItem>
     </UnorderedList>

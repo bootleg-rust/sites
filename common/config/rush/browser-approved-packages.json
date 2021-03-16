@@ -87,6 +87,14 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "@fluent/bundle",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@fluent/react",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "@jest/globals",
       "allowedCategories": [ "production", "tools" ]
     },
@@ -187,6 +195,18 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "bufferutil",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "canvas",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "cheerio",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "clean-webpack-plugin",
       "allowedCategories": [ "tools" ]
     },
@@ -275,6 +295,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "html-react-parser",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "husky",
       "allowedCategories": [ "tools" ]
     },
@@ -296,6 +320,10 @@
     },
     {
       "name": "jest-svg-transformer",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "join-webpack-plugin",
       "allowedCategories": [ "tools" ]
     },
     {
@@ -340,6 +368,10 @@
     },
     {
       "name": "lint-staged",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "loader-utils",
       "allowedCategories": [ "tools" ]
     },
     {
@@ -403,6 +435,10 @@
       "allowedCategories": [ "production" ]
     },
     {
+      "name": "react-html-parser",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "react-is",
       "allowedCategories": [ "production" ]
     },
@@ -433,6 +469,10 @@
     {
       "name": "regenerator-runtime",
       "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "schema-utils",
+      "allowedCategories": [ "tools" ]
     },
     {
       "name": "serialize-javascript",
@@ -471,6 +511,10 @@
       "allowedCategories": [ "production", "tools" ]
     },
     {
+      "name": "utf-8-validate",
+      "allowedCategories": [ "production" ]
+    },
+    {
       "name": "webpack",
       "allowedCategories": [ "tools" ]
     },
@@ -480,6 +524,10 @@
     },
     {
       "name": "webpack-dev-server",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "webpack-import-glob-loader",
       "allowedCategories": [ "tools" ]
     },
     {

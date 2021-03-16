@@ -17,7 +17,6 @@ export type I18nData = {
   availableLocales: I18nLocales;
   defaultLocale: I18nLocale;
   locale: I18nLocale;
-  basePath: string;
   navigateToLocale(code: string): void;
 };
 
@@ -35,4 +34,7 @@ export type I18nProps = {
   children?: React.ReactNode;
   availableLocales: I18nAvailableLocalesArg;
   defaultLocale: string;
+  defaultLocaleStrategy: "redirect" | "mount";
 };
+
+export * from "./fluent/types";

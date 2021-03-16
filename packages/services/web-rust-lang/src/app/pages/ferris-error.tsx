@@ -1,6 +1,7 @@
 import React from "react";
 import { styled, HeroHeading, H2 } from "@bootleg-rust/design-system";
 import { flx } from "@pseudo-su/flex-elements";
+import { Localized, useLocalizedString } from "@bootleg-rust/features";
 import { PageHeaderCentered } from "../sections";
 import ferrisErrorImg from "./ferris-img.png";
 
@@ -42,14 +43,17 @@ const PageHeader = styled(PageHeaderCentered)`
 `;
 
 export function FerrisErrorSection({ code }: { code: number }) {
+  const imgAlt = useLocalizedString("error404-img-alt");
   return (
     <PageHeader alignItems="center">
       <flx.div alignItems="center" justify="center" className="_error-message">
         <HeroHeading>{code}</HeroHeading>
-        <H2>Whoops, this page doesn’t exist :-(</H2>
+        <H2>
+          <Localized id="error404-subtitle" />
+        </H2>
       </flx.div>
       <flx.div justify="center" alignItems="center" grow className="_ferris">
-        <img src={ferrisErrorImg} alt="404 not found image" />
+        <img src={ferrisErrorImg} alt={imgAlt} />
       </flx.div>
     </PageHeader>
   );

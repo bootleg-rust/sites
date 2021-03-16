@@ -5,6 +5,7 @@ const { reactSvgPlugin } = require("./react-svg");
 const { typescriptCheckerPlugin } = require("./typescript-checker");
 const { cacheableAssetsPlugin } = require("./cacheable-assets");
 const { additionalIncludesPlugin } = require("./additional-includes");
+const { fluentPlugin } = require("./fluent");
 
 module.exports = {
   externalsPlugin,
@@ -14,4 +15,5 @@ module.exports = {
   reactSvgPlugin,
   typescriptCheckerPlugin,
   cacheableAssetsPlugin,
+  fluentPlugin,
 };

@@ -14,6 +14,7 @@ type PostRenderArgs = {
   ssrData: any;
   configData: any;
   cspNonce: string;
+  localizationData: any;
 };
 
 export function streamOpenHTML({ assets, helmet }: PreRenderArgs) {
@@ -53,6 +54,7 @@ export function streamCloseHTML({
   ssrData,
   configData,
   cspNonce,
+  localizationData,
 }: PostRenderArgs) {
   // prettier-ignore
   const tags = {
@@ -61,6 +63,7 @@ export function streamCloseHTML({
     <script nonce=${serialize(cspNonce, { isJSON: true })}>
       window.__CONFIG_DATA__ = ${serialize(configData, { isJSON: true })};
       window.__SSR_DATA__ = ${serialize(ssrData, { isJSON: true })};
+      window.__LOCALE_DATA__ = ${serialize(localizationData, { isJSON: true })};
     </script>
     `.replace(/\s{2,}/g,' ').trim(),
   };

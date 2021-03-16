@@ -46,9 +46,13 @@ export function createKoaApp({
   });
 
   app.on("error", (err, ctx) => {
+    // TODO: structured logging
     // eslint-disable-next-line no-console
+    console.error("500 Internal Server Error", { err, ctx });
+
     ctx.status = err?.httpStatus || 500;
     ctx.body = "Internal Server Error";
+
     if (process.env.NODE_ENV !== "production") {
       ctx.set("Content-type", "text/plain");
       ctx.body = err?.toString() || "Internal Server Error";
@@ -129,7 +133,6 @@ export function createKoaApp({
           );
           return;
         }
-        // console.log("CACHE defaults", filename);
         // TODO: add more options to assetCaching'
         // - assetCaching.immutableAssets
         // - assetCaching.mutableAssets

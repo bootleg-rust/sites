@@ -2,7 +2,7 @@ import { Path } from "history";
 
 export type HttpContextData = {
   cacheControl: CacheControlOptions[];
-  statusCode: number;
+  statusCode: number[];
   redirectPath?: Path;
 };
 

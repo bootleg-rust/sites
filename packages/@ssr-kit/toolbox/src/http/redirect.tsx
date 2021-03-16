@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 import { Navigate, NavigateProps, useResolvedPath } from "react-router";
+import { isServer } from "../is-client-server";
 import { HttpContext } from "./context";
 
 export interface RedirectProps {
@@ -19,8 +20,12 @@ export function Redirect({
     // a new item for renders that aren't "committed"
     ctx.redirectPath = resolvedPath;
     if (movedPermanently) {
-      ctx.statusCode = 301;
+      ctx.statusCode.push(301);
     }
+  }
+
+  if (isServer) {
+    return null;
   }
 
   return <Navigate {...navigateProps} />;

@@ -19,7 +19,10 @@ import {
   reconcileCacheControlOptions,
   HttpProvider,
   HttpContextData,
+  FluentConfigStaticRef,
+  LocationValuesProvider,
 } from "@ssr-kit/toolbox";
+import { FluentServerConfigProvider } from "../fluent/server";
 import {
   SSRCacheControlMaximums,
   defaultSsrCacheControlMaximums,
@@ -35,6 +38,8 @@ export type StreamSsrPageConfig = {
   universalConfig: any;
   render(ctx: Koa.Context): React.ReactElement;
 };
+
+const ENDS_WITH_PORT_REGEX = /:\d{4}$/;
 
 export function streamSsrPage({
   streamingEnabled = true,
@@ -54,10 +59,22 @@ export function streamSsrPage({
     const helmetContext: { helmet?: HelmetData } = {};
     const httpContext: HttpContextData = {
       cacheControl: [],
-      statusCode: 200,
+      statusCode: [],
     };
+    const fluentStaticRef: FluentConfigStaticRef = {};
 
     const sheet = new ServerStyleSheet();
+    const port = ENDS_WITH_PORT_REGEX.exec(ctx.origin)?.[0] || null;
+
+    const locationValues = {
+      host: ctx.host,
+      hostname: ctx.hostname,
+      href: ctx.href,
+      origin: ctx.origin,
+      port,
+      protocol: ctx.protocol,
+    };
+
     const element = (
       <React.StrictMode>
         <ReactQueryCacheProvider queryCache={queryCache}>
@@ -70,9 +87,15 @@ export function streamSsrPage({
                 <HttpProvider context={httpContext}>
                   <ErrorReporterProvider reporter={errorReporter}>
                     <LoggerProvider logger={logger}>
-                      <StaticRouter location={ctx.request.url}>
-                        {render(ctx)}
-                      </StaticRouter>
+                      <LocationValuesProvider {...locationValues}>
+                        <StaticRouter location={ctx.url}>
+                          <FluentServerConfigProvider
+                            staticRef={fluentStaticRef}
+                          >
+                            {render(ctx)}
+                          </FluentServerConfigProvider>
+                        </StaticRouter>
+                      </LocationValuesProvider>
                     </LoggerProvider>
                   </ErrorReporterProvider>
                 </HttpProvider>
@@ -104,24 +127,37 @@ export function streamSsrPage({
         ssrData: {},
         configData: universalConfig,
         cspNonce,
+        localizationData: fluentStaticRef.resources,
       }),
     ]);
 
     appRenderStream.on("end", () => {
       // Redirect when <Redirect /> is rendered
       if (httpContext.redirectPath) {
-        // Somewhere a `<Redirect>` was rendered
-        if ([301, 302].includes(httpContext.statusCode)) {
-          ctx.status = httpContext.statusCode;
+        if (httpContext.statusCode.includes(307)) {
+          ctx.status = 307;
+        } else if (httpContext.statusCode.includes(302)) {
+          ctx.status = 302;
+        } else if (httpContext.statusCode.includes(301)) {
+          ctx.status = 301;
         }
+
         ctx.redirect(httpContext.redirectPath.pathname);
         return;
       }
 
       // Handle status codes
       ctx.status = 200;
-      if ([400, 401, 402, 403, 404].includes(httpContext.statusCode)) {
-        ctx.status = httpContext.statusCode;
+      if (httpContext.statusCode.includes(404)) {
+        ctx.status = 404;
+      } else if (httpContext.statusCode.includes(403)) {
+        ctx.status = 403;
+      } else if (httpContext.statusCode.includes(402)) {
+        ctx.status = 402;
+      } else if (httpContext.statusCode.includes(401)) {
+        ctx.status = 401;
+      } else if (httpContext.statusCode.includes(400)) {
+        ctx.status = 400;
       }
 
       // Set cache-control based on rendered content

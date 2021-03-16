@@ -1,4 +1,5 @@
 import React from "react";
+import { Localized, useLocalizedString } from "@bootleg-rust/features";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   css,
@@ -23,6 +24,10 @@ import networkingSvg from "./networking.svg";
 import embeddedSvg from "./embedded.svg";
 import npmLogoSvg from "./npm-logo.svg";
 import yelpLogoPng from "./yelp-logo.png";
+
+const CURRENT_VERSION_NUMBER = "1.50.0";
+const CURRENT_VERSION_BLOG_URL =
+  "https://blog.rust-lang.org/2021/02/11/Rust-1.50.0.html";
 
 export function Homepage() {
   return (
@@ -68,7 +73,13 @@ export function HomepageHeader() {
         flex-flow: wrap;
       `}
     >
-      <flx.div grow>
+      <flx.div
+        grow
+        basis={"65%"}
+        css={`
+          min-width: 65%;
+        `}
+      >
         <HeroHeading
           block
           css={css`
@@ -77,7 +88,7 @@ export function HomepageHeader() {
         >
           <AnimatePresence>
             <motion.span layoutId="main-heading" animate={{ opacity: 1 }}>
-              Rust
+              <Localized id="rust" />
             </motion.span>
           </AnimatePresence>
         </HeroHeading>
@@ -91,8 +102,7 @@ export function HomepageHeader() {
             }
           `}
         >
-          A language empowering everyone <br /> to build reliable and efficient
-          software.
+          <Localized id="tagline" vars={{ linebreak: "<br />" }} />
         </H2>
       </flx.div>
       <flx.div
@@ -106,13 +116,14 @@ export function HomepageHeader() {
       >
         <AnchorButton
           css={css`
+            white-space: nowrap;
             @media ${({ theme }) => theme.media.large} {
               max-width: 340px;
             }
           `}
           href="/learn/get-started"
         >
-          Get Started
+          <Localized id="get-started" />
         </AnchorButton>
         <flx.div>
           <Anchor
@@ -124,9 +135,12 @@ export function HomepageHeader() {
                 font-size: 2.25rem;
               }
             `}
-            href="https://blog.rust-lang.org/2021/02/11/Rust-1.50.0.html"
+            href={CURRENT_VERSION_BLOG_URL}
           >
-            Version 1.50.0
+            <Localized
+              id="homepage-version"
+              vars={{ number: CURRENT_VERSION_NUMBER }}
+            />
           </Anchor>
         </flx.div>
       </flx.div>
@@ -147,40 +161,47 @@ function SectionWhyRust() {
       }}
     >
       <SectionHeader>
-        <H2>Why Rust?</H2>
+        <H2>
+          <Localized id="why-rust" />
+        </H2>
       </SectionHeader>
       <flx.div>
         <flx.section>
-          <H3>Performance</H3>
+          <H3>
+            <Localized id="language-values-performance" />
+          </H3>
           <Paragraph>
-            Rust is blazingly fast and memory-efficient: with no runtime or
-            garbage collector, it can power performance-critical services, run
-            on embedded devices, and easily integrate with other languages.
+            <Localized id="language-values-performance-blurb" />
           </Paragraph>
         </flx.section>
         <flx.section>
-          <H3>Reliability</H3>
+          <H3>
+            <Localized id="language-values-reliability" />
+          </H3>
           <Paragraph>
-            Rust’s rich type system and ownership model guarantee memory-safety
-            and thread-safety — enabling you to eliminate many classes of bugs
-            at compile-time.
+            <Localized id="language-values-reliability-blurb" />
           </Paragraph>
         </flx.section>
         <flx.section>
-          <H3>Productivity</H3>
+          <H3>
+            <Localized id="language-values-productivity" />
+          </H3>
           <Paragraph>
-            Rust has great documentation, a friendly compiler with useful error
-            messages, and top-notch tooling — an integrated package manager and
-            build tool, smart multi-editor support with auto-completion and type
-            inspections, an auto-formatter, and more.
+            <Localized id="language-values-productivity-blurb" />
           </Paragraph>
         </flx.section>
       </flx.div>
     </PageSectionCentered>
   );
 }
+
 function SectionBuildInRust() {
   const theme = useTheme();
+  const cliAlt = useLocalizedString("domains-cli-alt");
+  const wasmAlt = useLocalizedString("domains-wasm-alt");
+  const netAlt = useLocalizedString("domains-net-alt");
+  const embeddedAlt = useLocalizedString("domains-embedded-alt");
+
   return (
     <PageSectionCentered
       brand={{
@@ -191,76 +212,83 @@ function SectionBuildInRust() {
       }}
     >
       <SectionHeader>
-        <H2>Build it in Rust</H2>
+        <H2>
+          <Localized id="domains-title" />
+        </H2>
       </SectionHeader>
 
       <flx.div>
         <Paragraph>
-          In 2018, the Rust community decided to improve programming experience
-          for a few distinct domains (see{" "}
-          <Anchor href="https://blog.rust-lang.org/2018/03/12/roadmap.html">
-            the 2018 roadmap
-          </Anchor>
-          ). For these, you can find many high-quality crates and some awesome
-          guides on how to get started.
+          <Localized id="domains-blurb" />
         </Paragraph>
       </flx.div>
 
       <flx.div>
         <flx.div>
           <flx.div>
-            <img src={cliSvg} alt="terminal" />
+            <img src={cliSvg} alt={cliAlt} />
           </flx.div>
           <flx.div>
-            <H3>Command Line</H3>
+            <H3>
+              <Localized id="domains-cli" />
+            </H3>
             <Paragraph>
-              Whip up a CLI tool quickly with Rust’s robust ecosystem. Rust
-              helps you maintain your app with confidence and distribute it with
-              ease.
+              <Localized id="domains-cli-blurb" />
             </Paragraph>
-            <Anchor href="/what/cli">Building Tools</Anchor>
+            <Anchor href="/what/cli">
+              <Localized id="cli-learn-more" />
+            </Anchor>
           </flx.div>
         </flx.div>
 
         <flx.div>
           <flx.div>
-            <img src={webassemblySvg} alt="gear with puzzle piece elements" />
+            <img src={webassemblySvg} alt={wasmAlt} />
           </flx.div>
           <flx.div>
-            <H3>WebAssembly</H3>
+            <H3>
+              <Localized id="domains-wasm" />
+            </H3>
             <Paragraph>
-              Use Rust to supercharge your JavaScript, one module at a time.
-              Publish to npm, bundle with webpack, and you’re off to the races.
+              <Localized id="domains-wasm-blurb" />
             </Paragraph>
-            <Anchor href="/what/wasm">Writing Web Apps</Anchor>
+            <Anchor href="/what/wasm">
+              <Localized id="wasm-learn-more" />
+            </Anchor>
           </flx.div>
         </flx.div>
 
         <flx.div>
           <flx.div>
-            <img src={networkingSvg} alt="a cloud with nodes" />
+            <img src={networkingSvg} alt={netAlt} />
           </flx.div>
           <flx.div>
-            <H3>Networking</H3>
+            <H3>
+              <Localized id="domains-net" />
+            </H3>
             <Paragraph>
-              Predictable performance. Tiny resource footprint. Rock-solid
-              reliability. Rust is great for network services.
+              <Localized id="domains-net-blurb" />
             </Paragraph>
-            <Anchor href="/what/networking">Working On Servers</Anchor>
+            <Anchor href="/what/networking">
+              <Localized id="net-learn-more" />
+            </Anchor>
           </flx.div>
         </flx.div>
 
         <flx.div>
           <flx.div>
-            <img src={embeddedSvg} alt="an embedded device chip" />
+            <img src={embeddedSvg} alt={embeddedAlt} />
           </flx.div>
           <flx.div>
-            <H3>Embedded</H3>
+            <H3>
+              <Localized id="domains-embedded" />
+            </H3>
             <Paragraph>
-              Targeting low-resource devices? Need low-level control without
-              giving up high-level conveniences? Rust has you covered.
+              <Localized id="domains-embedded-blurb" />
             </Paragraph>
-            <Anchor href="/what/embedded">Starting With Embedded</Anchor>
+            <Anchor href="/what/embedded">
+              <Localized id="embedded-learn-more" />
+            </Anchor>
           </flx.div>
         </flx.div>
       </flx.div>
@@ -269,46 +297,33 @@ function SectionBuildInRust() {
 }
 
 function SectionInProduction() {
+  const npmAlt = useLocalizedString("production-testimonial-npm-alt");
+  const yelpAlt = useLocalizedString("production-testimonial-yelp-alt");
   return (
     <PageSectionCentered>
       <SectionHeader>
-        <H2>Rust in production</H2>
+        <H2>
+          <Localized id="production-title" />
+        </H2>
       </SectionHeader>
       <flx.div>
         <Paragraph>
-          Hundreds of companies around the world are using Rust in production
-          today for fast, low-resource, cross-platform solutions. Software you
-          know and love, like{" "}
-          <Anchor href="https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/">
-            Firefox
-          </Anchor>
-          ,
-          <Anchor href="https://blogs.dropbox.com/tech/2016/06/lossless-compression-with-brotli/">
-            Dropbox
-          </Anchor>
-          , and{" "}
-          <Anchor href="https://blog.cloudflare.com/cloudflare-workers-as-a-serverless-rust-platform/">
-            Cloudflare
-          </Anchor>
-          , uses Rust.{" "}
-          <flx.strong>
-            From startups to large corporations, from embedded devices to
-            scalable web services, Rust is a great fit.
-          </flx.strong>
+          <Localized id="production-blurb" />
         </Paragraph>
       </flx.div>
       <flx.div>
         <flx.div>
           <flx.div>
             <flx.blockquote>
-              My biggest compliment to Rust is that it's boring, and this is an
-              amazing compliment.
+              <Localized id="production-testimonial-npm" />
             </flx.blockquote>
-            <Paragraph>– Chris Dickinson, Engineer at npm, Inc</Paragraph>
+            <Paragraph>
+              – <Localized id="testimonial-npm-attribution" />
+            </Paragraph>
           </flx.div>
           <flx.div>
             <Anchor href="https://www.npmjs.com/">
-              <img src={npmLogoSvg} alt="npm Logo" />
+              <img src={npmLogoSvg} alt={npmAlt} />
             </Anchor>
           </flx.div>
         </flx.div>
@@ -316,19 +331,22 @@ function SectionInProduction() {
         <flx.div>
           <flx.div>
             <Anchor href="https://www.youtube.com/watch?v=u6ZbF4apABk">
-              <img src={yelpLogoPng} alt="Yelp Logo" />
+              <img src={yelpLogoPng} alt={yelpAlt} />
             </Anchor>
           </flx.div>
           <flx.div>
             <flx.blockquote>
-              All the documentation, the tooling, the community is great - you
-              have all the tools to succeed in writing Rust code.
+              <Localized id="production-testimonial-yelp" />
             </flx.blockquote>
-            <Paragraph>– Antonio Verardi, Infrastructure Engineer</Paragraph>
+            <Paragraph>
+              – <Localized id="production-testimonial-yelp-attribution" />
+            </Paragraph>
           </flx.div>
         </flx.div>
       </flx.div>
-      <Anchor href="/production">Learn More</Anchor>
+      <Anchor href="/production">
+        <Localized id="learn-more" />
+      </Anchor>
     </PageSectionCentered>
   );
 }
@@ -345,37 +363,43 @@ function SectionGetInvolved() {
       }}
     >
       <SectionHeader>
-        <H2>Get involved</H2>
+        <H2>
+          <Localized id="get-involved" />
+        </H2>
       </SectionHeader>
       <flx.div>
         <flx.div id="read-rust">
-          <H3>Read Rust</H3>
+          <H3>
+            <Localized id="get-involved-read-rust" />
+          </H3>
           <Paragraph>
-            We love documentation! Take a look at the books available online, as
-            well as key blog posts and user guides.
+            <Localized id="involved-read-rust-blurb" />
           </Paragraph>
-          <Anchor href="learn">Read the book</Anchor>
+          <Anchor href="learn">
+            <Localized id="involved-read-rust-link" />
+          </Anchor>
         </flx.div>
         <flx.div id="watch-rust">
-          <H3>Watch Rust</H3>
+          <H3>
+            <Localized id="get-involved-watch-rust" />
+          </H3>
           <Paragraph>
-            The Rust community has a dedicated YouTube channel collecting a huge
-            range of presentations and tutorials.
+            <Localized id="involved-watch-rust-blurb" />
           </Paragraph>
           <Anchor href="https://www.youtube.com/channel/UCaYhcUwRBNscFNUKTjgPFiA">
-            Watch the Videos
+            <Localized id="involved-watch-rust-link" />
           </Anchor>
         </flx.div>
       </flx.div>
       <flx.div>
-        <H3>Contribute code</H3>
+        <H3>
+          <Localized id="get-involved-contribute" />
+        </H3>
         <Paragraph>
-          Rust is truly a community effort, and we welcome contribution from
-          hobbyists and production users, from newcomers and seasoned
-          professionals. Come help us make the Rust experience even better!
+          <Localized id="involved-contribute-blurb" />
         </Paragraph>
         <Anchor href="https://rustc-dev-guide.rust-lang.org/getting-started.html">
-          Read Contribution Guide
+          <Localized id="involved-contribute-link" />
         </Anchor>
       </flx.div>
     </PageSectionCentered>
@@ -386,33 +410,37 @@ function SectionThanks() {
   return (
     <PageSectionCentered>
       <SectionHeader>
-        <H2>Thanks</H2>
+        <H2>
+          <Localized id="thanks-title" />
+        </H2>
       </SectionHeader>
       <flx.div>
         <Paragraph>
-          Rust would not exist without the generous contributions of time, work,
-          and resources from individuals and companies. We are very grateful for
-          the support!
+          <Localized id="thanks-blurb" />
         </Paragraph>
       </flx.div>
       <flx.div>
         <flx.div id="individual-code">
-          <H3>Individuals</H3>
+          <H3>
+            <Localized id="thanks-individuals-header" />
+          </H3>
           <Paragraph>
-            Rust is a community project and is very thankful for the many
-            community contributions it receives.
+            <Localized id="thanks-individuals-blurb" />
           </Paragraph>
           <Anchor href="https://thanks.rust-lang.org/">
-            See individual contributors
+            <Localized id="thanks-indiviuals-link" />
           </Anchor>
         </flx.div>
         <flx.div id="company-sponsorships">
-          <H3>Corporate sponsors</H3>
+          <H3>
+            <Localized id="thanks-companies-header" />
+          </H3>
           <Paragraph>
-            The Rust project receives support from companies through the
-            donation of infrastructure.
+            <Localized id="thanks-companies-blurb" />
           </Paragraph>
-          <Anchor href="/sponsors">See sponsors</Anchor>
+          <Anchor href="/sponsors">
+            <Localized id="thanks-companies-link" />
+          </Anchor>
         </flx.div>
       </flx.div>
     </PageSectionCentered>
