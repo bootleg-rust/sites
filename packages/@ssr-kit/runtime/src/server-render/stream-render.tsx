@@ -59,7 +59,7 @@ export function streamSsrPage({
     const helmetContext: { helmet?: HelmetData } = {};
     const httpContext: HttpContextData = {
       cacheControl: [],
-      statusCode: 200,
+      statusCode: [],
     };
     const fluentStaticRef: FluentConfigStaticRef = {};
 
@@ -88,7 +88,7 @@ export function streamSsrPage({
                   <ErrorReporterProvider reporter={errorReporter}>
                     <LoggerProvider logger={logger}>
                       <LocationValuesProvider {...locationValues}>
-                        <StaticRouter location={ctx.request.url}>
+                        <StaticRouter location={ctx.url}>
                           <FluentServerConfigProvider
                             staticRef={fluentStaticRef}
                           >
@@ -134,18 +134,30 @@ export function streamSsrPage({
     appRenderStream.on("end", () => {
       // Redirect when <Redirect /> is rendered
       if (httpContext.redirectPath) {
-        // Somewhere a `<Redirect>` was rendered
-        if ([301, 302].includes(httpContext.statusCode)) {
-          ctx.status = httpContext.statusCode;
+        if (httpContext.statusCode.includes(307)) {
+          ctx.status = 307;
+        } else if (httpContext.statusCode.includes(302)) {
+          ctx.status = 302;
+        } else if (httpContext.statusCode.includes(301)) {
+          ctx.status = 301;
         }
+
         ctx.redirect(httpContext.redirectPath.pathname);
         return;
       }
 
       // Handle status codes
       ctx.status = 200;
-      if ([400, 401, 402, 403, 404].includes(httpContext.statusCode)) {
-        ctx.status = httpContext.statusCode;
+      if (httpContext.statusCode.includes(404)) {
+        ctx.status = 404;
+      } else if (httpContext.statusCode.includes(403)) {
+        ctx.status = 403;
+      } else if (httpContext.statusCode.includes(402)) {
+        ctx.status = 402;
+      } else if (httpContext.statusCode.includes(401)) {
+        ctx.status = 401;
+      } else if (httpContext.statusCode.includes(400)) {
+        ctx.status = 400;
       }
 
       // Set cache-control based on rendered content

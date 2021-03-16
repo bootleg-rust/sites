@@ -7,6 +7,7 @@ import {
   useLocation,
 } from "react-router";
 import { Path } from "history";
+import { Redirect } from "../http";
 import {
   I18nProps,
   I18nData,
@@ -73,6 +74,7 @@ function InternalMountedProvider({
       urlDerivedLocaleString,
     };
   }, [mountedBasePath, urlDerivedLocaleString]);
+
   return (
     <InternalMountedContext.Provider value={ctx}>
       {children}
@@ -100,6 +102,21 @@ function useInternalMountedContext() {
   return ctx;
 }
 
+function RedirectToDefaultLocale() {
+  const location = useLocation();
+  const resolvedLocation = useResolvedPath(".");
+  const parentLocation = useResolvedPath("..");
+  const { defaultLocaleArg } = useInternalRootContext();
+
+  let newPathname = location.pathname.replace(resolvedLocation.pathname, "");
+  const redirectLocation = {
+    search: location.search,
+    hash: location.hash,
+    pathname: newPathname || parentLocation.pathname,
+  };
+  return <Redirect to={redirectLocation} />
+}
+
 export function I18nProvider({
   children,
   availableLocales: availableLocalesArg,
@@ -118,6 +135,9 @@ export function I18nProvider({
               key={locale}
               element={
                 <InternalMountedProvider locale={locale}>
+                  {locale === defaultLocaleArg ? (
+                    <RedirectToDefaultLocale />
+                  ) : null}
                   <_I18nProvider>{children}</_I18nProvider>
                 </InternalMountedProvider>
               }

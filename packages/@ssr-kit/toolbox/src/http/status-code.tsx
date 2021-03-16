@@ -11,6 +11,6 @@ export function HttpStatus({
   // TODO: This might not work properly with suspense, figure out how to prevent adding
   // a new item for renders that aren't "committed"
   const ctx = useContext(HttpContext);
-  if (ctx) ctx.statusCode = code;
+  if (ctx) ctx.statusCode.push(code);
   return <>{children}</>;
 }

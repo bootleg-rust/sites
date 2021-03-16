@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useLocation, useResolvedPath } from "react-router-dom";
 import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import {
@@ -11,7 +11,7 @@ import {
   I18nDirection,
   I18nFluentProvider,
   useI18nAlternatePathResolver,
-  // useLocationValues,
+  useLocationValues,
 } from "@ssr-kit/toolbox";
 import { Helmet } from "react-helmet-async";
 import { Route, Routes } from "react-router";
@@ -90,12 +90,13 @@ function ApplicationProviders({ children }: { children?: React.ReactNode }) {
 function SupportedLanguagesMetadata() {
   const { defaultLocale, availableLocales } = useI18n();
   const alternatePathResolver = useI18nAlternatePathResolver();
+  const makeAbsolutePath = useMakeAbsolutePath();
 
   return (
     <Helmet>
       <link
         rel="alternate"
-        href={alternatePathResolver(defaultLocale).pathname}
+        href={makeAbsolutePath(alternatePathResolver(defaultLocale).pathname)}
         hrefLang="x-default"
       ></link>
       {[...availableLocales].map(([, alternateLocale], idx) => {
@@ -106,7 +107,7 @@ function SupportedLanguagesMetadata() {
           <link
             key={idx}
             rel="alternate"
-            href={alternatePath.pathname}
+            href={makeAbsolutePath(alternatePath.pathname)}
             hrefLang={alternateLocale.code}
           ></link>
         );
@@ -115,11 +116,26 @@ function SupportedLanguagesMetadata() {
   );
 }
 
+function useMakeAbsolutePath() {
+  const locationValues = useLocationValues();
+  return useCallback((url: string): string => {
+    if (url.startsWith("http:")) {
+      return url;
+    }
+    const { origin } = locationValues;
+    if (url === "/") {
+      return origin;
+    }
+    if (url.startsWith("/")) {
+      return `${origin}${url}`;
+    }
+    return url;
+  }, []);
+}
+
 function GlobalPageMetadata() {
   const { locale } = useI18n();
-  // TODO: use locationValues to build absolute URLs because
-  // meta tags require them
-  // const locationValues = useLocationValues();
+  const makeAbsolutePath = useMakeAbsolutePath();
 
   // Page title
   const titleMessage = useLocalizedMessage("index-title");
@@ -168,10 +184,16 @@ function GlobalPageMetadata() {
         title={pageTitle}
         description={metaDescription}
       />
-      <TwitterCard.Image url={rustSocialWideJpg} alt={navLogoAlt} />
+      <TwitterCard.Image
+        url={makeAbsolutePath(rustSocialWideJpg)}
+        alt={navLogoAlt}
+      />
 
       <OpenGraph type="website" locale="en_US" description={metaDescription} />
-      <OpenGraph.Image url={rustSocialWideJpg} alt={navLogoAlt} />
+      <OpenGraph.Image
+        url={makeAbsolutePath(rustSocialWideJpg)}
+        alt={navLogoAlt}
+      />
     </>
   );
 }

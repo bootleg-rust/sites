@@ -1,5 +1,5 @@
 import React from "react";
-import { Localized } from "@bootleg-rust/features";
+import { Localized, useLocalizedString } from "@bootleg-rust/features";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   css,
@@ -11,7 +11,6 @@ import {
   Paragraph,
   H3,
 } from "@bootleg-rust/design-system";
-import { useLocalizedString } from "@bootleg-rust/features";
 import { flx } from "@pseudo-su/flex-elements";
 import {
   PageSectionCentered,

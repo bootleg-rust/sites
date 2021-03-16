@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
+
 import { LocationValuesContext } from "./context";
 import {
   LocationValuesContextData,
@@ -24,7 +24,7 @@ export function LocationValuesProvider({
       port: port || "",
       protocol,
     };
-  }, []);
+  }, [host, hostname, href, origin, port, protocol]);
   return (
     <LocationValuesContext.Provider value={ctx}>
       {children}
