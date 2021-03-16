@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 
 import { Navigate, NavigateProps, useResolvedPath } from "react-router";
-import { HttpContext } from "./context";
 import { isServer } from "../is-client-server";
+import { HttpContext } from "./context";
 
 export interface RedirectProps {
   movedPermanently?: boolean;

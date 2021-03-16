@@ -34,6 +34,7 @@ export type I18nProps = {
   children?: React.ReactNode;
   availableLocales: I18nAvailableLocalesArg;
   defaultLocale: string;
+  defaultLocaleStrategy: "redirect" | "mount";
 };
 
 export * from "./fluent/types";

@@ -85,6 +85,7 @@ function ApplicationProviders({ children }: { children?: React.ReactNode }) {
     <I18nProvider
       availableLocales={availableLocales}
       defaultLocale={defaultLocale}
+      defaultLocaleStrategy="redirect"
     >
       {children}
     </I18nProvider>

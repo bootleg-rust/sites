@@ -79,6 +79,7 @@ function ApplicationProviders({ children }: { children?: React.ReactNode }) {
     <I18nProvider
       availableLocales={availableLocales}
       defaultLocale={defaultLocale}
+      defaultLocaleStrategy="redirect"
     >
       <I18nFluentProvider resources={localizationResources}>
         {children}
@@ -117,20 +118,22 @@ function SupportedLanguagesMetadata() {
 }
 
 function useMakeAbsolutePath() {
-  const locationValues = useLocationValues();
-  return useCallback((url: string): string => {
-    if (url.startsWith("http:")) {
+  const { origin } = useLocationValues();
+  return useCallback(
+    (url: string): string => {
+      if (url.startsWith("http:")) {
+        return url;
+      }
+      if (url === "/") {
+        return origin;
+      }
+      if (url.startsWith("/")) {
+        return `${origin}${url}`;
+      }
       return url;
-    }
-    const { origin } = locationValues;
-    if (url === "/") {
-      return origin;
-    }
-    if (url.startsWith("/")) {
-      return `${origin}${url}`;
-    }
-    return url;
-  }, []);
+    },
+    [origin],
+  );
 }
 
 function GlobalPageMetadata() {

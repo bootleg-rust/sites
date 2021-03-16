@@ -106,21 +106,21 @@ function RedirectToDefaultLocale() {
   const location = useLocation();
   const resolvedLocation = useResolvedPath(".");
   const parentLocation = useResolvedPath("..");
-  const { defaultLocaleArg } = useInternalRootContext();
 
-  let newPathname = location.pathname.replace(resolvedLocation.pathname, "");
+  const newPathname = location.pathname.replace(resolvedLocation.pathname, "");
   const redirectLocation = {
     search: location.search,
     hash: location.hash,
     pathname: newPathname || parentLocation.pathname,
   };
-  return <Redirect to={redirectLocation} />
+  return <Redirect to={redirectLocation} />;
 }
 
 export function I18nProvider({
   children,
   availableLocales: availableLocalesArg,
   defaultLocale: defaultLocaleArg,
+  defaultLocaleStrategy,
 }: I18nProps) {
   return (
     <InternalRootProvider
@@ -135,7 +135,8 @@ export function I18nProvider({
               key={locale}
               element={
                 <InternalMountedProvider locale={locale}>
-                  {locale === defaultLocaleArg ? (
+                  {locale === defaultLocaleArg &&
+                  defaultLocaleStrategy === "redirect" ? (
                     <RedirectToDefaultLocale />
                   ) : null}
                   <_I18nProvider>{children}</_I18nProvider>
