@@ -4,6 +4,7 @@ import {
   ServiceDefaults,
   SSRCachingConfigProvider,
   AssetCachingConfigProvider,
+  LocalizationConfigProvider,
 } from "@bootleg-rust/base-service-config";
 import packageJSON from "../package.json";
 import { UniversalConfig } from "./app/config";
@@ -33,6 +34,7 @@ const { config, universalConfig } = Config({
     Service,
     SSRCachingConfigProvider,
     AssetCachingConfigProvider,
+    LocalizationConfigProvider,
   ],
   packageJSON,
 }) as {

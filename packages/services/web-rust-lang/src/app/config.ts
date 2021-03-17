@@ -8,6 +8,7 @@ export type UniversalConfig = {
   SERVICE_INSTANCE_NAME: string;
   SSR_CACHING_DEFAULT_MAX_AGE: number;
   SSR_CACHING_DEFAULT_SHARED_MAX_AGE: number;
+  LOCALIZATION_ENABLE_LOCALES: string[];
 };
 
 export const useConfig = createUseConfig<UniversalConfig>();
