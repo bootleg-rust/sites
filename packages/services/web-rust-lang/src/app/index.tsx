@@ -37,8 +37,8 @@ const GlobalAppStyles = createGlobalStyle``;
 const defaultLocale = "en-US";
 
 function makeAvailableLocales(config: UniversalConfig) {
-  const allButLocalDev = config.NODE_ENV !== "development";
-  const onlyInProd = config.ENV === "prod";
+  const isLocalDev = config.NODE_ENV === "development";
+  const isProd = config.ENV === "prod";
 
   return {
     "en-US": { name: "English", emoji: "🇺🇸" },
@@ -53,26 +53,26 @@ function makeAvailableLocales(config: UniversalConfig) {
     "zh-TW": { name: "正體中文", emoji: "🇹🇼" },
 
     // IN-PROGRESS languages
-    de: { name: "Deutsch", emoji: "🇩🇪", isDisabled: allButLocalDev },
+    de: { name: "Deutsch", emoji: "🇩🇪", isDisabled: !isLocalDev },
     fa: {
       name: "فارسی",
       emoji: "🇮🇷",
-      isDisabled: onlyInProd,
+      isDisabled: isProd,
       direction: I18nDirection.RTL,
     },
-    ko: { name: "한국어", emoji: "🇰🇷", isActive: allButLocalDev },
-    pl: { name: "Polskie", emoji: "🇵🇱", isActive: allButLocalDev },
+    ko: { name: "한국어", emoji: "🇰🇷", isActive: !isLocalDev },
+    pl: { name: "Polskie", emoji: "🇵🇱", isActive: !isLocalDev },
     he: {
       name: "עברית",
       emoji: "🇮🇱",
       direction: I18nDirection.RTL,
-      isActive: allButLocalDev,
+      isActive: !isLocalDev,
     },
     "xx-AU": {
       // Upside down back to front
       name: "ɥsılbuə",
       direction: I18nDirection.RTL,
-      isActive: allButLocalDev,
+      isActive: !isLocalDev,
     },
   };
 }
