@@ -1,4 +1,4 @@
-FROM node-builder-base:14.15-alpine as web-api-proxy-builder
+FROM node-builder-base:14.17-alpine as web-api-proxy-builder
 
 COPY packages/ /app/packages/
 
@@ -8,7 +8,7 @@ RUN cd packages/services/web-api-proxy && \
     node ../../../common/scripts/install-run-rushx.js build
 
 # Our minimal node server image
-FROM node:14.15-alpine as server
+FROM node:14.17-alpine as server
 
 WORKDIR /app/packages/services/web-api-proxy
 
