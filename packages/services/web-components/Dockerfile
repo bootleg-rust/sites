@@ -1,4 +1,4 @@
-FROM node-builder-base:14.15-alpine as web-components-builder
+FROM node-builder-base:14.17-alpine as web-components-builder
 
 COPY packages/ /app/packages/
 
@@ -7,7 +7,7 @@ RUN node ./common/scripts/install-run-rush.js install
 RUN cd packages/services/web-components && \
     node ../../../common/scripts/install-run-rushx.js build
 # Our minimal node server image
-FROM node:14.15-alpine as server
+FROM node:14.17-alpine as server
 
 WORKDIR /app/packages/services/web-components
 

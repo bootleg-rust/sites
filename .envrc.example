@@ -1,0 +1,2 @@
+export ENV=dev
+export CLOUDSDK_ACTIVE_CONFIG_NAME=bootleg-crates-dev
