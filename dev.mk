@@ -16,14 +16,17 @@ deps.upgrade: deps.app.upgrade deps.tools.upgrade
 
 ## Install app dependencies
 deps.app.install:
+	rush install
 .PHONY: deps.app.install
 
 ## Update app dependencies
 deps.app.update:
+	rush update
 .PHONY: deps.app.update
 
 ## Upgrade app dependencies
 deps.app.upgrade:
+	rush update --full
 .PHONY: deps.app.upgrade
 
 ## Install tool dependencies
@@ -57,10 +60,12 @@ test.smoke:
 
 ## Run code verification
 verify:
+	rush verify
 .PHONY: verify
 
 ## Run code verifiation and automatically apply fixes where possible
 verify.fix:
+	rush verify:fix
 .PHONY: verify.fix
 
 ## Verify empty commit diff after codegen

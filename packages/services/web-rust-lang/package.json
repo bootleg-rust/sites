@@ -19,12 +19,12 @@
     "verify:stylelint": "stylelint './src/**/*.{ts,tsx,js,jsx}' "
   },
   "dependencies": {
-    "@bootleg-rust/base-service-config": "*",
-    "@bootleg-rust/design-system": "*",
-    "@bootleg-rust/features": "*",
-    "@ssr-kit/runtime": "*",
-    "@ssr-kit/toolbox": "*",
-    "@pseudo-su/flex-elements": "*",
+    "@bootleg-rust/base-service-config": "workspace:*",
+    "@bootleg-rust/design-system": "workspace:*",
+    "@bootleg-rust/features": "workspace:*",
+    "@ssr-kit/runtime": "workspace:*",
+    "@ssr-kit/toolbox": "workspace:*",
+    "@pseudo-su/flex-elements": "workspace:*",
     "core-js": "^3.6.4",
     "framer-motion": "^2.6.1",
     "isomorphic-fetch": "^2.2.1",
@@ -43,9 +43,9 @@
     "@fluent/react": "~0.13.0"
   },
   "devDependencies": {
-    "@bootleg-rust/build-tooling": "*",
-    "@jest/globals": "^26.6.2",
-    "@testing-library/jest-dom": "^5.11",
+    "@bootleg-rust/build-tooling": "workspace:*",
+    "@jest/globals": "^28.1.3",
+    "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^11.2.5",
     "@types/koa-router": "^7.4.0",
     "@types/node": "^14.0.26",
@@ -53,16 +53,16 @@
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.1",
     "eslint": "^7.15.0",
-    "jest-cli": "^26.6.3",
+    "jest-cli": "^28.1.3",
     "npm-run-all": "^4.1.5",
-    "razzle": "4.0.1-canary.6",
+    "razzle": "^4.2.17",
     "stylelint": "^13.6.1",
     "typescript": "~3.8.3"
   },
   "engines": {
     "node": "18.6",
     "npm": "DO_NOT_USE",
-    "pnpm": ">=4.14.4",
+    "pnpm": ">=7.6.0",
     "yarn": "DO_NOT_USE"
   }
 }

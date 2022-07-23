@@ -19,15 +19,15 @@
     "react-dom": "^17.0.1",
     "react-is": "^17.0.1",
     "styled-components": "^5.1.1",
-    "@pseudo-su/flex-elements": "*"
+    "@pseudo-su/flex-elements": "workspace:*"
   },
   "devDependencies": {
-    "@bootleg-rust/build-tooling": "*",
-    "@jest/globals": "^26.6.2",
+    "@bootleg-rust/build-tooling": "workspace:*",
+    "@jest/globals": "^28.1.3",
     "@types/react": "^17.0.1",
     "@types/styled-components": "^5.1.1",
     "eslint": "^7.15.0",
-    "jest-cli": "^26.6.3",
+    "jest-cli": "^28.1.3",
     "npm-run-all": "^4.1.5",
     "stylelint": "^13.6.1",
     "typescript": "~3.8.3"
@@ -35,7 +35,7 @@
   "engines": {
     "node": "18.6",
     "npm": "DO_NOT_USE",
-    "pnpm": ">=4.14.4",
+    "pnpm": ">=7.6.0",
     "yarn": "DO_NOT_USE"
   }
 }
