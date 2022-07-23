@@ -168,6 +168,7 @@ secret/
 
 # dotenv environment variables file
 /.env.local
+/.envrc
 
 # Jest junit file
 junit.xml
