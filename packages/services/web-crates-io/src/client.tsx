@@ -43,13 +43,15 @@ async function loadDependenciesAsync() {
 
 void loadDependenciesAsync().then((asyncDeps) => {
   const { React, hydrate, ThemeProvider, App, DefaultTheme } = asyncDeps;
+
+  function Render() {
+    return (
+      <ThemeProvider theme={DefaultTheme}>
+        <App />
+      </ThemeProvider>
+    );
+  }
   hydrate({
-    render() {
-      return (
-        <ThemeProvider theme={DefaultTheme}>
-          <App />
-        </ThemeProvider>
-      );
-    },
+    Render,
   });
 });

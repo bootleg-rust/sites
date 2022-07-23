@@ -25,7 +25,8 @@
     "koa": "^2.13.1",
     "koa-proxies": "^0.11.0",
     "koa-router": "^10.0.0",
-    "source-map-support": "^0.5.19"
+    "razzle": "^4.2.17",
+    "source-map-support": "^0.5.21"
   },
   "devDependencies": {
     "@bootleg-rust/build-tooling": "workspace:*",
@@ -36,8 +37,7 @@
     "eslint": "^7.15.0",
     "jest-cli": "^28.1.3",
     "npm-run-all": "^4.1.5",
-    "razzle": "^4.2.17",
-    "stylelint": "^13.6.1",
+    "stylelint": "^14.9.1",
     "typescript": "~3.8.3"
   },
   "engines": {

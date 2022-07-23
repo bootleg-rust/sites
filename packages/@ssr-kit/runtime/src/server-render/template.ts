@@ -1,11 +1,11 @@
-import { HelmetData } from "react-helmet-async";
+import { HelmetServerState } from "react-helmet-async";
 import serialize from "serialize-javascript";
 
 const NODE_ENV = process.env.NODE_ENV;
 
 type PreRenderArgs = {
   assets: any;
-  helmet?: HelmetData;
+  helmet?: HelmetServerState;
   lang?: string;
 };
 
@@ -18,6 +18,7 @@ type PostRenderArgs = {
 };
 
 export function streamOpenHTML({ assets, helmet }: PreRenderArgs) {
+
   // prettier-ignore
   const tags = {
     razzleJsPreload: `<link rel="preload" as="script" href="${String(assets.client.js)}">`,

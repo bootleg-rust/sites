@@ -14,19 +14,21 @@
     "verify:fix": "npm-run-all verify:eslint:fix",
     "verify:stylelint": "stylelint './src/**/*.{ts,tsx,js,jsx}' "
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^17.0.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
+    "react": "^17.0.1",
+    "styled-components": "^5.3.5",
     "@bootleg-rust/build-tooling": "workspace:*",
     "@jest/globals": "^28.1.3",
     "@types/react": "^17.0.1",
-    "@types/styled-components": "^5.1.1",
+    "@types/styled-components": "^5.1.25",
     "eslint": "^7.15.0",
     "jest-cli": "^28.1.3",
     "npm-run-all": "^4.1.5",
-    "stylelint": "^13.6.1",
+    "stylelint": "^14.9.1",
     "typescript": "~3.8.3"
   },
   "engines": {

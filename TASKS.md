@@ -22,7 +22,7 @@
 ## bootleg-crates.io
 
 - API spec to capture existing usable API from crates.io
-- `react-query` `useQuery` hooks to fetch data for all pages.
+- `@tanstack/react-query` `useQuery` hooks to fetch data for all pages.
 - Modify/reuse aspects of the rust-lang website for the page layout/template.
 - Replicate all crates.io pages
   - [ ] /

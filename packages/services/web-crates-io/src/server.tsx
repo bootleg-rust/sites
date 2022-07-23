@@ -21,18 +21,20 @@ const ssrCacheControlMaximums = {
   sharedMaxAge: config.SSR_CACHING_MAXIMUM_SHARED_MAX_AGE,
 };
 
+function Render() {
+  return (
+    <ThemeProvider theme={DefaultTheme}>
+      <App />
+    </ThemeProvider>
+  );
+}
+
 const routers: Router[] = [
   // SSR Application
   createKoaSsrRouter({
     ssrCacheControlMaximums,
     universalConfig,
-    render: function Render() {
-      return (
-        <ThemeProvider theme={DefaultTheme}>
-          <App />
-        </ThemeProvider>
-      );
-    },
+    Render,
   }),
 ];
 
