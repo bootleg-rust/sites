@@ -1,7 +1,7 @@
 import { makeValidator } from "envalid";
 import { ConfigProvider } from "../config";
 
-const csv = makeValidator(val => {
+const csv = makeValidator((val) => {
   if (!val) {
     return [];
   }

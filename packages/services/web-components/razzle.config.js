@@ -25,6 +25,7 @@ module.exports = {
     {
       object: additionalIncludesPlugin,
       options: {
+        dirname: __dirname,
         include: [
           "@pseudo-su/flex-elements",
           "@bootleg-rust/design-system",

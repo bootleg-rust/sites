@@ -1,56 +1,71 @@
 version: "3.3"
 services:
+  dev:
+    image: tianon/true
+    container_name: blr-sites_dev
+    restart: "no"
+    depends_on:
+      web-rust-lang:
+        condition: service_healthy
+      web-crates-io:
+        condition: service_healthy
+      web-components:
+        condition: service_healthy
+      web-api-proxy:
+        condition: service_healthy
+
   # Websites - 4000-4049
   web-rust-lang:
-    image: web-rust-lang
+    image: blr-sites_web-rust-lang
     ports:
       - "4000:4000"
     environment:
       PORT: "4000"
     env_file:
-      - .env
-      - .env.local
+      - ../.env
+      - ../.env.local
     build:
-      context: "."
+      context: ".."
       dockerfile: packages/services/web-rust-lang/Dockerfile
+
   web-crates-io:
-    image: web-crates-io
+    image: blr-sites_web-crates-io
     ports:
       - "4001:4001"
     environment:
       PORT: "4001"
     env_file:
-      - .env
-      - .env.local
+      - ../.env
+      - ../.env.local
     build:
-      context: "."
+      context: ".."
 
       dockerfile: packages/services/web-crates-io/Dockerfile
 
   # Website Test harness UI - 4050-4099
   web-components:
-    image: web-components
+    image: blr-sites_web-components
     ports:
       - "4050:4050"
     environment:
       PORT: "4050"
     env_file:
-      - .env
-      - .env.local
+      - ../.env
+      - ../.env.local
     build:
-      context: "."
+      context: ".."
       dockerfile: packages/services/web-components/Dockerfile
 
   # API 8000-8049
   web-api-proxy:
-    image: web-api-proxy
+    image: blr-sites_web-api-proxy
     ports:
       - "8000:8000"
     environment:
       PORT: "8000"
     env_file:
-      - .env
-      - .env.local
+      - ../.env
+      - ../.env.local
     build:
-      context: "."
+      context: ".."
       dockerfile: packages/services/web-api-proxy/Dockerfile

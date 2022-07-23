@@ -11,7 +11,7 @@ module.exports = {
       },
     },
     "@storybook/addon-actions",
-    "@storybook/addon-knobs",
+    "@storybook/addon-controls",
     "@storybook/addon-links",
     "@storybook/addon-viewport",
     // {
@@ -42,7 +42,7 @@ module.exports = {
     const babelLoader = plugins[2];
 
     babelLoader.include = [
-      ...babelLoader.include,
+      ...(babelLoader.include || []),
       ...resolvedAdditionalIncludes,
     ];
 

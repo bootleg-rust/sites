@@ -2,11 +2,15 @@ import { Readable } from "stream";
 import Koa from "koa";
 import React from "react";
 import { renderToNodeStream } from "react-dom/server";
-import { makeQueryCache, ReactQueryCacheProvider } from "react-query";
+import {
+  QueryClientProvider,
+  QueryCache,
+  QueryClient,
+} from "@tanstack/react-query";
 import { StaticRouter } from "react-router-dom/server";
 import ssrPrepass from "react-ssr-prepass";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
-import { HelmetProvider, HelmetData } from "react-helmet-async";
+import { HelmetProvider, HelmetServerState } from "react-helmet-async";
 import { format } from "@tusbar/cache-control";
 import {
   defaultErrorReporter,
@@ -36,14 +40,15 @@ export type StreamSsrPageConfig = {
   logger?: Logger;
   errorReporter?: ErrorReporter;
   universalConfig: any;
-  render(ctx: Koa.Context): React.ReactElement;
+  // TODO: type
+  Render: any;
 };
 
 const ENDS_WITH_PORT_REGEX = /:\d{4}$/;
 
 export function streamSsrPage({
   streamingEnabled = true,
-  render,
+  Render,
   universalConfig = {},
   logger = defaultLogger,
   errorReporter = defaultErrorReporter,
@@ -55,8 +60,9 @@ export function streamSsrPage({
 
   return async (ctx: Koa.Context) => {
     const cspNonce = ctx.state.cspNonce;
-    const queryCache = makeQueryCache();
-    const helmetContext: { helmet?: HelmetData } = {};
+    const queryCache = new QueryCache();
+    const queryClient = new QueryClient({ queryCache });
+    const helmetContext: { helmet?: HelmetServerState } = {};
     const httpContext: HttpContextData = {
       cacheControl: [],
       statusCode: [],
@@ -77,7 +83,7 @@ export function streamSsrPage({
 
     const element = (
       <React.StrictMode>
-        <ReactQueryCacheProvider queryCache={queryCache}>
+        <QueryClientProvider client={queryClient}>
           <StyleSheetManager
             sheet={sheet.instance}
             disableVendorPrefixes={process.env.NODE_ENV === "development"}
@@ -92,7 +98,7 @@ export function streamSsrPage({
                           <FluentServerConfigProvider
                             staticRef={fluentStaticRef}
                           >
-                            {render(ctx)}
+                            <Render koaCtx={ctx} />
                           </FluentServerConfigProvider>
                         </StaticRouter>
                       </LocationValuesProvider>
@@ -102,11 +108,12 @@ export function streamSsrPage({
               </StaticConfigProvider>
             </HelmetProvider>
           </StyleSheetManager>
-        </ReactQueryCacheProvider>
+        </QueryClientProvider>
       </React.StrictMode>
     );
     await ssrPrepass(element);
-    const { helmet } = helmetContext;
+
+    const helmet = helmetContext.helmet;
 
     ctx.set("Content-Type", "text/html; charset=utf-8");
 

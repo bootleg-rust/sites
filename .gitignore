@@ -1,6 +1,15 @@
 # macOS files
 .DS_Store
 
+/bin
+/tmp
+/tools/*
+!/tools/tools.cfg
+!/tools/tools.mk
+/.envrc
+
+.env*.local
+
 # Logs
 logs
 *.log
@@ -165,9 +174,6 @@ build
 .vscode/
 
 secret/
-
-# dotenv environment variables file
-/.env.local
 
 # Jest junit file
 junit.xml

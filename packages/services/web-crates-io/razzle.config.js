@@ -19,6 +19,7 @@ module.exports = {
     {
       object: additionalIncludesPlugin,
       options: {
+        dirname: __dirname,
         include: [
           "@bootleg-rust/design-system",
           "@bootleg-rust/features",

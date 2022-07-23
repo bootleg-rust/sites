@@ -18,7 +18,8 @@ import { FluentClientConfigProvider } from "./src/fluent/client";
 type HydrateConfig = {
   logger?: Logger;
   // errorReporter?: ErrorReporter;
-  render(): React.ReactElement;
+  // TODO: fix type
+  Render: any;
 };
 
 function getConfig() {
@@ -40,7 +41,7 @@ export function ClientConfigProvider({ children }: ConfigProviderProps) {
 export function hydrate({
   // errorReporter = defaultErrorReporter,
   logger = defaultLogger,
-  render,
+  Render,
 }: HydrateConfig) {
   return (() => {
     ReactDOM.hydrate(
@@ -54,7 +55,7 @@ export function hydrate({
                 <LoggerProvider logger={logger}>
                   <BrowserRouter>
                     <FluentClientConfigProvider>
-                      {render()}
+                      <Render />
                     </FluentClientConfigProvider>
                   </BrowserRouter>
                 </LoggerProvider>

@@ -16,6 +16,7 @@ module.exports = {
     {
       object: additionalIncludesPlugin,
       options: {
+        dirname: __dirname,
         include: [
           "@ssr-kit/runtime",
           "@bootleg-rust/base-service-config",

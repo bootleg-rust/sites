@@ -64,7 +64,7 @@
     },
     {
       "name": "@bootleg-rust/base-service-config",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "@bootleg-rust/build-tooling",
@@ -72,11 +72,11 @@
     },
     {
       "name": "@bootleg-rust/design-system",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "@bootleg-rust/features",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "@commitlint/cli",
@@ -104,7 +104,7 @@
     },
     {
       "name": "@pseudo-su/flex-elements",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "@sfomin/for-each-package",
@@ -112,14 +112,18 @@
     },
     {
       "name": "@ssr-kit/runtime",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "@ssr-kit/toolbox",
-      "allowedCategories": [ "production" ]
+      "allowedCategories": [ "production", "tools" ]
     },
     {
       "name": "@storybook/addon-actions",
+      "allowedCategories": [ "production" ]
+    },
+    {
+      "name": "@storybook/addon-controls",
       "allowedCategories": [ "production" ]
     },
     {
@@ -153,6 +157,10 @@
     {
       "name": "@svgr/webpack",
       "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@tanstack/react-query",
+      "allowedCategories": [ "production" ]
     },
     {
       "name": "@testing-library/dom",

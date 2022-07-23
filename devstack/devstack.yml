@@ -1,0 +1,6 @@
+version: "3.3"
+services:
+  devstack:
+    image: tianon/true
+    container_name: blr-sites_devstack
+    restart: "no"
